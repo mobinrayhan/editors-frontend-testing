@@ -56,12 +56,12 @@ jobs:
             # Delete The Old Cache
             rm -rf .next
 
-            export PATH=$PATH:/www/server/nvm/versions/node/v22.13.0/bin
+            export PATH=$PATH:/www/server/nvm/versions/node/v22.14.0/bin
 
             npm ci
             npm run build
 
-            export PATH=$PATH:/www/server/nvm/versions/node/v22.13.0/bin
+            export PATH=$PATH:cd /www/server/nvm/versions/node/v22.14.0/bin
 
             pm2 restart editors-frontend-testing
           EOF
