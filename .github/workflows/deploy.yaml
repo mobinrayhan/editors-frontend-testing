@@ -51,7 +51,7 @@ jobs:
             fi
 
             git config --global --add safe.directory /www/wwwroot/editors-frontend-testing
-            git pull origin master
+            git pull origin main
 
             # Delete The Old Cache
             rm -rf .next
