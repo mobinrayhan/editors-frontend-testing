@@ -16,13 +16,10 @@ const Page = () => {
   return (
     <Fragment>
       {/* Default Navbar */}
-      <NavbarDefault login />
-
-      <h1>Hello world</h1>
+      <NavbarDefault login />{" "}
       <main>
         <DefaultHome />
       </main>
-
       {/* Footer section */}
       <Footer bgColor="bg-light" />
     </Fragment>
