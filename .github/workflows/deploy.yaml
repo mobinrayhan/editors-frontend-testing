@@ -64,4 +64,6 @@ jobs:
             export PATH=$PATH:/www/server/nvm/versions/node/v22.14.0/bin
 
             pm2 restart 0
+            
+            sudo rm -rf /www/server/nginx/proxy_cache_dir/*
           EOF
