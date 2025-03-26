@@ -16,7 +16,7 @@ const Page = () => {
   return (
     <Fragment>
       {/* Default Navbar */}
-      <NavbarDefault login />{" "}
+      <NavbarDefault login />
       <main>
         <DefaultHome />
       </main>

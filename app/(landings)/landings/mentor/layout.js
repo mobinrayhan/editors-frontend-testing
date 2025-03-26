@@ -1,27 +1,22 @@
-'use client'
+"use client";
 
 // import node module libraries
-import { Fragment } from 'react';
+import { Fragment } from "react";
 
 // import layouts
-import FooterDark from 'layouts/marketing/footers/FooterDark';
-import NavbarMentorPages from 'layouts/marketing/navbars/NavbarMentorPages';
+import FooterDark from "layouts/marketing/footers/FooterDark";
+import NavbarMentorPages from "layouts/marketing/navbars/NavbarMentorPages";
 
 export default function ReactequestAccessLayout({ children }) {
-    return (
-        <Fragment>
+  return (
+    <Fragment>
+      {/*  Mentor Landing Page Navbar */}
+      <NavbarMentorPages center />
 
-            {/*  Mentor Landing Page Navbar */}
-            <NavbarMentorPages center />
+      <main>{children}</main>
 
-            <main>
-                {children}
-            </main>
-
-            {/* Dark Footer */}
-            <FooterDark />
-
-        </Fragment>
-    )
+      {/* Dark Footer */}
+      <FooterDark />
+    </Fragment>
+  );
 }
-
