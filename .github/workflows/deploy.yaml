@@ -48,7 +48,7 @@ jobs:
             cd /www/wwwroot/editors-frontend-testing
 
             if [ ! -d ".git" ]; then
-                git clone https://${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}@github.com/mobinrayhan/the-james-prince.git .
+                git clone https://${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}@github.com/mobinrayhan/editors-frontend-testing.git .
             fi
 
             git config --global --add safe.directory /www/wwwroot/editors-frontend-testing
