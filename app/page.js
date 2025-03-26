@@ -5,12 +5,12 @@ import { Fragment } from "react";
 import DefaultHome from "./(landings)/landings/default-home/Index";
 
 // import layouts
-import NavbarDefault from 'layouts/marketing/navbars/NavbarDefault';
-import Footer from 'layouts/marketing/footers/Footer';
+import Footer from "layouts/marketing/footers/Footer";
+import NavbarDefault from "layouts/marketing/navbars/NavbarDefault";
 
 export const metadata = {
   title: "Welcome to Geeks UI Learning Application | Geeks Nextjs Template",
-}
+};
 
 const Page = () => {
   return (
@@ -18,6 +18,7 @@ const Page = () => {
       {/* Default Navbar */}
       <NavbarDefault login />
 
+      <h1>Hello world</h1>
       <main>
         <DefaultHome />
       </main>

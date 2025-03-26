@@ -19,19 +19,18 @@ jobs:
   #       run: |
   #         npm run lint
 
-  # build:
-  #   runs-on: ubuntu-latest
-  #   needs: test
+  build:
+    runs-on: ubuntu-latest
 
-  #   steps:
-  #     - name: Checking Out Repo
-  #       uses: actions/checkout@v4
+    steps:
+      - name: Checking Out Repo
+        uses: actions/checkout@v4
 
-  #     - name: Install Deps
-  #       run: npm ci
+      - name: Install Deps
+        run: npm ci
 
-  #     - name: Build Project
-  #       run: npm run build
+      - name: Build Project
+        run: npm run build
 
   deploy:
     runs-on: ubuntu-latest
