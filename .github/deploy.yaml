@@ -1,0 +1,66 @@
+name: "Deploy Testing Editors Frontend"
+on:
+  push:
+    branches: ["main"]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checking Out Repo
+        uses: actions/checkout@v4
+
+      - name: Install Deps
+        run: npm ci
+
+      - name: Check Linting
+        id: lint-checking
+        run: |
+          npm run lint
+
+  build:
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+      - name: Checking Out Repo
+        uses: actions/checkout@v4
+
+      - name: Install Deps
+        run: npm ci
+
+      - name: Build Project
+        run: npm run build
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [test, build]
+    steps:
+      - name: Setup SSH for VPS
+        uses: webfactory/ssh-agent@v0.5.4
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Deploy to VPS
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} << EOF
+            cd /www/wwwroot/editors-frontend-testing
+
+            if [ ! -d ".git" ]; then
+                git clone https://${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}@github.com/mobinrayhan/the-james-prince.git .
+            fi
+
+            git config --global --add safe.directory /www/wwwroot/editors-frontend-testing
+            git pull origin master
+
+            # Delete The Old Cache
+            rm -rf .next
+
+            export PATH=$PATH:/www/server/nvm/versions/node/v22.13.0/bin
+
+            npm ci
+            npm run build
+
+            export PATH=$PATH:/www/server/nvm/versions/node/v22.13.0/bin
+
+            pm2 restart editors-frontend-testing
+          EOF
