@@ -34,7 +34,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    # needs: [test, build]
+    needs: [build]
     steps:
       - name: Setup SSH for VPS
         uses: webfactory/ssh-agent@v0.5.4
@@ -61,7 +61,7 @@ jobs:
             npm ci
             npm run build
 
-            export PATH=$PATH:cd /www/server/nvm/versions/node/v22.14.0/bin
+            export PATH=$PATH:/www/server/nvm/versions/node/v22.14.0/bin
 
             pm2 restart editors-frontend-testing
           EOF
