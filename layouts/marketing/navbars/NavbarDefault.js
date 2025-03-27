@@ -122,14 +122,14 @@ const NavbarDefault = ({ headerstyle = "navbar-default", login = false }) => {
                   }
                 >
                   <Nav.Link
-                    href="#"
+                    href="/authentication/sign-in"
                     bsPrefix="btn"
                     className="btn btn-white shadow-sm me-2"
                   >
                     Sign In
                   </Nav.Link>
                   <Nav.Link
-                    href="#"
+                    href="/authentication/sign-up"
                     bsPrefix="btn"
                     className="btn btn-primary shadow-sm"
                   >
