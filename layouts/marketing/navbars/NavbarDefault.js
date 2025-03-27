@@ -75,7 +75,12 @@ const NavbarDefault = ({ headerstyle = "navbar-default", login = false }) => {
               {NavbarDefaultRoutes.map((item, index) => {
                 if (item.children === undefined) {
                   return (
-                    <Nav.Link key={index} as={Link} href={item.link}>
+                    <Nav.Link
+                      key={index}
+                      as={Link}
+                      href={item.link}
+                      style={{ paddingTop: "5px" }}
+                    >
                       {item.menuitem}
                     </Nav.Link>
                   );
