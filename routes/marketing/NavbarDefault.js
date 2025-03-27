@@ -290,11 +290,13 @@ const NavbarDefault = [
     id: uuid(),
     menuitem: "Home",
     link: "/",
+    children: [],
   },
   {
     id: uuid(),
     menuitem: "Courses",
     link: "/courses",
+    children: [],
   },
   {
     id: uuid(),

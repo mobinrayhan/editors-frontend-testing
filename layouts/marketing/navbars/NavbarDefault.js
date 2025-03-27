@@ -73,7 +73,7 @@ const NavbarDefault = ({ headerstyle = "navbar-default", login = false }) => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav>
               {NavbarDefaultRoutes.map((item, index) => {
-                if (item.children === undefined) {
+                if (item?.children?.length === 0) {
                   return (
                     <Nav.Link
                       key={index}
