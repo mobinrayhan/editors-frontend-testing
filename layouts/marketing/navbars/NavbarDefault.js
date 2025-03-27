@@ -96,7 +96,6 @@ const NavbarDefault = ({ headerstyle = "navbar-default", login = false }) => {
                   return null;
                 }
               })}
-              {hasMounted ? <DocumentMenu /> : null}
             </Nav>
             {/* Search Form */}
             <Form className="mt-3 mt-lg-0 ms-lg-3 d-flex align-items-center">
