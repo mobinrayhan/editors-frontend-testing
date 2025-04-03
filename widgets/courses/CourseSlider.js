@@ -8,6 +8,7 @@ import CourseCard from "widgets/courses/CourseCard";
 
 // import data files
 import { AllCoursesData } from "data/slider/AllCoursesData";
+import Link from "next/link";
 
 const CourseSlider = ({
   recommended = false,
@@ -64,7 +65,9 @@ const CourseSlider = ({
           return dataSource;
         }).map((item, index) => (
           <div className="item px-md-1" key={item.id}>
-            <CourseCard key={index} item={item} extraclass="mx-2" />
+            <Link href={`/courses/1`} className="text-inherit">
+              <CourseCard key={index} item={item} extraclass="mx-2" />
+            </Link>
           </div>
         ))}
       </Slider>

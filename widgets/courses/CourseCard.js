@@ -43,9 +43,9 @@ const CourseCard = ({
         {/* Card body  */}
         <Card.Body>
           <h3 className="h4 mb-2 text-truncate-line-2 ">
-            <Link href="#" className="text-inherit">
-              {item.title}
-            </Link>
+            {/* <Link href="#" className="text-inherit"> */}
+            {item.title}
+            {/* </Link> */}
           </h3>
           <ListGroup as="ul" bsPrefix="list-inline" className="mb-3">
             <ListGroup.Item as="li" bsPrefix="list-inline-item">
@@ -107,9 +107,9 @@ const CourseCard = ({
             </Col>
             <Col className="col-auto">
               <GKTippy content="Add to Bookmarks">
-                <Link href="#">
-                  <i className="fe fe-bookmark"></i>
-                </Link>
+                {/* <Link href="#"> */}
+                <i className="fe fe-bookmark"></i>
+                {/* </Link> */}
               </GKTippy>
             </Col>
           </Row>
@@ -133,7 +133,7 @@ const CourseCard = ({
       <Card className="mb-4 card-hover">
         <Row className="g-0">
           <Link
-            href="#"
+            href="/courses/1"
             className="bg-cover img-left-rounded col-12 col-md-12 col-xl-3 col-lg-3 "
             style={{
               background: `url(${item.image})`,
@@ -152,9 +152,9 @@ const CourseCard = ({
             {/*   Card body   */}
             <Card.Body>
               <h3 className="mb-2 text-truncate-line-2 ">
-                <Link href="#" className="text-inherit">
-                  {item.title}
-                </Link>
+                {/* <Link href="#" className="text-inherit"> */}
+                {item.title}
+                {/* </Link> */}
               </h3>
               {/*   List inline   */}
               <ListGroup as="ul" bsPrefix="list-inline" className="mb-5">
@@ -191,9 +191,9 @@ const CourseCard = ({
                 </Col>
                 <Col className="col-auto">
                   <GKTippy content="Add to Bookmarks">
-                    <Link href="#">
-                      <i className="fe fe-bookmark"></i>
-                    </Link>
+                    {/* <Link href="#"> */}
+                    <i className="fe fe-bookmark"></i>
+                    {/* </Link> */}
                   </GKTippy>
                 </Col>
               </Row>
