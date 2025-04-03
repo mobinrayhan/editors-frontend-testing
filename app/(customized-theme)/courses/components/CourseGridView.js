@@ -9,6 +9,7 @@ import { CourseCard } from "shared";
 
 // import data files
 import { AllCoursesData } from "data/slider/AllCoursesData";
+import Link from "next/link";
 
 const CourseGridView = () => {
   const [Records] = useState(AllCoursesData.slice(0, 500));
@@ -27,7 +28,9 @@ const CourseGridView = () => {
   ).map((Records, index) => {
     return (
       <Col lg={4} md={6} sm={12} key={index}>
-        <CourseCard item={Records} />
+        <Link href={`/courses/1`}>
+          <CourseCard item={Records} />
+        </Link>
       </Col>
     );
   });
