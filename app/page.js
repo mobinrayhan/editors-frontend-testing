@@ -2,7 +2,7 @@
 import { Fragment } from "react";
 
 // import sub components
-import DefaultHome from "./(landings)/landings/default-home/Index";
+import DefaultHome from "./(landings)/_landings/default-home/Index";
 
 // import layouts
 import Footer from "layouts/marketing/footers/Footer";
