@@ -9,9 +9,9 @@ const HeroHeader = ({
   title = "Welcome to Geeks UI Learning Application",
   description = "Hand-picked Instructor and expertly crafted courses, designed for the modern students and entrepreneur.",
   buttonText1 = "Browse Courses",
-  buttonLink1 = "#",
+  buttonLink1 = "/courses",
   buttonText2 = "Are You Instructor?",
-  buttonLink2 = "#",
+  buttonLink2 = "/authentication/sign-in",
 }) => {
   return (
     <section className="bg-primary">
