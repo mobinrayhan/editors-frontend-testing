@@ -3,25 +3,16 @@
 import Image from "next/image";
 // import node module libraries
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { Col, Row, Card, Form, Button } from "react-bootstrap";
 
-const SignUp = () => {
-  const router = useRouter();
-  const isValidNumber = (phone) => {
-    const regex = /^01\d{9}$/;
-    return regex.test(phone);
-  };
+const Verify = () => {
   const handelSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    const phoneNumber = formData.get("number");
+    const phoneNumber = formData.get("otp");
     const isValid = isValidNumber(phoneNumber);
     // console.log(phoneNumber, isValid);
-
     e.target.reset();
-
-    router.push("/authentication/sign-up/verify");
   };
   return (
     <Row className="align-items-center justify-content-center g-0 min-vh-100">
@@ -38,7 +29,7 @@ const SignUp = () => {
                   height={50}
                 />
               </Link>
-              <h1 className="mb-1 fw-bold">Sign up</h1>
+              <h1 className="mb-1 fw-bold">Verify your account</h1>
               <span>
                 Already have an account?{" "}
                 <Link href="/authentication/sign-in" className="ms-1">
@@ -51,13 +42,13 @@ const SignUp = () => {
               <Row>
                 {/* phone number */}
                 <Col lg={12} md={12} className="mb-3">
-                  <Form.Label>Phone Number</Form.Label>
+                  <Form.Label>Verification code</Form.Label>
                   <Form.Control
                     type="number"
                     id="username"
-                    placeholder="Your Number"
+                    placeholder="OTP code"
                     required
-                    name="number"
+                    name="otp"
                   />
                 </Col>
                 {/* User Name */}
@@ -90,8 +81,8 @@ const SignUp = () => {
                     required
                   />
                 </Col> */}
-                <Col lg={12} md={12} className="mb-3">
-                  {/* Checkbox */}
+                {/* Checkbox */}
+                {/* <Col lg={12} md={12} className="mb-3">
                   <Form.Check type="checkbox" id="check-api-checkbox">
                     <Form.Check.Input type="checkbox" />
                     <Form.Check.Label>
@@ -105,11 +96,11 @@ const SignUp = () => {
                       </Link>
                     </Form.Check.Label>
                   </Form.Check>
-                </Col>
+                </Col> */}
                 <Col lg={12} md={12} className="mb-0 d-grid gap-2">
                   {/* Button */}
                   <Button variant="primary" type="submit">
-                    Submit
+                    Verify
                   </Button>
                 </Col>
               </Row>
@@ -140,4 +131,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default Verify;
