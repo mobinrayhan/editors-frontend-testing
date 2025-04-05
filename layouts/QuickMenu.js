@@ -237,30 +237,34 @@ const QuickMenu = () => {
             show={hasMounted && isDesktop ? true : false}
           >
             <Dropdown.Item className="mt-3">
-              <div className="d-flex">
-                <div className="avatar avatar-md avatar-indicators avatar-online">
-                  <Image
-                    alt="avatar"
-                    src="/images/avatar/avatar-1.jpg"
-                    className="rounded-circle"
-                  />
+              <Link href="/student/dashboard">
+                <div className="d-flex">
+                  <div className="avatar avatar-md avatar-indicators avatar-online">
+                    <Image
+                      alt="avatar"
+                      src="/images/avatar/avatar-1.jpg"
+                      className="rounded-circle"
+                    />
+                  </div>
+                  <div className="ms-3 lh-1">
+                    <h5 className="mb-1">Annette Black</h5>
+                    <p className="mb-0 text-muted">annette@geeksui.com</p>
+                  </div>
                 </div>
-                <div className="ms-3 lh-1">
-                  <h5 className="mb-1">Annette Black</h5>
-                  <p className="mb-0 text-muted">annette@geeksui.com</p>
-                </div>
-              </div>
+              </Link>
             </Dropdown.Item>
             <Dropdown.Divider />
             <Dropdown.Item eventKey="2">
-              <i className="fe fe-user me-2"></i> Profile
+              <Link href="/student/profile">
+                <i className="fe fe-user me-2"></i> Profile
+              </Link>
             </Dropdown.Item>
-            <Dropdown.Item eventKey="3">
+            {/* <Dropdown.Item eventKey="3">
               <i className="fe fe-star me-2"></i> Subscription
-            </Dropdown.Item>
-            <Dropdown.Item>
+            </Dropdown.Item> */}
+            {/* <Dropdown.Item>
               <i className="fe fe-settings me-2"></i> Settings
-            </Dropdown.Item>
+            </Dropdown.Item> */}
             <Dropdown.Divider />
             <Dropdown.Item className="mb-3">
               <i className="fe fe-power me-2"></i> Sign Out
