@@ -19,22 +19,22 @@
  */
 
 // import node module libraries
-import { Fragment } from 'react';
+import { Fragment } from "react";
 
 // import both profile layouts
-import InstructorProfileLayout from './instructor/ProfileLayout';
-import StudentProfileLayout from './student/ProfileLayout';
+import InstructorProfileLayout from "./instructor/ProfileLayout";
+import StudentProfileLayout from "./student/ProfileLayout";
 
 const ProfileLayoutWrap = (props) => {
-	const { pathpara } = props;
-	return (
-		<Fragment>
-			{pathpara.includes('student') ? (
-				<StudentProfileLayout> {props.children}</StudentProfileLayout>
-			) : (
-				<InstructorProfileLayout> {props.children} </InstructorProfileLayout>
-			)}
-		</Fragment>
-	);
+  const { pathpara } = props;
+  return (
+    <Fragment>
+      {pathpara.includes("student") ? (
+        <StudentProfileLayout> {props.children} </StudentProfileLayout>
+      ) : (
+        <InstructorProfileLayout> {props.children} </InstructorProfileLayout>
+      )}
+    </Fragment>
+  );
 };
 export default ProfileLayoutWrap;
