@@ -96,13 +96,9 @@ const SignUp = () => {
                     <Form.Check.Input type="checkbox" />
                     <Form.Check.Label>
                       I agree to the{" "}
-                      <Link href="/marketing/terms-and-conditions/">
-                        Terms of Service
-                      </Link>{" "}
+                      <Link href="/terms-and-conditions">Terms of Service</Link>{" "}
                       and{" "}
-                      <Link href="/marketing/terms-and-conditions/">
-                        Privacy Policy.
-                      </Link>
+                      <Link href="/terms-and-conditions">Privacy Policy.</Link>
                     </Form.Check.Label>
                   </Form.Check>
                 </Col>
