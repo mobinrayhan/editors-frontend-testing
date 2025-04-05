@@ -6,11 +6,15 @@ import Link from "next/link";
 import { Col, Row, Card, Form, Button } from "react-bootstrap";
 
 const Verify = () => {
+  const isValidOtp = (phone) => {
+    const regex = /^\d{6}$/;
+    return regex.test(phone);
+  };
   const handelSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    const phoneNumber = formData.get("otp");
-    const isValid = isValidNumber(phoneNumber);
+    const otp = formData.get("otp");
+    const isValid = isValidOtp(otp);
     // console.log(phoneNumber, isValid);
     e.target.reset();
   };
