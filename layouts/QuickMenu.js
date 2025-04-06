@@ -20,6 +20,7 @@ import NotificationList from "data/Notification";
 
 // import hooks
 import useMounted from "hooks/useMounted";
+import Carts from "data/Cart";
 
 const QuickMenu = () => {
   const hasMounted = useMounted();
@@ -81,7 +82,7 @@ const QuickMenu = () => {
     return (
       <SimpleBar style={{ maxHeight: "300px" }}>
         <ListGroup variant="flush">
-          {NotificationList.map(function (item, index) {
+          {Carts.map(function (item, index) {
             return (
               <ListGroup.Item
                 className={index === 0 ? "bg-light" : ""}
@@ -97,7 +98,7 @@ const QuickMenu = () => {
                           className="avatar-md rounded-circle"
                         />
                         <div className="ms-3">
-                          <h5 className="fw-bold mb-1">{item.sender}</h5>
+                          <h5 className="fw-bold mb-1">{item.title}</h5>
                           <p className="fw-bold">Jack ank carin</p>
 
                           {/* <button
