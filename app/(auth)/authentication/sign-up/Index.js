@@ -98,7 +98,9 @@ const SignUp = () => {
                       I agree to the{" "}
                       <Link href="/terms-and-conditions">Terms of Service</Link>{" "}
                       and{" "}
-                      <Link href="/terms-and-conditions">Privacy Policy.</Link>
+                      <Link href="/marketing/terms-and-conditions">
+                        Privacy Policy.
+                      </Link>
                     </Form.Check.Label>
                   </Form.Check>
                 </Col>
