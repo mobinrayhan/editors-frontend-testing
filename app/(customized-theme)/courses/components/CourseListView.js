@@ -28,9 +28,7 @@ const CourseListView = () => {
   ).map((Records, index) => {
     return (
       <Col sm={12} md={12} lg={12} key={index}>
-        <Link href={`/courses/1`}>
-          <CourseCard item={Records} viewby="list" />
-        </Link>
+        <CourseCard item={Records} viewby="list" />
       </Col>
     );
   });

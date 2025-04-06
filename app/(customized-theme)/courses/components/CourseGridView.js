@@ -28,9 +28,7 @@ const CourseGridView = () => {
   ).map((Records, index) => {
     return (
       <Col lg={4} md={6} sm={12} key={index}>
-        <Link href={`/courses/1`}>
-          <CourseCard item={Records} />
-        </Link>
+        <CourseCard item={Records} />
       </Col>
     );
   });

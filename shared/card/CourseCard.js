@@ -40,69 +40,78 @@ const CourseCard = ({
         />
 
         {/* Card body  */}
-        <Card.Body>
-          <h3 className="h4 mb-2 text-truncate-line-2 ">
-            <Link href="#" className="text-inherit">
+        <Link href={"/courses/1"}>
+          <Card.Body>
+            <h3 className="h4 mb-2 text-truncate-line-2 ">
+              {/* <Link href="#" className="text-inherit"> */}
               {item.title}
-            </Link>
-          </h3>
-          <ListGroup as="ul" bsPrefix="list-inline" className="mb-3">
-            <ListGroup.Item as="li" bsPrefix="list-inline-item">
-              <i className="far fa-clock me-1"></i>
-              {item.duration}
-            </ListGroup.Item>
-            <ListGroup.Item as="li" bsPrefix="list-inline-item">
-              <LevelIcon level={item.level} />
-              {item.level}
-            </ListGroup.Item>
-          </ListGroup>
-          <div
-            className={`lh-1 d-flex align-items-center ${
-              free ||
-              item.price === undefined ||
-              item.price <= 0 ||
-              item.discount === undefined
-                ? "mb-5"
-                : ""
-            }`}
-          >
-            <span className="text-warning me-1 mb-0">
-              <Ratings rating={item.rating} size="0.92rem" />
-            </span>
-            <span className="text-warning me-1"> {item.rating.toFixed(1)}</span>
-            <span className="fs-6 text-muted">
-              {" "}
-              ({numberWithCommas(item.ratingby)})
-            </span>
-          </div>
-          <div
-            className={`lh-1 mt-3 ${
-              free ||
-              item.price === undefined ||
-              item.price <= 0 ||
-              item.discount === undefined
-                ? "d-none"
-                : ""
-            }`}
-          >
-            <span className="text-dark fw-bold">
-              ${item.price - item.discount}
-            </span>{" "}
-            <del className="fs-6 text-muted">${item.price}</del>
-          </div>
-        </Card.Body>
+              {/* </Link> */}
+            </h3>
+            <ListGroup as="ul" bsPrefix="list-inline" className="mb-3">
+              <ListGroup.Item as="li" bsPrefix="list-inline-item">
+                <i className="far fa-clock me-1"></i>
+                {item.duration}
+              </ListGroup.Item>
+              <ListGroup.Item as="li" bsPrefix="list-inline-item">
+                <LevelIcon level={item.level} />
+                {item.level}
+              </ListGroup.Item>
+            </ListGroup>
+            <div
+              className={`lh-1 d-flex align-items-center ${
+                free ||
+                item.price === undefined ||
+                item.price <= 0 ||
+                item.discount === undefined
+                  ? "mb-5"
+                  : ""
+              }`}
+            >
+              <span className="text-warning me-1 mb-0">
+                <Ratings rating={item.rating} size="0.92rem" />
+              </span>
+              <span className="text-warning me-1">
+                {" "}
+                {item.rating.toFixed(1)}
+              </span>
+              <span className="fs-6 text-muted">
+                {" "}
+                ({numberWithCommas(item.ratingby)})
+              </span>
+            </div>
+            <div
+              className={`lh-1 mt-3 ${
+                free ||
+                item.price === undefined ||
+                item.price <= 0 ||
+                item.discount === undefined
+                  ? "d-none"
+                  : ""
+              }`}
+            >
+              <span className="text-dark fw-bold">
+                ${item.price - item.discount}
+              </span>{" "}
+              <del className="fs-6 text-muted">${item.price}</del>
+            </div>
+          </Card.Body>
+        </Link>
         {/* Card Footer */}
         <Card.Footer>
           <Row className="align-items-center g-0">
             <Col className="col-auto">
-              <Image
-                src={item.instructor_image}
-                className="rounded-circle avatar-xs"
-                alt=""
-              />
+              <Link href={"/instructor/profile"}>
+                <Image
+                  src={item.instructor_image}
+                  className="rounded-circle avatar-xs"
+                  alt=""
+                />
+              </Link>
             </Col>
             <Col className="col ms-2">
-              <span>{item.instructor_name}</span>
+              <Link href={"/instructor/profile"}>
+                <span>{item.instructor_name}</span>
+              </Link>
             </Col>
             <Col className="col-auto">
               <GKTippy content="Add to Bookmarks">
