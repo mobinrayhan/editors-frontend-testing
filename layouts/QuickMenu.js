@@ -33,12 +33,15 @@ const QuickMenu = () => {
           {NotificationList.map(function (item, index) {
             return (
               <ListGroup.Item
-                className={index === 0 ? "bg-light" : ""}
                 key={index}
+                className={index === 0 ? "bg-light" : ""}
               >
                 <Row>
                   <Col>
-                    <Link href="#" className="text-body">
+                    <Link
+                      href="/student/notification-history"
+                      className="text-body"
+                    >
                       <div className="d-flex">
                         <Image
                           src={item.image}
@@ -61,9 +64,9 @@ const QuickMenu = () => {
                   </Col>
                   <Col className="col-auto text-center me-2">
                     <GKTippy content="Mark as unread">
-                      <Link href="#">
-                        <DotBadge bg="secondary"></DotBadge>
-                      </Link>
+                      {/* <Link href="#"> */}
+                      <DotBadge bg="secondary"></DotBadge>
+                      {/* </Link> */}
                     </GKTippy>
                   </Col>
                 </Row>
