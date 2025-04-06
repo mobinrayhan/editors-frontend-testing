@@ -70,7 +70,7 @@ const Verify = () => {
               <Row className="justify-content-center">
                 {/* otp */}
                 {otp.map((_, index) => (
-                  <Col xs={1} key={index}>
+                  <Col key={index}>
                     <Form.Control
                       value={otp[index] || ""}
                       type="text"
