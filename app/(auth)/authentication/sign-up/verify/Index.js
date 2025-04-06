@@ -3,9 +3,32 @@
 import Image from "next/image";
 // import node module libraries
 import Link from "next/link";
+import { useRef, useState } from "react";
 import { Col, Row, Card, Form, Button } from "react-bootstrap";
 
 const Verify = () => {
+  const inputRefs = useRef([]);
+  const cellArray = new Array(6).fill("");
+  const [otp, setOtp] = useState(cellArray);
+
+  const handleChange = (e, index) => {
+    const value = e.target.value;
+    const newOtp = [...otp];
+    newOtp[index] = value;
+    setOtp(newOtp);
+
+    if (value.length === 1 && index < inputRefs.current.length - 1) {
+      inputRefs.current[index + 1].focus();
+    }
+  };
+  const handleKeyDown = (e, index) => {
+    if (e.key === "Backspace" && !e.target.value && index > 0) {
+      const newOtp = [...otp];
+      newOtp[index] = ""; // Clear the current input value
+      setOtp(newOtp);
+      inputRefs.current[index - 1].focus();
+    }
+  };
   const isValidOtp = (phone) => {
     const regex = /^\d{6}$/;
     return regex.test(phone);
@@ -18,6 +41,7 @@ const Verify = () => {
     // console.log(phoneNumber, isValid);
     e.target.reset();
   };
+  console.log(otp);
   return (
     <Row className="align-items-center justify-content-center g-0 min-vh-100">
       <Col lg={5} md={5} className="py-8 py-xl-0">
@@ -43,9 +67,22 @@ const Verify = () => {
             </div>
             {/* Form */}
             <Form onSubmit={handelSubmit}>
-              <Row>
-                {/* phone number */}
-                <Col lg={12} md={12} className="mb-3">
+              <Row className="justify-content-center">
+                {/* otp */}
+                {otp.map((_, index) => (
+                  <Col xs={1} key={index}>
+                    <Form.Control
+                      value={otp[index] || ""}
+                      type="text"
+                      maxLength={1}
+                      className="mb-5 text-center"
+                      ref={(el) => (inputRefs.current[index] = el)}
+                      onChange={(e) => handleChange(e, index)}
+                      onKeyDown={(e) => handleKeyDown(e, index)}
+                    />
+                  </Col>
+                ))}
+                {/* <Col lg={12} md={12} className="mb-3">
                   <Form.Label>Verification code</Form.Label>
                   <Form.Control
                     type="number"
@@ -54,7 +91,7 @@ const Verify = () => {
                     required
                     name="otp"
                   />
-                </Col>
+                </Col> */}
                 {/* User Name */}
                 {/* <Col lg={12} md={12} className="mb-3">
                   <Form.Label>User Name</Form.Label>
