@@ -1,0 +1,35 @@
+name: Bump Version & Tag
+
+on:
+  workflow_dispatch:
+    inputs:
+      bump:
+        description: "Type of version bump (semantic versioning)"
+        required: true
+        default: "patch"
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+
+permissions:
+  contents: write
+  packages: read
+  actions: read
+
+jobs:
+  bump-version:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Bump version and push tag
+        uses: phips28/gh-action-bump-version@v9.0.0
+        with:
+          tag-prefix: "v" # creates tags like v1.2.3
+          default: ${{ github.event.inputs.bump }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
