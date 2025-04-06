@@ -95,7 +95,7 @@ const QuickMenu = () => {
                         <Image
                           src={item.image}
                           alt=""
-                          className="avatar-md rounded-circle"
+                          className="avatar-md rounded"
                         />
                         <div className="ms-3">
                           <h5 className="fw-bold mb-1">{item.title}</h5>
