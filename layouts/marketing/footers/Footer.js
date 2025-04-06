@@ -17,8 +17,8 @@ const Footer = ({ bgColor = "bg-light" }) => {
           {/* Links */}
           <Col md={6} sm={12}>
             <nav className="nav nav-footer justify-content-center justify-content-md-end">
-              <Link href="/" className="nav-link active ps-0">
-                Privacy
+              <Link href="/privacy-policy" className="nav-link active ps-0">
+                Privacy Policy
               </Link>
               <Link href="/terms-and-conditions" className="nav-link">
                 Terms and conditions
