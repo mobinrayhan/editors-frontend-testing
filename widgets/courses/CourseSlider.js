@@ -65,9 +65,7 @@ const CourseSlider = ({
           return dataSource;
         }).map((item, index) => (
           <div className="item px-md-1" key={item.id}>
-            <Link href={`/courses/1`} className="text-inherit">
-              <CourseCard key={index} item={item} extraclass="mx-2" />
-            </Link>
+            <CourseCard key={index} item={item} extraclass="mx-2" />
           </div>
         ))}
       </Slider>
