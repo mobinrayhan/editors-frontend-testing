@@ -95,7 +95,8 @@ const QuickMenu = () => {
                         />
                         <div className="ms-3">
                           <h5 className="fw-bold mb-1">{item.sender}</h5>
-                          <p className="mb-3">{item.message}</p>
+                          <p className="fw-bold">Jack ank carin</p>
+
                           {/* <button
                             style={{ width: "100%" }}
                             className="btn btn-primary"
@@ -113,17 +114,18 @@ const QuickMenu = () => {
                       </div>
                     </Link>
                   </Col>
-                  {/* <Col className="col-auto text-center me-2">
-                    <GKTippy content="Mark as unread">
+                  <Col className="col-auto text-center me-2">
+                    {/* <GKTippy content="Mark as unread">
                       <Link href="#">
                         <DotBadge bg="secondary"></DotBadge>
                       </Link>
-                    </GKTippy>
-                  </Col> */}
+                    </GKTippy> */}
+                    <p className="">BDT 15000 </p>
+                  </Col>
                 </Row>
-                <button style={{ width: "100%" }} className="btn btn-primary">
+                {/* <button style={{ width: "100%" }} className="btn btn-primary">
                   Buy Now
-                </button>
+                </button> */}
               </ListGroup.Item>
             );
           })}
