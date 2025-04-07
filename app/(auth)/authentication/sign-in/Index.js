@@ -2,7 +2,7 @@
 
 // import node module libraries
 import Link from "next/link";
-import { Col, Row, Card, Form, Button, Image } from "react-bootstrap";
+import { Button, Card, Col, Form, Image, Row } from "react-bootstrap";
 
 const SignIn = () => {
   const isValidEmailOrPhone = (input) => {
@@ -47,11 +47,11 @@ const SignIn = () => {
               <Row>
                 <Col lg={12} md={12} className="mb-3">
                   {/* Username or email */}
-                  <Form.Label>Phone number or Email </Form.Label>
+                  <Form.Label>Phone number </Form.Label>
                   <Form.Control
                     type="text"
                     id="email"
-                    placeholder="Email or Phone number here"
+                    placeholder="Phone number "
                     required
                     name="emailOrPhone"
                   />
