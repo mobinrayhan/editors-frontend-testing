@@ -1,26 +1,27 @@
 // import node module libraries
-import { Fragment } from "react";
-import PropTypes from "prop-types";
 import Link from "next/link";
+import PropTypes from "prop-types";
+import { Fragment } from "react";
 import {
-  Image,
-  Card,
-  Row,
-  Col,
-  ProgressBar,
-  ListGroup,
   Badge,
+  Card,
+  Col,
+  Image,
+  ListGroup,
+  ProgressBar,
+  Row,
 } from "react-bootstrap";
 
 // import widget/custom components
 import { GKTippy } from "widgets";
 
 // import custom components
-import Ratings from "widgets/ratings/Ratings";
 import LevelIcon from "widgets/miscellaneous/LevelIcon";
+import Ratings from "widgets/ratings/Ratings";
 
 // import utility file
 import { numberWithCommas } from "helper/utils";
+import { usePathname } from "next/navigation";
 
 const CourseCard = ({
   item,
@@ -138,6 +139,8 @@ const CourseCard = ({
 
   /** Used in Course Filter Page  */
   const ListView = () => {
+    const pathname = usePathname();
+    console.log(pathname);
     return (
       <Card className="mb-4 card-hover">
         <Row className="g-0">
@@ -160,35 +163,35 @@ const CourseCard = ({
           <Col lg={9} md={12} sm={12}>
             {/*   Card body   */}
             <Card.Body>
-              <Link href="/courses/1">
-                <h3 className="mb-2 text-truncate-line-2 ">
+              <div className="d-flex justify-content-between align-items-center ">
+                <h3 className="mb-2 text-truncate-line-2">
                   {/* <Link href="#" className="text-inherit"> */}
                   {item.title}
                   {/* </Link> */}
                 </h3>
-                {/*   List inline   */}
-
-                <ListGroup as="ul" bsPrefix="list-inline" className="mb-5">
-                  <ListGroup.Item as="li" bsPrefix="list-inline-item">
-                    <i className="far fa-clock me-1"></i>
-                    {item.duration}
-                  </ListGroup.Item>
-                  <ListGroup.Item as="li" bsPrefix="list-inline-item">
-                    <LevelIcon level={item.level} />
-                    {item.level}
-                  </ListGroup.Item>
-                  <ListGroup.Item as="li" bsPrefix="list-inline-item">
-                    <span className="text-warning">
-                      {" "}
-                      <Ratings rating={item.rating} /> {item.rating.toFixed(1)}
-                    </span>
-                    <span className="fs-6 text-muted">
-                      {" "}
-                      ({numberWithCommas(item.ratingby)})
-                    </span>
-                  </ListGroup.Item>
-                </ListGroup>
-              </Link>
+                <h3 className="text-truncate-line-2">${item.price}</h3>
+              </div>
+              {/*   List inline   */}
+              <ListGroup as="ul" bsPrefix="list-inline" className="mb-5">
+                <ListGroup.Item as="li" bsPrefix="list-inline-item">
+                  <i className="far fa-clock me-1"></i>
+                  {item.duration}
+                </ListGroup.Item>
+                <ListGroup.Item as="li" bsPrefix="list-inline-item">
+                  <LevelIcon level={item.level} />
+                  {item.level}
+                </ListGroup.Item>
+                <ListGroup.Item as="li" bsPrefix="list-inline-item">
+                  <span className="text-warning">
+                    {" "}
+                    <Ratings rating={item.rating} /> {item.rating.toFixed(1)}
+                  </span>
+                  <span className="fs-6 text-muted">
+                    {" "}
+                    ({numberWithCommas(item.ratingby)})
+                  </span>
+                </ListGroup.Item>
+              </ListGroup>
               {/*   Row   */}
 
               <Row className="align-items-center g-0">
@@ -212,13 +215,19 @@ const CourseCard = ({
                   </Link>
                   {/* <span>{item.instructor_name}</span> */}
                 </Col>
-                <Col className="col-auto">
+                <Col className="col-auto mx-2">
                   <GKTippy content="Add to Bookmarks">
-                    {/* <Link href="#"> */}
                     <i className="fe fe-bookmark"></i>
-                    {/* </Link> */}
                   </GKTippy>
                 </Col>
+                {pathname === "/cart" && (
+                  <Col className="col-auto">
+                    <GKTippy content="Remove form cart">
+                      {/* delete */}
+                      <i className="fe fe-x-circle"></i>
+                    </GKTippy>
+                  </Col>
+                )}
               </Row>
             </Card.Body>
           </Col>

@@ -211,10 +211,7 @@ const QuickMenu = () => {
               </div>
               <Cart />
               <div className="border-top px-3 pt-3 pb-3">
-                <Link
-                  href="/dashboard/notification-history"
-                  className="text-link fw-semi-bold"
-                >
+                <Link href="/cart" className="text-link fw-semi-bold">
                   See all Cart
                 </Link>
               </div>

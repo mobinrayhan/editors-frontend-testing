@@ -3,26 +3,45 @@
 import Image from "next/image";
 // import node module libraries
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { Button, Card, Col, Form, Row } from "react-bootstrap";
+import { useRef, useState } from "react";
+import { Col, Row, Card, Form, Button } from "react-bootstrap";
 
-const SignUp = () => {
-  const router = useRouter();
-  const isValidNumber = (phone) => {
-    const regex = /^01\d{9}$/;
+const Verify = () => {
+  const inputRefs = useRef([]);
+  const cellArray = new Array(6).fill("");
+  const [otp, setOtp] = useState(cellArray);
+
+  const handleChange = (e, index) => {
+    const value = e.target.value;
+    const newOtp = [...otp];
+    newOtp[index] = value;
+    setOtp(newOtp);
+
+    if (value.length === 1 && index < inputRefs.current.length - 1) {
+      inputRefs.current[index + 1].focus();
+    }
+  };
+  const handleKeyDown = (e, index) => {
+    if (e.key === "Backspace" && !e.target.value && index > 0) {
+      const newOtp = [...otp];
+      newOtp[index] = ""; // Clear the current input value
+      setOtp(newOtp);
+      inputRefs.current[index - 1].focus();
+    }
+  };
+  const isValidOtp = (phone) => {
+    const regex = /^\d{6}$/;
     return regex.test(phone);
   };
   const handelSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    const phoneNumber = formData.get("number");
-    const isValid = isValidNumber(phoneNumber);
+    const otp = formData.get("otp");
+    const isValid = isValidOtp(otp);
     // console.log(phoneNumber, isValid);
-
     e.target.reset();
-
-    router.push("/authentication/sign-up/verify");
   };
+  console.log(otp);
   return (
     <Row className="align-items-center justify-content-center g-0 min-vh-100">
       <Col lg={5} md={5} className="py-8 py-xl-0">
@@ -38,7 +57,7 @@ const SignUp = () => {
                   height={50}
                 />
               </Link>
-              <h1 className="mb-1 fw-bold">Sign up</h1>
+              <h1 className="mb-1 fw-bold">Verify your account</h1>
               <span>
                 Already have an account?{" "}
                 <Link href="/authentication/sign-in" className="ms-1">
@@ -48,18 +67,31 @@ const SignUp = () => {
             </div>
             {/* Form */}
             <Form onSubmit={handelSubmit}>
-              <Row>
-                {/* phone number */}
-                <Col lg={12} md={12} className="mb-3">
-                  <Form.Label>Phone Number</Form.Label>
+              <Row className="justify-content-center">
+                {/* otp */}
+                {otp.map((_, index) => (
+                  <Col key={index}>
+                    <Form.Control
+                      value={otp[index] || ""}
+                      type="text"
+                      maxLength={1}
+                      className="mb-5 text-center"
+                      ref={(el) => (inputRefs.current[index] = el)}
+                      onChange={(e) => handleChange(e, index)}
+                      onKeyDown={(e) => handleKeyDown(e, index)}
+                    />
+                  </Col>
+                ))}
+                {/* <Col lg={12} md={12} className="mb-3">
+                  <Form.Label>Verification code</Form.Label>
                   <Form.Control
                     type="number"
                     id="username"
-                    placeholder="Your Number"
+                    placeholder="OTP code"
                     required
-                    name="number"
+                    name="otp"
                   />
-                </Col>
+                </Col> */}
                 {/* User Name */}
                 {/* <Col lg={12} md={12} className="mb-3">
                   <Form.Label>User Name</Form.Label>
@@ -90,21 +122,26 @@ const SignUp = () => {
                     required
                   />
                 </Col> */}
-                <Col lg={12} md={12} className="mb-3">
-                  {/* Checkbox */}
+                {/* Checkbox */}
+                {/* <Col lg={12} md={12} className="mb-3">
                   <Form.Check type="checkbox" id="check-api-checkbox">
                     <Form.Check.Input type="checkbox" />
                     <Form.Check.Label>
                       I agree to the{" "}
-                      <Link href="/terms-and-conditions">Terms of Service</Link>{" "}
-                      and <Link href="/privacy-policy">Privacy Policy.</Link>
+                      <Link href="/marketing/terms-and-conditions/">
+                        Terms of Service
+                      </Link>{" "}
+                      and{" "}
+                      <Link href="/marketing/terms-and-conditions/">
+                        Privacy Policy.
+                      </Link>
                     </Form.Check.Label>
                   </Form.Check>
-                </Col>
+                </Col> */}
                 <Col lg={12} md={12} className="mb-0 d-grid gap-2">
                   {/* Button */}
                   <Button variant="primary" type="submit">
-                    Submit
+                    Verify
                   </Button>
                 </Col>
               </Row>
@@ -135,4 +172,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default Verify;
