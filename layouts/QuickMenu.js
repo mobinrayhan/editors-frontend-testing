@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { Fragment } from "react";
 import { useMediaQuery } from "react-responsive";
-import { Row, Col, Image, Dropdown, ListGroup } from "react-bootstrap";
+import { Row, Col, Dropdown, ListGroup } from "react-bootstrap";
 
 // simple bar scrolling used for notification item scrolling
 import SimpleBar from "simplebar-react";
@@ -21,6 +21,7 @@ import NotificationList from "data/Notification";
 // import hooks
 import useMounted from "hooks/useMounted";
 import Carts from "data/Cart";
+import Image from "next/image";
 
 const QuickMenu = () => {
   const hasMounted = useMounted();
@@ -45,6 +46,8 @@ const QuickMenu = () => {
                     >
                       <div className="d-flex">
                         <Image
+                          width={50}
+                          height={50}
                           src={item.image}
                           alt=""
                           className="avatar-md rounded-circle"
@@ -95,7 +98,10 @@ const QuickMenu = () => {
                         <Image
                           src={item.image}
                           alt=""
-                          className="avatar-md rounded"
+                          width={50}
+                          height={50}
+                          className=" rounded"
+                          style={{ objectFit: "cover" }}
                         />
                         <div className="ms-3">
                           <h5 className="fw-bold mb-1">{item.title}</h5>
@@ -227,6 +233,8 @@ const QuickMenu = () => {
           >
             <div className="avatar avatar-md avatar-indicators avatar-online">
               <Image
+                width={50}
+                height={50}
                 alt="avatar"
                 src="/images/avatar/avatar-1.jpg"
                 className="rounded-circle"
@@ -240,10 +248,12 @@ const QuickMenu = () => {
             show={hasMounted && isDesktop ? true : false}
           >
             <Dropdown.Item className="mt-3">
-              <Link href="/student/dashboard">
+              <Link href="/student/dashboard" style={{ width: "100%" }}>
                 <div className="d-flex">
                   <div className="avatar avatar-md avatar-indicators avatar-online">
                     <Image
+                      width={50}
+                      height={50}
                       alt="avatar"
                       src="/images/avatar/avatar-1.jpg"
                       className="rounded-circle"
@@ -258,7 +268,7 @@ const QuickMenu = () => {
             </Dropdown.Item>
             <Dropdown.Divider />
             <Dropdown.Item eventKey="2">
-              <Link href="/student/profile">
+              <Link style={{ width: "100%" }} href="/student/profile">
                 <i className="fe fe-user me-2"></i> Profile
               </Link>
             </Dropdown.Item>
