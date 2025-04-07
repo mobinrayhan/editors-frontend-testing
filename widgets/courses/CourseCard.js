@@ -21,6 +21,7 @@ import LevelIcon from "widgets/miscellaneous/LevelIcon";
 
 // import utility file
 import { numberWithCommas } from "helper/utils";
+import { usePathname } from "next/navigation";
 
 const CourseCard = ({
   item,
@@ -129,6 +130,8 @@ const CourseCard = ({
 
   /** Used in Course Filter Page  */
   const ListView = () => {
+    const pathname = usePathname();
+    console.log(pathname);
     return (
       <Card className="mb-4 card-hover">
         <Row className="g-0">
@@ -192,13 +195,19 @@ const CourseCard = ({
                 <Col className="col ms-2">
                   <span>{item.instructor_name}</span>
                 </Col>
-                <Col className="col-auto">
+                <Col className="col-auto mx-2">
                   <GKTippy content="Add to Bookmarks">
-                    {/* <Link href="#"> */}
                     <i className="fe fe-bookmark"></i>
-                    {/* </Link> */}
                   </GKTippy>
                 </Col>
+                {pathname === "/cart" && (
+                  <Col className="col-auto">
+                    <GKTippy content="Remove form cart">
+                      {/* delete */}
+                      <i className="fe fe-x-circle"></i>
+                    </GKTippy>
+                  </Col>
+                )}
               </Row>
             </Card.Body>
           </Col>
