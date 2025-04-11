@@ -298,49 +298,49 @@ const NavbarDefault = [
     link: "/courses",
     children: [],
   },
-  {
-    id: uuid(),
-    menuitem: "About",
-    link: "/about",
-    children: [],
-  },
+  // {
+  //   id: uuid(),
+  //   menuitem: "About",
+  //   link: "/about",
+  //   children: [],
+  // },
   {
     id: uuid(),
     menuitem: "Contact",
     link: "/contact",
     children: [],
   },
-  {
-    id: uuid(),
-    menuitem: "Help Center",
-    link: "/help-center",
-    children: [
-      {
-        id: uuid(),
-        menuitem: "Help Center",
-        link: "/help-center",
-        // children: [],
-      },
-      {
-        id: uuid(),
-        menuitem: "FAQ's",
-        link: "/help-center/faq",
-        // children: [],
-      },
-      {
-        id: uuid(),
-        menuitem: "Guide",
-        link: "/help-center/guide",
-        // children: [],
-      },
-      {
-        id: uuid(),
-        menuitem: "Support",
-        link: "/help-center/support",
-        // children: [],
-      },
-    ],
-  },
+  // {
+  //   id: uuid(),
+  //   menuitem: "Help Center",
+  //   link: "/help-center",
+  //   children: [
+  //     {
+  //       id: uuid(),
+  //       menuitem: "Help Center",
+  //       link: "/help-center",
+  //       // children: [],
+  //     },
+  //     {
+  //       id: uuid(),
+  //       menuitem: "FAQ's",
+  //       link: "/help-center/faq",
+  //       // children: [],
+  //     },
+  //     {
+  //       id: uuid(),
+  //       menuitem: "Guide",
+  //       link: "/help-center/guide",
+  //       // children: [],
+  //     },
+  //     {
+  //       id: uuid(),
+  //       menuitem: "Support",
+  //       link: "/help-center/support",
+  //       // children: [],
+  //     },
+  //   ],
+  // },
   // {
   //   id: uuid(),
   //   menuitem: "Landings",
