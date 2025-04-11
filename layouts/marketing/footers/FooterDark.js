@@ -11,7 +11,7 @@ import MentorFooterRoutes from "routes/marketing/MentorFooterRoutes";
 import { settings } from "app.config";
 
 const FooterDark = () => {
-  const currentYear = new Date().getFullYear();
+  // const currentYear = new Date().getFullYear();
   return (
     <footer className="py-lg-8 py-5 footer">
       <Container className="container">
@@ -26,14 +26,15 @@ const FooterDark = () => {
                 />
               </div>
               <div>
-                <p className="mb-0 txet-gray-500">
-                  Connecting founders and marketers with battle-hardened mentors
-                  that genuinely enjoy helping people.
+                <p className="mb-0 text-coustom">
+                  Editors Academyis a community of like-minded Connecting
+                  founders and marketers with battle-hardened mentors that
+                  genuinely enjoy helping people.
                 </p>
               </div>
               <div className="d-flex flex-column gap-2">
                 <div className="fs-3 d-flex flex-row ">CONTACT INFO</div>
-                <div className="">
+                <div className="text-coustom">
                   <div>+88015****** , +8802251252</div>
                   <div>contact@editors.academy</div>
                 </div>
@@ -73,7 +74,7 @@ const FooterDark = () => {
             return (
               <Col key={index} lg={2} md={3} sm={6}>
                 <div className="d-flex flex-column gap-2">
-                  <h5 className="fw-bold text-white-50 text-uppercase mb-0">
+                  <h5 className="fw-bold  text-uppercase mb-0">
                     {item.menuitem}
                   </h5>
                   <ListGroup

@@ -17,3 +17,12 @@
     color: var(--#{$prefix}primary);
   }
 }
+
+.text-coustom {
+  color: black;
+}
+[data-theme="dark"] {
+  .text-coustom {
+    color: white;
+  }
+}
