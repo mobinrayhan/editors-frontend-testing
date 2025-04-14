@@ -50,10 +50,9 @@ const NavbarDefault = ({ headerstyle = "navbar-default", login = false }) => {
               <Image
                 src={settings.theme.logo}
                 alt={settings.app.name}
-                width={45}
+                width={90}
                 height={45}
               />
-              <h3 className="pt-2">Editors</h3>
             </Navbar.Brand>
           </Link>
           {hasMounted ? (
@@ -62,6 +61,7 @@ const NavbarDefault = ({ headerstyle = "navbar-default", login = false }) => {
                 login ? (isDesktop || isLaptop ? "d-none" : "d-flex") : "d-none"
               }`}
             >
+              {/* small device */}
               <QuickMenu />
             </div>
           ) : null}
@@ -71,7 +71,7 @@ const NavbarDefault = ({ headerstyle = "navbar-default", login = false }) => {
             <span className="icon-bar bottom-bar"></span>
           </Navbar.Toggle>
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav>
+            <Nav className="d-lg-none">
               {NavbarDefaultRoutes.map((item, index) => {
                 if (item?.children?.length === 0) {
                   return (
@@ -98,7 +98,7 @@ const NavbarDefault = ({ headerstyle = "navbar-default", login = false }) => {
               })}
             </Nav>
             {/* Search Form */}
-            <Form className="mt-3 mt-lg-0 ms-lg-3 d-flex align-items-center">
+            <Form className="mt-3 d-lg-none mt-lg-0 ms-lg-3 d-flex align-items-center">
               <span className="position-absolute ps-3 search-icon">
                 <i className="fe fe-search"></i>
               </span>
@@ -146,6 +146,44 @@ const NavbarDefault = ({ headerstyle = "navbar-default", login = false }) => {
                         : "d-none"
                     }`}
                   >
+                    {/* Search Form */}
+                    <Form className="mt-3 mt-lg-0 ms-lg-3 d-flex align-items-center">
+                      <span className="position-absolute ps-3 search-icon">
+                        <i className="fe fe-search"></i>
+                      </span>
+                      <Form.Control
+                        type="Search"
+                        id="formSearch"
+                        className="ps-6"
+                        placeholder="Search Courses"
+                      />
+                    </Form>
+                    <Nav className="align-items-center d-flex">
+                      {NavbarDefaultRoutes.map((item, index) => {
+                        if (item?.children?.length === 0) {
+                          return (
+                            <Nav.Link
+                              key={index}
+                              as={Link}
+                              href={item.link}
+                              style={{ paddingTop: "5px" }}
+                            >
+                              {item.menuitem}
+                            </Nav.Link>
+                          );
+                        } else if (hasMounted) {
+                          return (
+                            <NavDropdownMain
+                              item={item}
+                              key={index}
+                              onClick={(value) => setExpandedMenu(value)}
+                            />
+                          );
+                        } else {
+                          return null;
+                        }
+                      })}
+                    </Nav>
                     <QuickMenu />
                   </span>
                 ) : null}
