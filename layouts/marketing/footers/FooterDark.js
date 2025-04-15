@@ -39,19 +39,21 @@ const FooterDark = () => {
                 </p>
               </div>
               <div className="d-flex flex-column gap-2">
-                <div className="fs-3 d-flex flex-row ">CONTACT INFO</div>
+                <div className="fs-4 d-flex flex-row ">CONTACT INFO</div>
                 <div className="text-coustom">
                   {/* <div>+88015****** , +8802251252</div> */}
                   <Link
+                    className="nav-link"
                     href={
                       "https://wa.me/8801324531144?text=Welcome to editors academy"
                     }
                     target="_blank"
-                    style={{ color: "black" }}
                   >
-                    +8801324-531144
+                    <p>+8801324-531144</p>
                   </Link>
-                  <div>contact@editors.academy</div>
+                  <Link href={""} target="_blank" className="nav-link">
+                    contact@editors.academy
+                  </Link>
                 </div>
               </div>
 

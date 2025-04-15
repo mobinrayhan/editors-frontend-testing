@@ -47,7 +47,8 @@ const NavbarDefault = ({ headerstyle = "navbar-default", login = false }) => {
         <Container fluid className="px-0 ps-2">
           <Navbar.Brand
             className={`d-flex  ${
-              login ? "w-lg-100" : "nav-w-80"
+              ""
+              // login ? "w-lg-100" : "nav-w-80"
             }  align-items-center`}
           >
             <Link href="/" passHref legacyBehavior>
@@ -59,7 +60,7 @@ const NavbarDefault = ({ headerstyle = "navbar-default", login = false }) => {
               />
             </Link>
             {/* Search Form */}
-            <Form className="mt-3 flex-grow-1 mt-lg-0 ms-lg-3 d-none d-lg-flex align-items-center">
+            {/* <Form className="mt-3 flex-grow-1 mt-lg-0 ms-lg-3 d-none d-lg-flex align-items-center">
               <span className="position-absolute ps-3 search-icon">
                 <i className="fe fe-search"></i>
               </span>
@@ -69,7 +70,7 @@ const NavbarDefault = ({ headerstyle = "navbar-default", login = false }) => {
                 className="ps-6"
                 placeholder="Search Courses"
               />
-            </Form>
+            </Form> */}
           </Navbar.Brand>
           {hasMounted ? (
             <div
@@ -127,8 +128,8 @@ const NavbarDefault = ({ headerstyle = "navbar-default", login = false }) => {
             </Form>
             {/* Right side quick / shortcut menu  */}
 
-            <div className="ms-auto d-flex ">
-              <Nav className="flex-shrink-0 navbar-nav navbar-right-wrap ms-auto d-flex align-items-center nav-top-wrap">
+            <div className="ms-auto d-flex w-100">
+              <Nav className="flex-shrink-0 w-100 navbar-nav navbar-right-wrap ms-auto d-flex align-items-center nav-top-wrap">
                 {login ? null : <DarkLightMode className="me-2" />}
                 <span
                   className={
@@ -157,13 +158,16 @@ const NavbarDefault = ({ headerstyle = "navbar-default", login = false }) => {
                     className={`${
                       login
                         ? isDesktop || isLaptop
-                          ? "d-flex"
+                          ? "d-flex flex-grow-1"
                           : "d-none"
                         : "d-none"
                     }`}
                   >
                     {/* Search Form */}
-                    {/* <Form className="mt-3 mt-lg-0 ms-lg-3 d-flex align-items-center">
+                    <Form
+                      style={{ paddingRight: "20px" }}
+                      className="mt-3 flex-grow-1 mt-lg-0  d-flex align-items-center"
+                    >
                       <span className="position-absolute ps-3 search-icon">
                         <i className="fe fe-search"></i>
                       </span>
@@ -173,7 +177,7 @@ const NavbarDefault = ({ headerstyle = "navbar-default", login = false }) => {
                         className="ps-6"
                         placeholder="Search Courses"
                       />
-                    </Form> */}
+                    </Form>
                     <Nav className="align-items-center d-flex">
                       {NavbarDefaultRoutes.map((item, index) => {
                         if (item?.children?.length === 0) {
