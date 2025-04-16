@@ -7,7 +7,13 @@ import { Col, Row, Image } from "react-bootstrap";
 
 // import MDI icons
 import Icon from "@mdi/react";
-import { mdiFacebook, mdiTwitter, mdiGithub } from "@mdi/js";
+import {
+  mdiFacebook,
+  mdiTwitter,
+  mdiGithub,
+  mdiWhatsapp,
+  mdiYoutube,
+} from "@mdi/js";
 
 // import BS icons
 import { Telephone, EnvelopeOpen, GeoAlt } from "react-bootstrap-icons";
@@ -53,12 +59,12 @@ const Contact = () => {
                     </p>
                     {/* Address */}
                     <p className="fs-4">
-                      <Telephone size={16} className="text-primary me-2" /> +
-                      0123-456-7890
+                      <Telephone size={16} className="text-primary me-2" />
+                      +8801324-531144
                     </p>
                     <p className="fs-4">
                       <EnvelopeOpen size={16} className="text-primary me-2" />{" "}
-                      hello@geekui.com
+                      contact@editors.academy
                     </p>
                     <p className="fs-4 ">
                       <GeoAlt size={17} className="text-primary me-2" /> 2652
@@ -72,13 +78,21 @@ const Contact = () => {
                     <Link href="#" className="text-muted me-3">
                       <Icon path={mdiFacebook} size={1} />
                     </Link>
+                    <Link href="#" className="text-muted me-3">
+                      <Icon path={mdiYoutube} size={1} />
+                    </Link>
                     {/*Twitter*/}
                     <Link href="#" className="text-muted me-3">
                       <Icon path={mdiTwitter} size={1} />
                     </Link>
                     {/*GitHub*/}
-                    <Link href="#" className="text-muted ">
-                      <Icon path={mdiGithub} size={1} />
+                    <Link
+                      target="_blank"
+                      href="https://api.whatsapp.com/send/?phone=8801324531144&text=Welcome+to+editors+academy&type=phone_number&app_absent=0"
+                      className="text-muted "
+                    >
+                      {/* <Icon path={mdiGithub} size={1} /> */}
+                      <Icon path={mdiWhatsapp} size={1} />
                     </Link>
                   </div>
                 </div>
