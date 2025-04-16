@@ -1,7 +1,7 @@
 "use client";
 // import node module libraries
 import Link from "next/link";
-import { Row, Col, Image, Container, ListGroup } from "react-bootstrap";
+import { Row, Col, Container, ListGroup } from "react-bootstrap";
 import { Facebook, Instagram, Youtube } from "react-bootstrap-icons";
 
 // import required routes
@@ -9,6 +9,10 @@ import MentorFooterRoutes from "routes/marketing/MentorFooterRoutes";
 
 // import app config file
 import { settings } from "app.config";
+
+import Image from "next/image";
+import useMounted from "hooks/useMounted";
+import { useEffect, useState } from "react";
 
 const FooterDark = () => {
   // const currentYear = new Date().getFullYear();
@@ -21,7 +25,9 @@ const FooterDark = () => {
             <div className="d-flex flex-column gap-4">
               <div>
                 <Image
-                  src={settings.theme.mentorLogo}
+                  width={50}
+                  height={50}
+                  src={settings.theme.footer}
                   alt={settings.app.name}
                 />
               </div>
@@ -33,10 +39,21 @@ const FooterDark = () => {
                 </p>
               </div>
               <div className="d-flex flex-column gap-2">
-                <div className="fs-3 d-flex flex-row ">CONTACT INFO</div>
+                <div className="fs-4 d-flex flex-row ">CONTACT INFO</div>
                 <div className="text-coustom">
-                  <div>+88015****** , +8802251252</div>
-                  <div>contact@editors.academy</div>
+                  {/* <div>+88015****** , +8802251252</div> */}
+                  <Link
+                    className="nav-link"
+                    href={
+                      "https://wa.me/8801324531144?text=Welcome to editors academy"
+                    }
+                    target="_blank"
+                  >
+                    <p>+8801324-531144</p>
+                  </Link>
+                  <Link href={""} target="_blank" className="nav-link">
+                    contact@editors.academy
+                  </Link>
                 </div>
               </div>
 

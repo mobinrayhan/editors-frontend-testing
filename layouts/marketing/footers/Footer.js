@@ -3,7 +3,7 @@ import React from "react";
 import Link from "next/link";
 import PropTypes from "prop-types";
 import { Row, Col, Container } from "react-bootstrap";
-import { Facebook, Instagram, Youtube } from "react-bootstrap-icons";
+import { Facebook, Instagram, Whatsapp, Youtube } from "react-bootstrap-icons";
 
 const Footer = ({ bgColor = "bg-light" }) => {
   const currentYear = new Date().getFullYear();
@@ -29,15 +29,24 @@ const Footer = ({ bgColor = "bg-light" }) => {
               </Link> */}
               <div className="fs-4 d-flex flex-row gap-3">
                 {/* Instagram */}
-                <Link href="#!" className="text-reset">
+                {/* <Link href="#!" className="text-reset">
                   <Instagram size={16} />{" "}
+                </Link> */}
+                <Link
+                  className="text-reset"
+                  href={
+                    "https://wa.me/8801324531144?text=Welcome to editors academy"
+                  }
+                  target="_blank"
+                >
+                  <Whatsapp size={16} />
                 </Link>
                 {/* Facebook */}
                 <Link href="#!" className="text-reset">
                   <Facebook size={16} />{" "}
                 </Link>
                 {/* Twitter */}
-                <Link href="#!" className="text-reset">
+                {/* <Link href="#!" className="text-reset">
                   <svg
                     className="bi bi-twitter-x"
                     fill="currentColor"
@@ -48,7 +57,7 @@ const Footer = ({ bgColor = "bg-light" }) => {
                   >
                     <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z" />
                   </svg>
-                </Link>
+                </Link> */}
                 {/* youtube */}
                 <Link href="#!" className="text-reset">
                   <Youtube size={16} />{" "}
