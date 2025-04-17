@@ -3,7 +3,13 @@ import React from "react";
 import Link from "next/link";
 import PropTypes from "prop-types";
 import { Row, Col, Container } from "react-bootstrap";
-import { Facebook, Instagram, Whatsapp, Youtube } from "react-bootstrap-icons";
+import {
+  Facebook,
+  Instagram,
+  Tiktok,
+  Whatsapp,
+  Youtube,
+} from "react-bootstrap-icons";
 
 const Footer = ({ bgColor = "bg-light" }) => {
   const currentYear = new Date().getFullYear();
@@ -42,7 +48,11 @@ const Footer = ({ bgColor = "bg-light" }) => {
                   <Whatsapp size={16} />
                 </Link>
                 {/* Facebook */}
-                <Link href="#!" className="text-reset">
+                <Link
+                  href="https://www.facebook.com/EditorsAcademy"
+                  className="text-reset"
+                  target="_blank"
+                >
                   <Facebook size={16} />{" "}
                 </Link>
                 {/* Twitter */}
@@ -59,8 +69,20 @@ const Footer = ({ bgColor = "bg-light" }) => {
                   </svg>
                 </Link> */}
                 {/* youtube */}
-                <Link href="#!" className="text-reset">
+                <Link
+                  href="https://www.youtube.com/@editorsacademyofficial"
+                  className="text-reset"
+                  target="_blank"
+                >
                   <Youtube size={16} />{" "}
+                </Link>
+                {/* tiktok */}
+                <Link
+                  href="https://www.youtube.com/@editorsacademyofficial"
+                  className="text-reset"
+                  target="_blank"
+                >
+                  <Tiktok size={16} />{" "}
                 </Link>
               </div>
               {/* <Link href="/help-center/support" className="nav-link">
