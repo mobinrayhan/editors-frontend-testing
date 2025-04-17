@@ -13,6 +13,7 @@ import {
   mdiGithub,
   mdiWhatsapp,
   mdiYoutube,
+  mdiMusicCircle,
 } from "@mdi/js";
 
 // import BS icons
@@ -75,15 +76,26 @@ const Contact = () => {
                   {/* social media */}
                   <div className="mt-10">
                     {/*Facebook*/}
-                    <Link href="#" className="text-muted me-3">
+                    <Link
+                      href="https://www.facebook.com/EditorsAcademy"
+                      target="_blank"
+                      className="text-muted me-3"
+                    >
                       <Icon path={mdiFacebook} size={1} />
                     </Link>
-                    <Link href="#" className="text-muted me-3">
+                    <Link
+                      href="https://www.youtube.com/@editorsacademyofficial"
+                      className="text-muted me-3"
+                    >
                       <Icon path={mdiYoutube} size={1} />
                     </Link>
                     {/*Twitter*/}
-                    <Link href="#" className="text-muted me-3">
-                      <Icon path={mdiTwitter} size={1} />
+                    <Link
+                      href="https://www.tiktok.com/@EditorsAcademyOfficial"
+                      className="text-muted me-3"
+                      target="_blank"
+                    >
+                      <Icon path={mdiMusicCircle} size={1} />
                     </Link>
                     {/*GitHub*/}
                     <Link

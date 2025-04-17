@@ -152,7 +152,31 @@ const ContactForm = () => {
                 )}
               </Form.Group>
             </Col>
-
+            <Col md={12} sm={12}>
+              <Form.Group className="mb-3" controlId="formContactReason">
+                <Form.Label>
+                  Select course:<span className="text-danger">*</span>
+                </Form.Label>
+                <Controller
+                  name="selectCourse"
+                  control={control}
+                  rules={{ required: "Contact reason is required" }}
+                  render={({ field }) => (
+                    <FormSelect
+                      {...field}
+                      placeholder="Select"
+                      options={contactReason}
+                      isInvalid={!!errors.contactReason}
+                    />
+                  )}
+                />
+                {errors.contactReason && (
+                  <Form.Control.Feedback type="invalid">
+                    {errors.contactReason.message}
+                  </Form.Control.Feedback>
+                )}
+              </Form.Group>
+            </Col>
             {/* Message */}
             <Col md={12} sm={12}>
               <Form.Group className="mb-3" controlId="formMessage">
