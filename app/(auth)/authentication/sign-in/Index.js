@@ -1,8 +1,10 @@
 "use client";
 
+import { settings } from "app.config";
+import Image from "next/image";
 // import node module libraries
 import Link from "next/link";
-import { Button, Card, Col, Form, Image, Row } from "react-bootstrap";
+import { Button, Card, Col, Form, Row } from "react-bootstrap";
 
 const SignIn = () => {
   const isValidEmailOrPhone = (input) => {
@@ -29,7 +31,9 @@ const SignIn = () => {
             <div className="mb-4">
               <Link href="/">
                 <Image
-                  src="/images/brand/logo/logo-icon.svg"
+                  width={50}
+                  height={50}
+                  src={settings.theme.footer}
                   className="mb-4"
                   alt=""
                 />

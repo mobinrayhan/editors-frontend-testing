@@ -130,6 +130,22 @@ const NavbarDefault = ({ headerstyle = "navbar-default", login = false }) => {
 
             <div className="ms-auto d-flex w-100">
               <Nav className="flex-shrink-0 w-100 navbar-nav navbar-right-wrap ms-auto d-flex align-items-center nav-top-wrap">
+                {!login && (
+                  <Form
+                    style={{ paddingRight: "20px" }}
+                    className="mt-3 flex-grow-1 mt-lg-0 d-none d-lg-flex align-items-center"
+                  >
+                    <span className="position-absolute ps-3 search-icon">
+                      <i className="fe fe-search"></i>
+                    </span>
+                    <Form.Control
+                      type="Search"
+                      id="formSearch"
+                      className="ps-6"
+                      placeholder="Search Courses"
+                    />
+                  </Form>
+                )}
                 {login ? null : <DarkLightMode className="me-2" />}
                 <span
                   className={
