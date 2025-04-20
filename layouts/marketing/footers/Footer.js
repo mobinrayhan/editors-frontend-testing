@@ -78,7 +78,7 @@ const Footer = ({ bgColor = "bg-light" }) => {
                 </Link>
                 {/* tiktok */}
                 <Link
-                  href="https://www.youtube.com/@editorsacademyofficial"
+                  href="https://www.tiktok.com/@EditorsAcademyOfficial"
                   className="text-reset"
                   target="_blank"
                 >

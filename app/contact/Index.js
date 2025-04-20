@@ -24,10 +24,15 @@ import ContactForm from "./components/ContactForm";
 
 // import app config file
 import { settings } from "app.config";
+import NavbarDefault from "layouts/marketing/navbars/NavbarDefault";
+import { Footer1 } from "app/_docs/snippet/footers/components/Footer1";
+import Footer from "layouts/marketing/footers/Footer";
 
 const Contact = () => {
   return (
     <Fragment>
+      <NavbarDefault />
+
       <main>
         <section className="bg-white container-fluid">
           <Row className="align-items-center min-vh-100">
@@ -121,6 +126,10 @@ const Contact = () => {
           </Row>
         </section>
       </main>
+      {/* Footer section */}
+
+      <Footer1 bgColor="bg-light" />
+      <Footer bgColor="bg-light" />
     </Fragment>
   );
 };
