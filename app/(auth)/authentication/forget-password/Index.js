@@ -1,9 +1,11 @@
 "use client";
 
+import { settings } from "app.config";
+import Image from "next/image";
 // import node module libraries
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Col, Row, Card, Form, Button, Image } from "react-bootstrap";
+import { Col, Row, Card, Form, Button } from "react-bootstrap";
 
 const ForgetPassword = () => {
   const router = useRouter();
@@ -22,9 +24,11 @@ const ForgetPassword = () => {
             <div className="mb-4">
               <Link href="/">
                 <Image
-                  src="/images/brand/logo/logo-icon.svg"
+                  src={settings.theme.footer}
                   className="mb-4"
                   alt=""
+                  width={50}
+                  height={50}
                 />
               </Link>
               <h1 className="mb-1 fw-bold">Forgot Password</h1>
