@@ -53,6 +53,7 @@ const NavbarDefault = ({ headerstyle = "navbar-default", login = false }) => {
           >
             <Link href="/" passHref legacyBehavior>
               <Image
+                style={{ cursor: "pointer" }}
                 src={settings.theme.logo}
                 alt={settings.app.name}
                 width={90}
