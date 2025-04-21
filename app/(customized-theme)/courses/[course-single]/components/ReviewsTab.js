@@ -4,10 +4,12 @@ import { Fragment } from "react";
 import { Form } from "react-bootstrap";
 
 // import widget/custom components
-import { RatingProgressBar, ReviewCard } from "widgets";
+// import { RatingProgressBar, ReviewCard } from "widgets";
+import RatingProgressBar from "widgets/ratings/RatingProgressBar";
 
 // import data files
 import { Reviews } from "data/courses/CourseIndexData";
+import ReviewCard from "widgets/cards/ReviewCard";
 
 const ReviewsTab = () => {
   return (

@@ -5,11 +5,11 @@ import PropTypes from "prop-types";
 import Slider from "react-slick";
 
 // import widget/custom components
-import CourseCard from "widgets/courses/CourseCard";
 
 // import data files
 import { AllCoursesData } from "data/slider/AllCoursesData";
 import Link from "next/link";
+import CourseCard from "shared/card/CourseCard";
 
 const CourseSlider = ({
   recommended = false,

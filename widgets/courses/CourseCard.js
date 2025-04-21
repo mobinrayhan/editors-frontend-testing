@@ -13,7 +13,7 @@ import {
 } from "react-bootstrap";
 
 // import widget/custom components
-import { GKTippy } from "widgets";
+// import { GKTippy } from "widgets";
 
 // import custom components
 import LevelIcon from "widgets/miscellaneous/LevelIcon";
@@ -22,6 +22,7 @@ import Ratings from "widgets/ratings/Ratings";
 // import utility file
 import { numberWithCommas } from "helper/utils";
 import { usePathname } from "next/navigation";
+import GKTippy from "widgets/tooltips/GKTippy";
 
 const CourseCard = ({
   item,

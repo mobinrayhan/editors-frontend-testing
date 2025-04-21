@@ -6,7 +6,9 @@ import { Col, Row, Nav, Tab, Card, Container, Image } from "react-bootstrap";
 import Link from "next/link";
 
 // import widget/custom components
-import { ProfileCover, CourseCard } from "widgets";
+// import { ProfileCover, CourseCard } from "widgets";
+import ProfileCover from "widgets/account-settings/ProfileCover";
+import CourseCard from "shared/card/CourseCard";
 
 // import data files
 import { AllCoursesData } from "data/slider/AllCoursesData";

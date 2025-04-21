@@ -8,9 +8,10 @@ import {
   Form,
   Row,
 } from "react-bootstrap";
-import { PageHeading } from "shared";
+// import { PageHeading } from "shared";
 import CourseListView from "../courses/components/CourseListView";
 import Link from "next/link";
+import PageHeading from "widgets/page-headings/PageHeadingDescription";
 
 const Cart = () => {
   return (

@@ -18,11 +18,12 @@ import Icon from "@mdi/react";
 import { mdiFacebook, mdiTwitter, mdiLinkedin, mdiContentCopy } from "@mdi/js";
 
 // import widget/custom components
-import { ProfileCoverFull, CourseCard } from "widgets";
+// import { ProfileCoverFull } from "widgets";
 
 // Import required data
 import { AllCoursesData } from "data/slider/AllCoursesData";
 import { InstructorData } from "data/users/InstructorData";
+import CourseCard from "shared/card/CourseCard";
 
 const ViewProfile = () => {
   const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (

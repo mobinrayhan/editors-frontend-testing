@@ -147,7 +147,7 @@ import PasswordStrengthMeter from "widgets/passwordstrength/PasswordStrengthMete
 import ACEditProfilePage from "widgets/account-settings/EditProfile"; //  Account Settings Edit Profile Page
 import ACSecuirtyPage from "widgets/account-settings/Security"; //  Account Settings Security Page
 import ACSocialProfilesPage from "widgets/account-settings/SocialProfiles"; //  Account Settings Social Profiles Page
-import ACNotificationsPage from "widgets/account-settings/Notifications"; //  Account Settings Notifications Page
+//import ACNotificationsPage from "widgets/account-settings/Notifications"; //  Account Settings Notifications Page
 import ACProfilePrivacyPage from "widgets/account-settings/ProfilePrivacy"; //  Account Settings Profile Privacy Page
 import ACDeleteProfilePage from "widgets/account-settings/DeleteProfile"; //  Account Settings Delete ProfilePage
 
@@ -263,10 +263,10 @@ export {
   Pagination,
   PasswordStrengthMeter,
   ProfileCover,
-  ProfileCoverFull,
+  //   ProfileCoverFull,
   ProgressChart,
   // Ratings,
-  RatingProgressBar,
+  //   RatingProgressBar,
   RatingsBiIcon,
   ReactQuillEditor,
   SectionHeadingCenter,
@@ -311,7 +311,7 @@ export {
   InstructorCard,
   SimplePricingCard,
   PricingCard,
-  ReviewCard,
+  //   ReviewCard,
   StudentEnrolledCard,
   StudentInstructorInfoCard,
   // InstructorProfileSummaryCard,
