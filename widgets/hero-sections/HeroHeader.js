@@ -1,3 +1,5 @@
+"use client";
+
 // Section : Hero Header
 // Style : Welcome Text on left and image on right
 

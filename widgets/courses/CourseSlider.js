@@ -1,3 +1,4 @@
+"use client";
 // import node module libraries
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
