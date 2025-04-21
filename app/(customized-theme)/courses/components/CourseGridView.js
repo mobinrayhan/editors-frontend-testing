@@ -1,15 +1,17 @@
 // import node module libraries
+"use client";
 import { Fragment, useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import ReactPaginate from "react-paginate";
 import { ChevronLeft, ChevronRight } from "react-feather";
 
 // import widget/custom components
-import { CourseCard } from "shared";
+// import { CourseCard } from "shared";
 
 // import data files
 import { AllCoursesData } from "data/slider/AllCoursesData";
 import Link from "next/link";
+import CourseCard from "shared/card/CourseCard";
 
 const CourseGridView = () => {
   const [Records] = useState(AllCoursesData.slice(0, 500));

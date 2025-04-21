@@ -33,11 +33,13 @@ const CourseCard = ({
   const GridView = () => {
     return (
       <Card className={`mb-4 card-hover ${extraclass}`}>
-        <Image
-          src={item.image}
-          alt=""
-          className="card-img-top rounded-top-md"
-        />
+        <Link href={"/courses/1"}>
+          <Image
+            src={item.image}
+            alt=""
+            className="card-img-top rounded-top-md"
+          />
+        </Link>
 
         {/* Card body  */}
         <Link href={"/courses/1"}>

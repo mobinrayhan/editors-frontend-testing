@@ -5,12 +5,15 @@ import React, { Fragment } from "react";
 import { Col, Row, Container, Tab } from "react-bootstrap";
 
 // import widget/custom components
-import { FormSelect, GridListViewButton, PageHeading } from "shared";
+// import { GridListViewButton, PageHeading } from "shared";
 
 // import sub components
 import FilterOptions from "./components/FilterOptions";
 import CourseGridView from "./components/CourseGridView";
 import CourseListView from "./components/CourseListView";
+import FormSelect from "shared/form-select/FormSelect";
+import GridListViewButton from "shared/grid-list-view-button/GridListViewButton";
+import PageHeading from "shared/page-headings/PageHeading";
 
 const CourseFilterPage = () => {
   const sortByOptions = [

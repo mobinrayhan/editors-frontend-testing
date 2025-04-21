@@ -163,14 +163,19 @@ const CourseCard = ({
           <Col lg={9} md={12} sm={12}>
             {/*   Card body   */}
             <Card.Body>
-              <div className="d-flex justify-content-between align-items-center ">
-                <h3 className="mb-2 text-truncate-line-2">
-                  {/* <Link href="#" className="text-inherit"> */}
-                  {item.title}
-                  {/* </Link> */}
-                </h3>
-                <h3 className="text-truncate-line-2">${item.price}</h3>
-              </div>
+              <Link href={"/courses/1"}>
+                <div
+                  style={{ cursor: "pointer" }}
+                  className="d-flex justify-content-between align-items-center "
+                >
+                  <h3 className="mb-2 text-truncate-line-2">
+                    {/* <Link href="#" className="text-inherit"> */}
+                    {item.title}
+                    {/* </Link> */}
+                  </h3>
+                  <h3 className="text-truncate-line-2">${item.price}</h3>
+                </div>
+              </Link>
               {/*   List inline   */}
               <ListGroup as="ul" bsPrefix="list-inline" className="mb-5">
                 <ListGroup.Item as="li" bsPrefix="list-inline-item">
