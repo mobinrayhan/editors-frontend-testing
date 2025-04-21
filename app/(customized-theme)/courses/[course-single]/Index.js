@@ -1,7 +1,6 @@
 "use client";
-
 // import node module libraries
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 import {
   Col,
   Row,
@@ -14,16 +13,16 @@ import {
 import Link from "next/link";
 
 // import popup youtube video
-import ModalVideo from "react-modal-video";
+// import ModalVideo from "react-modal-video";
 
 // import widget/custom components
-import {
-  GKAccordionDefault,
-  Ratings,
-  CourseCard,
-  GKTippy,
-  InstructorProfileSummaryCard,
-} from "widgets";
+// import {
+//   GKAccordionDefault,
+//   Ratings,
+//   CourseCard,
+//   GKTippy,
+//   InstructorProfileSummaryCard,
+// } from "widgets";
 
 // import sub components
 import DescriptionTab from "./components/DescriptionTab";
@@ -34,10 +33,15 @@ import FAQTab from "./components/FAQTab";
 // import data files
 import { CourseIndex } from "data/courses/CourseIndexData";
 import { AllCoursesData } from "data/slider/AllCoursesData";
+import GKAccordionDefault from "widgets/accordions/GKAccordionDefault";
+import InstructorProfileSummaryCard from "widgets/cards/InstructorProfileSummaryCard";
+import GKTippy from "widgets/tooltips/GKTippy";
+import CourseCard from "shared/card/CourseCard";
+import Ratings from "widgets/ratings/Ratings";
 
 const CourseSingle = () => {
-  const [isOpen, setOpen] = useState(false);
-  const [YouTubeURL] = useState("JRzWRZahOVU");
+  // const [isOpen, setOpen] = useState(false);
+  // const [YouTubeURL] = useState("JRzWRZahOVU");
   const profileData = {
     id: 1,
     name: "Jenny Wilson",
@@ -200,20 +204,20 @@ const CourseSingle = () => {
                     <Link
                       href="#"
                       className="popup-youtube icon-shape rounded-circle btn-play icon-xl text-decoration-none"
-                      onClick={() => setOpen(true)}
+                      // onClick={() => setOpen(true)}
                     >
                       <i className="fe fe-play"></i>
                     </Link>
                   </div>
                 </div>
                 {/* video popup */}
-                <ModalVideo
+                {/* <ModalVideo
                   channel="youtube"
                   autoplay
                   isOpen={isOpen}
                   videoId={YouTubeURL}
                   onClose={() => setOpen(false)}
-                />
+                /> */}
                 {/* end of video popup */}
 
                 {/* Card body */}

@@ -7,7 +7,7 @@ import { ThumbsUp, Award, MessageSquare } from "react-feather";
 import Link from "next/link";
 
 // import widget/custom components
-import { GKTippy } from "widgets";
+// import { GKTippy } from "widgets";
 
 // import custom components
 import DotBadge from "components/bootstrap/DotBadge";
@@ -16,8 +16,9 @@ import DotBadge from "components/bootstrap/DotBadge";
 import NotificationData from "data/dashboard/NotificationData";
 import ProfileLayoutWrap from "layouts/marketing/ProfileLayoutWrap";
 import { usePathname } from "next/navigation";
+import GKTippy from "widgets/tooltips/GKTippy";
 
-const Notifications = () => {
+export const Notifications = () => {
   const location = usePathname();
 
   function NotificationsIcon(icon, color) {

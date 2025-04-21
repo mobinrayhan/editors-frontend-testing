@@ -1,9 +1,10 @@
 // import node module libraries
 
 import { Form, Card } from "react-bootstrap";
+import Ratings from "widgets/ratings/Ratings";
 
 // import widget/custom components
-import { Ratings } from "widgets";
+// import { Ratings } from "widgets";
 
 const FilterOptions = () => {
   return (
