@@ -24,6 +24,7 @@ import { mdiFacebook, mdiTwitter, mdiLinkedin, mdiContentCopy } from "@mdi/js";
 import { AllCoursesData } from "data/slider/AllCoursesData";
 import { InstructorData } from "data/users/InstructorData";
 import CourseCard from "shared/card/CourseCard";
+import ProfileCoverFull from "widgets/headers/ProfileCoverFull";
 
 const ViewProfile = () => {
   const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (

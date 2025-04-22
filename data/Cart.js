@@ -1,4 +1,4 @@
-import { InstructorCard } from "widgets";
+// import { InstructorCard } from "widgets";
 
 const Carts = [
   {

@@ -7,11 +7,12 @@ import Link from "next/link";
 
 // import widget/custom components
 // import { ProfileCover, CourseCard } from "widgets";
-import ProfileCover from "widgets/account-settings/ProfileCover";
+// import ProfileCover from "widgets/account-settings/ProfileCover";
 import CourseCard from "shared/card/CourseCard";
 
 // import data files
 import { AllCoursesData } from "data/slider/AllCoursesData";
+import ProfileCover from "widgets/headers/ProfileCover";
 
 const StudentDashboard = () => {
   const dashboardData = {

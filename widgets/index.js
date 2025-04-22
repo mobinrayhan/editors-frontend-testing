@@ -147,7 +147,7 @@ import PasswordStrengthMeter from "widgets/passwordstrength/PasswordStrengthMete
 import ACEditProfilePage from "widgets/account-settings/EditProfile"; //  Account Settings Edit Profile Page
 import ACSecuirtyPage from "widgets/account-settings/Security"; //  Account Settings Security Page
 import ACSocialProfilesPage from "widgets/account-settings/SocialProfiles"; //  Account Settings Social Profiles Page
-//import ACNotificationsPage from "widgets/account-settings/Notifications"; //  Account Settings Notifications Page
+import ACNotificationsPage from "widgets/account-settings/Notifications"; //  Account Settings Notifications Page
 import ACProfilePrivacyPage from "widgets/account-settings/ProfilePrivacy"; //  Account Settings Profile Privacy Page
 import ACDeleteProfilePage from "widgets/account-settings/DeleteProfile"; //  Account Settings Delete ProfilePage
 
@@ -209,7 +209,7 @@ import JobSearchBox from "widgets/search/JobSearchBox";
 export {
   ACDeleteProfilePage,
   ACEditProfilePage,
-  //   ACNotificationsPage,
+  ACNotificationsPage,
   ACProfilePrivacyPage,
   ACSecuirtyPage,
   ACSocialProfilesPage,
@@ -237,12 +237,12 @@ export {
   FormSelect,
   GKAccordionActions,
   GKAccordionBox,
-  //   GKAccordionDefault,
+  GKAccordionDefault,
   GKAccordionPlus,
   GKAccordionProgress,
   GKTagsEmailInput,
   GKTagsInput,
-  // GKTippy,
+  //  GKTippy,
   GKYouTube,
   GlobalFilter,
   GridListViewButton,
@@ -263,10 +263,10 @@ export {
   Pagination,
   PasswordStrengthMeter,
   ProfileCover,
-  //   ProfileCoverFull,
+  ProfileCoverFull,
   ProgressChart,
-  // Ratings,
-  //   RatingProgressBar,
+  Ratings,
+  RatingProgressBar,
   RatingsBiIcon,
   ReactQuillEditor,
   SectionHeadingCenter,
@@ -311,10 +311,10 @@ export {
   InstructorCard,
   SimplePricingCard,
   PricingCard,
-  //   ReviewCard,
+  ReviewCard,
   StudentEnrolledCard,
   StudentInstructorInfoCard,
-  // InstructorProfileSummaryCard,
+  InstructorProfileSummaryCard,
   GKLightbox,
   RangeSlider,
   SignUpModalPopup,

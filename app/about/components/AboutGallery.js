@@ -3,7 +3,7 @@
 
 // import widget/custom components
 // import { JustifiedGallery } from 'widgets';
-
+import JustifiedGallery from "widgets/gallery/JustifiedGallery";
 const AboutGallery = () => {
   const GalleryImages = [
     {

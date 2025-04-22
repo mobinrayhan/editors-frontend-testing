@@ -7,13 +7,14 @@ import { usePathname } from "next/navigation";
 import { Container, Row, Col, Nav, Navbar } from "react-bootstrap";
 
 // import widget/custom components
-import { ProfileCover } from "widgets";
+// import { ProfileCover } from "widgets";
 
 // import routes file
 import {
   DashboardMenu,
   AccountSettingsMenu,
 } from "routes/marketing/StudentDashboardMenu";
+import ProfileCover from "widgets/headers/ProfileCover";
 
 const ProfileLayout = (props) => {
   const location = usePathname();

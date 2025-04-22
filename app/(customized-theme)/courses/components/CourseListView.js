@@ -6,8 +6,8 @@ import ReactPaginate from "react-paginate";
 import { ChevronLeft, ChevronRight } from "react-feather";
 
 // import widget/custom components
-import { CourseCard } from "widgets";
-
+// import { CourseCard } from "widgets";
+import CourseCard from "shared/card/CourseCard";
 // import data files
 import { AllCoursesData } from "data/slider/AllCoursesData";
 import Link from "next/link";
