@@ -1,3 +1,4 @@
+"use client";
 // Section : Team Section
 // Style : Grid with round images
 

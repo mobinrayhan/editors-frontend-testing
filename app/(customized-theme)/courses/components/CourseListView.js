@@ -1,5 +1,5 @@
-// import node module libraries
 "use client";
+// import node module libraries
 import { Fragment, useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import ReactPaginate from "react-paginate";

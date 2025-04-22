@@ -1,5 +1,3 @@
-"use client";
-
 // import node module libraries
 import { Fragment } from "react";
 import { Container } from "react-bootstrap";
@@ -14,7 +12,7 @@ import FeaturesList from "./components/FeaturesList";
 
 // import layouts
 import NavbarDefault from "layouts/marketing/navbars/NavbarDefault";
-import FooterWithLinks from "layouts/marketing/footers/FooterWithLinks";
+// import FooterWithLinks from "layouts/marketing/footers/FooterWithLinks";
 import { Footer1 } from "app/_docs/snippet/footers/components/Footer1";
 import Footer from "layouts/marketing/footers/Footer";
 

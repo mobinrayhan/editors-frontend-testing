@@ -39,7 +39,7 @@ import GKTippy from "widgets/tooltips/GKTippy";
 import CourseCard from "shared/card/CourseCard";
 import Ratings from "widgets/ratings/Ratings";
 
-const CourseSingle = () => {
+const CourseSingle = async () => {
   // const [isOpen, setOpen] = useState(false);
   // const [YouTubeURL] = useState("JRzWRZahOVU");
   const profileData = {
