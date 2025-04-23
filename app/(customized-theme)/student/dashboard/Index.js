@@ -1,7 +1,6 @@
-"use client";
-
 // import node module libraries
-import { Fragment, useEffect } from "react";
+"use client";
+import { Fragment } from "react";
 import { Col, Row, Nav, Tab, Card, Container, Image } from "react-bootstrap";
 import Link from "next/link";
 
@@ -27,9 +26,9 @@ const StudentDashboard = () => {
     buttonText: "See all courses",
   };
 
-  useEffect(() => {
-    document.body.className = "bg-light";
-  });
+  // useEffect(() => {
+  //   document.body.className = "bg-light";
+  // });
 
   return (
     <Fragment>

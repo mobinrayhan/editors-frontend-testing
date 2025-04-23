@@ -1,5 +1,3 @@
-"use client";
-
 // import node module libraries
 import { Fragment } from "react";
 import Link from "next/link";

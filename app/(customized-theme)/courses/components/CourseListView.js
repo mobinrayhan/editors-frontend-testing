@@ -14,7 +14,10 @@ import Link from "next/link";
 
 const CourseListView = () => {
   const [Records] = useState(AllCoursesData.slice(0, 500));
-
+  if (typeof window !== "undefined") {
+    const cartData = localStorage.getItem("cartItem");
+    console.log(cartData);
+  }
   // paging start
   const [pageNumber, setPageNumber] = useState(0);
   const RecordsPerPage = 6;

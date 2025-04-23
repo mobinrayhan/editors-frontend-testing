@@ -116,13 +116,13 @@ export const CourseResume = () => {
                     >
                       <iframe
                         width="100%"
-                        height="550"
-                        src="https://www.youtube.com/embed/rePN-VFo1Eo?si=ACZiycBj3Yuhw8ns"
+                        height="100%"
+                        src="https://www.youtube.com/embed/VO_RaLa56C8?si=kFkvvs7ULsXNalLu"
                         title="YouTube video player"
-                        frameborder="0"
+                        frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin"
-                        allowfullscreen
+                        referrerPolicy="strict-origin-when-cross-origin"
+                        allowFullScreen={true}
                       ></iframe>
                       {/* <GKYouTube videoId={YouTubeURL} height="700" /> */}
                     </div>
