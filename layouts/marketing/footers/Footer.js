@@ -19,7 +19,7 @@ const Footer = ({ bgColor = "bg-light" }) => {
         <Row className="align-items-center g-0 border-top py-2">
           {/* Desc */}
           <Col md={6} sm={12} className="text-center text-md-start">
-            <span>© {currentYear} Geeks. All Rights Reserved.</span>
+            <span>© {currentYear} Editors Academy. All Rights Reserved.</span>
           </Col>
           {/* Links */}
           <Col md={6} sm={12}>
@@ -78,7 +78,7 @@ const Footer = ({ bgColor = "bg-light" }) => {
                 </Link>
                 {/* tiktok */}
                 <Link
-                  href="https://www.youtube.com/@editorsacademyofficial"
+                  href="https://www.tiktok.com/@EditorsAcademyOfficial"
                   className="text-reset"
                   target="_blank"
                 >
