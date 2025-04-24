@@ -1,15 +1,13 @@
-"use client";
-
 // import node module libraries
 import { Col, Row, Container } from "react-bootstrap";
 
-// import widget/custom components
-import { CourseSlider, FeaturesList, HeroHeader } from "widgets";
+import HeroHeader from "widgets/hero-sections/HeroHeader";
+import FeaturesList from "widgets/home/FeaturesList";
+import CourseSlider from "widgets/courses/CourseSlider";
 
 const DefaultHome = () => {
   return (
     <main>
-      {/*  Page Content  */}
       <HeroHeader
         title="Welcome to Geeks UI Learning Application"
         description="Hand-picked Instructor and expertly crafted courses, designed for the modern students and entrepreneur."
@@ -18,10 +16,7 @@ const DefaultHome = () => {
         buttonText2="Are You Instructor?"
         buttonLink2="/authentication/sign-in/"
       />
-
-      {/*  Features list  */}
       <FeaturesList />
-
       <section className="pt-lg-12 pb-lg-3 pt-8 pb-6">
         <Container>
           <Row className="mb-4">
@@ -34,7 +29,6 @@ const DefaultHome = () => {
           </div>
         </Container>
       </section>
-
       <section className="pb-lg-3 pt-lg-3">
         <Container>
           <Row className="mb-4">
@@ -47,7 +41,6 @@ const DefaultHome = () => {
           </div>
         </Container>
       </section>
-
       <section className="pb-lg-8 pt-lg-3 py-6">
         <Container>
           <Row className="mb-4">
@@ -59,7 +52,7 @@ const DefaultHome = () => {
             <CourseSlider trending={true} />
           </div>
         </Container>
-      </section>
+      </section>{" "}
     </main>
   );
 };

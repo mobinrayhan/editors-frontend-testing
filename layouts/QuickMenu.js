@@ -9,7 +9,7 @@ import SimpleBar from "simplebar-react";
 import "simplebar/dist/simplebar.min.css";
 
 // import widget/custom components
-import { GKTippy } from "widgets";
+// import { GKTippy } from "widgets";
 
 // import custom components
 import DotBadge from "components/bootstrap/DotBadge";
@@ -22,6 +22,7 @@ import NotificationList from "data/Notification";
 import useMounted from "hooks/useMounted";
 import Carts from "data/Cart";
 import Image from "next/image";
+import GKTippy from "widgets/tooltips/GKTippy";
 
 const QuickMenu = () => {
   const hasMounted = useMounted();

@@ -1,43 +1,44 @@
 // import node module libraries
-import PropTypes from 'prop-types';
-import { Card, Image } from 'react-bootstrap';
+import PropTypes from "prop-types";
+import { Card, Image } from "react-bootstrap";
+import Ratings from "widgets/ratings/Ratings";
 
 // import widget/custom components
-import {Ratings} from 'widgets';
+// import {Ratings} from 'widgets';
 
 const TestimonialCard = ({ item }) => {
-	return (
-		<Card className="border shadow-none">
-			<Card.Body className="p-5">
-				<div className="mb-2">
-					<span className="fs-4 text-warning">
-						<Ratings rating={item.rating} />
-					</span>
-				</div>
-				<p className="lead text-dark font-italic fw-medium mb-0">
-					"{item.content}"
-				</p>
-			</Card.Body>
-			<Card.Footer className="px-5 py-4">
-				<div className="d-flex align-items-center">
-					<Image
-						src={item.image}
-						alt=""
-						className="avatar avatar-md rounded-circle"
-					/>
-					<div className="ms-3">
-						<h4 className="mb-0">Barry Watson</h4>
-						<p className="mb-0 small">Web Developer,UK</p>
-					</div>
-				</div>
-			</Card.Footer>
-		</Card>
-	);
+  return (
+    <Card className="border shadow-none">
+      <Card.Body className="p-5">
+        <div className="mb-2">
+          <span className="fs-4 text-warning">
+            <Ratings rating={item.rating} />
+          </span>
+        </div>
+        <p className="lead text-dark font-italic fw-medium mb-0">
+          "{item.content}"
+        </p>
+      </Card.Body>
+      <Card.Footer className="px-5 py-4">
+        <div className="d-flex align-items-center">
+          <Image
+            src={item.image}
+            alt=""
+            className="avatar avatar-md rounded-circle"
+          />
+          <div className="ms-3">
+            <h4 className="mb-0">Barry Watson</h4>
+            <p className="mb-0 small">Web Developer,UK</p>
+          </div>
+        </div>
+      </Card.Footer>
+    </Card>
+  );
 };
 
 // Typechecking With PropTypes
 TestimonialCard.propTypes = {
-	item: PropTypes.object.isRequired
+  item: PropTypes.object.isRequired,
 };
 
 export default TestimonialCard;

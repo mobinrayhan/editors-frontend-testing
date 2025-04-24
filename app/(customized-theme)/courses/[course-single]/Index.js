@@ -1,7 +1,5 @@
-"use client";
-
 // import node module libraries
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 import {
   Col,
   Row,
@@ -14,16 +12,16 @@ import {
 import Link from "next/link";
 
 // import popup youtube video
-import ModalVideo from "react-modal-video";
+// import ModalVideo from "react-modal-video";
 
 // import widget/custom components
-import {
-  GKAccordionDefault,
-  Ratings,
-  CourseCard,
-  GKTippy,
-  InstructorProfileSummaryCard,
-} from "widgets";
+// import {
+//   GKAccordionDefault,
+//   Ratings,
+//   CourseCard,
+//   GKTippy,
+//   InstructorProfileSummaryCard,
+// } from "widgets";
 
 // import sub components
 import DescriptionTab from "./components/DescriptionTab";
@@ -34,10 +32,18 @@ import FAQTab from "./components/FAQTab";
 // import data files
 import { CourseIndex } from "data/courses/CourseIndexData";
 import { AllCoursesData } from "data/slider/AllCoursesData";
+import GKAccordionDefault from "widgets/accordions/GKAccordionDefault";
+import InstructorProfileSummaryCard from "widgets/cards/InstructorProfileSummaryCard";
+import GKTippy from "widgets/tooltips/GKTippy";
+import CourseCard from "shared/card/CourseCard";
+import Ratings from "widgets/ratings/Ratings";
+import AddToCart from "./components/AddToCart";
+import CourseList from "./components/CourseList";
+import CardsComponents from "./components/CardsComponents";
 
 const CourseSingle = () => {
-  const [isOpen, setOpen] = useState(false);
-  const [YouTubeURL] = useState("JRzWRZahOVU");
+  // const [isOpen, setOpen] = useState(false);
+  // const [YouTubeURL] = useState("JRzWRZahOVU");
   const profileData = {
     id: 1,
     name: "Jenny Wilson",
@@ -133,147 +139,14 @@ const CourseSingle = () => {
         <Container>
           <Row>
             <Col lg={8} md={12} sm={12} className="mt-n8 mb-4 mb-lg-0">
-              <Tab.Container defaultActiveKey="contents">
-                <Card>
-                  <Nav className="nav-lb-tab">
-                    {[
-                      "Contents",
-                      "Description",
-                      "Reviews",
-                      "Transcript",
-                      "FAQ",
-                    ].map((item, index) => (
-                      <Nav.Item key={index}>
-                        <Nav.Link
-                          href={`#${item.toLowerCase()}`}
-                          eventKey={item.toLowerCase()}
-                          className="mb-sm-3 mb-md-0"
-                        >
-                          {item}
-                        </Nav.Link>
-                      </Nav.Item>
-                    ))}
-                  </Nav>
-                  <Card.Body className="p-0">
-                    <Tab.Content>
-                      <Tab.Pane eventKey="contents" className="pb-4 pt-3 px-4">
-                        {/* Course Index Accordion */}
-                        <GKAccordionDefault
-                          accordionItems={CourseIndex}
-                          itemClass="px-0"
-                        />
-                      </Tab.Pane>
-                      <Tab.Pane eventKey="description" className="pb-4 p-4">
-                        {/* Description */}
-                        <DescriptionTab />
-                      </Tab.Pane>
-                      <Tab.Pane eventKey="reviews" className="pb-4 p-4">
-                        {/* Reviews */}
-                        <ReviewsTab />
-                      </Tab.Pane>
-                      <Tab.Pane eventKey="transcript" className="pb-4 p-4">
-                        {/* Transcript */}
-                        <TranscriptTab />
-                      </Tab.Pane>
-                      <Tab.Pane eventKey="faq" className="pb-4 p-4">
-                        {/* FAQ */}
-                        <FAQTab />
-                      </Tab.Pane>
-                    </Tab.Content>
-                  </Card.Body>
-                </Card>
-              </Tab.Container>
+              <CourseList />
             </Col>
             <Col lg={4} md={12} sm={12} className="mt-lg-n22">
-              {/* Card */}
-              <Card className="mb-3 mb-4">
-                <div className="p-1">
-                  <div
-                    className="d-flex justify-content-center position-relative rounded py-10 border-white border rounded-3 bg-cover"
-                    style={{
-                      background: `url('/images/course/course-javascript.jpg')`,
-                      backgroundRepeat: "no-repeat",
-                      backgroundSize: "cover",
-                      backgroundPosition: "top center",
-                    }}
-                  >
-                    <Link
-                      href="#"
-                      className="popup-youtube icon-shape rounded-circle btn-play icon-xl text-decoration-none"
-                      onClick={() => setOpen(true)}
-                    >
-                      <i className="fe fe-play"></i>
-                    </Link>
-                  </div>
-                </div>
-                {/* video popup */}
-                <ModalVideo
-                  channel="youtube"
-                  autoplay
-                  isOpen={isOpen}
-                  videoId={YouTubeURL}
-                  onClose={() => setOpen(false)}
-                />
-                {/* end of video popup */}
-
-                {/* Card body */}
-                <Card.Body>
-                  {/* Price single page */}
-                  <div className="mb-3">
-                    <span className="text-dark fw-bold h2 me-2">$600</span>
-                    <del className="fs-4 text-muted">$750</del>
-                  </div>
-                  <div className="d-grid">
-                    <Link href="#" className="btn btn-primary mb-2  ">
-                      Add to Cart
-                    </Link>
-                    <Link
-                      href="/marketing/pages/pricing/"
-                      className="btn btn-outline-primary"
-                    >
-                      Buy now
-                    </Link>
-                  </div>
-                </Card.Body>
-              </Card>
-              {/* Card */}
-              <Card className="mb-4">
-                {/* Card header */}
-                <Card.Header>
-                  <h4 className="mb-0">What’s included</h4>
-                </Card.Header>
-                {/* Card Body */}
-                <Card.Body className="p-0">
-                  <ListGroup variant="flush">
-                    <ListGroup.Item>
-                      <i className="fe fe-play-circle align-middle me-2 text-primary"></i>
-                      12 hours video
-                    </ListGroup.Item>
-                    <ListGroup.Item>
-                      <i className="fe fe-award me-2 align-middle text-success"></i>
-                      Certificate
-                    </ListGroup.Item>
-                    <ListGroup.Item>
-                      <i className="fe fe-calendar align-middle me-2 text-info"></i>
-                      12 Article
-                    </ListGroup.Item>
-                    <ListGroup.Item>
-                      <i className="fe fe-video align-middle me-2 text-secondary"></i>
-                      Watch Offline
-                    </ListGroup.Item>
-                    <ListGroup.Item className="bg-transparent">
-                      <i className="fe fe-clock align-middle me-2 text-warning"></i>
-                      Lifetime access
-                    </ListGroup.Item>
-                  </ListGroup>
-                </Card.Body>
-              </Card>
-              {/* Card */}
-              <InstructorProfileSummaryCard data={profileData} />
+              <CardsComponents />
             </Col>
           </Row>
           {/* Card */}
-          <div className="pt-12 pb-3">
+          {/* <div className="pt-12 pb-3">
             <Row className="d-md-flex align-items-center mb-4">
               <Col lg={12} md={12} sm={12}>
                 <h2 className="mb-0">Related Courses</h2>
@@ -290,7 +163,7 @@ const CourseSingle = () => {
                   </Col>
                 ))}
             </Row>
-          </div>
+          </div> */}
         </Container>
       </section>
     </Fragment>

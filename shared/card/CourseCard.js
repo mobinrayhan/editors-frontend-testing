@@ -13,7 +13,7 @@ import {
 } from "react-bootstrap";
 
 // import widget/custom components
-import { GKTippy } from "widgets";
+// import { GKTippy } from "widgets";
 
 // import custom components
 import Ratings from "widgets/ratings/Ratings";
@@ -21,6 +21,7 @@ import LevelIcon from "widgets/miscellaneous/LevelIcon";
 
 // import utility file
 import { numberWithCommas } from "helper/utils";
+import GKTippy from "widgets/tooltips/GKTippy";
 
 const CourseCard = ({
   item,
@@ -33,11 +34,13 @@ const CourseCard = ({
   const GridView = () => {
     return (
       <Card className={`mb-4 card-hover ${extraclass}`}>
-        <Image
-          src={item.image}
-          alt=""
-          className="card-img-top rounded-top-md"
-        />
+        <Link href={"/courses/1"}>
+          <Image
+            src={item.image}
+            alt=""
+            className="card-img-top rounded-top-md"
+          />
+        </Link>
 
         {/* Card body  */}
         <Link href={"/courses/1"}>

@@ -1,3 +1,4 @@
+"use client";
 // import node module libraries
 import { Col, Row, Form, Button } from "react-bootstrap";
 import { useForm, Controller } from "react-hook-form";
