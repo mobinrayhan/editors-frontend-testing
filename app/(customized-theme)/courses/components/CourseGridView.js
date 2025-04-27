@@ -2,8 +2,8 @@
 "use client";
 import { Fragment, useState } from "react";
 import { Col, Row } from "react-bootstrap";
-import ReactPaginate from "react-paginate";
-import { ChevronLeft, ChevronRight } from "react-feather";
+// import ReactPaginate from "react-paginate";
+// import { ChevronLeft, ChevronRight } from "react-feather";
 
 // import widget/custom components
 // import { CourseCard } from "shared";
@@ -13,7 +13,7 @@ import { AllCoursesData } from "data/slider/AllCoursesData";
 import Link from "next/link";
 import CourseCard from "shared/card/CourseCard";
 
-const CourseGridView = () => {
+const CourseGridView = ({ courses, instructors }) => {
   const [Records] = useState(AllCoursesData.slice(0, 500));
 
   //------paging start----------
@@ -24,16 +24,18 @@ const CourseGridView = () => {
   const changePage = ({ selected }) => {
     setPageNumber(selected);
   };
-  const displayRecords = Records.slice(
-    pagesVisited,
-    pagesVisited + RecordsPerPage
-  ).map((Records, index) => {
-    return (
-      <Col lg={4} md={6} sm={12} key={index}>
-        <CourseCard item={Records} />
-      </Col>
-    );
-  });
+  const displayRecords = courses.courses
+    .slice(pagesVisited, pagesVisited + RecordsPerPage)
+    .map((Records, index) => {
+      return (
+        <Col lg={4} md={6} sm={12} key={index}>
+          <CourseCard
+            item={Records}
+            instructor={instructors[index].instructor[0]}
+          />
+        </Col>
+      );
+    });
   //---end of paging start----------
 
   return (
@@ -46,7 +48,7 @@ const CourseGridView = () => {
         )}
       </Row>
 
-      <ReactPaginate
+      {/* <ReactPaginate
         previousLabel={<ChevronLeft size="14px" />}
         nextLabel={<ChevronRight size="14px" />}
         pageCount={pageCount}
@@ -58,7 +60,7 @@ const CourseGridView = () => {
         pageLinkClassName={"page-link mx-1 rounded"}
         disabledClassName={"paginationDisabled"}
         activeClassName={"active"}
-      />
+      /> */}
     </Fragment>
   );
 };

@@ -7,7 +7,14 @@ import { useAccordionButton } from "react-bootstrap/AccordionButton";
 import Icon from "@mdi/react";
 import { mdiPlay } from "@mdi/js";
 
-const GKAccordionDefault = ({ accordionItems, itemClass }) => {
+const GKAccordionDefault = ({ accordionItems, itemClass, sections }) => {
+  function millisToHoursMinutes(millis) {
+    const totalMinutes = Math.floor(Number(millis) / (1000 * 60));
+    const hours = Math.floor(totalMinutes / 60);
+    const minutes = totalMinutes % 60;
+
+    return `${hours}:${minutes}`;
+  }
   const ContextAwareToggle = ({ children, eventKey, callback }) => {
     const { activeEventKey } = useContext(AccordionContext);
 
@@ -42,8 +49,9 @@ const GKAccordionDefault = ({ accordionItems, itemClass }) => {
     <Fragment>
       <Accordion defaultActiveKey={accordionItems[0].id}>
         <ListGroup as="ul" variant="flush">
-          {accordionItems.map((item, index) => {
-            if (item.topics.length === 0) {
+          {sections?.map((item, index) => {
+            // if (item.topics.length === 0) {
+            if (false) {
               return (
                 <ListGroup.Item
                   key={index}
@@ -74,7 +82,8 @@ const GKAccordionDefault = ({ accordionItems, itemClass }) => {
                   </ContextAwareToggle>
                   <Accordion.Collapse eventKey={item.id} className="test">
                     <ListGroup className="py-4" as="ul">
-                      {item.topics.map((subitem, subindex) => (
+                      {/* video */}
+                      {item?.videos?.map((subitem, subindex) => (
                         <ListGroup.Item
                           key={subindex}
                           as="li"
@@ -97,11 +106,87 @@ const GKAccordionDefault = ({ accordionItems, itemClass }) => {
                                   <Icon path={mdiPlay} size={0.8} />
                                 )}{" "}
                               </span>
-                              <span className="fs-5">{subitem.topic}</span>
+                              <span className="fs-5">{subitem.title}</span>
                             </div>
                             <div className="text-truncate">
-                              <span>{subitem.duratoin}</span>
+                              <span>
+                                {millisToHoursMinutes(
+                                  +subitem.duration + 12314444
+                                )}
+                              </span>
                             </div>
+                          </Link>
+                        </ListGroup.Item>
+                      ))}
+                      {/* resources */}
+                      {item?.resources?.map((subitem, subindex) => (
+                        <ListGroup.Item
+                          key={subindex}
+                          as="li"
+                          disabled={subitem.locked}
+                          className="px-0 py-1 border-0"
+                        >
+                          <Link
+                            href={
+                              subitem.locked
+                                ? ""
+                                : "/student/dashboard/courses/1"
+                            }
+                            className={`d-flex justify-content-between align-items-center text-inherit text-decoration-none`}
+                          >
+                            <div className="text-truncate ">
+                              <span className="icon-shape bg-light icon-sm rounded-circle me-2">
+                                {subitem.locked ? (
+                                  <i className="fe fe-lock fs-4"></i>
+                                ) : (
+                                  <Icon path={mdiPlay} size={0.8} />
+                                )}{" "}
+                              </span>
+                              <span className="fs-5">{subitem.title}</span>
+                            </div>
+                            {/* <div className="text-truncate">
+                              <span>
+                                {millisToHoursMinutes(
+                                  subitem.duration + 12314444
+                                )}
+                              </span>
+                            </div> */}
+                          </Link>
+                        </ListGroup.Item>
+                      ))}
+                      {/* assignments */}
+                      {item?.assignment?.map((subitem, subindex) => (
+                        <ListGroup.Item
+                          key={subindex}
+                          as="li"
+                          disabled={subitem.locked}
+                          className="px-0 py-1 border-0"
+                        >
+                          <Link
+                            href={
+                              subitem.locked
+                                ? ""
+                                : "/student/dashboard/courses/1"
+                            }
+                            className={`d-flex justify-content-between align-items-center text-inherit text-decoration-none`}
+                          >
+                            <div className="text-truncate ">
+                              <span className="icon-shape bg-light icon-sm rounded-circle me-2">
+                                {subitem.locked ? (
+                                  <i className="fe fe-lock fs-4"></i>
+                                ) : (
+                                  <Icon path={mdiPlay} size={0.8} />
+                                )}{" "}
+                              </span>
+                              <span className="fs-5">{subitem.title}</span>
+                            </div>
+                            {/* <div className="text-truncate">
+                              <span>
+                                {millisToHoursMinutes(
+                                  subitem.duration + 12314444
+                                )}
+                              </span>
+                            </div> */}
                           </Link>
                         </ListGroup.Item>
                       ))}

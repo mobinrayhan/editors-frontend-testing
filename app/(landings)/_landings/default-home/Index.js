@@ -5,7 +5,38 @@ import HeroHeader from "widgets/hero-sections/HeroHeader";
 import FeaturesList from "widgets/home/FeaturesList";
 import CourseSlider from "widgets/courses/CourseSlider";
 
-const DefaultHome = () => {
+const DefaultHome = async () => {
+  const response = await fetch("https://api.editors.academy/courses", {
+    method: "GET",
+    headers: {
+      "x-api-key": process.env.API_KEY,
+    },
+  });
+
+  const courses = await response.json();
+  const instructors = await Promise.all(
+    courses.courses.map(async (course) => {
+      const resInstructor = await fetch(
+        `https://api.editors.academy/courses/${course.id}/instructor`,
+        {
+          method: "GET",
+          headers: {
+            "x-api-key": process.env.API_KEY,
+          },
+        }
+      );
+      if (!resInstructor.ok) {
+        throw new Error(
+          `Failed to fetch instructor for course ID: ${course.id}`
+        );
+      }
+      const instructorData = await resInstructor.json();
+
+      return instructorData;
+    })
+  );
+  console.log(courses);
+  // console.log("check--?", Array.isArray(instructors[0]));
   return (
     <main>
       <HeroHeader
@@ -25,11 +56,15 @@ const DefaultHome = () => {
             </Col>
           </Row>
           <div className="position-relative">
-            <CourseSlider recommended={true} />
+            <CourseSlider
+              courses={courses}
+              instructors={instructors}
+              recommended={true}
+            />
           </div>
         </Container>
       </section>
-      <section className="pb-lg-3 pt-lg-3">
+      {/* <section className="pb-lg-3 pt-lg-3">
         <Container>
           <Row className="mb-4">
             <Col>
@@ -52,7 +87,7 @@ const DefaultHome = () => {
             <CourseSlider trending={true} />
           </div>
         </Container>
-      </section>{" "}
+      </section> */}
     </main>
   );
 };

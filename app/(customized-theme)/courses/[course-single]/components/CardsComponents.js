@@ -39,7 +39,7 @@ import InstructorProfileSummaryCard from "widgets/cards/InstructorProfileSummary
 // import Ratings from "widgets/ratings/Ratings";
 import AddToCart from "./AddToCart";
 // import CourseList from "./CourseList";
-const CardsComponents = () => {
+const CardsComponents = ({ course }) => {
   const profileData = {
     id: 1,
     name: "Jenny Wilson",
@@ -91,8 +91,10 @@ const CardsComponents = () => {
         <Card.Body>
           {/* Price single page */}
           <div className="mb-3">
-            <span className="text-dark fw-bold h2 me-2">$600</span>
-            <del className="fs-4 text-muted">$750</del>
+            <span className="text-dark fw-bold h2 me-2">
+              BDT {course?.price}
+            </span>
+            <del className="fs-4 text-muted">750</del>
           </div>
           <div className="d-grid">
             <AddToCart />

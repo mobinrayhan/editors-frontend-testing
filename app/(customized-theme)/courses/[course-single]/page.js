@@ -2,11 +2,11 @@
 import CourseSingle from "./Index";
 
 export const metadata = {
-	title: "Course Single | Geeks Nextjs Template",
-}
+  title: "Course Single | Geeks Nextjs Template",
+};
 
-const Page = () => {
-	return (<CourseSingle />);
+const Page = ({ params }) => {
+  return <CourseSingle params={params} />;
 };
 
 export default Page;

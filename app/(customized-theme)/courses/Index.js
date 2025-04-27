@@ -14,16 +14,45 @@ import { Col, Row, Container, Tab } from "react-bootstrap";
 import PageHeading from "shared/page-headings/PageHeading";
 import TabContainer from "./components/TabContainer";
 
-const CourseFilterPage = () => {
+const CourseFilterPage = async () => {
+  const response = await fetch("https://api.editors.academy/courses", {
+    method: "GET",
+    headers: {
+      "x-api-key": process.env.API_KEY,
+    },
+  });
+  const courses = await response.json();
+  const instructors = await Promise.all(
+    courses.courses.map(async (course) => {
+      const resInstructor = await fetch(
+        `https://api.editors.academy/courses/${course.id}/instructor`,
+        {
+          method: "GET",
+          headers: {
+            "x-api-key": process.env.API_KEY,
+          },
+        }
+      );
+      if (!resInstructor.ok) {
+        throw new Error(
+          `Failed to fetch instructor for course ID: ${course.id}`
+        );
+      }
+      const instructorData = await resInstructor.json();
+
+      return instructorData;
+    })
+  );
+  console.log(courses);
   return (
     <Fragment>
       {/* Page header */}
-      <PageHeading pagetitle="Filter Page" />
+      <PageHeading pagetitle="Courses" />
 
       {/* Content */}
       <section className="py-6">
         <Container>
-          <TabContainer />
+          <TabContainer instructors={instructors} courses={courses} />
         </Container>
       </section>
     </Fragment>

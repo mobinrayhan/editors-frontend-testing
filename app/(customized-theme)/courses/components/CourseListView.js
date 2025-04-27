@@ -12,7 +12,7 @@ import CourseCard from "shared/card/CourseCard";
 import { AllCoursesData } from "data/slider/AllCoursesData";
 import Link from "next/link";
 
-const CourseListView = () => {
+const CourseListView = ({ courses }) => {
   const [Records] = useState(AllCoursesData.slice(0, 500));
   if (typeof window !== "undefined") {
     const cartData = localStorage.getItem("cartItem");
@@ -26,16 +26,15 @@ const CourseListView = () => {
   const changePage = ({ selected }) => {
     setPageNumber(selected);
   };
-  const displayRecords = Records.slice(
-    pagesVisited,
-    pagesVisited + RecordsPerPage
-  ).map((Records, index) => {
-    return (
-      <Col sm={12} md={12} lg={12} key={index}>
-        <CourseCard item={Records} viewby="list" />
-      </Col>
-    );
-  });
+  const displayRecords = courses.courses
+    .slice(pagesVisited, pagesVisited + RecordsPerPage)
+    .map((Records, index) => {
+      return (
+        <Col sm={12} md={12} lg={12} key={index}>
+          <CourseCard item={Records} viewby="list" />
+        </Col>
+      );
+    });
   // end of paging
 
   return (

@@ -41,9 +41,78 @@ import AddToCart from "./components/AddToCart";
 import CourseList from "./components/CourseList";
 import CardsComponents from "./components/CardsComponents";
 
-const CourseSingle = () => {
+const CourseSingle = async ({ params }) => {
+  console.log(params["course-single"]);
+  const slug = params["course-single"];
   // const [isOpen, setOpen] = useState(false);
   // const [YouTubeURL] = useState("JRzWRZahOVU");
+  const responseCourse = await fetch(
+    `https://api.editors.academy/courses/${slug}`,
+    {
+      method: "GET",
+      headers: {
+        "x-api-key": process.env.API_KEY,
+      },
+    }
+  );
+  const { course } = await responseCourse.json();
+  const responseSection = await fetch(
+    `https://api.editors.academy/courses/${course.id}/sections`,
+    {
+      method: "GET",
+      headers: {
+        "x-api-key": process.env.API_KEY,
+      },
+    }
+  );
+  const sections = await responseSection.json();
+
+  const responseAllSectionWithVideo = await Promise.all(
+    sections.courseSections.map(async (section) => {
+      const resVideoData = await fetch(
+        `https://api.editors.academy/courses/${course.id}/${section.id}/videos`,
+        {
+          method: "GET",
+          headers: {
+            "x-api-key": process.env.API_KEY,
+          },
+        }
+      );
+      const resAssignmentData = await fetch(
+        `https://api.editors.academy/courses/${course.id}/${section.id}/assignments`,
+        {
+          method: "GET",
+          headers: {
+            "x-api-key": process.env.API_KEY,
+          },
+        }
+      );
+      const resResourceData = await fetch(
+        `https://api.editors.academy/courses/${course.id}/${section.id}/resources`,
+        {
+          method: "GET",
+          headers: {
+            "x-api-key": process.env.API_KEY,
+          },
+        }
+      );
+
+      const sectionVideoData = await resVideoData.json();
+      const sectionAssignmentData = await resAssignmentData.json();
+      const sectionResourcesData = await resResourceData.json();
+
+      return {
+        ...sectionVideoData,
+        ...sectionAssignmentData,
+        ...sectionResourcesData,
+        ...section,
+      };
+    })
+  );
+  console.log(responseAllSectionWithVideo);
+
+  // console.log(sections);
+  // console.log(video);
   const profileData = {
     id: 1,
     name: "Jenny Wilson",
@@ -67,12 +136,14 @@ const CourseSingle = () => {
             <Col xl={7} lg={7} md={12} sm={12}>
               <div>
                 <h1 className="text-white display-4 fw-semi-bold">
-                  Getting Started with JavaScript
+                  {/* Getting Started with JavaScript */}
+                  {course?.title}
                 </h1>
                 <p className="text-white mb-6 lead">
-                  JavaScript is the popular programming language which powers
+                  {/* JavaScript is the popular programming language which powers
                   web pages and web applications. This course will get you
-                  started coding in JavaScript.
+                  started coding in JavaScript. */}
+                  {course?.description}
                 </p>
                 <div className="d-flex align-items-center">
                   <GKTippy content="Add to Bookmarks">
@@ -126,7 +197,7 @@ const CourseSingle = () => {
                         y="2"
                       ></rect>
                     </svg>{" "}
-                    <span className="align-middle">Intermediate</span>
+                    <span className="align-middle">{course?.level}</span>
                   </span>
                 </div>
               </div>
@@ -139,10 +210,10 @@ const CourseSingle = () => {
         <Container>
           <Row>
             <Col lg={8} md={12} sm={12} className="mt-n8 mb-4 mb-lg-0">
-              <CourseList />
+              <CourseList sections={responseAllSectionWithVideo} />
             </Col>
             <Col lg={4} md={12} sm={12} className="mt-lg-n22">
-              <CardsComponents />
+              <CardsComponents course={course} />
             </Col>
           </Row>
           {/* Card */}
