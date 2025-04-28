@@ -12,7 +12,7 @@ import CourseCard from "shared/card/CourseCard";
 import { AllCoursesData } from "data/slider/AllCoursesData";
 import Link from "next/link";
 
-const CourseListView = ({ courses }) => {
+const CourseListView = ({ courses, instructors }) => {
   const [Records] = useState(AllCoursesData.slice(0, 500));
   if (typeof window !== "undefined") {
     const cartData = localStorage.getItem("cartItem");
@@ -31,7 +31,11 @@ const CourseListView = ({ courses }) => {
     .map((Records, index) => {
       return (
         <Col sm={12} md={12} lg={12} key={index}>
-          <CourseCard item={Records} viewby="list" />
+          <CourseCard
+            instructor={instructors[index].instructor[0]}
+            item={Records}
+            viewby="list"
+          />
         </Col>
       );
     });
@@ -47,7 +51,7 @@ const CourseListView = ({ courses }) => {
         )}
       </Row>
 
-      <ReactPaginate
+      {/* <ReactPaginate
         previousLabel={<ChevronLeft size="14px" />}
         nextLabel={<ChevronRight size="14px" />}
         pageCount={pageCount}
@@ -59,7 +63,7 @@ const CourseListView = ({ courses }) => {
         pageLinkClassName={"page-link mx-1 rounded"}
         disabledClassName={"paginationDisabled"}
         activeClassName={"active"}
-      />
+      /> */}
     </Fragment>
   );
 };

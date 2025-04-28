@@ -39,7 +39,8 @@ import InstructorProfileSummaryCard from "widgets/cards/InstructorProfileSummary
 // import Ratings from "widgets/ratings/Ratings";
 import AddToCart from "./AddToCart";
 // import CourseList from "./CourseList";
-const CardsComponents = ({ course }) => {
+const CardsComponents = ({ course, instructorData }) => {
+  console.log(instructorData);
   const profileData = {
     id: 1,
     name: "Jenny Wilson",
@@ -62,7 +63,7 @@ const CardsComponents = ({ course }) => {
           <div
             className="d-flex justify-content-center position-relative rounded py-10 border-white border rounded-3 bg-cover"
             style={{
-              background: `url('/images/course/course-javascript.jpg')`,
+              background: `url(${course?.thumbnail})`,
               backgroundRepeat: "no-repeat",
               backgroundSize: "cover",
               backgroundPosition: "top center",
@@ -140,7 +141,7 @@ const CardsComponents = ({ course }) => {
         </Card.Body>
       </Card>
       {/* Card */}
-      <InstructorProfileSummaryCard data={profileData} />
+      <InstructorProfileSummaryCard data={instructorData} />
     </>
   );
 };

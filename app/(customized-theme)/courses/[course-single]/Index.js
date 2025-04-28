@@ -69,7 +69,16 @@ const CourseSingle = async ({ params }) => {
     }));
   const sections = course && (await responseSection.json());
   console.log(sections);
-
+  const resInstructor = await fetch(
+    `https://api.editors.academy/courses/${course.id}/instructor`,
+    {
+      method: "GET",
+      headers: {
+        "x-api-key": process.env.API_KEY,
+      },
+    }
+  );
+  const instructorData = await resInstructor.json();
   const responseAllSectionWithVideo = await Promise.all(
     sections?.success === false || course === undefined
       ? []
@@ -224,7 +233,10 @@ const CourseSingle = async ({ params }) => {
                 <CourseList sections={responseAllSectionWithVideo} />
               </Col>
               <Col lg={4} md={12} sm={12} className="mt-lg-n22">
-                <CardsComponents course={course} />
+                <CardsComponents
+                  instructorData={instructorData}
+                  course={course}
+                />
               </Col>
             </Row>
 
