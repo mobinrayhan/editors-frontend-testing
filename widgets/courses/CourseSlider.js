@@ -11,6 +11,7 @@ import { AllCoursesData } from "data/slider/AllCoursesData";
 import Link from "next/link";
 import CourseCard from "shared/card/CourseCard";
 import { Col, Row } from "react-bootstrap";
+import ErrorPage from "components/ErrorPage";
 
 const CourseSlider = ({
   instructors,
@@ -53,18 +54,22 @@ const CourseSlider = ({
   return (
     <Fragment>
       <Row>
-        {courses?.courses?.map((item, index) => (
-          <Col lg={4} md={6} sm={12} key={item.id}>
-            <div className="item px-md-1">
-              <CourseCard
-                key={index}
-                item={item}
-                instructor={instructors[index].instructor[0]}
-                extraclass="mx-2"
-              />
-            </div>
-          </Col>
-        ))}
+        {courses?.success === false ? (
+          <ErrorPage />
+        ) : (
+          courses?.courses?.map((item, index) => (
+            <Col lg={4} md={6} sm={12} key={item.id}>
+              <div className="item px-md-1">
+                <CourseCard
+                  key={index}
+                  item={item}
+                  instructor={instructors[index].instructor[0]}
+                  extraclass="mx-2"
+                />
+              </div>
+            </Col>
+          ))
+        )}
       </Row>
       {/* <Slider {...settings} className="pb-sm-5 mb-5 slick-slider-wrapper"> */}
       {
