@@ -40,6 +40,7 @@ import CourseCard from "shared/card/CourseCard";
 import Ratings from "widgets/ratings/Ratings";
 import AddToCart from "./AddToCart";
 const CourseList = ({ sections }) => {
+  console.log(sections);
   return (
     <Tab.Container defaultActiveKey="contents">
       <Card>
