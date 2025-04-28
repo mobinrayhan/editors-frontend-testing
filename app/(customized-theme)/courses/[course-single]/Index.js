@@ -41,79 +41,41 @@ import AddToCart from "./components/AddToCart";
 import CourseList from "./components/CourseList";
 import CardsComponents from "./components/CardsComponents";
 import ErrorPage from "components/ErrorPage";
+import getFetch from "helper/getFetch";
 
 const CourseSingle = async ({ params }) => {
   console.log(params["course-single"]);
   const slug = params["course-single"];
   // const [isOpen, setOpen] = useState(false);
   // const [YouTubeURL] = useState("JRzWRZahOVU");
-  const responseCourse = await fetch(
-    `https://api.editors.academy/courses/${slug}`,
-    {
-      method: "GET",
-      headers: {
-        "x-api-key": process.env.API_KEY,
-      },
-    }
-  );
-  const { course } = await responseCourse.json();
-  console.log(course);
 
-  const responseSection =
-    course &&
-    (await fetch(`https://api.editors.academy/courses/${course.id}/sections`, {
-      method: "GET",
-      headers: {
-        "x-api-key": process.env.API_KEY,
-      },
-    }));
-  const sections = course && (await responseSection.json());
-  console.log(sections);
-  const resInstructor = await fetch(
-    `https://api.editors.academy/courses/${course.id}/instructor`,
-    {
-      method: "GET",
-      headers: {
-        "x-api-key": process.env.API_KEY,
-      },
-    }
+  const { course } = await getFetch(
+    `https://api.editors.academy/courses/${slug}`
   );
-  const instructorData = await resInstructor.json();
+
+  const sections =
+    course &&
+    (await getFetch(
+      `https://api.editors.academy/courses/${course.id}/sections`
+    ));
+
+  const instructorData = await getFetch(
+    `https://api.editors.academy/courses/${course.id}/instructor`
+  );
+  // const instructorData = await resInstructor.json();
   const responseAllSectionWithVideo = await Promise.all(
     sections?.success === false || course === undefined
       ? []
       : sections?.courseSections?.map(async (section) => {
-          const resVideoData = await fetch(
-            `https://api.editors.academy/courses/${course.id}/${section.id}/videos`,
-            {
-              method: "GET",
-              headers: {
-                "x-api-key": process.env.API_KEY,
-              },
-            }
+          const sectionVideoData = await getFetch(
+            `https://api.editors.academy/courses/${course.id}/${section.id}/videos`
           );
-          const resAssignmentData = await fetch(
-            `https://api.editors.academy/courses/${course.id}/${section.id}/assignments`,
-            {
-              method: "GET",
-              headers: {
-                "x-api-key": process.env.API_KEY,
-              },
-            }
+          const sectionAssignmentData = await getFetch(
+            `https://api.editors.academy/courses/${course.id}/${section.id}/assignments`
           );
-          const resResourceData = await fetch(
-            `https://api.editors.academy/courses/${course.id}/${section.id}/resources`,
-            {
-              method: "GET",
-              headers: {
-                "x-api-key": process.env.API_KEY,
-              },
-            }
+          const sectionResourcesData = await getFetch(
+            `https://api.editors.academy/courses/${course.id}/${section.id}/resources`
           );
-
-          const sectionVideoData = await resVideoData.json();
-          const sectionAssignmentData = await resAssignmentData.json();
-          const sectionResourcesData = await resResourceData.json();
 
           return {
             ...sectionVideoData,
@@ -123,24 +85,21 @@ const CourseSingle = async ({ params }) => {
           };
         })
   );
-  // console.log(responseAllSectionWithVideo);
 
-  // console.log(sections);
-  // console.log(video);
-  const profileData = {
-    id: 1,
-    name: "Jenny Wilson",
-    image: "/images/avatar/avatar-1.jpg",
-    designation: "Front-end Developer, Designer",
-    rating: 4.5,
-    reviews: 12230,
-    students: 11604,
-    courses: 32,
-    verified: true,
-    link: "/marketing/instructor/profile",
-    about:
-      "I am an Innovation designer focussing on UX/UI based in Berlin. As a creative resident at Figma explored the city of the future and how new technologies.",
-  };
+  // const profileData = {
+  //   id: 1,
+  //   name: "Jenny Wilson",
+  //   image: "/images/avatar/avatar-1.jpg",
+  //   designation: "Front-end Developer, Designer",
+  //   rating: 4.5,
+  //   reviews: 12230,
+  //   students: 11604,
+  //   courses: 32,
+  //   verified: true,
+  //   link: "/marketing/instructor/profile",
+  //   about:
+  //     "I am an Innovation designer focussing on UX/UI based in Berlin. As a creative resident at Figma explored the city of the future and how new technologies.",
+  // };
 
   return (
     <Fragment>

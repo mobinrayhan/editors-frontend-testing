@@ -27,7 +27,7 @@ const CourseListView = ({ courses, instructors }) => {
   const changePage = ({ selected }) => {
     setPageNumber(selected);
   };
-  console.log(courses);
+
   const displayRecords = courses
     ? courses?.courses
         .slice(pagesVisited, pagesVisited + RecordsPerPage)

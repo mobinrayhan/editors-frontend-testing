@@ -13,37 +13,20 @@ import { Col, Row, Container, Tab } from "react-bootstrap";
 // import GridListViewButton from "shared/grid-list-view-button/GridListViewButton";
 import PageHeading from "shared/page-headings/PageHeading";
 import TabContainer from "./components/TabContainer";
+import getFetch from "helper/getFetch";
 
 const CourseFilterPage = async () => {
-  const response = await fetch("https://api.editors.academy/courses", {
-    method: "GET",
-    headers: {
-      "x-api-key": process.env.API_KEY,
-    },
-  });
-  const courses = await response.json();
+  const courses = await getFetch("https://api.editors.academy/courses");
+
   const instructors = await Promise.all(
     courses.courses.map(async (course) => {
-      const resInstructor = await fetch(
-        `https://api.editors.academy/courses/${course.id}/instructor`,
-        {
-          method: "GET",
-          headers: {
-            "x-api-key": process.env.API_KEY,
-          },
-        }
+      const instructorData = await getFetch(
+        `https://api.editors.academy/courses/${course.id}/instructor`
       );
-      if (!resInstructor.ok) {
-        throw new Error(
-          `Failed to fetch instructor for course ID: ${course.id}`
-        );
-      }
-      const instructorData = await resInstructor.json();
-
       return instructorData;
     })
   );
-  console.log(courses);
+
   return (
     <Fragment>
       {/* Page header */}

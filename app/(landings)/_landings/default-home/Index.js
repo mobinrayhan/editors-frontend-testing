@@ -5,42 +5,21 @@ import HeroHeader from "widgets/hero-sections/HeroHeader";
 import FeaturesList from "widgets/home/FeaturesList";
 import CourseSlider from "widgets/courses/CourseSlider";
 import ErrorPage from "components/ErrorPage";
+import getFetch from "helper/getFetch";
 
 const DefaultHome = async () => {
-  const response = await fetch("https://api.editors.academy/courses", {
-    method: "GET",
-    headers: {
-      "x-api-key": process.env.API_KEY,
-    },
-  });
-
-  const courses = await response.json();
+  const courses = await getFetch("https://api.editors.academy/courses");
 
   const instructors = await Promise.all(
     courses?.success === false
       ? []
       : courses?.courses?.map(async (course) => {
-          const resInstructor = await fetch(
-            `https://api.editors.academy/courses/${course.id}/instructor`,
-            {
-              method: "GET",
-              headers: {
-                "x-api-key": process.env.API_KEY,
-              },
-            }
+          const instructorData = await getFetch(
+            `https://api.editors.academy/courses/${course.id}/instructor`
           );
-          if (!resInstructor.ok) {
-            throw new Error(
-              `Failed to fetch instructor for course ID: ${course.id}`
-            );
-          }
-          const instructorData = await resInstructor.json();
-
           return instructorData;
         })
   );
-  console.log(courses);
-  // console.log("check--?", Array.isArray(instructors[0]));
 
   return (
     <main>

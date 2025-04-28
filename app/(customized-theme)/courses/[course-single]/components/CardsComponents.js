@@ -40,21 +40,20 @@ import InstructorProfileSummaryCard from "widgets/cards/InstructorProfileSummary
 import AddToCart from "./AddToCart";
 // import CourseList from "./CourseList";
 const CardsComponents = ({ course, instructorData }) => {
-  console.log(instructorData);
-  const profileData = {
-    id: 1,
-    name: "Jenny Wilson",
-    image: "/images/avatar/avatar-1.jpg",
-    designation: "Front-end Developer, Designer",
-    rating: 4.5,
-    reviews: 12230,
-    students: 11604,
-    courses: 32,
-    verified: true,
-    link: "/marketing/instructor/profile",
-    about:
-      "I am an Innovation designer focussing on UX/UI based in Berlin. As a creative resident at Figma explored the city of the future and how new technologies.",
-  };
+  // const profileData = {
+  //   id: 1,
+  //   name: "Jenny Wilson",
+  //   image: "/images/avatar/avatar-1.jpg",
+  //   designation: "Front-end Developer, Designer",
+  //   rating: 4.5,
+  //   reviews: 12230,
+  //   students: 11604,
+  //   courses: 32,
+  //   verified: true,
+  //   link: "/marketing/instructor/profile",
+  //   about:
+  //     "I am an Innovation designer focussing on UX/UI based in Berlin. As a creative resident at Figma explored the city of the future and how new technologies.",
+  // };
   return (
     <>
       {/* Card */}
