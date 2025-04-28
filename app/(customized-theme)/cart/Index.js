@@ -34,27 +34,7 @@ const Cart = async () => {
           </Row>
           <Row className="flex-column-reverse flex-md-row">
             <Col xl={9} lg={8} md={7} sm={12} className="mt-4 mt-md-0">
-              <CourseListView
-                courses={{
-                  courses: [
-                    {
-                      id: 1,
-                      title: "JavaScript for Beginners",
-                      description:
-                        "A complete course for learning JavaScript from scratch.",
-                      price: "49.99",
-                      level: "Beginner",
-                      slug: "javascript-for-beginners",
-                      thumbnail:
-                        "https://dummyimage.com/600x400/333/fff&text=JavaScript",
-                      createdAt: "2025-04-24T15:59:01.000Z",
-                      createdBy: 1,
-                      visibility: "public",
-                    },
-                  ],
-                  message: "Get All Course Successfully",
-                }}
-              />
+              <CourseListView />
             </Col>
             <CardList />
           </Row>

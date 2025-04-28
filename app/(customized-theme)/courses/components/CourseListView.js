@@ -11,6 +11,7 @@ import CourseCard from "shared/card/CourseCard";
 // import data files
 import { AllCoursesData } from "data/slider/AllCoursesData";
 import Link from "next/link";
+import ErrorPage from "components/ErrorPage";
 
 const CourseListView = ({ courses, instructors }) => {
   const [Records] = useState(AllCoursesData.slice(0, 500));
@@ -26,19 +27,23 @@ const CourseListView = ({ courses, instructors }) => {
   const changePage = ({ selected }) => {
     setPageNumber(selected);
   };
-  const displayRecords = courses.courses
-    .slice(pagesVisited, pagesVisited + RecordsPerPage)
-    .map((Records, index) => {
-      return (
-        <Col sm={12} md={12} lg={12} key={index}>
-          <CourseCard
-            instructor={instructors[index].instructor[0]}
-            item={Records}
-            viewby="list"
-          />
-        </Col>
-      );
-    });
+  console.log(courses);
+  const displayRecords = courses
+    ? courses?.courses
+        .slice(pagesVisited, pagesVisited + RecordsPerPage)
+        .map((Records, index) => {
+          return (
+            <Col sm={12} md={12} lg={12} key={index}>
+              <CourseCard
+                instructor={instructors[index].instructor[0]}
+                item={Records}
+                viewby="list"
+              />
+            </Col>
+          );
+        })
+    : [];
+
   // end of paging
 
   return (
@@ -47,7 +52,9 @@ const CourseListView = ({ courses, instructors }) => {
         {displayRecords.length > 0 ? (
           displayRecords
         ) : (
-          <Col>No matching records found.</Col>
+          <Col>
+            <ErrorPage />
+          </Col>
         )}
       </Row>
 
