@@ -5,7 +5,15 @@ import { Accordion, AccordionContext, ListGroup } from "react-bootstrap";
 import { useAccordionButton } from "react-bootstrap/AccordionButton";
 
 import Icon from "@mdi/react";
-import { mdiPlay } from "@mdi/js";
+import {
+  mdiAssistant,
+  mdiAsterisk,
+  mdiHomeAssistant,
+  mdiPagePreviousOutline,
+  mdiPaperclipPlus,
+  mdiPaperCutVertical,
+  mdiPlay,
+} from "@mdi/js";
 import ErrorPage from "components/ErrorPage";
 
 const GKAccordionDefault = ({ accordionItems, itemClass, sections }) => {
@@ -143,7 +151,10 @@ const GKAccordionDefault = ({ accordionItems, itemClass, sections }) => {
                                   {subitem.locked ? (
                                     <i className="fe fe-lock fs-4"></i>
                                   ) : (
-                                    <Icon path={mdiPlay} size={0.8} />
+                                    <Icon
+                                      path={mdiPagePreviousOutline}
+                                      size={0.6}
+                                    />
                                   )}{" "}
                                 </span>
                                 <span className="fs-5">{subitem.title}</span>
@@ -179,7 +190,7 @@ const GKAccordionDefault = ({ accordionItems, itemClass, sections }) => {
                                   {subitem.locked ? (
                                     <i className="fe fe-lock fs-4"></i>
                                   ) : (
-                                    <Icon path={mdiPlay} size={0.8} />
+                                    <Icon path={mdiAssistant} size={0.6} />
                                   )}{" "}
                                 </span>
                                 <span className="fs-5">{subitem.title}</span>
