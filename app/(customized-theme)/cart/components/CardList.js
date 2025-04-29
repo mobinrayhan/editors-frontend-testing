@@ -3,7 +3,7 @@ import Link from "next/link";
 import React from "react";
 import { Card, Col, Form } from "react-bootstrap";
 
-const CardList = () => {
+const CardList = ({ cartData }) => {
   return (
     <Col className="">
       <Card className="">
@@ -17,7 +17,9 @@ const CardList = () => {
         {/* Price single page */}
         <Card.Body>
           <div className="mb-3">
-            <span className="text-dark fw-bold h2 me-2">$600</span>
+            <span className="text-dark fw-bold h2 me-2">
+              ${cartData[0]?.price}
+            </span>
             <del className="fs-4 text-muted">$750</del>
           </div>
           <div className="d-grid">

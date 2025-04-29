@@ -38,7 +38,7 @@ const CourseListView = ({ courses, cartData, isCart = false }) => {
             );
           })
       : [];
-  console.log(cartData);
+
   const cartRecords =
     cartData && isCart
       ? // courses?.courses

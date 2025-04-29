@@ -46,7 +46,7 @@ const Cart = () => {
             <Col xl={9} lg={8} md={7} sm={12} className="mt-4 mt-md-0">
               <CourseListView cartData={cartData} isCart={true} />
             </Col>
-            <CardList />
+            <CardList cartData={cartData} />
           </Row>
         </Container>
       </section>
