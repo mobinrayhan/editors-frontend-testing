@@ -11,13 +11,12 @@ import CourseCard from "shared/card/CourseCard";
 // import data files
 import { AllCoursesData } from "data/slider/AllCoursesData";
 import Link from "next/link";
-import ErrorPage from "components/ErrorPage";
 
-const CourseListView = ({ courses, instructors }) => {
+const CourseListView = ({ courses, cartData, isCart = false }) => {
   const [Records] = useState(AllCoursesData.slice(0, 500));
   if (typeof window !== "undefined") {
-    const cartData = localStorage.getItem("cartItem");
-    console.log(cartData);
+    // const cartData = localStorage.getItem("cartItem");
+    // console.log(cartData);
   }
   // paging start
   const [pageNumber, setPageNumber] = useState(0);
@@ -27,23 +26,35 @@ const CourseListView = ({ courses, instructors }) => {
   const changePage = ({ selected }) => {
     setPageNumber(selected);
   };
-
-  const displayRecords = courses
-    ? courses?.courses
-        .slice(pagesVisited, pagesVisited + RecordsPerPage)
-        .map((Records, index) => {
+  const displayRecords =
+    courses && isCart
+      ? courses?.courses
+          .slice(pagesVisited, pagesVisited + RecordsPerPage)
+          .map((Records, index) => {
+            return (
+              <Col sm={12} md={12} lg={12} key={index}>
+                <CourseCard item={Records} viewby="list" />
+              </Col>
+            );
+          })
+      : [];
+  console.log(cartData);
+  const cartRecords =
+    cartData && isCart
+      ? // courses?.courses
+        // .slice(pagesVisited, pagesVisited + RecordsPerPage)
+        cartData.map((Records, index) => {
           return (
             <Col sm={12} md={12} lg={12} key={index}>
               <CourseCard
-                instructor={instructors[index].instructor[0]}
+                instructor={Records?.instructor?.instructor[0]}
                 item={Records}
                 viewby="list"
               />
             </Col>
           );
         })
-    : [];
-
+      : [];
   // end of paging
 
   return (
@@ -51,10 +62,10 @@ const CourseListView = ({ courses, instructors }) => {
       <Row>
         {displayRecords.length > 0 ? (
           displayRecords
+        ) : isCart ? (
+          cartRecords
         ) : (
-          <Col>
-            <ErrorPage />
-          </Col>
+          <Col>No matching records found.</Col>
         )}
       </Row>
 

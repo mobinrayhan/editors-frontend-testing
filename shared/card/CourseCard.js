@@ -150,14 +150,14 @@ const CourseCard = ({
             href="#"
             className="bg-cover img-left-rounded col-12 col-md-12 col-xl-3 col-lg-3 "
             style={{
-              background: `url(${item.thumbnail})`,
+              background: `url(${item?.thumbnail})`,
               backgroundRepeat: "no-repeat",
               backgroundSize: "cover",
               backgroundPosition: "center center",
             }}
           >
             <Image
-              src={item.image}
+              src={item?.thumbnail}
               alt="..."
               className="img-fluid d-lg-none invisible"
             />
@@ -167,7 +167,7 @@ const CourseCard = ({
             <Card.Body>
               <h3 className="mb-2 text-truncate-line-2 ">
                 <Link href="#" className="text-inherit">
-                  {item.title}
+                  {item?.title}
                 </Link>
               </h3>
               {/*   List inline   */}
@@ -177,8 +177,8 @@ const CourseCard = ({
                   {/* {item.duration} */} 1:50
                 </ListGroup.Item>
                 <ListGroup.Item as="li" bsPrefix="list-inline-item">
-                  <LevelIcon level={item.level} />
-                  {item.level}
+                  <LevelIcon level={item?.level} />
+                  {item?.level}
                 </ListGroup.Item>
                 <ListGroup.Item as="li" bsPrefix="list-inline-item">
                   <span className="text-warning">

@@ -97,7 +97,7 @@ const CardsComponents = ({ course, instructorData }) => {
             <del className="fs-4 text-muted">750</del>
           </div>
           <div className="d-grid">
-            <AddToCart />
+            <AddToCart course={course} instructorData={instructorData} />
             <Link
               href="/marketing/pages/pricing/"
               className="btn btn-outline-primary"
