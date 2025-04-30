@@ -12,7 +12,7 @@ import CourseCard from "shared/card/CourseCard";
 import { AllCoursesData } from "data/slider/AllCoursesData";
 import Link from "next/link";
 
-const CourseListView = ({ courses, cartData, isCart = false }) => {
+const CourseListView = ({ courses, instructors, cartData, isCart = false }) => {
   const [Records] = useState(AllCoursesData.slice(0, 500));
   if (typeof window !== "undefined") {
     // const cartData = localStorage.getItem("cartItem");
@@ -27,13 +27,17 @@ const CourseListView = ({ courses, cartData, isCart = false }) => {
     setPageNumber(selected);
   };
   const displayRecords =
-    courses && isCart
+    courses && !isCart
       ? courses?.courses
           .slice(pagesVisited, pagesVisited + RecordsPerPage)
           .map((Records, index) => {
             return (
               <Col sm={12} md={12} lg={12} key={index}>
-                <CourseCard item={Records} viewby="list" />
+                <CourseCard
+                  instructor={instructors[index].instructor[0]}
+                  item={Records}
+                  viewby="list"
+                />
               </Col>
             );
           })
