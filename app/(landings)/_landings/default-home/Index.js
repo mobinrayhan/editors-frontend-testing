@@ -4,8 +4,23 @@ import { Col, Row, Container } from "react-bootstrap";
 import HeroHeader from "widgets/hero-sections/HeroHeader";
 import FeaturesList from "widgets/home/FeaturesList";
 import CourseSlider from "widgets/courses/CourseSlider";
+import ErrorPage from "components/ErrorPage";
+import getFetch from "helper/getFetch";
 
-const DefaultHome = () => {
+const DefaultHome = async () => {
+  const courses = await getFetch("https://api.editors.academy/courses");
+
+  const instructors = await Promise.all(
+    courses?.success === false
+      ? []
+      : courses?.courses?.map(async (course) => {
+          const instructorData = await getFetch(
+            `https://api.editors.academy/courses/${course.id}/instructor`
+          );
+          return instructorData;
+        })
+  );
+
   return (
     <main>
       <HeroHeader
@@ -25,11 +40,15 @@ const DefaultHome = () => {
             </Col>
           </Row>
           <div className="position-relative">
-            <CourseSlider recommended={true} />
+            <CourseSlider
+              courses={courses}
+              instructors={instructors}
+              recommended={true}
+            />
           </div>
         </Container>
       </section>
-      <section className="pb-lg-3 pt-lg-3">
+      {/* <section className="pb-lg-3 pt-lg-3">
         <Container>
           <Row className="mb-4">
             <Col>
@@ -52,7 +71,7 @@ const DefaultHome = () => {
             <CourseSlider trending={true} />
           </div>
         </Container>
-      </section>{" "}
+      </section> */}
     </main>
   );
 };

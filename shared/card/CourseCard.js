@@ -24,6 +24,7 @@ import { numberWithCommas } from "helper/utils";
 import GKTippy from "widgets/tooltips/GKTippy";
 
 const CourseCard = ({
+  instructor,
   item,
   free = false,
   viewby = "grid",
@@ -34,16 +35,16 @@ const CourseCard = ({
   const GridView = () => {
     return (
       <Card className={`mb-4 card-hover ${extraclass}`}>
-        <Link href={"/courses/1"}>
+        <Link href={`/courses/${item?.slug}`}>
           <Image
-            src={item.image}
+            src={item.thumbnail}
             alt=""
             className="card-img-top rounded-top-md"
           />
         </Link>
 
         {/* Card body  */}
-        <Link href={"/courses/1"}>
+        <Link href={`/courses/${item?.slug}`}>
           <Card.Body>
             <h3 className="h4 mb-2 text-truncate-line-2 ">
               {/* <Link href="#" className="text-inherit"> */}
@@ -53,7 +54,7 @@ const CourseCard = ({
             <ListGroup as="ul" bsPrefix="list-inline" className="mb-3">
               <ListGroup.Item as="li" bsPrefix="list-inline-item">
                 <i className="far fa-clock me-1"></i>
-                {item.duration}
+                {/* {item.duration} */} 1:50
               </ListGroup.Item>
               <ListGroup.Item as="li" bsPrefix="list-inline-item">
                 <LevelIcon level={item.level} />
@@ -71,29 +72,28 @@ const CourseCard = ({
               }`}
             >
               <span className="text-warning me-1 mb-0">
-                <Ratings rating={item.rating} size="0.92rem" />
+                {/* item.rating */}
+                <Ratings rating={4} size="0.92rem" />
               </span>
               <span className="text-warning me-1">
                 {" "}
-                {item.rating.toFixed(1)}
+                {/* {item.rating.toFixed(1)} */} 4.0
               </span>
               <span className="fs-6 text-muted">
                 {" "}
-                ({numberWithCommas(item.ratingby)})
+                {/* item.ratingby */}({numberWithCommas(1200)})
               </span>
             </div>
             <div
               className={`lh-1 mt-3 ${
-                free ||
-                item.price === undefined ||
-                item.price <= 0 ||
-                item.discount === undefined
-                  ? "d-none"
+                free || item.price === undefined || item.price <= 0 //||
+                  ? // item.discount === undefined
+                    "d-none"
                   : ""
               }`}
             >
               <span className="text-dark fw-bold">
-                ${item.price - item.discount}
+                {/* ${item.price - item?.discount} */}${item.price}
               </span>{" "}
               <del className="fs-6 text-muted">${item.price}</del>
             </div>
@@ -105,7 +105,10 @@ const CourseCard = ({
             <Col className="col-auto">
               <Link href={"/instructor/profile"}>
                 <Image
-                  src={item.instructor_image}
+                  src={
+                    instructor?.profile_image ||
+                    "https://gratisography.com/wp-content/uploads/2024/11/gratisography-augmented-reality-800x525.jpg"
+                  }
                   className="rounded-circle avatar-xs"
                   alt=""
                 />
@@ -113,7 +116,7 @@ const CourseCard = ({
             </Col>
             <Col className="col ms-2">
               <Link href={"/instructor/profile"}>
-                <span>{item.instructor_name}</span>
+                <span>{instructor?.name}</span>
               </Link>
             </Col>
             <Col className="col-auto">
@@ -147,14 +150,14 @@ const CourseCard = ({
             href="#"
             className="bg-cover img-left-rounded col-12 col-md-12 col-xl-3 col-lg-3 "
             style={{
-              background: `url(${item.image})`,
+              background: `url(${item?.thumbnail})`,
               backgroundRepeat: "no-repeat",
               backgroundSize: "cover",
               backgroundPosition: "center center",
             }}
           >
             <Image
-              src={item.image}
+              src={item?.thumbnail}
               alt="..."
               className="img-fluid d-lg-none invisible"
             />
@@ -164,27 +167,27 @@ const CourseCard = ({
             <Card.Body>
               <h3 className="mb-2 text-truncate-line-2 ">
                 <Link href="#" className="text-inherit">
-                  {item.title}
+                  {item?.title}
                 </Link>
               </h3>
               {/*   List inline   */}
               <ListGroup as="ul" bsPrefix="list-inline" className="mb-5">
                 <ListGroup.Item as="li" bsPrefix="list-inline-item">
                   <i className="far fa-clock me-1"></i>
-                  {item.duration}
+                  {/* {item.duration} */} 1:50
                 </ListGroup.Item>
                 <ListGroup.Item as="li" bsPrefix="list-inline-item">
-                  <LevelIcon level={item.level} />
-                  {item.level}
+                  <LevelIcon level={item?.level} />
+                  {item?.level}
                 </ListGroup.Item>
                 <ListGroup.Item as="li" bsPrefix="list-inline-item">
                   <span className="text-warning">
                     {" "}
-                    <Ratings rating={item.rating} /> {item.rating.toFixed(1)}
+                    <Ratings rating={5} /> {(5.0).toFixed(1)}
                   </span>
                   <span className="fs-6 text-muted">
                     {" "}
-                    ({numberWithCommas(item.ratingby)})
+                    ({numberWithCommas(1200)})
                   </span>
                 </ListGroup.Item>
               </ListGroup>
@@ -192,13 +195,16 @@ const CourseCard = ({
               <Row className="align-items-center g-0">
                 <Col className="col-auto">
                   <Image
-                    src={item.instructor_image}
+                    src={
+                      instructor?.profile_image ||
+                      "https://media.istockphoto.com/id/1682296067/photo/happy-studio-portrait-or-professional-man-real-estate-agent-or-asian-businessman-smile-for.jpg?s=612x612&w=0&k=20&c=9zbG2-9fl741fbTWw5fNgcEEe4ll-JegrGlQQ6m54rg="
+                    }
                     className="rounded-circle avatar-xs"
                     alt=""
                   />
                 </Col>
                 <Col className="col ms-2">
-                  <span>{item.instructor_name}</span>
+                  <span>{instructor?.name}</span>
                 </Col>
                 <Col className="col-auto">
                   <GKTippy content="Add to Bookmarks">

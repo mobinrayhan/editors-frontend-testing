@@ -12,11 +12,11 @@ import CourseCard from "shared/card/CourseCard";
 import { AllCoursesData } from "data/slider/AllCoursesData";
 import Link from "next/link";
 
-const CourseListView = () => {
+const CourseListView = ({ courses, instructors, cartData, isCart = false }) => {
   const [Records] = useState(AllCoursesData.slice(0, 500));
   if (typeof window !== "undefined") {
-    const cartData = localStorage.getItem("cartItem");
-    console.log(cartData);
+    // const cartData = localStorage.getItem("cartItem");
+    // console.log(cartData);
   }
   // paging start
   const [pageNumber, setPageNumber] = useState(0);
@@ -26,16 +26,39 @@ const CourseListView = () => {
   const changePage = ({ selected }) => {
     setPageNumber(selected);
   };
-  const displayRecords = Records.slice(
-    pagesVisited,
-    pagesVisited + RecordsPerPage
-  ).map((Records, index) => {
-    return (
-      <Col sm={12} md={12} lg={12} key={index}>
-        <CourseCard item={Records} viewby="list" />
-      </Col>
-    );
-  });
+  const displayRecords =
+    courses && !isCart
+      ? courses?.courses
+          .slice(pagesVisited, pagesVisited + RecordsPerPage)
+          .map((Records, index) => {
+            return (
+              <Col sm={12} md={12} lg={12} key={index}>
+                <CourseCard
+                  instructor={instructors[index].instructor[0]}
+                  item={Records}
+                  viewby="list"
+                />
+              </Col>
+            );
+          })
+      : [];
+
+  const cartRecords =
+    cartData && isCart
+      ? // courses?.courses
+        // .slice(pagesVisited, pagesVisited + RecordsPerPage)
+        cartData.map((Records, index) => {
+          return (
+            <Col sm={12} md={12} lg={12} key={index}>
+              <CourseCard
+                instructor={Records?.instructor?.instructor[0]}
+                item={Records}
+                viewby="list"
+              />
+            </Col>
+          );
+        })
+      : [];
   // end of paging
 
   return (
@@ -43,12 +66,14 @@ const CourseListView = () => {
       <Row>
         {displayRecords.length > 0 ? (
           displayRecords
+        ) : isCart ? (
+          cartRecords
         ) : (
           <Col>No matching records found.</Col>
         )}
       </Row>
 
-      <ReactPaginate
+      {/* <ReactPaginate
         previousLabel={<ChevronLeft size="14px" />}
         nextLabel={<ChevronRight size="14px" />}
         pageCount={pageCount}
@@ -60,7 +85,7 @@ const CourseListView = () => {
         pageLinkClassName={"page-link mx-1 rounded"}
         disabledClassName={"paginationDisabled"}
         activeClassName={"active"}
-      />
+      /> */}
     </Fragment>
   );
 };

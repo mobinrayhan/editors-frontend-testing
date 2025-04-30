@@ -13,17 +13,29 @@ import { Col, Row, Container, Tab } from "react-bootstrap";
 // import GridListViewButton from "shared/grid-list-view-button/GridListViewButton";
 import PageHeading from "shared/page-headings/PageHeading";
 import TabContainer from "./components/TabContainer";
+import getFetch from "helper/getFetch";
 
-const CourseFilterPage = () => {
+const CourseFilterPage = async () => {
+  const courses = await getFetch("https://api.editors.academy/courses");
+
+  const instructors = await Promise.all(
+    courses.courses.map(async (course) => {
+      const instructorData = await getFetch(
+        `https://api.editors.academy/courses/${course.id}/instructor`
+      );
+      return instructorData;
+    })
+  );
+
   return (
     <Fragment>
       {/* Page header */}
-      <PageHeading pagetitle="Filter Page" />
+      <PageHeading pagetitle="Courses" />
 
       {/* Content */}
       <section className="py-6">
         <Container>
-          <TabContainer />
+          <TabContainer instructors={instructors} courses={courses} />
         </Container>
       </section>
     </Fragment>

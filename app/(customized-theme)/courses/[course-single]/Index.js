@@ -40,113 +40,167 @@ import Ratings from "widgets/ratings/Ratings";
 import AddToCart from "./components/AddToCart";
 import CourseList from "./components/CourseList";
 import CardsComponents from "./components/CardsComponents";
+import ErrorPage from "components/ErrorPage";
+import getFetch from "helper/getFetch";
 
-const CourseSingle = () => {
+const CourseSingle = async ({ params }) => {
+  console.log(params["course-single"]);
+  const slug = params["course-single"];
   // const [isOpen, setOpen] = useState(false);
   // const [YouTubeURL] = useState("JRzWRZahOVU");
-  const profileData = {
-    id: 1,
-    name: "Jenny Wilson",
-    image: "/images/avatar/avatar-1.jpg",
-    designation: "Front-end Developer, Designer",
-    rating: 4.5,
-    reviews: 12230,
-    students: 11604,
-    courses: 32,
-    verified: true,
-    link: "/marketing/instructor/profile",
-    about:
-      "I am an Innovation designer focussing on UX/UI based in Berlin. As a creative resident at Figma explored the city of the future and how new technologies.",
-  };
+
+  const { course } = await getFetch(
+    `https://api.editors.academy/courses/${slug}`
+  );
+
+  const sections =
+    course &&
+    (await getFetch(
+      `https://api.editors.academy/courses/${course.id}/sections`
+    ));
+
+  const instructorData = await getFetch(
+    `https://api.editors.academy/courses/${course.id}/instructor`
+  );
+  // const instructorData = await resInstructor.json();
+  const responseAllSectionWithVideo = await Promise.all(
+    sections?.success === false || course === undefined
+      ? []
+      : sections?.courseSections?.map(async (section) => {
+          const sectionVideoData = await getFetch(
+            `https://api.editors.academy/courses/${course.id}/${section.id}/videos`
+          );
+          const sectionAssignmentData = await getFetch(
+            `https://api.editors.academy/courses/${course.id}/${section.id}/assignments`
+          );
+          const sectionResourcesData = await getFetch(
+            `https://api.editors.academy/courses/${course.id}/${section.id}/resources`
+          );
+
+          return {
+            ...sectionVideoData,
+            ...sectionAssignmentData,
+            ...sectionResourcesData,
+            ...section,
+          };
+        })
+  );
+
+  // const profileData = {
+  //   id: 1,
+  //   name: "Jenny Wilson",
+  //   image: "/images/avatar/avatar-1.jpg",
+  //   designation: "Front-end Developer, Designer",
+  //   rating: 4.5,
+  //   reviews: 12230,
+  //   students: 11604,
+  //   courses: 32,
+  //   verified: true,
+  //   link: "/marketing/instructor/profile",
+  //   about:
+  //     "I am an Innovation designer focussing on UX/UI based in Berlin. As a creative resident at Figma explored the city of the future and how new technologies.",
+  // };
+
   return (
     <Fragment>
       {/* Page header */}
-      <section className="pt-lg-8 pb-lg-16 pt-8 pb-12 bg-primary">
-        <Container>
-          <Row className="align-items-center">
-            <Col xl={7} lg={7} md={12} sm={12}>
-              <div>
-                <h1 className="text-white display-4 fw-semi-bold">
-                  Getting Started with JavaScript
-                </h1>
-                <p className="text-white mb-6 lead">
-                  JavaScript is the popular programming language which powers
+      {!course ? (
+        <ErrorPage />
+      ) : (
+        <section className="pt-lg-8 pb-lg-16 pt-8 pb-12 bg-primary">
+          <Container>
+            <Row className="align-items-center">
+              <Col xl={7} lg={7} md={12} sm={12}>
+                <div>
+                  <h1 className="text-white display-4 fw-semi-bold">
+                    {/* Getting Started with JavaScript */}
+                    {course?.title}
+                  </h1>
+                  <p className="text-white mb-6 lead">
+                    {/* JavaScript is the popular programming language which powers
                   web pages and web applications. This course will get you
-                  started coding in JavaScript.
-                </p>
-                <div className="d-flex align-items-center">
-                  <GKTippy content="Add to Bookmarks">
-                    <Link
-                      href="#"
-                      className="bookmark text-white text-decoration-none"
-                    >
-                      <i className="fe fe-bookmark text-white-50 me-2"></i>{" "}
-                      Bookmark
-                    </Link>
-                  </GKTippy>
-                  <span className="text-white ms-3">
-                    <i className="fe fe-user text-white-50"></i> 1200 Enrolled{" "}
-                  </span>
-                  <span className="ms-4">
-                    <span className="text-warning">
-                      <Ratings rating={4.5} />
-                      <span className="text-white ms-1">(140)</span>
+                  started coding in JavaScript. */}
+                    {course?.description}
+                  </p>
+                  <div className="d-flex align-items-center">
+                    <GKTippy content="Add to Bookmarks">
+                      <Link
+                        href="#"
+                        className="bookmark text-white text-decoration-none"
+                      >
+                        <i className="fe fe-bookmark text-white-50 me-2"></i>{" "}
+                        Bookmark
+                      </Link>
+                    </GKTippy>
+                    <span className="text-white ms-3">
+                      <i className="fe fe-user text-white-50"></i> 1200 Enrolled{" "}
                     </span>
-                  </span>
-                  <span className="text-white ms-4 d-none d-md-block">
-                    <svg
-                      fill="none"
-                      height="16"
-                      viewBox="0 0 16 16"
-                      width="16"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <rect
-                        fill="#DBD8E9"
-                        height="6"
-                        rx="1"
-                        width="2"
-                        x="3"
-                        y="8"
-                      ></rect>
-                      <rect
-                        fill="#DBD8E9"
-                        height="9"
-                        rx="1"
-                        width="2"
-                        x="7"
-                        y="5"
-                      ></rect>
-                      <rect
-                        fill="#DBD8E9"
-                        height="12"
-                        rx="1"
-                        width="2"
-                        x="11"
-                        y="2"
-                      ></rect>
-                    </svg>{" "}
-                    <span className="align-middle">Intermediate</span>
-                  </span>
+                    <span className="ms-4">
+                      <span className="text-warning">
+                        <Ratings rating={4.5} />
+                        <span className="text-white ms-1">(140)</span>
+                      </span>
+                    </span>
+                    <span className="text-white ms-4 d-none d-md-block">
+                      <svg
+                        fill="none"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        width="16"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <rect
+                          fill="#DBD8E9"
+                          height="6"
+                          rx="1"
+                          width="2"
+                          x="3"
+                          y="8"
+                        ></rect>
+                        <rect
+                          fill="#DBD8E9"
+                          height="9"
+                          rx="1"
+                          width="2"
+                          x="7"
+                          y="5"
+                        ></rect>
+                        <rect
+                          fill="#DBD8E9"
+                          height="12"
+                          rx="1"
+                          width="2"
+                          x="11"
+                          y="2"
+                        ></rect>
+                      </svg>{" "}
+                      <span className="align-middle">{course?.level}</span>
+                    </span>
+                  </div>
                 </div>
-              </div>
-            </Col>
-          </Row>
-        </Container>
-      </section>
+              </Col>
+            </Row>
+          </Container>
+        </section>
+      )}
       {/* Page content */}
-      <section className="pb-10">
-        <Container>
-          <Row>
-            <Col lg={8} md={12} sm={12} className="mt-n8 mb-4 mb-lg-0">
-              <CourseList />
-            </Col>
-            <Col lg={4} md={12} sm={12} className="mt-lg-n22">
-              <CardsComponents />
-            </Col>
-          </Row>
-          {/* Card */}
-          {/* <div className="pt-12 pb-3">
+      {course && (
+        <section className="pb-10">
+          <Container>
+            <Row>
+              <Col lg={8} md={12} sm={12} className="mt-n8 mb-4 mb-lg-0">
+                <CourseList sections={responseAllSectionWithVideo} />
+              </Col>
+              <Col lg={4} md={12} sm={12} className="mt-lg-n22">
+                <CardsComponents
+                  instructorData={instructorData}
+                  course={course}
+                />
+              </Col>
+            </Row>
+
+            {/* Card */}
+            {/* <div className="pt-12 pb-3">
             <Row className="d-md-flex align-items-center mb-4">
               <Col lg={12} md={12} sm={12}>
                 <h2 className="mb-0">Related Courses</h2>
@@ -164,8 +218,9 @@ const CourseSingle = () => {
                 ))}
             </Row>
           </div> */}
-        </Container>
-      </section>
+          </Container>
+        </section>
+      )}
     </Fragment>
   );
 };

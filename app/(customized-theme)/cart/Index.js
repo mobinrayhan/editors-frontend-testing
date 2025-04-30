@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useEffect } from "react";
 import {
   Card,
   Col,
@@ -15,7 +16,16 @@ import CardList from "./components/CardList";
 // import PageHeading from "widgets/page-headings/PageHeadingDescription";
 // export const dynamic = "force-dynamic";
 
-const Cart = async () => {
+const Cart = () => {
+  const [cartData, setCartData] = React.useState([]);
+  useEffect(() => {
+    const cartItem = localStorage.getItem("cartItem");
+    if (cartItem) {
+      const parsedCartItem = JSON.parse(cartItem);
+      setCartData(parsedCartItem);
+    }
+  }, []);
+
   return (
     <>
       <section className="mb-4">
@@ -34,9 +44,9 @@ const Cart = async () => {
           </Row>
           <Row className="flex-column-reverse flex-md-row">
             <Col xl={9} lg={8} md={7} sm={12} className="mt-4 mt-md-0">
-              <CourseListView />
+              <CourseListView cartData={cartData} isCart={true} />
             </Col>
-            <CardList />
+            <CardList cartData={cartData} />
           </Row>
         </Container>
       </section>

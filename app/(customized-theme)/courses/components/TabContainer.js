@@ -13,14 +13,23 @@ import CourseGridView from "./CourseGridView";
 import CourseListView from "./CourseListView";
 import FormSelect from "shared/form-select/FormSelect";
 import GridListViewButton from "shared/grid-list-view-button/GridListViewButton";
+// import { useEffect } from "react";
+// import { useDispatch } from "react-redux";
+// import { setCourses } from "store/coursesSlice";
 
-const TabContainer = () => {
+const TabContainer = ({ courses, instructors }) => {
+  // const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(setCourses(courses));
+  // }, [courses, dispatch]);
   const sortByOptions = [
     { value: "newest", label: "Newest" },
     { value: "free", label: "Free" },
     { value: "most-popular", label: "Most Popular" },
     { value: "highest-rated", label: "Highest Rated" },
   ];
+
   return (
     <Tab.Container defaultActiveKey="grid">
       <Row>
@@ -44,10 +53,10 @@ const TabContainer = () => {
         <Col xl={9} lg={9} md={8} sm={12}>
           <Tab.Content>
             <Tab.Pane eventKey="grid" className="pb-4 px-0">
-              <CourseGridView />
+              <CourseGridView instructors={instructors} courses={courses} />
             </Tab.Pane>
             <Tab.Pane eventKey="list" className="pb-4 px-0 react-code">
-              <CourseListView />
+              <CourseListView instructors={instructors} courses={courses} />
             </Tab.Pane>
           </Tab.Content>
         </Col>

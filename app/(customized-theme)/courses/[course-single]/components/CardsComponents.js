@@ -39,21 +39,21 @@ import InstructorProfileSummaryCard from "widgets/cards/InstructorProfileSummary
 // import Ratings from "widgets/ratings/Ratings";
 import AddToCart from "./AddToCart";
 // import CourseList from "./CourseList";
-const CardsComponents = () => {
-  const profileData = {
-    id: 1,
-    name: "Jenny Wilson",
-    image: "/images/avatar/avatar-1.jpg",
-    designation: "Front-end Developer, Designer",
-    rating: 4.5,
-    reviews: 12230,
-    students: 11604,
-    courses: 32,
-    verified: true,
-    link: "/marketing/instructor/profile",
-    about:
-      "I am an Innovation designer focussing on UX/UI based in Berlin. As a creative resident at Figma explored the city of the future and how new technologies.",
-  };
+const CardsComponents = ({ course, instructorData }) => {
+  // const profileData = {
+  //   id: 1,
+  //   name: "Jenny Wilson",
+  //   image: "/images/avatar/avatar-1.jpg",
+  //   designation: "Front-end Developer, Designer",
+  //   rating: 4.5,
+  //   reviews: 12230,
+  //   students: 11604,
+  //   courses: 32,
+  //   verified: true,
+  //   link: "/marketing/instructor/profile",
+  //   about:
+  //     "I am an Innovation designer focussing on UX/UI based in Berlin. As a creative resident at Figma explored the city of the future and how new technologies.",
+  // };
   return (
     <>
       {/* Card */}
@@ -62,7 +62,7 @@ const CardsComponents = () => {
           <div
             className="d-flex justify-content-center position-relative rounded py-10 border-white border rounded-3 bg-cover"
             style={{
-              background: `url('/images/course/course-javascript.jpg')`,
+              background: `url(${course?.thumbnail})`,
               backgroundRepeat: "no-repeat",
               backgroundSize: "cover",
               backgroundPosition: "top center",
@@ -91,11 +91,13 @@ const CardsComponents = () => {
         <Card.Body>
           {/* Price single page */}
           <div className="mb-3">
-            <span className="text-dark fw-bold h2 me-2">$600</span>
-            <del className="fs-4 text-muted">$750</del>
+            <span className="text-dark fw-bold h2 me-2">
+              BDT {course?.price}
+            </span>
+            <del className="fs-4 text-muted">750</del>
           </div>
           <div className="d-grid">
-            <AddToCart />
+            <AddToCart course={course} instructorData={instructorData} />
             <Link
               href="/marketing/pages/pricing/"
               className="btn btn-outline-primary"
@@ -138,7 +140,7 @@ const CardsComponents = () => {
         </Card.Body>
       </Card>
       {/* Card */}
-      <InstructorProfileSummaryCard data={profileData} />
+      <InstructorProfileSummaryCard data={instructorData} />
     </>
   );
 };
