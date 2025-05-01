@@ -40,17 +40,13 @@ import InstructorProfileSummaryCard from "widgets/cards/InstructorProfileSummary
 import AddToCart from "./AddToCart";
 import secondsToHoursMinutes from "helper/secondsToHoursMinutes";
 import ModalVideo from "react-modal-video";
+import getTotalDuration from "helper/getTotalDuration";
 // import CourseList from "./CourseList";
 const CardsComponents = ({ course, instructorData, sections }) => {
   const [isOpen, setOpen] = useState(false);
   const [YouTubeURL] = useState("JRzWRZahOVU");
-  const totalDuration = sections?.reduce((total, section) => {
-    const sectionTotal = section.videos.reduce(
-      (sum, video) => sum + video.duration,
-      0
-    );
-    return total + sectionTotal;
-  }, 0);
+  const totalDuration = getTotalDuration(sections);
+
   const totalResourses = sections.reduce(
     (count, section) => count + section.resources.length,
     0

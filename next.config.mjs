@@ -1,7 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    reactStrictMode: false,
-    swcMinify: true,
+  reactStrictMode: false,
+  swcMinify: true,
+  images: {
+    domains: ["i.ibb.co.com", "dummyimage.com"],
+  },
 };
 
 export default nextConfig;

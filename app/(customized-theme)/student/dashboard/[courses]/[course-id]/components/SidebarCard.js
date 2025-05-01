@@ -6,7 +6,7 @@ import SimpleBar from "simplebar-react";
 import { CourseIndex } from "data/courses/CourseIndexData";
 import GKAccordionDefaultDashboard from "widgets/accordions/GKAccordionDefaultDashboard";
 
-const SidebarCard = ({ sections }) => {
+const SidebarCard = ({ sections, slug }) => {
   return (
     <SimpleBar style={{ maxHeight: "93vh" }}>
       <Card>
@@ -15,6 +15,7 @@ const SidebarCard = ({ sections }) => {
         </Card.Header>
 
         <GKAccordionDefaultDashboard
+          slug={slug}
           accordionItems={sections}
           sections={sections}
         />

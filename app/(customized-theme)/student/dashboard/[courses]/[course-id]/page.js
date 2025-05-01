@@ -48,7 +48,7 @@ const Page = async ({ params }) => {
         })
   );
 
-  return <CourseResume sections={responseAllSectionWithVideo} />;
+  return <CourseResume slug={slug} sections={responseAllSectionWithVideo} />;
 };
 
 export default Page;

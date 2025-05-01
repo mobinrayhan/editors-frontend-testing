@@ -113,7 +113,9 @@ const GKAccordionDefaultDashboard = ({
                           >
                             <Link
                               href={
-                                !subitem.isPreview ? "" : "" //`/student/dashboard/${slug}/${subitem?.id}`
+                                !subitem.isPreview
+                                  ? ""
+                                  : `/student/dashboard/${slug}/section-${item?.id}-video-${subitem?.id}`
                               }
                               className={`d-flex justify-content-between align-items-center text-inherit text-decoration-none`}
                             >
