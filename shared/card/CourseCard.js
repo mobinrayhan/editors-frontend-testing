@@ -23,6 +23,8 @@ import LevelIcon from "widgets/miscellaneous/LevelIcon";
 import { numberWithCommas } from "helper/utils";
 import GKTippy from "widgets/tooltips/GKTippy";
 
+import AddToCartIcon from "components/AddToCartIcon";
+
 const CourseCard = ({
   instructor,
   item,
@@ -119,12 +121,14 @@ const CourseCard = ({
                 <span>{instructor?.name}</span>
               </Link>
             </Col>
-            <Col className="col-auto">
-              <GKTippy content="Add to Bookmarks">
+            <Col style={{ cursor: "pointer" }} className="col-auto">
+              {/* <GKTippy content="Add to Cart">
                 <Link href="#">
-                  <i className="fe fe-bookmark"></i>
+                <i className="fe fe-bookmark"></i>
                 </Link>
-              </GKTippy>
+              </GKTippy> */}
+
+              <AddToCartIcon courses={item} instructor={instructor} />
             </Col>
           </Row>
           <span className={`${showprogressbar ? "" : "d-none"}`}>

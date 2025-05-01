@@ -39,7 +39,7 @@ import GKTippy from "widgets/tooltips/GKTippy";
 import CourseCard from "shared/card/CourseCard";
 import Ratings from "widgets/ratings/Ratings";
 import AddToCart from "./AddToCart";
-const CourseList = ({ sections }) => {
+const CourseList = ({ sections, slug }) => {
   return (
     <Tab.Container defaultActiveKey="contents">
       <Card>
@@ -65,6 +65,7 @@ const CourseList = ({ sections }) => {
               <GKAccordionDefault
                 accordionItems={CourseIndex}
                 sections={sections}
+                slug={slug}
                 itemClass="px-0"
               />
             </Tab.Pane>

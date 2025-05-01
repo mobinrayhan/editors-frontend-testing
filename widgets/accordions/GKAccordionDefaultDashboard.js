@@ -17,7 +17,12 @@ import {
 import ErrorPage from "components/ErrorPage";
 import secondsToHoursMinutes from "helper/secondsToHoursMinutes";
 
-const GKAccordionDefault = ({ accordionItems, itemClass, sections, slug }) => {
+const GKAccordionDefaultDashboard = ({
+  accordionItems,
+  itemClass,
+  sections,
+  slug,
+}) => {
   // function secondsToHoursMinutes(seconds) {
   //   const totalMinutes = Math.floor(Number(seconds) / 60);
   //   const hours = Math.floor(totalMinutes / 60);
@@ -108,9 +113,7 @@ const GKAccordionDefault = ({ accordionItems, itemClass, sections, slug }) => {
                           >
                             <Link
                               href={
-                                !subitem.isPreview
-                                  ? ""
-                                  : `/student/dashboard/${slug}/${subitem?.id}`
+                                !subitem.isPreview ? "" : "" //`/student/dashboard/${slug}/${subitem?.id}`
                               }
                               className={`d-flex justify-content-between align-items-center text-inherit text-decoration-none`}
                             >
@@ -123,7 +126,8 @@ const GKAccordionDefault = ({ accordionItems, itemClass, sections, slug }) => {
                                   )}{" "}
                                 </span>
                                 <span className="fs-5">
-                                  {subitem.title}
+                                  {subitem.title?.split("").slice(0, 30)}
+                                  ...
                                   <br />
                                   <span
                                     style={{
@@ -162,7 +166,7 @@ const GKAccordionDefault = ({ accordionItems, itemClass, sections, slug }) => {
                               }
                               className={`d-flex justify-content-between align-items-center text-inherit text-decoration-none`}
                             >
-                              <div className="d-flex text-truncate ">
+                              <div className="d-flex align-items-center text-truncate ">
                                 <span className="icon-shape bg-light icon-sm rounded-circle me-2">
                                   {subitem?.isPreview ? (
                                     <i className="fe fe-lock fs-4"></i>
@@ -174,8 +178,8 @@ const GKAccordionDefault = ({ accordionItems, itemClass, sections, slug }) => {
                                   )}{" "}
                                 </span>
                                 <span className="fs-5">
-                                  {subitem?.title}
-
+                                  {subitem?.title?.split("").slice(0, 35)}
+                                  ...
                                   <br />
                                   <span
                                     style={{
@@ -184,7 +188,10 @@ const GKAccordionDefault = ({ accordionItems, itemClass, sections, slug }) => {
                                       textOverflow: "ellipsis",
                                     }}
                                   >
-                                    {subitem.description}
+                                    {subitem.description
+                                      ?.split("")
+                                      .slice(0, 35)}
+                                    ...
                                   </span>
                                 </span>
                               </div>
@@ -213,7 +220,7 @@ const GKAccordionDefault = ({ accordionItems, itemClass, sections, slug }) => {
                               }
                               className={`d-flex justify-content-between align-items-center text-inherit text-decoration-none`}
                             >
-                              <div className="d-flex text-truncate ">
+                              <div className="d-flex align-items-center text-truncate ">
                                 <span className="icon-shape bg-light icon-sm rounded-circle me-2">
                                   {subitem.locked ? (
                                     <i className="fe fe-lock fs-4"></i>
@@ -222,7 +229,8 @@ const GKAccordionDefault = ({ accordionItems, itemClass, sections, slug }) => {
                                   )}{" "}
                                 </span>
                                 <span className="fs-5">
-                                  {subitem.title}
+                                  {subitem.title?.split("").slice(0, 35)}
+                                  ...
                                   <br />
                                   <span
                                     style={{
@@ -231,7 +239,10 @@ const GKAccordionDefault = ({ accordionItems, itemClass, sections, slug }) => {
                                       textOverflow: "ellipsis",
                                     }}
                                   >
-                                    {subitem.description}
+                                    {subitem.description
+                                      ?.split("")
+                                      .slice(0, 35)}
+                                    ...
                                   </span>
                                 </span>
                               </div>
@@ -258,4 +269,4 @@ const GKAccordionDefault = ({ accordionItems, itemClass, sections, slug }) => {
   );
 };
 
-export default GKAccordionDefault;
+export default GKAccordionDefaultDashboard;

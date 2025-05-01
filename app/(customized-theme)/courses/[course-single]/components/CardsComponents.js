@@ -1,5 +1,5 @@
 "use client";
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import {
   Col,
   Row,
@@ -38,24 +38,33 @@ import InstructorProfileSummaryCard from "widgets/cards/InstructorProfileSummary
 // import CourseCard from "shared/card/CourseCard";
 // import Ratings from "widgets/ratings/Ratings";
 import AddToCart from "./AddToCart";
+import secondsToHoursMinutes from "helper/secondsToHoursMinutes";
+import ModalVideo from "react-modal-video";
 // import CourseList from "./CourseList";
-const CardsComponents = ({ course, instructorData }) => {
-  // const profileData = {
-  //   id: 1,
-  //   name: "Jenny Wilson",
-  //   image: "/images/avatar/avatar-1.jpg",
-  //   designation: "Front-end Developer, Designer",
-  //   rating: 4.5,
-  //   reviews: 12230,
-  //   students: 11604,
-  //   courses: 32,
-  //   verified: true,
-  //   link: "/marketing/instructor/profile",
-  //   about:
-  //     "I am an Innovation designer focussing on UX/UI based in Berlin. As a creative resident at Figma explored the city of the future and how new technologies.",
-  // };
+const CardsComponents = ({ course, instructorData, sections }) => {
+  const [isOpen, setOpen] = useState(false);
+  const [YouTubeURL] = useState("JRzWRZahOVU");
+  const totalDuration = sections?.reduce((total, section) => {
+    const sectionTotal = section.videos.reduce(
+      (sum, video) => sum + video.duration,
+      0
+    );
+    return total + sectionTotal;
+  }, 0);
+  const totalResourses = sections.reduce(
+    (count, section) => count + section.resources.length,
+    0
+  );
   return (
     <>
+      {/* modal */}
+      <ModalVideo
+        channel="youtube"
+        youtube={{ mute: 0, autoplay: 1 }}
+        isOpen={isOpen}
+        videoId="wAOoB0LKPe0"
+        onClose={() => setOpen(false)}
+      />
       {/* Card */}
       <Card className="mb-3 mb-4">
         <div className="p-1">
@@ -71,7 +80,7 @@ const CardsComponents = ({ course, instructorData }) => {
             <Link
               href="#"
               className="popup-youtube icon-shape rounded-circle btn-play icon-xl text-decoration-none"
-              // onClick={() => setOpen(true)}
+              onClick={() => setOpen(true)}
             >
               <i className="fe fe-play"></i>
             </Link>
@@ -118,7 +127,7 @@ const CardsComponents = ({ course, instructorData }) => {
           <ListGroup variant="flush">
             <ListGroup.Item>
               <i className="fe fe-play-circle align-middle me-2 text-primary"></i>
-              12 hours video
+              {secondsToHoursMinutes(totalDuration)}ours video
             </ListGroup.Item>
             <ListGroup.Item>
               <i className="fe fe-award me-2 align-middle text-success"></i>
@@ -126,12 +135,12 @@ const CardsComponents = ({ course, instructorData }) => {
             </ListGroup.Item>
             <ListGroup.Item>
               <i className="fe fe-calendar align-middle me-2 text-info"></i>
-              12 Article
+              {totalResourses} Resources
             </ListGroup.Item>
-            <ListGroup.Item>
+            {/* <ListGroup.Item>
               <i className="fe fe-video align-middle me-2 text-secondary"></i>
               Watch Offline
-            </ListGroup.Item>
+            </ListGroup.Item> */}
             <ListGroup.Item className="bg-transparent">
               <i className="fe fe-clock align-middle me-2 text-warning"></i>
               Lifetime access

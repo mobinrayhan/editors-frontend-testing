@@ -1,6 +1,6 @@
 "use client";
-import Link from "next/link";
 import React from "react";
+import GKTippy from "widgets/tooltips/GKTippy";
 function handelAddToCart(course, instructorData) {
   const previousCartItem = localStorage.getItem("cartItem");
   if (previousCartItem) {
@@ -9,28 +9,27 @@ function handelAddToCart(course, instructorData) {
       ? alert("Already in Cart")
       : localStorage.setItem(
           "cartItem",
-          JSON.stringify([
+          JSON?.stringify([
             ...parsedCartItem,
             { ...course, instructor: instructorData },
           ])
         );
   } else {
-    localStorage.setItem(
-      "cartItem",
-      JSON.stringify([{ ...course, instructor: instructorData }])
-    );
+    const data = [{ ...course, instructor: instructorData }];
+    localStorage.setItem("cartItem", JSON.stringify(data));
     alert("Added to Cart");
   }
 }
-const AddToCart = ({ course, instructorData }) => {
+export default function AddToCartIcon(instructor, courses) {
   return (
-    <div
-      onClick={() => handelAddToCart(course, instructorData)}
-      className="btn btn-primary mb-2 "
-    >
-      Add to Cart
-    </div>
+    <GKTippy content="Add to Cart">
+      {/* <Link href="#"> */}
+      <i
+        onClick={() => handelAddToCart(courses, instructor)}
+        style={{ cursor: "pointer" }}
+        className="fe fe-shopping-cart"
+      ></i>
+      {/* </Link> */}
+    </GKTippy>
   );
-};
-
-export default AddToCart;
+}
