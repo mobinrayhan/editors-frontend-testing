@@ -18,6 +18,7 @@ import ErrorPage from "components/ErrorPage";
 import secondsToHoursMinutes from "helper/secondsToHoursMinutes";
 
 const GKAccordionDefaultDashboard = ({
+  videoId,
   accordionItems,
   itemClass,
   sections,
@@ -63,7 +64,7 @@ const GKAccordionDefaultDashboard = ({
       </Fragment>
     );
   };
-  console.log(sections);
+
   return (
     <Fragment>
       <Accordion defaultActiveKey={accordionItems[0].id}>
@@ -119,7 +120,7 @@ const GKAccordionDefaultDashboard = ({
                                   : `/student/dashboard/${slug}/section-${item?.id}-video-${subitem?.id}`
                               }
                               className={`${
-                                true ? "text-primary" : ""
+                                subitem?.id == videoId ? "text-primary" : ""
                               } d-flex justify-content-between align-items-center text-inherit text-decoration-none`}
                             >
                               <div className="d-flex align-items-center text-truncate ">

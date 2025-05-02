@@ -21,7 +21,7 @@ import "simplebar/dist/simplebar.min.css";
 import NavbarDefault from "layouts/marketing/navbars/NavbarDefault";
 import SidebarCard from "./components/SidebarCard";
 
-export const CourseResume = ({ sections, slug }) => {
+export const CourseResume = ({ sections, slug, params }) => {
   // const [YouTubeURL] = useState("PkZNo7MFNFg");
 
   // const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
@@ -72,7 +72,7 @@ export const CourseResume = ({ sections, slug }) => {
       <main className="main-courses">
         {/*  side */}
         <section className="card course-sidebar " id="courseAccordion">
-          <SidebarCard sections={sections} slug={slug} />
+          <SidebarCard sections={sections} slug={slug} params={params} />
         </section>
         <section className="mt-0 course-container">
           <Container fluid>

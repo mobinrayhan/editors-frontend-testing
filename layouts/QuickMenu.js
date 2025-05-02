@@ -29,8 +29,6 @@ const QuickMenu = () => {
   const hasMounted = useMounted();
   const Carts = useSelector((state) => state.cart.cartItems);
 
-  console.log("first", Carts);
-
   const isDesktop = useMediaQuery({ query: "(min-width: 1224px)" });
 
   const Notifications = () => {

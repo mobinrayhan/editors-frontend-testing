@@ -10,7 +10,7 @@ const Page = async ({ params }) => {
   const slug = params["courses"];
   // const [isOpen, setOpen] = useState(false);
   // const [YouTubeURL] = useState("JRzWRZahOVU");
-  console.log(params);
+
   const { course } = await getFetch(
     `https://api.editors.academy/courses/${slug}`
   );
@@ -48,7 +48,13 @@ const Page = async ({ params }) => {
         })
   );
 
-  return <CourseResume slug={slug} sections={responseAllSectionWithVideo} />;
+  return (
+    <CourseResume
+      slug={slug}
+      params={params}
+      sections={responseAllSectionWithVideo}
+    />
+  );
 };
 
 export default Page;

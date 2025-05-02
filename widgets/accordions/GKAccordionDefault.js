@@ -57,7 +57,7 @@ const GKAccordionDefault = ({ accordionItems, itemClass, sections, slug }) => {
       </Fragment>
     );
   };
-  console.log(sections);
+
   return (
     <Fragment>
       <Accordion defaultActiveKey={accordionItems[0].id}>
@@ -110,7 +110,7 @@ const GKAccordionDefault = ({ accordionItems, itemClass, sections, slug }) => {
                               href={
                                 !subitem.isPreview
                                   ? ""
-                                  : `/student/dashboard/${slug}/${subitem?.id}`
+                                  : `/student/dashboard/${slug}/section-${item?.id}-video-${subitem?.id}`
                               }
                               className={`d-flex justify-content-between align-items-center text-inherit text-decoration-none`}
                             >

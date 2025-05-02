@@ -45,7 +45,6 @@ import getFetch from "helper/getFetch";
 import AddToCartIcon from "components/AddToCartIcon";
 
 const CourseSingle = async ({ params }) => {
-  console.log(params["course-single"]);
   const slug = params["course-single"];
   // const [isOpen, setOpen] = useState(false);
   // const [YouTubeURL] = useState("JRzWRZahOVU");

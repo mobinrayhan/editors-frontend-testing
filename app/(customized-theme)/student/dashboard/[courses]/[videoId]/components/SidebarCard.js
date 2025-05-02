@@ -6,7 +6,10 @@ import SimpleBar from "simplebar-react";
 import { CourseIndex } from "data/courses/CourseIndexData";
 import GKAccordionDefaultDashboard from "widgets/accordions/GKAccordionDefaultDashboard";
 
-const SidebarCard = ({ sections, slug }) => {
+const SidebarCard = ({ sections, slug, params }) => {
+  const videoIdParams = params["videoId"];
+  const videoId = videoIdParams.split("-").slice(-1)[0];
+
   return (
     <SimpleBar style={{ maxHeight: "93vh" }}>
       <Card>
@@ -16,6 +19,7 @@ const SidebarCard = ({ sections, slug }) => {
 
         <GKAccordionDefaultDashboard
           slug={slug}
+          videoId={videoId}
           accordionItems={sections}
           sections={sections}
         />
