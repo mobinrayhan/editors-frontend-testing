@@ -1,0 +1,77 @@
+"use client";
+import React from "react";
+
+export default function LeftSideForm() {
+  const handlePaymentClick = (method) => {
+    alert(`Selected payment method: ${method}`);
+  };
+  return (
+    <div className="col-md-6 mb-4">
+      <div className="card p-4 shadow-sm">
+        <h4 className="fw-bold mb-4">Student Details</h4>
+        <form>
+          <div className="mb-3">
+            <label className="form-label">Full Name</label>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Your name"
+            />
+          </div>
+          <div className="mb-3">
+            <label className="form-label">Email Address</label>
+            <input
+              type="email"
+              className="form-control"
+              placeholder="you@example.com"
+            />
+          </div>
+          <div className="mb-3">
+            <label className="form-label">Phone Number</label>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="01XXXXXXXXX"
+            />
+          </div>
+        </form>
+
+        <h5 className="mt-4 mb-3">Payment Options</h5>
+        <div className="d-flex flex-wrap gap-3">
+          {[
+            {
+              name: "SSL",
+              img: "https://sslcommerz.com/wp-content/uploads/2021/11/logo.png",
+            },
+            {
+              name: "Bkash",
+              img: "https://via.placeholder.com/60x40?text=Bkash",
+            },
+            {
+              name: "Upay",
+              img: "https://via.placeholder.com/60x40?text=Upay",
+            },
+            {
+              name: "Nagad",
+              img: "https://via.placeholder.com/60x40?text=Nagad",
+            },
+          ].map((option) => (
+            <img
+              key={option.name}
+              src={option.img}
+              alt={option.name}
+              className="img-thumbnail"
+              role="button"
+              style={{
+                cursor: "pointer",
+                width: "70px",
+                height: "45px",
+              }}
+              onClick={() => handlePaymentClick(option.name)}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}

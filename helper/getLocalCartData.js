@@ -1,4 +1,3 @@
-"use client";
 export default function getLocalCartData() {
   const hasMounted = typeof window !== "undefined";
   if (!hasMounted) return null; // Prevents server-side rendering issues

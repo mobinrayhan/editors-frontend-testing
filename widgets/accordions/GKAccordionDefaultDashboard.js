@@ -33,6 +33,7 @@ const GKAccordionDefaultDashboard = ({
   //   }`;
   // }
 
+  // const activeID = params["course-id"].split("-")[3];
   const ContextAwareToggle = ({ children, eventKey, callback }) => {
     const { activeEventKey } = useContext(AccordionContext);
 
@@ -117,7 +118,9 @@ const GKAccordionDefaultDashboard = ({
                                   ? ""
                                   : `/student/dashboard/${slug}/section-${item?.id}-video-${subitem?.id}`
                               }
-                              className={`d-flex justify-content-between align-items-center text-inherit text-decoration-none`}
+                              className={`${
+                                true ? "text-primary" : ""
+                              } d-flex justify-content-between align-items-center text-inherit text-decoration-none`}
                             >
                               <div className="d-flex align-items-center text-truncate ">
                                 <span className="icon-shape bg-light icon-sm rounded-circle me-2">

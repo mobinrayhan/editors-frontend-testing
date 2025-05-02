@@ -223,9 +223,17 @@ const QuickMenu = () => {
                 </Link> */}
               </div>
               <Cart />
-              <div className="border-top px-3 pt-3 pb-3">
+              <div className="border-top px-3 pt-3 pb-3 d-flex justify-content-between align-items-center">
                 <Link href="/cart" className="text-link fw-semi-bold">
                   See all Cart
+                </Link>
+                <Link href="/checkout" className=" text-link fw-semi-bold">
+                  <button
+                    className="btn btn-primary"
+                    style={{ marginBlock: 0 }}
+                  >
+                    Checkout
+                  </button>
                 </Link>
               </div>
             </Dropdown.Item>

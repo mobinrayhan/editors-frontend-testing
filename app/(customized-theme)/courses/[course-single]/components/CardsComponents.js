@@ -103,10 +103,7 @@ const CardsComponents = ({ course, instructorData, sections }) => {
           </div>
           <div className="d-grid">
             <AddToCart course={course} instructorData={instructorData} />
-            <Link
-              href="/marketing/pages/pricing/"
-              className="btn btn-outline-primary"
-            >
+            <Link href="/checkout" className="btn btn-outline-primary">
               Buy now
             </Link>
           </div>
