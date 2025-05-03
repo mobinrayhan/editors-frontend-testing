@@ -1,3 +1,4 @@
+"use client";
 // import node module libraries
 import Link from "next/link";
 import React, { Fragment } from "react";
@@ -20,7 +21,7 @@ import "simplebar/dist/simplebar.min.css";
 import NavbarDefault from "layouts/marketing/navbars/NavbarDefault";
 import SidebarCard from "./components/SidebarCard";
 
-export const CourseResume = () => {
+export const CourseResume = ({ sections, slug, params }) => {
   // const [YouTubeURL] = useState("PkZNo7MFNFg");
 
   // const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
@@ -71,7 +72,7 @@ export const CourseResume = () => {
       <main className="main-courses">
         {/*  side */}
         <section className="card course-sidebar " id="courseAccordion">
-          <SidebarCard />
+          <SidebarCard sections={sections} slug={slug} params={params} />
         </section>
         <section className="mt-0 course-container">
           <Container fluid>
@@ -85,7 +86,7 @@ export const CourseResume = () => {
                           Introduction
                         </h3>
                       </div>
-                      {/* <div className="d-flex justify-content-between">
+                      <div className="d-flex justify-content-between">
                         <Dropdown className="video-info-icon me-2">
                           <Dropdown.Toggle
                             bsPrefix=" "
@@ -107,8 +108,8 @@ export const CourseResume = () => {
                             </span>
                           </Dropdown.Menu>
                         </Dropdown>
-                         <ActionMenu /> 
-                      </div> */}
+                        {/* <ActionMenu /> */}
+                      </div>
                     </div>
                     <div
                       className="embed-responsive position-relative w-100 d-block overflow-hidden p-0"

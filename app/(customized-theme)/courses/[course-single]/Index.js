@@ -42,9 +42,9 @@ import CourseList from "./components/CourseList";
 import CardsComponents from "./components/CardsComponents";
 import ErrorPage from "components/ErrorPage";
 import getFetch from "helper/getFetch";
+import AddToCartIcon from "components/AddToCartIcon";
 
 const CourseSingle = async ({ params }) => {
-  console.log(params["course-single"]);
   const slug = params["course-single"];
   // const [isOpen, setOpen] = useState(false);
   // const [YouTubeURL] = useState("JRzWRZahOVU");
@@ -122,8 +122,13 @@ const CourseSingle = async ({ params }) => {
                   started coding in JavaScript. */}
                     {course?.description}
                   </p>
-                  <div className="d-flex align-items-center">
-                    <GKTippy content="Add to Bookmarks">
+                  <div className="d-flex align-items-center bookmark text-white text-decoration-none">
+                    <AddToCartIcon
+                      courses={course}
+                      instructor={instructorData}
+                    />{" "}
+                    <span style={{ marginLeft: "5px" }}>Add to Cart</span>
+                    {/* <GKTippy content="Add to Bookmarks">
                       <Link
                         href="#"
                         className="bookmark text-white text-decoration-none"
@@ -131,7 +136,7 @@ const CourseSingle = async ({ params }) => {
                         <i className="fe fe-bookmark text-white-50 me-2"></i>{" "}
                         Bookmark
                       </Link>
-                    </GKTippy>
+                    </GKTippy> */}
                     <span className="text-white ms-3">
                       <i className="fe fe-user text-white-50"></i> 1200 Enrolled{" "}
                     </span>
@@ -189,12 +194,16 @@ const CourseSingle = async ({ params }) => {
           <Container>
             <Row>
               <Col lg={8} md={12} sm={12} className="mt-n8 mb-4 mb-lg-0">
-                <CourseList sections={responseAllSectionWithVideo} />
+                <CourseList
+                  slug={slug}
+                  sections={responseAllSectionWithVideo}
+                />
               </Col>
               <Col lg={4} md={12} sm={12} className="mt-lg-n22">
                 <CardsComponents
                   instructorData={instructorData}
                   course={course}
+                  sections={responseAllSectionWithVideo}
                 />
               </Col>
             </Row>

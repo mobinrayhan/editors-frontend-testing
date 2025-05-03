@@ -23,7 +23,7 @@ const CardList = ({ cartData }) => {
             <del className="fs-4 text-muted">$750</del>
           </div>
           <div className="d-grid">
-            <Link href="#" className="btn btn-primary mb-2  ">
+            <Link href="/checkout" className="btn btn-primary mb-2  ">
               Proceed to Checkout <i className="fe fe-arrow-right"></i>
             </Link>
           </div>

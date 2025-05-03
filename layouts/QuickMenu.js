@@ -1,6 +1,6 @@
 // import node module libraries
 import Link from "next/link";
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import { Row, Col, Dropdown, ListGroup } from "react-bootstrap";
 
@@ -20,18 +20,20 @@ import NotificationList from "data/Notification";
 
 // import hooks
 import useMounted from "hooks/useMounted";
-import Carts from "data/Cart";
+// import Carts from "data/Cart";
 import Image from "next/image";
 import GKTippy from "widgets/tooltips/GKTippy";
+import { useSelector } from "react-redux";
 
 const QuickMenu = () => {
   const hasMounted = useMounted();
+  const Carts = useSelector((state) => state.cart.cartItems);
 
   const isDesktop = useMediaQuery({ query: "(min-width: 1224px)" });
 
   const Notifications = () => {
     return (
-      <SimpleBar style={{ maxHeight: "300px" }}>
+      <SimpleBar style={{ maxHeight: "300px", maxWidth: "400px" }}>
         <ListGroup variant="flush">
           {NotificationList.map(function (item, index) {
             return (
@@ -84,7 +86,7 @@ const QuickMenu = () => {
   };
   const Cart = () => {
     return (
-      <SimpleBar style={{ maxHeight: "300px" }}>
+      <SimpleBar style={{ maxHeight: "300px", maxWidth: "500px" }}>
         <ListGroup variant="flush">
           {Carts.map(function (item, index) {
             return (
@@ -97,7 +99,7 @@ const QuickMenu = () => {
                     <Link href="#" className="text-body">
                       <div className="d-flex">
                         <Image
-                          src={item.image}
+                          src={item?.thumbnail}
                           alt=""
                           width={50}
                           height={50}
@@ -105,8 +107,10 @@ const QuickMenu = () => {
                           style={{ objectFit: "cover" }}
                         />
                         <div className="ms-3">
-                          <h5 className="fw-bold mb-1">{item.title}</h5>
-                          <p className="fw-bold">Jack ank carin</p>
+                          <h5 className="fw-bold mb-1">{item?.title}</h5>
+                          <p className="fw-bold">
+                            {item?.instructor?.instructor[0]?.name}
+                          </p>
 
                           {/* <button
                             style={{ width: "100%" }}
@@ -131,7 +135,7 @@ const QuickMenu = () => {
                         <DotBadge bg="secondary"></DotBadge>
                       </Link>
                     </GKTippy> */}
-                    <p className="">BDT 15000 </p>
+                    <p className="">BDT {item?.price} </p>
                   </Col>
                 </Row>
                 {/* <button style={{ width: "100%" }} className="btn btn-primary">
@@ -217,9 +221,17 @@ const QuickMenu = () => {
                 </Link> */}
               </div>
               <Cart />
-              <div className="border-top px-3 pt-3 pb-3">
+              <div className="border-top px-3 pt-3 pb-3 d-flex justify-content-between align-items-center">
                 <Link href="/cart" className="text-link fw-semi-bold">
                   See all Cart
+                </Link>
+                <Link href="/checkout" className=" text-link fw-semi-bold">
+                  <button
+                    className="btn btn-primary"
+                    style={{ marginBlock: 0 }}
+                  >
+                    Checkout
+                  </button>
                 </Link>
               </div>
             </Dropdown.Item>

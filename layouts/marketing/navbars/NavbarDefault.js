@@ -3,7 +3,7 @@
 // import node module libraries
 import Link from "next/link";
 import PropTypes from "prop-types";
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Container, Form, Nav, Navbar } from "react-bootstrap";
 import { useMediaQuery } from "react-responsive";
 

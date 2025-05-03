@@ -13,9 +13,10 @@ const InstructorProfileSummaryCard = ({ data }) => {
         <div className="d-flex align-items-center">
           <div className="position-relative">
             <Image
+              style={{ objectFit: "cover" }}
               src={
                 data?.instructor[0]?.profile_image ||
-                "https://media.istockphoto.com/id/1682296067/photo/happy-studio-portrait-or-professional-man-real-estate-agent-or-asian-businessman-smile-for.jpg?s=612x612&w=0&k=20&c=9zbG2-9fl741fbTWw5fNgcEEe4ll-JegrGlQQ6m54rg="
+                "https://i.ibb.co.com/KzfWFxGn/187910563-10220662170840378-3981185376255859365-n.jpg"
               }
               alt=""
               className="rounded-circle avatar-xl"
@@ -51,13 +52,15 @@ const InstructorProfileSummaryCard = ({ data }) => {
         <Row className="border-top mt-3 border-bottom mb-3 g-0">
           <Col>
             <div className="pe-1 ps-2 py-3">
-              <h5 className="mb-0">{numberWithCommas(120)}</h5>
+              <h5 className="mb-0">
+                {numberWithCommas(data?.instructor[0]?.totalStudents)}
+              </h5>
               <span>Students</span>
             </div>
           </Col>
           <Col className="border-start">
             <div className="pe-1 ps-3 py-3">
-              <h5 className="mb-0">{1}</h5>
+              <h5 className="mb-0">{data?.instructor[0]?.totalCourses}</h5>
               <span>Courses</span>
             </div>
           </Col>
