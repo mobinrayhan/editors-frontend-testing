@@ -54,7 +54,9 @@ export default function RightSide() {
       {/* Order Details */}
       <div className="card p-3 shadow">
         <div className="border-bottom pb-2 mb-2">
-          <h6 className="fw-bold">Order details ({cartData.length} courses)</h6>
+          <h6 className="fw-bold">
+            Order details ({cartData?.length} courses)
+          </h6>
         </div>
         {cartData?.map((item, i) => (
           <div key={"cartData" + i} className="d-flex align-items-center py-2">

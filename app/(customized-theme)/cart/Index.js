@@ -36,7 +36,9 @@ const Cart = () => {
             <Col lg={12} md={12} sm={12} className=" mt-4">
               <Row className="d-lg-flex justify-content-between align-items-center">
                 <Col md={6} lg={8} xl={9}>
-                  <h4 className="mb-3 mb-lg-0">2 Courses in Cart</h4>
+                  <h4 className="mb-3 mb-lg-0">
+                    {cartData?.length} Courses in Cart
+                  </h4>
                 </Col>
               </Row>
             </Col>
