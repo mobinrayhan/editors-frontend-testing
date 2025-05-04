@@ -3,7 +3,16 @@ const nextConfig = {
   reactStrictMode: false,
   swcMinify: true,
   images: {
-    domains: ["i.ibb.co.com", "dummyimage.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "i.ibb.co",
+      },
+      {
+        protocol: "https",
+        hostname: "dummyimage.com",
+      },
+    ],
   },
 };
 
