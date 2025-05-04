@@ -24,8 +24,10 @@ import { numberWithCommas } from "helper/utils";
 import GKTippy from "widgets/tooltips/GKTippy";
 
 import AddToCartIcon from "components/AddToCartIcon";
+import DeleteCart from "components/DeleteCart";
 
 const CourseCard = ({
+  isCart = false,
   instructor,
   item,
   free = false,
@@ -146,7 +148,7 @@ const CourseCard = ({
   };
 
   /** Used in Course Filter Page  */
-  const ListView = () => {
+  const ListView = ({ isCart }) => {
     return (
       <Card className="mb-4 card-hover">
         <Row className="g-0">
@@ -210,13 +212,14 @@ const CourseCard = ({
                 <Col className="col ms-2">
                   <span>{instructor?.name}</span>
                 </Col>
-                <Col className="col-auto">
-                  <GKTippy content="Add to Bookmarks">
+                {/* <Col className="col-auto">
+                  <GKTippy content="Remove from Cart">
                     <Link href="#">
-                      <i className="fe fe-bookmark"></i>
+                      <i className="fe fe-trash"></i>
                     </Link>
                   </GKTippy>
-                </Col>
+                </Col> */}
+                <DeleteCart data={item} />
               </Row>
             </Card.Body>
           </Col>
@@ -272,7 +275,7 @@ const CourseCard = ({
       {viewby === "grid" ? (
         <GridView />
       ) : viewby === "list" ? (
-        <ListView />
+        <ListView isCart={isCart} />
       ) : (
         <ListGroupView />
       )}

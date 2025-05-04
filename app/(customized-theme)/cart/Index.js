@@ -13,18 +13,23 @@ import CourseListView from "../courses/components/CourseListView";
 import Link from "next/link";
 import PageHeading from "shared/page-headings/PageHeading";
 import CardList from "./components/CardList";
+import { useSelector } from "react-redux";
+import useMounted from "hooks/useMounted";
 // import PageHeading from "widgets/page-headings/PageHeadingDescription";
 // export const dynamic = "force-dynamic";
 
 const Cart = () => {
-  const [cartData, setCartData] = React.useState([]);
-  useEffect(() => {
-    const cartItem = localStorage.getItem("cartItem");
-    if (cartItem) {
-      const parsedCartItem = JSON.parse(cartItem);
-      setCartData(parsedCartItem);
-    }
-  }, []);
+  // const [cartData, setCartData] = React.useState([]);
+  const hasMounted = useMounted();
+  const cartData = useSelector((state) => state.cart.cartItems);
+  // useEffect(() => {
+  //   const cartItem = localStorage.getItem("cartItem");
+  //   if (cartItem) {
+  //     const parsedCartItem = JSON.parse(cartItem);
+  //     setCartData(parsedCartItem);
+  //   }
+  // }, []);
+  if (!hasMounted) return null;
 
   return (
     <>

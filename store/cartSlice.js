@@ -89,11 +89,11 @@ export const cartSlice = createSlice({
     addItemToCart(state, action) {
       state.cartItems = action.payload;
     },
-    // removeItemFromCart(state, action) {
-    //   state.cartItems = state.cartItems.filter(
-    //     (item) => item.id !== action.payload
-    //   );
-    // },
+    removeItemFromCart(state, action) {
+      state.cartItems = state.cartItems.filter(
+        (item) => item.id !== action.payload.id
+      );
+    },
     // updateItemInCart(state, action) {
     //   const item = state.cartItems.find((i) => i.id === action.payload.id);
     //   if (item) {

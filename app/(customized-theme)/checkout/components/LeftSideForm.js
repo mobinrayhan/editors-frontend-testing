@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import React from "react";
 
 export default function LeftSideForm() {
@@ -41,19 +42,19 @@ export default function LeftSideForm() {
           {[
             {
               name: "SSL",
-              img: "https://sslcommerz.com/wp-content/uploads/2021/11/logo.png",
+              img: "https://www.npmjs.com/npm-avatar/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdmF0YXJVUkwiOiJodHRwczovL3MuZ3JhdmF0YXIuY29tL2F2YXRhci9iYTM2ZjdkYWE4ZGI0YWFlODdhNmU5MWVlZjU5ZmQ1ZD9zaXplPTQ5NiZkZWZhdWx0PXJldHJvIn0.YvVB9XBip1snWZYFLOYTbUq0mrma7PJUmFsO7Xc68aI",
             },
             {
               name: "Bkash",
-              img: "https://via.placeholder.com/60x40?text=Bkash",
+              img: "https://downloadr2.apkmirror.com/wp-content/uploads/2022/08/84/62f92578037f0.png",
             },
             {
               name: "Upay",
-              img: "https://via.placeholder.com/60x40?text=Upay",
+              img: "https://www.tbsnews.net/sites/default/files/styles/amp_metadata_content_image_min_696px_wide/public/images/2021/04/21/upay.jpg",
             },
             {
               name: "Nagad",
-              img: "https://via.placeholder.com/60x40?text=Nagad",
+              img: "https://images.dwncdn.net/images/t_app-icon-l/p/f4b4a183-6c79-4b79-a2d2-8249707aee04/3154843298/2057_4-78566033-logo",
             },
           ].map((option) => (
             <img
@@ -62,10 +63,16 @@ export default function LeftSideForm() {
               alt={option.name}
               className="img-thumbnail"
               role="button"
+              // width={70}
+              // height={45}
               style={{
                 cursor: "pointer",
+                objectFit: "cover",
                 width: "70px",
                 height: "45px",
+                borderRadius: "8px",
+                boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+                transition: "transform 0.2s",
               }}
               onClick={() => handlePaymentClick(option.name)}
             />

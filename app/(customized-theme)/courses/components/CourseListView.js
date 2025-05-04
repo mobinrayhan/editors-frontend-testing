@@ -26,6 +26,7 @@ const CourseListView = ({ courses, instructors, cartData, isCart = false }) => {
   const changePage = ({ selected }) => {
     setPageNumber(selected);
   };
+  console.log(cartData, "instructors");
   const displayRecords =
     courses && !isCart
       ? courses?.courses
@@ -34,6 +35,7 @@ const CourseListView = ({ courses, instructors, cartData, isCart = false }) => {
             return (
               <Col sm={12} md={12} lg={12} key={index}>
                 <CourseCard
+                  isCart={isCart}
                   instructor={instructors[index].instructor[0]}
                   item={Records}
                   viewby="list"
@@ -51,7 +53,7 @@ const CourseListView = ({ courses, instructors, cartData, isCart = false }) => {
           return (
             <Col sm={12} md={12} lg={12} key={index}>
               <CourseCard
-                instructor={Records?.instructor?.instructor[0]}
+                instructor={Records?.instructor}
                 item={Records}
                 viewby="list"
               />

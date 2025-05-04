@@ -109,7 +109,7 @@ const QuickMenu = () => {
                         <div className="ms-3">
                           <h5 className="fw-bold mb-1">{item?.title}</h5>
                           <p className="fw-bold">
-                            {item?.instructor?.instructor[0]?.name}
+                            {item?.instructor?.instructor?.name}
                           </p>
 
                           {/* <button
