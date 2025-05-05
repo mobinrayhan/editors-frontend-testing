@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { addItemToCart } from "store/cartSlice";
 import GKTippy from "widgets/tooltips/GKTippy";
@@ -8,7 +9,17 @@ function handelAddToCart(course, instructorData, dispatch) {
   if (previousCartItem) {
     const parsedCartItem = JSON.parse(previousCartItem);
     if (parsedCartItem.find((item) => item.id === course.id)) {
-      alert("Already in Cart");
+      toast.error("Already in Cart", {
+        duration: 2000,
+        position: "top-center",
+        style: {
+          background: "#333",
+          color: "#fff",
+          fontSize: "16px",
+          padding: "10px",
+        },
+      });
+      // alert("Already in Cart");
     } else {
       localStorage.setItem(
         "cartItem",
@@ -23,6 +34,16 @@ function handelAddToCart(course, instructorData, dispatch) {
           { ...course, instructor: instructorData },
         ])
       );
+      toast.success("Added to Cart", {
+        duration: 2000,
+        position: "top-center",
+        style: {
+          background: "#333",
+          color: "#fff",
+          fontSize: "16px",
+          padding: "10px",
+        },
+      });
     }
   } else {
     localStorage.setItem(
@@ -30,7 +51,17 @@ function handelAddToCart(course, instructorData, dispatch) {
       JSON.stringify([{ ...course, instructor: instructorData }])
     );
     dispatch(addItemToCart([{ ...course, instructor: instructorData }]));
-    alert("Added to Cart");
+    // alert("Added to Cart");
+    toast.success("Added to Cart", {
+      duration: 2000,
+      position: "top-center",
+      style: {
+        background: "#333",
+        color: "#fff",
+        fontSize: "16px",
+        padding: "10px",
+      },
+    });
   }
 }
 export default function AddToCartIcon({ instructor, courses }) {

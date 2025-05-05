@@ -9,6 +9,7 @@ import Footer from "layouts/marketing/footers/Footer";
 import NavbarDefault from "layouts/marketing/navbars/NavbarDefault";
 
 import { Footer1 } from "./_docs/snippet/footers/components/Footer1";
+import { Toaster } from "react-hot-toast";
 
 export const metadata = {
   title: "Welcome to Geeks UI Learning Application | Geeks Nextjs Template",
@@ -17,6 +18,7 @@ export const metadata = {
 const Page = () => {
   return (
     <Fragment>
+      <Toaster position="top-center" reverseOrder={false} />
       {/* Default Navbar */}
       <NavbarDefault login />
       <main>

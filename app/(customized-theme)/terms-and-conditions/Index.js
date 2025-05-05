@@ -118,18 +118,19 @@ function TermsAndConditions() {
                   prohibited.{" "}
                 </p>
                 {/* list */}
-                <ul className="fs-4">
+                {/* <ul className="fs-4">
                   <li>More than 60+ components</li>
                   <li>Five ready tests</li>
                   <li>Coming soon page</li>
                   <li>Check list with left icon</li>
                   <li>And much more ...</li>
-                </ul>
+                </ul> */}
               </div>
               {/* para */}
               <div className="mt-5">
                 <h2 className="fw-bold">
-                  This is a H2&apos;s perfect for the titles.
+                  {/* This is a H2&apos;s perfect for the titles. */}
+                  Intellectual Property
                 </h2>
                 <p className="fs-4">
                   Geeks ui takes the privacy of its users very seriously. For
@@ -137,11 +138,11 @@ function TermsAndConditions() {
                   <Link href="#">here</Link>.
                 </p>
                 <p className="mb-6 fs-4">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-                  cursus, mi quis viverra ornare, eros pain, sometimes none at
-                  all, freedom of the living creature was as the profit and
-                  financial security. Jasmine neck adapter and just running it
-                  lorem makeup hairstyle. Now sad smile of the television set.
+                  All course content, videos, materials, and branding are the
+                  property of [Your Website Name] and are protected by copyright
+                  laws. You may not reproduce, distribute, modify, or create
+                  derivative works from our content without prior written
+                  permission.{" "}
                 </p>
                 <h2 className="fw-bold">Changes about terms</h2>
                 <p className="fs-4">
@@ -151,7 +152,7 @@ function TermsAndConditions() {
                 </p>
                 <p className="fs-4">
                   Questions? Please email us at{" "}
-                  <Link href="#">hello@example.com</Link>
+                  <Link href="#">contact@editors.academy</Link>
                 </p>
               </div>
             </Col>
