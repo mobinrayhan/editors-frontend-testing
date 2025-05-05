@@ -22,11 +22,13 @@ import { mdiFacebook, mdiTwitter, mdiLinkedin, mdiContentCopy } from "@mdi/js";
 
 // Import required data
 import { AllCoursesData } from "data/slider/AllCoursesData";
-import { InstructorData } from "data/users/InstructorData";
+// import { InstructorData } from "data/users/InstructorData";
 import CourseCard from "shared/card/CourseCard";
 import ProfileCoverFull from "widgets/headers/ProfileCoverFull";
 
-const ViewProfile = () => {
+const ViewProfile = ({ instructorData }) => {
+  console.log(instructorData);
+  const instructor = instructorData?.instructor[0];
   const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
     <Link
       href="#"
@@ -72,16 +74,18 @@ const ViewProfile = () => {
   const InstructorID = 0;
 
   const dashboardData = {
-    avatar: InstructorData[InstructorID].image,
-    name: InstructorData[InstructorID].name,
-    skills: InstructorData[InstructorID].topic,
+    avatar:
+      instructor?.profileImage ||
+      "https://i.ibb.co.com/KzfWFxGn/187910563-10220662170840378-3981185376255859365-n.jpg",
+    name: instructor?.name,
+    skills: instructor?.expertise,
     verified: true,
     badge: "Instructor",
     youtube: "#",
     link: "#",
     instagram: "#",
     facebook: "#",
-    twitter: "#",
+    twitter: JSON.parse(instructor?.socialLinks)?.twitter,
   };
 
   return (
@@ -99,7 +103,7 @@ const ViewProfile = () => {
                 {/* Card body */}
                 <Card.Body>
                   <h4>About me</h4>
-                  <p>{InstructorData[InstructorID].about}</p>
+                  <p>{instructor?.bio}</p>
                   <Link href="#" className="btn-link">
                     Read more
                   </Link>
@@ -112,7 +116,7 @@ const ViewProfile = () => {
                   <div className="d-flex align-items-center justify-content-between border-bottom pb-3 mb-3">
                     <div>
                       <h4 className="mb-0 fw-bold">
-                        {InstructorData[InstructorID].courses}
+                        {instructor?.totalCourses}
                       </h4>
                       <p className="fs-6 mb-0">Courses</p>
                     </div>
@@ -125,7 +129,7 @@ const ViewProfile = () => {
                   <div className="d-flex align-items-center justify-content-between border-bottom pb-3 mb-3">
                     <div>
                       <h4 className="mb-0 fw-bold">
-                        {InstructorData[InstructorID].students}
+                        {instructor?.totalStudents}
                       </h4>
                       <p className="fs-6 mb-0">Total Students</p>
                     </div>
@@ -138,7 +142,8 @@ const ViewProfile = () => {
                   <div className="d-flex align-items-center justify-content-between">
                     <div>
                       <h4 className="mb-0 fw-bold">
-                        {InstructorData[InstructorID].reviews}
+                        {/* {InstructorData[InstructorID].reviews} */}
+                        1200
                       </h4>
                       <p className="fs-6 mb-0">Reviews</p>
                     </div>
@@ -161,12 +166,12 @@ const ViewProfile = () => {
                     <span className="text-muted fs-6">
                       (
                       {
-                        AllCoursesData.filter(function (datasource) {
-                          return (
-                            datasource.instructor_name ===
-                            InstructorData[InstructorID].name
-                          );
-                        }).length
+                        // AllCoursesData.filter(function (datasource) {
+                        //   return (
+                        //     datasource.instructor_name ===
+                        //     InstructorData[InstructorID].name
+                        //   );
+                        // }).length
                       }
                       )
                     </span>
@@ -175,7 +180,7 @@ const ViewProfile = () => {
                 {/* Card body */}
                 <Card.Body>
                   {/* List group */}
-                  <ListGroup variant="flush">
+                  {/* <ListGroup variant="flush">
                     {AllCoursesData.filter(function (datasource) {
                       return (
                         datasource.instructor_name ===
@@ -193,7 +198,7 @@ const ViewProfile = () => {
                         </div>
                       </ListGroup.Item>
                     ))}
-                  </ListGroup>
+                  </ListGroup> */}
                 </Card.Body>
               </Card>
             </Col>

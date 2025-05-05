@@ -142,7 +142,7 @@ const CardsComponents = ({ course, instructorData, sections }) => {
         </Card.Body>
       </Card>
       {/* Card */}
-      <InstructorProfileSummaryCard data={instructorData} />
+      <InstructorProfileSummaryCard course={course} data={instructorData} />
     </>
   );
 };

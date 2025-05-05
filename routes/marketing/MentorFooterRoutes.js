@@ -15,11 +15,11 @@ const MentorFooterRoutes = [
         menuitem: "Courses",
         link: "/courses",
       },
-      {
-        id: uuid(),
-        menuitem: "Dashboard",
-        link: "/student/dashboard",
-      },
+      // {
+      //   id: uuid(),
+      //   menuitem: "Dashboard",
+      //   link: "/student/dashboard",
+      // },
       {
         id: uuid(),
         menuitem: "Contact",
@@ -77,11 +77,11 @@ const MentorFooterRoutes = [
         menuitem: "Privacy Policy",
         link: "privacy-policy",
       },
-      {
-        id: uuid(),
-        menuitem: "Meet the Team",
-        link: "/meet-the-team",
-      },
+      // {
+      //   id: uuid(),
+      //   menuitem: "Meet the Team",
+      //   link: "/meet-the-team",
+      // },
     ],
   },
   {
@@ -98,11 +98,11 @@ const MentorFooterRoutes = [
         menuitem: "FAQ",
         link: "/help-center/faq",
       },
-      {
-        id: uuid(),
-        menuitem: "Guides",
-        link: "/help-center/guide",
-      },
+      // {
+      //   id: uuid(),
+      //   menuitem: "Guides",
+      //   link: "/help-center/guide",
+      // },
     ],
   },
 ];

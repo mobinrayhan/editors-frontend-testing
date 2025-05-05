@@ -43,26 +43,25 @@ function TermsAndConditions() {
               <div className="py-3 mb-5 border-bottom">
                 <h3>
                   Effective date:{" "}
-                  <span className="text-primary">23rd of March, 2021</span>
+                  <span className="text-primary">5th of March, 2025</span>
                 </h3>
               </div>
               {/* heading */}
-              <h1 className="fw-bold mb-3">
+              {/* <h1 className="fw-bold mb-3">
                 This is a H1, Perfect&apos;s for titles.
-              </h1>
+              </h1> */}
 
               <p className="fs-4 mb-4">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Stress,
-                for the United States element ante. Duis cursus, mi quis viverra
-                ornare, eros pain, sometimes none at all, freedom of the living
-                creature was as the profit and financial security. Jasmine neck
-                adapter and just running it lorem makeup sad smile of the
-                television set.
+                Welcome to Editors academy! These Terms and Conditions ("Terms")
+                govern your use of our website and services, including the
+                purchase and participation in our online courses. By accessing
+                or using our website, you agree to be bound by these Terms. If
+                you do not agree, please do not use our services.
               </p>
 
               <p className="mb-1 fs-4">
                 <span className="text-dark fw-semi-bold">Email: </span>
-                hello@geeksui.com
+                contact@editors.academy
               </p>
 
               <p className="mb-1 fs-4">
@@ -76,15 +75,14 @@ function TermsAndConditions() {
                 </div>
                 <div className="ms-3">
                   <h3 className="fw-bold">
-                    This is a H3&apos;s perfect for the titles.
+                    {/* This is a H3&apos;s perfect for the titles. */}
+                    Use of the Website
                   </h3>
                   <p className="fs-4">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Stress, for the United States element ante. Duis cursus, mi
-                    quis viverra ornare, eros pain, none at all, freedom of the
-                    living creature was as the profit and financial security.
-                    Jasmine neck adapter and just running it lorem makeup
-                    hairstyle. Now sad smile of the television set.
+                    You must be at least 12 years old or have parental consent
+                    to use this website. You agree to use the site only for
+                    lawful purposes and not to engage in any activity that may
+                    harm the website or other users.{" "}
                   </p>
                 </div>
               </div>
@@ -95,30 +93,29 @@ function TermsAndConditions() {
                 </div>
                 <div className="ms-3">
                   <h3 className="fw-bold">
-                    This is a H3&apos;s perfect for the titles.
+                    {/* This is a H3&apos;s perfect for the titles. */}
+                    Account Registration
                   </h3>
                   <p className="fs-4">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Stress, for the United States element ante. Duis cursus, mi
-                    quis viverra ornare, eros pain, none at all, freedom of the
-                    living creature was as the profit and financial security.
-                    Jasmine neck adapter and just running it lorem makeup
-                    hairstyle. Now sad smile of the television set.
+                    To access certain features, you may be required to create an
+                    account. You are responsible for maintaining the
+                    confidentiality of your account and password and for all
+                    activities that occur under your account.
                   </p>
                 </div>
               </div>
               {/* para */}
               <div className="mt-5">
                 <h2 className="fw-bold">
-                  This is a H2&apos;s perfect for the titles.
+                  {/* This is a H2&apos;s perfect for the titles. */}
+                  Course Enrollment and Access
                 </h2>
                 <p className="fs-4">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Stress, for the United States element ante. Duis cursus, mi
-                  quis viverra ornare, eros pain , sometimes none at all,
-                  freedom of the living creature was as the profit and financial
-                  security. Jasmine neck adapter and just running it lorem
-                  makeup hairstyle. Now sad smile of the television set.
+                  Upon purchase, you will be granted access to the course
+                  content for the duration specified on the course page. Course
+                  materials are for personal, non-commercial use only. Sharing
+                  or reselling your access or course content is strictly
+                  prohibited.{" "}
                 </p>
                 {/* list */}
                 <ul className="fs-4">

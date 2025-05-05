@@ -6,7 +6,7 @@ import { Card, Col, Image, Row } from "react-bootstrap";
 // import utility file
 import { numberWithCommas } from "helper/utils";
 
-const InstructorProfileSummaryCard = ({ data }) => {
+const InstructorProfileSummaryCard = ({ course, data }) => {
   return (
     <Card className="mb-4">
       <Card.Body>
@@ -73,7 +73,7 @@ const InstructorProfileSummaryCard = ({ data }) => {
         </Row>
         <p>{data?.instructor[0]?.bio}</p>
         <Link
-          href={"/instructor/profile"}
+          href={`/instructor/${course?.id}`}
           className="btn btn-outline-secondary btn-sm"
         >
           View Details
