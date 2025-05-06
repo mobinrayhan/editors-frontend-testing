@@ -1,19 +1,31 @@
 "use client";
 
-import getLocalCartData from "helper/getLocalCartData";
 import useMounted from "hooks/useMounted";
-import React, { useEffect, useState } from "react";
+// import getLocalCartData from "helper/getLocalCartData";
+
+import React, { useEffect } from "react";
 import { Image } from "react-bootstrap";
 
 // import { useDispatch, useSelector } from "react-redux";
 
 export default function RightSide() {
+  const [cartData, setCartData] = React.useState([]);
   const hasMounted = useMounted();
-  const cartData = hasMounted ? getLocalCartData() : [];
+  useEffect(() => {
+    const data = localStorage.getItem("cartItem");
+    if (data) {
+      const parsedCartData = JSON.parse(data);
+      setCartData(parsedCartData);
+    } else {
+      setCartData([]);
+    }
+  }, [hasMounted]);
+  console.log(cartData);
   const totalPrice = cartData?.reduce((acc, item) => {
     return acc + Number(item?.price);
   }, 0);
   // const cartData = [];
+
   return (
     <section className="col-md-6">
       {/* Order Summary */}

@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+
 import React from "react";
 
 export default function LeftSideForm() {
@@ -56,11 +56,11 @@ export default function LeftSideForm() {
               name: "Nagad",
               img: "https://images.dwncdn.net/images/t_app-icon-l/p/f4b4a183-6c79-4b79-a2d2-8249707aee04/3154843298/2057_4-78566033-logo",
             },
-          ].map((option) => (
+          ]?.map((option) => (
             <img
-              key={option.name}
-              src={option.img}
-              alt={option.name}
+              key={option?.name}
+              src={option?.img}
+              alt={option?.name}
               className="img-thumbnail"
               role="button"
               // width={70}
@@ -74,7 +74,7 @@ export default function LeftSideForm() {
                 boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
                 transition: "transform 0.2s",
               }}
-              onClick={() => handlePaymentClick(option.name)}
+              onClick={() => handlePaymentClick(option?.name)}
             />
           ))}
         </div>

@@ -6,6 +6,6 @@ export default function getLocalCartData() {
     const parsedCartData = JSON.parse(cartData);
     return parsedCartData;
   } else {
-    return null;
+    return [];
   }
 }

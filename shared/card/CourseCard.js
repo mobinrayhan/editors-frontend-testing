@@ -34,6 +34,7 @@ const CourseCard = ({
   viewby = "grid",
   showprogressbar = false,
   extraclass = "",
+  cartInstructor = {},
 }) => {
   /** Used in Course Index, Course Category, Course Filter Page, Student Dashboard etc...  */
   const GridView = () => {
@@ -41,7 +42,7 @@ const CourseCard = ({
       <Card className={`mb-4 card-hover ${extraclass}`}>
         <Link href={`/courses/${item?.slug}`}>
           <Image
-            src={item.thumbnail}
+            src={item?.thumbnail}
             alt=""
             className="card-img-top rounded-top-md"
           />
@@ -90,7 +91,7 @@ const CourseCard = ({
             </div>
             <div
               className={`lh-1 mt-3 ${
-                free || item.price === undefined || item.price <= 0 //||
+                free || item?.price === undefined || item?.price <= 0 //||
                   ? // item.discount === undefined
                     "d-none"
                   : ""
@@ -130,7 +131,7 @@ const CourseCard = ({
                 </Link>
               </GKTippy> */}
 
-              <AddToCartIcon courses={item} instructor={instructor} />
+              <AddToCartIcon courses={item} instructor={cartInstructor} />
             </Col>
           </Row>
           <span className={`${showprogressbar ? "" : "d-none"}`}>
@@ -148,7 +149,8 @@ const CourseCard = ({
   };
 
   /** Used in Course Filter Page  */
-  const ListView = ({ isCart }) => {
+  console.log(instructor);
+  const ListView = () => {
     return (
       <Card className="mb-4 card-hover">
         <Row className="g-0">
@@ -202,7 +204,7 @@ const CourseCard = ({
                 <Col className="col-auto">
                   <Image
                     src={
-                      instructor?.profile_image ||
+                      instructor?.profileImage ||
                       "https://media.istockphoto.com/id/1682296067/photo/happy-studio-portrait-or-professional-man-real-estate-agent-or-asian-businessman-smile-for.jpg?s=612x612&w=0&k=20&c=9zbG2-9fl741fbTWw5fNgcEEe4ll-JegrGlQQ6m54rg="
                     }
                     className="rounded-circle avatar-xs"

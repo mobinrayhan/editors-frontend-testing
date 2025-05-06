@@ -64,6 +64,7 @@ const CourseSlider = ({
                   key={index}
                   item={item}
                   instructor={instructors[index].instructor[0]}
+                  cartInstructor={instructors[index]}
                   extraclass="mx-2"
                 />
               </div>

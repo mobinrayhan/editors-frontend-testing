@@ -12,7 +12,12 @@ import CourseCard from "shared/card/CourseCard";
 import { AllCoursesData } from "data/slider/AllCoursesData";
 import Link from "next/link";
 
-const CourseListView = ({ courses, instructors, cartData, isCart = false }) => {
+const CourseListView = ({
+  courses,
+  instructors,
+  cartData = [],
+  isCart = false,
+}) => {
   const [Records] = useState(AllCoursesData.slice(0, 500));
   if (typeof window !== "undefined") {
     // const cartData = localStorage.getItem("cartItem");
@@ -46,10 +51,10 @@ const CourseListView = ({ courses, instructors, cartData, isCart = false }) => {
       : [];
 
   const cartRecords =
-    cartData && isCart
+    isCart && cartData
       ? // courses?.courses
         // .slice(pagesVisited, pagesVisited + RecordsPerPage)
-        cartData.map((Records, index) => {
+        cartData?.map((Records, index) => {
           return (
             <Col sm={12} md={12} lg={12} key={index}>
               <CourseCard
