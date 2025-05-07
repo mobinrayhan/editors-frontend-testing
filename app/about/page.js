@@ -1,12 +1,12 @@
 // import sub components
-import About from './Index';
+import About from "./Index";
 
 export const metadata = {
-	title: "About Us | Geeks Nextjs Template",
-}
+  title: "About Us | Editors Academy",
+};
 
 const Page = () => {
-	return (<About />);
+  return <About />;
 };
 
 export default Page;
