@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Col } from "react-bootstrap";
+import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { addItemToCart } from "store/cartSlice";
 import GKTippy from "widgets/tooltips/GKTippy";
@@ -17,6 +18,7 @@ export default function CartDeleteIcon({ data }) {
       );
       localStorage.setItem("cartItem", JSON.stringify(updatedCartItem));
       dispatch(addItemToCart(updatedCartItem));
+      toast.success("Cart item removed");
     }
   };
   return (

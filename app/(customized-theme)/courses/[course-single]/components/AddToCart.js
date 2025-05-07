@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import React from "react";
+import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { addItemToCart } from "store/cartSlice";
 // import { addItemToCart } from "../redux/slices/cartSlice";
@@ -9,7 +10,7 @@ function handelAddToCart(course, instructorData, dispatch) {
   if (previousCartItem) {
     const parsedCartItem = JSON.parse(previousCartItem);
     if (parsedCartItem.find((item) => item.id === course.id)) {
-      alert("Already in Cart");
+      toast("Already in Cart");
     } else {
       localStorage.setItem(
         "cartItem",
@@ -24,6 +25,7 @@ function handelAddToCart(course, instructorData, dispatch) {
           { ...course, instructor: instructorData },
         ])
       );
+      toast.success("Cart Added Successfully");
     }
   } else {
     localStorage.setItem(
@@ -31,7 +33,7 @@ function handelAddToCart(course, instructorData, dispatch) {
       JSON.stringify([{ ...course, instructor: instructorData }])
     );
     dispatch(addItemToCart([{ ...course, instructor: instructorData }]));
-    alert("Added to Cart");
+    toast.success("Cart Added Successfully");
   }
 }
 const AddToCart = ({ course, instructorData }) => {

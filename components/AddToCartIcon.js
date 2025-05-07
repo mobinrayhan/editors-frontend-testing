@@ -1,15 +1,15 @@
 "use client";
 import React from "react";
+import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { addItemToCart } from "store/cartSlice";
 import GKTippy from "widgets/tooltips/GKTippy";
 function handelAddToCart(course, instructorData, disPatch) {
-  console.log(course, instructorData);
   const previousCartItem = localStorage.getItem("cartItem");
   if (previousCartItem) {
     const parsedCartItem = JSON.parse(previousCartItem);
     if (parsedCartItem.find((item) => item.id === course.id)) {
-      alert("Already in Cart");
+      toast("Already in Cart");
     } else {
       const newCartItem = [
         ...parsedCartItem,
@@ -23,7 +23,8 @@ function handelAddToCart(course, instructorData, disPatch) {
       ];
       localStorage.setItem("cartItem", JSON?.stringify(newCartItem));
       disPatch(addItemToCart(newCartItem));
-      alert("Added to Cart");
+
+      toast.success("Cart Added Successfully");
     }
   } else {
     const data = [
@@ -37,7 +38,7 @@ function handelAddToCart(course, instructorData, disPatch) {
     ];
     localStorage.setItem("cartItem", JSON.stringify(data));
     disPatch(addItemToCart(data));
-    alert("Added to Cart");
+    toast.success("Cart Added Successfully");
   }
 }
 export default function AddToCartIcon({ instructor, courses }) {
