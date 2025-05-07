@@ -140,9 +140,7 @@ const GKAccordionDefault = ({ accordionItems, itemClass, sections, slug }) => {
                                 className="text-truncate "
                                 style={{ minWidth: "25px" }}
                               >
-                                <span>
-                                  {secondsToHoursMinutes(+subitem.duration)}
-                                </span>
+                                <span>{subitem?.duration}</span>
                               </div>
                             </Link>
                           </ListGroup.Item>

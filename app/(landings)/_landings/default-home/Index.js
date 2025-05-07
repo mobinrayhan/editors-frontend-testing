@@ -20,7 +20,7 @@ const DefaultHome = async () => {
           return instructorData;
         })
   );
-
+  console.log(courses, instructors);
   return (
     <main>
       <HeroHeader

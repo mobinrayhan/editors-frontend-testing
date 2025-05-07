@@ -56,7 +56,7 @@ const CourseCard = ({
             <ListGroup as="ul" bsPrefix="list-inline" className="mb-3">
               <ListGroup.Item as="li" bsPrefix="list-inline-item">
                 <i className="far fa-clock me-1"></i>
-                {/* {item.duration} */} 1:50
+                {item?.totalDuration}
               </ListGroup.Item>
               <ListGroup.Item as="li" bsPrefix="list-inline-item">
                 <LevelIcon level={item.level} />
