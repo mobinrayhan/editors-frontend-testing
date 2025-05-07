@@ -216,7 +216,7 @@ const CourseCard = ({
                   <CartDeleteIcon data={item} />
                 ) : (
                   <Col style={{ cursor: "pointer" }} className="col-auto">
-                    <AddToCartIcon />
+                    <AddToCartIcon courses={item} instructor={instructor} />
                   </Col>
                   // <Col className="col-auto">
                   //   <GKTippy content="Add to Bookmarks">
