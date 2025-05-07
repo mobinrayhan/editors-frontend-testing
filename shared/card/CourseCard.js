@@ -24,8 +24,10 @@ import { numberWithCommas } from "helper/utils";
 import GKTippy from "widgets/tooltips/GKTippy";
 
 import AddToCartIcon from "components/AddToCartIcon";
+import CartDeleteIcon from "app/(customized-theme)/cart/components/CartDeleteIcon";
 
 const CourseCard = ({
+  isCart,
   instructor,
   item,
   free = false,
@@ -210,13 +212,20 @@ const CourseCard = ({
                 <Col className="col ms-2">
                   <span>{instructor?.name}</span>
                 </Col>
-                <Col className="col-auto">
-                  <GKTippy content="Add to Bookmarks">
-                    <Link href="#">
-                      <i className="fe fe-bookmark"></i>
-                    </Link>
-                  </GKTippy>
-                </Col>
+                {isCart ? (
+                  <CartDeleteIcon data={item} />
+                ) : (
+                  <Col style={{ cursor: "pointer" }} className="col-auto">
+                    <AddToCartIcon />
+                  </Col>
+                  // <Col className="col-auto">
+                  //   <GKTippy content="Add to Bookmarks">
+                  //     <Link href="#">
+                  //       <i className="fe fe-bookmark"></i>
+                  //     </Link>
+                  //   </GKTippy>
+                  // </Col>
+                )}{" "}
               </Row>
             </Card.Body>
           </Col>
