@@ -125,7 +125,7 @@ const CourseSingle = async ({ params }) => {
                   <div className="d-flex align-items-center bookmark text-white text-decoration-none">
                     <AddToCartIcon
                       courses={course}
-                      instructor={instructorData}
+                      instructor={instructorData.instructor[0]}
                     />{" "}
                     <span style={{ marginLeft: "5px" }}>Add to Cart</span>
                     {/* <GKTippy content="Add to Bookmarks">
