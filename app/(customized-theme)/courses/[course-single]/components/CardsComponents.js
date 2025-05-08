@@ -99,7 +99,7 @@ const CardsComponents = ({ course, instructorData, sections }) => {
             <span className="text-dark fw-bold h2 me-2">
               BDT {course?.price}
             </span>
-            <del className="fs-4 text-muted">750</del>
+            {/* <del className="fs-4 text-muted">750</del> */}
           </div>
           <div className="d-grid">
             <AddToCart course={course} instructorData={instructorData} />
@@ -120,7 +120,7 @@ const CardsComponents = ({ course, instructorData, sections }) => {
           <ListGroup variant="flush">
             <ListGroup.Item>
               <i className="fe fe-play-circle align-middle me-2 text-primary"></i>
-              {secondsToHoursMinutes(totalDuration)}ours video
+              {course?.totalDuration} hour video duration
             </ListGroup.Item>
             <ListGroup.Item>
               <i className="fe fe-award me-2 align-middle text-success"></i>
@@ -128,7 +128,7 @@ const CardsComponents = ({ course, instructorData, sections }) => {
             </ListGroup.Item>
             <ListGroup.Item>
               <i className="fe fe-calendar align-middle me-2 text-info"></i>
-              {totalResourses} Resources
+              {course?.totalResources} Resources
             </ListGroup.Item>
             {/* <ListGroup.Item>
               <i className="fe fe-video align-middle me-2 text-secondary"></i>

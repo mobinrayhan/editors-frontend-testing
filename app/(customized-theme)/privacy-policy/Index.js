@@ -26,7 +26,7 @@ function TermsAndConditions() {
                 <h1 className="display-3 fw-bold">Privacy Policy</h1>
                 <p className="lead px-8">
                   Read our terms below to learn more about your rights and
-                  responsibilities as a Product Name user.
+                  responsibilities as a Course user.
                 </p>
               </div>
             </Col>
@@ -43,21 +43,20 @@ function TermsAndConditions() {
               <div className="py-3 mb-5 border-bottom">
                 <h3>
                   Effective date:{" "}
-                  <span className="text-primary">23rd of March, 2021</span>
+                  <span className="text-primary">5th of March, 2025</span>
                 </h3>
               </div>
               {/* heading */}
-              <h1 className="fw-bold mb-3">
-                This is a H1, Perfect&apos;s for titles.
-              </h1>
+              <h1 className="fw-bold mb-3">Information We Collect</h1>
 
               <p className="fs-4 mb-4">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Stress,
-                for the United States element ante. Duis cursus, mi quis viverra
-                ornare, eros pain, sometimes none at all, freedom of the living
-                creature was as the profit and financial security. Jasmine neck
-                adapter and just running it lorem makeup sad smile of the
-                television set.
+                We may collect the following types of personal information:
+                Personal Details: Name, email address, contact information.
+                Account Data: Login credentials and course activity. Payment
+                Details: Billing information via secure third-party payment
+                gateways. Usage Data: Pages visited, time spent on the site, and
+                other analytics. We only collect data that is necessary to
+                provide you with our services and improve your experience.
               </p>
 
               <p className="mb-1 fs-4">
@@ -75,16 +74,14 @@ function TermsAndConditions() {
                   <h3 className="fw-bold">A</h3>
                 </div>
                 <div className="ms-3">
-                  <h3 className="fw-bold">
-                    This is a H3&apos;s perfect for the titles.
-                  </h3>
+                  <h3 className="fw-bold">How We Use Your Information</h3>
                   <p className="fs-4">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Stress, for the United States element ante. Duis cursus, mi
-                    quis viverra ornare, eros pain, none at all, freedom of the
-                    living creature was as the profit and financial security.
-                    Jasmine neck adapter and just running it lorem makeup
-                    hairstyle. Now sad smile of the television set.
+                    We use your data to: Process transactions and provide course
+                    access. Send you updates, receipts, or service
+                    announcements. Respond to customer support inquiries.
+                    Analyze trends to improve the website and course content.
+                    Ensure compliance with our Terms of Use and applicable laws.
+                    We do not sell or rent your data to third parties.{" "}
                   </p>
                 </div>
               </div>
@@ -94,57 +91,47 @@ function TermsAndConditions() {
                   <h3 className="fw-bold">B</h3>
                 </div>
                 <div className="ms-3">
-                  <h3 className="fw-bold">
-                    This is a H3&apos;s perfect for the titles.
-                  </h3>
+                  <h3 className="fw-bold">Cookies and Tracking</h3>
                   <p className="fs-4">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Stress, for the United States element ante. Duis cursus, mi
-                    quis viverra ornare, eros pain, none at all, freedom of the
-                    living creature was as the profit and financial security.
-                    Jasmine neck adapter and just running it lorem makeup
-                    hairstyle. Now sad smile of the television set.
+                    We use cookies and similar tracking technologies to:
+                    Remember your preferences. Authenticate logins. Understand
+                    site usage through analytics tools like Google Analytics.
+                    You may disable cookies through your browser settings,
+                    though some site features may not function properly.{" "}
                   </p>
                 </div>
               </div>
               {/* para */}
               <div className="mt-5">
-                <h2 className="fw-bold">
-                  This is a H2&apos;s perfect for the titles.
-                </h2>
+                <h2 className="fw-bold">Changes to This Policy</h2>
                 <p className="fs-4">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Stress, for the United States element ante. Duis cursus, mi
-                  quis viverra ornare, eros pain , sometimes none at all,
-                  freedom of the living creature was as the profit and financial
-                  security. Jasmine neck adapter and just running it lorem
-                  makeup hairstyle. Now sad smile of the television set.
+                  We may update this Privacy Policy periodically. All changes
+                  will be posted on this page with a revised “Effective Date.”
+                  If the changes are significant, we will notify registered
+                  users via email.{" "}
                 </p>
                 {/* list */}
-                <ul className="fs-4">
+                {/* <ul className="fs-4">
                   <li>More than 60+ components</li>
                   <li>Five ready tests</li>
                   <li>Coming soon page</li>
                   <li>Check list with left icon</li>
                   <li>And much more ...</li>
-                </ul>
+                </ul> */}
               </div>
               {/* para */}
               <div className="mt-5">
-                <h2 className="fw-bold">
-                  This is a H2&apos;s perfect for the titles.
-                </h2>
+                <h2 className="fw-bold">Contact Us</h2>
                 <p className="fs-4">
-                  Geeks ui takes the privacy of its users very seriously. For
-                  the current our Privacy Policy, please click{" "}
-                  <Link href="#">here</Link>.
+                  Editors academy takes the privacy of its users very seriously.
+                  For the current our Privacy Policy, please click{" "}
+                  <Link href="/terms-and-condition">here</Link> for trams and
+                  conditions.
                 </p>
                 <p className="mb-6 fs-4">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-                  cursus, mi quis viverra ornare, eros pain, sometimes none at
-                  all, freedom of the living creature was as the profit and
-                  financial security. Jasmine neck adapter and just running it
-                  lorem makeup hairstyle. Now sad smile of the television set.
+                  If you have any questions or concerns about this Privacy
+                  Policy, you can contact us at: 📧 Email:
+                  contact@editors.academy 🌐 Website: https://editors.academy{" "}
                 </p>
                 <h2 className="fw-bold">Changes about terms</h2>
                 <p className="fs-4">
@@ -154,7 +141,7 @@ function TermsAndConditions() {
                 </p>
                 <p className="fs-4">
                   Questions? Please email us at{" "}
-                  <Link href="#">hello@example.com</Link>
+                  <Link href="#">contact@editors.academy</Link>
                 </p>
               </div>
             </Col>

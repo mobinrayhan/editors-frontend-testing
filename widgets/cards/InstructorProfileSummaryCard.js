@@ -7,6 +7,7 @@ import { Card, Col, Image, Row } from "react-bootstrap";
 import { numberWithCommas } from "helper/utils";
 
 const InstructorProfileSummaryCard = ({ data }) => {
+  console.log(data);
   return (
     <Card className="mb-4">
       <Card.Body>

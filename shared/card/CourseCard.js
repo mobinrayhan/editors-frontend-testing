@@ -24,8 +24,10 @@ import { numberWithCommas } from "helper/utils";
 import GKTippy from "widgets/tooltips/GKTippy";
 
 import AddToCartIcon from "components/AddToCartIcon";
+import CartDeleteIcon from "app/(customized-theme)/cart/components/CartDeleteIcon";
 
 const CourseCard = ({
+  isCart,
   instructor,
   item,
   free = false,
@@ -39,7 +41,7 @@ const CourseCard = ({
       <Card className={`mb-4 card-hover ${extraclass}`}>
         <Link href={`/courses/${item?.slug}`}>
           <Image
-            src={item.thumbnail}
+            src={item?.thumbnail}
             alt=""
             className="card-img-top rounded-top-md"
           />
@@ -50,17 +52,17 @@ const CourseCard = ({
           <Card.Body>
             <h3 className="h4 mb-2 text-truncate-line-2 ">
               {/* <Link href="#" className="text-inherit"> */}
-              {item.title}
+              {item?.title}
               {/* </Link> */}
             </h3>
             <ListGroup as="ul" bsPrefix="list-inline" className="mb-3">
               <ListGroup.Item as="li" bsPrefix="list-inline-item">
                 <i className="far fa-clock me-1"></i>
-                {/* {item.duration} */} 1:50
+                {item?.totalDuration}
               </ListGroup.Item>
               <ListGroup.Item as="li" bsPrefix="list-inline-item">
-                <LevelIcon level={item.level} />
-                {item.level}
+                <LevelIcon level={item?.level} />
+                {item?.level}
               </ListGroup.Item>
             </ListGroup>
             <div
@@ -95,9 +97,9 @@ const CourseCard = ({
               }`}
             >
               <span className="text-dark fw-bold">
-                {/* ${item.price - item?.discount} */}${item.price}
+                {/* ${item.price - item?.discount} */}${item?.price}
               </span>{" "}
-              <del className="fs-6 text-muted">${item.price}</del>
+              <del className="fs-6 text-muted">${item?.price}</del>
             </div>
           </Card.Body>
         </Link>
@@ -178,7 +180,7 @@ const CourseCard = ({
               <ListGroup as="ul" bsPrefix="list-inline" className="mb-5">
                 <ListGroup.Item as="li" bsPrefix="list-inline-item">
                   <i className="far fa-clock me-1"></i>
-                  {/* {item.duration} */} 1:50
+                  {item?.totalDuration}
                 </ListGroup.Item>
                 <ListGroup.Item as="li" bsPrefix="list-inline-item">
                   <LevelIcon level={item?.level} />
@@ -210,13 +212,20 @@ const CourseCard = ({
                 <Col className="col ms-2">
                   <span>{instructor?.name}</span>
                 </Col>
-                <Col className="col-auto">
-                  <GKTippy content="Add to Bookmarks">
-                    <Link href="#">
-                      <i className="fe fe-bookmark"></i>
-                    </Link>
-                  </GKTippy>
-                </Col>
+                {isCart ? (
+                  <CartDeleteIcon data={item} />
+                ) : (
+                  <Col style={{ cursor: "pointer" }} className="col-auto">
+                    <AddToCartIcon courses={item} instructor={instructor} />
+                  </Col>
+                  // <Col className="col-auto">
+                  //   <GKTippy content="Add to Bookmarks">
+                  //     <Link href="#">
+                  //       <i className="fe fe-bookmark"></i>
+                  //     </Link>
+                  //   </GKTippy>
+                  // </Col>
+                )}{" "}
               </Row>
             </Card.Body>
           </Col>

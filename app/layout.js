@@ -1,4 +1,5 @@
 // import custom provider for redux state management.
+import { Toaster } from "react-hot-toast";
 import ReduxProvider from "store/provider/ReduxProvider";
 
 // import theme style scss file
@@ -14,6 +15,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="bg-light">
+        <Toaster />
+
         <ReduxProvider>{children}</ReduxProvider>
       </body>
     </html>

@@ -11,7 +11,9 @@ import NavbarDefault from "layouts/marketing/navbars/NavbarDefault";
 import { Footer1 } from "./_docs/snippet/footers/components/Footer1";
 
 export const metadata = {
-  title: "Welcome to Geeks UI Learning Application | Geeks Nextjs Template",
+  title: "Master the Art of Editing – From Basics to Pro Level",
+  description:
+    "Learn everything about video editing — from fundamental techniques to advanced skills. Whether you're a beginner or a seasoned editor, explore tips, tricks, and in-depth tutorials on cutting, color grading, transitions, effects, and more. Unlock your creativity and become a pro editor with practical insights and hands-on guidance.",
 };
 
 const Page = () => {
