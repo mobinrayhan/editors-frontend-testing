@@ -41,7 +41,7 @@ const CourseCard = ({
       <Card className={`mb-4 card-hover ${extraclass}`}>
         <Link href={`/courses/${item?.slug}`}>
           <Image
-            src={item.thumbnail}
+            src={item?.thumbnail}
             alt=""
             className="card-img-top rounded-top-md"
           />
@@ -52,7 +52,7 @@ const CourseCard = ({
           <Card.Body>
             <h3 className="h4 mb-2 text-truncate-line-2 ">
               {/* <Link href="#" className="text-inherit"> */}
-              {item.title}
+              {item?.title}
               {/* </Link> */}
             </h3>
             <ListGroup as="ul" bsPrefix="list-inline" className="mb-3">
@@ -61,8 +61,8 @@ const CourseCard = ({
                 {item?.totalDuration}
               </ListGroup.Item>
               <ListGroup.Item as="li" bsPrefix="list-inline-item">
-                <LevelIcon level={item.level} />
-                {item.level}
+                <LevelIcon level={item?.level} />
+                {item?.level}
               </ListGroup.Item>
             </ListGroup>
             <div
@@ -97,9 +97,9 @@ const CourseCard = ({
               }`}
             >
               <span className="text-dark fw-bold">
-                {/* ${item.price - item?.discount} */}${item.price}
+                {/* ${item.price - item?.discount} */}${item?.price}
               </span>{" "}
-              <del className="fs-6 text-muted">${item.price}</del>
+              <del className="fs-6 text-muted">${item?.price}</del>
             </div>
           </Card.Body>
         </Link>
