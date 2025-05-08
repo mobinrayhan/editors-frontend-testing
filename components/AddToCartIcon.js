@@ -41,17 +41,16 @@ function handelAddToCart(course, instructorData, disPatch) {
     toast.success("Cart Added Successfully");
   }
 }
-export default function AddToCartIcon({ instructor, courses }) {
+export default function AddToCartIcon({ instructor, courses, children }) {
   const disPatch = useDispatch();
   return (
-    <GKTippy content="Add to Cart">
-      {/* <Link href="#"> */}
-      <i
-        onClick={() => handelAddToCart(courses, instructor, disPatch)}
-        style={{ cursor: "pointer" }}
-        className="fe fe-shopping-cart"
-      ></i>
-      {/* </Link> */}
-    </GKTippy>
+    <div onClick={() => handelAddToCart(courses, instructor, disPatch)}>
+      <GKTippy content="Add to Cart">
+        {/* <Link href="#"> */}
+        <i style={{ cursor: "pointer" }} className="fe fe-shopping-cart"></i>
+        {/* </Link> */}
+      </GKTippy>
+      {children}
+    </div>
   );
 }

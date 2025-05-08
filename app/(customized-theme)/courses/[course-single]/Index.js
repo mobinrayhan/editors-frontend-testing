@@ -126,8 +126,11 @@ const CourseSingle = async ({ params }) => {
                     <AddToCartIcon
                       courses={course}
                       instructor={instructorData.instructor[0]}
-                    />{" "}
-                    <span style={{ marginLeft: "5px" }}>Add to Cart</span>
+                    >
+                      <span style={{ marginLeft: "5px", cursor: "pointer" }}>
+                        Add to Cart
+                      </span>
+                    </AddToCartIcon>
                     {/* <GKTippy content="Add to Bookmarks">
                       <Link
                         href="#"
@@ -138,7 +141,8 @@ const CourseSingle = async ({ params }) => {
                       </Link>
                     </GKTippy> */}
                     <span className="text-white ms-3">
-                      <i className="fe fe-user text-white-50"></i> 1200 Enrolled{" "}
+                      <i className="fe fe-user text-white-50"></i>{" "}
+                      {course?.totalEnrollments} Enrolled
                     </span>
                     <span className="ms-4">
                       <span className="text-warning">

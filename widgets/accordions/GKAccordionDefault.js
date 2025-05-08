@@ -156,13 +156,13 @@ const GKAccordionDefault = ({ accordionItems, itemClass, sections, slug }) => {
                             <Link
                               target="_blank"
                               href={
-                                subitem?.isPreview ? "" : subitem?.resourceLink
+                                subitem?.isPreview ? subitem?.resourceLink : ""
                               }
                               className={`d-flex justify-content-between align-items-center text-inherit text-decoration-none`}
                             >
                               <div className="d-flex text-truncate ">
                                 <span className="icon-shape bg-light icon-sm rounded-circle me-2">
-                                  {subitem?.isPreview ? (
+                                  {!subitem?.isPreview ? (
                                     <i className="fe fe-lock fs-4"></i>
                                   ) : (
                                     <Icon
@@ -178,7 +178,7 @@ const GKAccordionDefault = ({ accordionItems, itemClass, sections, slug }) => {
                                   <span
                                     style={{
                                       overflow: "hidden",
-                                      color: "#00000080",
+                                      color: "inherit",
                                       textOverflow: "ellipsis",
                                     }}
                                   >
@@ -201,19 +201,21 @@ const GKAccordionDefault = ({ accordionItems, itemClass, sections, slug }) => {
                           <ListGroup.Item
                             key={subindex}
                             as="li"
-                            disabled={subitem.locked}
+                            disabled={!subitem?.isPreview}
                             className="px-0 py-1 border-0"
                           >
                             <Link
                               target="_blank"
                               href={
-                                subitem.locked ? "" : subitem?.assignmentLink
+                                !subitem?.isPreview
+                                  ? ""
+                                  : subitem?.assignmentLink
                               }
                               className={`d-flex justify-content-between align-items-center text-inherit text-decoration-none`}
                             >
                               <div className="d-flex text-truncate ">
                                 <span className="icon-shape bg-light icon-sm rounded-circle me-2">
-                                  {subitem.locked ? (
+                                  {!subitem?.isPreview ? (
                                     <i className="fe fe-lock fs-4"></i>
                                   ) : (
                                     <Icon path={mdiAssistant} size={0.6} />
@@ -225,11 +227,11 @@ const GKAccordionDefault = ({ accordionItems, itemClass, sections, slug }) => {
                                   <span
                                     style={{
                                       overflow: "hidden",
-                                      color: "#00000080",
+                                      color: "inherit",
                                       textOverflow: "ellipsis",
                                     }}
                                   >
-                                    {subitem.description}
+                                    {subitem?.description}
                                   </span>
                                 </span>
                               </div>
