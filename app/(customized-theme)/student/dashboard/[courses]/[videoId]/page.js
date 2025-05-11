@@ -22,7 +22,7 @@ const Page = async ({ params }) => {
     ));
 
   const instructorData = await getFetch(
-    `https://api.editors.academy/courses/${course.id}/instructor`
+    `https://api.editors.academy/courses/${course.id}/instructors`
   );
   // const instructorData = await resInstructor.json();
   const responseAllSectionWithVideo = await Promise.all(
