@@ -13,7 +13,7 @@ export const metadata = {
 
 const Page = async () => {
   const { instructor } = await getFetch(
-    "https://api.editors.academy/courses/1/instructor"
+    "https://api.editors.academy/courses/1/instructors"
   );
   console.log("======================");
   console.log(instructor);
