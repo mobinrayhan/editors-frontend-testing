@@ -15,7 +15,10 @@ const Page = async () => {
   const { instructor } = await getFetch(
     "https://api.editors.academy/courses/1/instructor"
   );
+  console.log("======================");
   console.log(instructor);
+
+  console.log("======================");
   return (
     <>
       {/* <NavbarDefault  /> */}

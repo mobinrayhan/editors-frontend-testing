@@ -15,7 +15,7 @@ const DefaultHome = async () => {
       ? []
       : courses?.courses?.map(async (course) => {
           const instructorData = await getFetch(
-            `https://api.editors.academy/courses/${course.id}/instructor`
+            `https://api.editors.academy/courses/${course.id}/instructors`
           );
           return instructorData;
         })

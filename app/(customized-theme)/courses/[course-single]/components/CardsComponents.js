@@ -45,12 +45,12 @@ import getTotalDuration from "helper/getTotalDuration";
 const CardsComponents = ({ course, instructorData, sections }) => {
   const [isOpen, setOpen] = useState(false);
   const [YouTubeURL] = useState("JRzWRZahOVU");
-  const totalDuration = getTotalDuration(sections);
+  // const totalDuration = getTotalDuration(sections);
 
-  const totalResourses = sections.reduce(
-    (count, section) => count + section.resources.length,
-    0
-  );
+  // const totalResourses = sections.reduce(
+  //   (count, section) => count + section.resources.length,
+  //   0
+  // );
   return (
     <>
       {/* modal */}

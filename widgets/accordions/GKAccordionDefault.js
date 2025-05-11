@@ -150,13 +150,13 @@ const GKAccordionDefault = ({ accordionItems, itemClass, sections, slug }) => {
                           <ListGroup.Item
                             key={subindex}
                             as="li"
-                            disabled={subitem?.isPreview}
+                            disabled={!subitem?.isPreview}
                             className="px-0 py-1 border-0"
                           >
                             <Link
                               target="_blank"
                               href={
-                                subitem?.isPreview ? subitem?.resourceLink : ""
+                                !subitem?.isPreview ? subitem?.resourceLink : ""
                               }
                               className={`d-flex justify-content-between align-items-center text-inherit text-decoration-none`}
                             >
