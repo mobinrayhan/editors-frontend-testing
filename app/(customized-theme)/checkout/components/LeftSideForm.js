@@ -1,9 +1,10 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 
 export default function LeftSideForm() {
+  const [paymentMethod, setPaymentMethod] = useState("");
   const handlePaymentClick = (method) => {
-    alert(`Selected payment method: ${method}`);
+    setPaymentMethod(method);
   };
   return (
     <div className="col-md-6 mb-4">
@@ -45,15 +46,15 @@ export default function LeftSideForm() {
             },
             {
               name: "Bkash",
-              img: "https://via.placeholder.com/60x40?text=Bkash",
+              img: "https://www.logo.wine/a/logo/BKash/BKash-Icon2-Logo.wine.svg",
             },
             {
               name: "Upay",
-              img: "https://via.placeholder.com/60x40?text=Upay",
+              img: "https://www.tbsnews.net/sites/default/files/styles/amp_metadata_content_image_min_696px_wide/public/images/2021/04/21/upay.jpg",
             },
             {
               name: "Nagad",
-              img: "https://via.placeholder.com/60x40?text=Nagad",
+              img: "https://download.logo.wine/logo/Nagad/Nagad-Logo.wine.png",
             },
           ].map((option) => (
             <img
@@ -66,6 +67,8 @@ export default function LeftSideForm() {
                 cursor: "pointer",
                 width: "70px",
                 height: "45px",
+                backgroundColor:
+                  paymentMethod === option.name ? "#754FFE" : "transparent",
               }}
               onClick={() => handlePaymentClick(option.name)}
             />

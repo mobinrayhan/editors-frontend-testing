@@ -14,10 +14,10 @@ import Link from "next/link";
 
 const CourseListView = ({ courses, instructors, cartData, isCart = false }) => {
   const [Records] = useState(AllCoursesData.slice(0, 500));
-  if (typeof window !== "undefined") {
-    // const cartData = localStorage.getItem("cartItem");
-    // console.log(cartData);
-  }
+  // if (typeof window !== "undefined") {
+  //   // const cartData = localStorage.getItem("cartItem");
+  //   // console.log(cartData);
+  // }
   // paging start
   const [pageNumber, setPageNumber] = useState(0);
   const RecordsPerPage = 6;
@@ -51,6 +51,7 @@ const CourseListView = ({ courses, instructors, cartData, isCart = false }) => {
           return (
             <Col sm={12} md={12} lg={12} key={index}>
               <CourseCard
+                isCart={isCart}
                 instructor={Records?.instructor?.instructor[0]}
                 item={Records}
                 viewby="list"

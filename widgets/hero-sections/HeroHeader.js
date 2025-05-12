@@ -27,9 +27,9 @@ const HeroHeader = ({
               <Link href={buttonLink1} scroll={false} className="btn btn-dark">
                 {buttonText1}
               </Link>{" "}
-              <Link href={buttonLink2} scroll={false} className="btn btn-white">
+              {/* <Link href={buttonLink2} scroll={false} className="btn btn-white">
                 {buttonText2}
-              </Link>
+              </Link> */}
             </div>
           </Col>
           <Col xl={7} lg={6} md={12} className="text-lg-end text-center">

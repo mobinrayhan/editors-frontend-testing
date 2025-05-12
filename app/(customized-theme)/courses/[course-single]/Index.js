@@ -60,7 +60,7 @@ const CourseSingle = async ({ params }) => {
     ));
 
   const instructorData = await getFetch(
-    `https://api.editors.academy/courses/${course.id}/instructor`
+    `https://api.editors.academy/courses/${course.id}/instructors`
   );
   // const instructorData = await resInstructor.json();
   const responseAllSectionWithVideo = await Promise.all(
@@ -125,9 +125,12 @@ const CourseSingle = async ({ params }) => {
                   <div className="d-flex align-items-center bookmark text-white text-decoration-none">
                     <AddToCartIcon
                       courses={course}
-                      instructor={instructorData}
-                    />{" "}
-                    <span style={{ marginLeft: "5px" }}>Add to Cart</span>
+                      instructor={instructorData.instructor[0]}
+                    >
+                      <span style={{ marginLeft: "5px", cursor: "pointer" }}>
+                        Add to Cart
+                      </span>
+                    </AddToCartIcon>
                     {/* <GKTippy content="Add to Bookmarks">
                       <Link
                         href="#"
@@ -138,7 +141,8 @@ const CourseSingle = async ({ params }) => {
                       </Link>
                     </GKTippy> */}
                     <span className="text-white ms-3">
-                      <i className="fe fe-user text-white-50"></i> 1200 Enrolled{" "}
+                      <i className="fe fe-user text-white-50"></i>{" "}
+                      {course?.totalEnrollments} Enrolled
                     </span>
                     <span className="ms-4">
                       <span className="text-warning">

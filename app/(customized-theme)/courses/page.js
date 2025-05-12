@@ -3,7 +3,8 @@ import NavbarDefault from "layouts/marketing/navbars/NavbarDefault";
 import CourseFilterPage from "./Index";
 
 export const metadata = {
-  title: "Course Checkout | Geeks Nextjs Template",
+  title: "Courses | Editors Academy",
+  description: "Courses offered by Editors Academy",
 };
 
 const Page = () => {
