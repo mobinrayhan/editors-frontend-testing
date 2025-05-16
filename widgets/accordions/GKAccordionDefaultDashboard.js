@@ -1,21 +1,12 @@
 // import node module libraries
-import React, { useContext, Fragment } from "react";
 import Link from "next/link";
+import { Fragment, useContext } from "react";
 import { Accordion, AccordionContext, ListGroup } from "react-bootstrap";
 import { useAccordionButton } from "react-bootstrap/AccordionButton";
 
+import { mdiAssistant, mdiPagePreviousOutline, mdiPlay } from "@mdi/js";
 import Icon from "@mdi/react";
-import {
-  mdiAssistant,
-  mdiAsterisk,
-  mdiHomeAssistant,
-  mdiPagePreviousOutline,
-  mdiPaperclipPlus,
-  mdiPaperCutVertical,
-  mdiPlay,
-} from "@mdi/js";
 import ErrorPage from "components/ErrorPage";
-import secondsToHoursMinutes from "helper/secondsToHoursMinutes";
 
 const GKAccordionDefaultDashboard = ({
   videoId,
@@ -75,24 +66,6 @@ const GKAccordionDefaultDashboard = ({
             {sections?.map((item, index) => {
               // if (item.topics.length === 0) {
               if (false) {
-                return (
-                  <ListGroup.Item
-                    key={index}
-                    as="li"
-                    className={`${itemClass ? itemClass : ""}`}
-                  >
-                    <ContextAwareToggle eventKey={item.id}>
-                      {item}
-                    </ContextAwareToggle>
-                    <Accordion.Collapse eventKey={item.id}>
-                      <ListGroup variant="flush">
-                        <ListGroup.Item className="border-0 fs-5 px-0 py-4">
-                          {item.description}
-                        </ListGroup.Item>
-                      </ListGroup>
-                    </Accordion.Collapse>
-                  </ListGroup.Item>
-                );
               } else {
                 return (
                   <ListGroup.Item
@@ -150,9 +123,7 @@ const GKAccordionDefaultDashboard = ({
                                 className="text-truncate "
                                 style={{ minWidth: "25px" }}
                               >
-                                <span>
-                                  {secondsToHoursMinutes(+subitem.duration)}
-                                </span>
+                                <span>{subitem.duration}</span>
                               </div>
                             </Link>
                           </ListGroup.Item>
