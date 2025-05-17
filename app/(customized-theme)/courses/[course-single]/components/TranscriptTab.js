@@ -1,7 +1,7 @@
 "use client";
 // import node module libraries
-import { Fragment } from "react";
 import Link from "next/link";
+import { Fragment } from "react";
 
 // import data files
 import { Transcripts } from "data/courses/CourseIndexData";

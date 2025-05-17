@@ -1,24 +1,24 @@
-'use client'
+"use client";
 
 // import node module libraries
-import Link from 'next/link';
-import { useState } from 'react'
-import { Card, Image } from 'react-bootstrap';
+import Link from "next/link";
+import { useState } from "react";
+import { Card, Image } from "react-bootstrap";
 
-// import sub components 
-import QuizTimer from './components/QuizTimer';
-import QuizProgress from './components/QuizProgress';
-import QuizPagination from './components/QuizPagination';
-import Question from '../../instructor/quiz-single/components/Question';
+// import sub components
+import Question from "../../instructor/quiz-single/components/Question";
+import QuizPagination from "./components/QuizPagination";
+import QuizProgress from "./components/QuizProgress";
+import QuizTimer from "./components/QuizTimer";
 
 // import profile layout wrapper
-import ProfileLayout from 'layouts/marketing/student/ProfileLayout';
+import ProfileLayout from "layouts/marketing/student/ProfileLayout";
 
 // import data files
-import { QuizData } from 'data/marketing/quiz/QuizData';
+import { QuizData } from "data/marketing/quiz/QuizData";
 
 // import hooks
-import useMounted from 'hooks/useMounted';
+import useMounted from "hooks/useMounted";
 
 const QuizStart = () => {
   const hasMounted = useMounted();
@@ -37,10 +37,21 @@ const QuizStart = () => {
           <div className="d-flex justify-content-between align-items-center border-bottom pb-3 mb-3">
             <div className="d-flex align-items-center">
               {/* quiz img */}
-              <Link href="#"> <Image src='/images/course/course-react.jpg' alt="" className="rounded img-4by3-lg" /></Link>
+              <Link href="#">
+                {" "}
+                <Image
+                  src="/images/course/course-react.jpg"
+                  alt=""
+                  className="rounded img-4by3-lg"
+                />
+              </Link>
               {/* quiz content */}
               <div className="ms-3">
-                <h3 className="mb-0"><Link href="#" className="text-inherit">React Basic Quiz </Link></h3>
+                <h3 className="mb-0">
+                  <Link href="#" className="text-inherit">
+                    React Basic Quiz{" "}
+                  </Link>
+                </h3>
               </div>
             </div>
             {/* Timer */}
@@ -48,7 +59,10 @@ const QuizStart = () => {
           </div>
 
           {/* Progress */}
-          <QuizProgress currentQuestion={currentRecords[0]?.id} totalQuestion={QuizData.length} />
+          <QuizProgress
+            currentQuestion={currentRecords[0]?.id}
+            totalQuestion={QuizData.length}
+          />
 
           {/* Question(s) */}
           <div className="mt-5">
@@ -56,15 +70,16 @@ const QuizStart = () => {
 
             {hasMounted && <Question item={currentRecords[0]} />}
           </div>
-
         </Card.Body>
       </Card>
-
       {/* Quiz Pagination */}
-      <QuizPagination nPages={nPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
-
+      <QuizPagination
+        nPages={nPages}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
     </ProfileLayout>
-  )
-}
+  );
+};
 
 export default QuizStart;

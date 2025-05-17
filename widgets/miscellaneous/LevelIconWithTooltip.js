@@ -2,8 +2,8 @@
 import Link from "next/link";
 
 // import sub components
-import LevelIcon from "./LevelIcon";
 import GKTippy from "widgets/tooltips/GKTippy";
+import LevelIcon from "./LevelIcon";
 
 // import widget/custom components
 // import { GKTippy }  from 'widgets';

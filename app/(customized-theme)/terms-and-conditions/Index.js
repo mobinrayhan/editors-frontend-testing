@@ -1,9 +1,9 @@
 "use client";
 
 // import node module libraries
-import { Col, Row, Container } from "react-bootstrap";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+import { Col, Container, Row } from "react-bootstrap";
 
 function TermsAndConditions() {
   return (
@@ -52,11 +52,12 @@ function TermsAndConditions() {
               </h1> */}
 
               <p className="fs-4 mb-4">
-                Welcome to Editors academy! These Terms and Conditions ("Terms")
-                govern your use of our website and services, including the
-                purchase and participation in our online courses. By accessing
-                or using our website, you agree to be bound by these Terms. If
-                you do not agree, please do not use our services.
+                Welcome to Editors academy! These Terms and Conditions
+                (&rdquo;Terms&rdquo;) govern your use of our website and
+                services, including the purchase and participation in our online
+                courses. By accessing or using our website, you agree to be
+                bound by these Terms. If you do not agree, please do not use our
+                services.
               </p>
 
               <p className="mb-1 fs-4">

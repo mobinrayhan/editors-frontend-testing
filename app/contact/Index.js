@@ -1,36 +1,28 @@
 // import node module libraries
-import { Fragment } from "react";
 import Link from "next/link";
-import { Col, Row, Image } from "react-bootstrap";
+import { Fragment } from "react";
+import { Col, Image, Row } from "react-bootstrap";
 
 // import MDI icons
+import { mdiFacebook, mdiMusicCircle, mdiWhatsapp, mdiYoutube } from "@mdi/js";
 import Icon from "@mdi/react";
-import {
-  mdiFacebook,
-  mdiTwitter,
-  mdiGithub,
-  mdiWhatsapp,
-  mdiYoutube,
-  mdiMusicCircle,
-} from "@mdi/js";
 
 // import BS icons
-import { Telephone, EnvelopeOpen, GeoAlt } from "react-bootstrap-icons";
+import { EnvelopeOpen, GeoAlt, Telephone } from "react-bootstrap-icons";
 
 // import sub components
 import ContactForm from "./components/ContactForm";
 
 // import app config file
 import { settings } from "app.config";
-import NavbarDefault from "layouts/marketing/navbars/NavbarDefault";
 import { Footer1 } from "app/_docs/snippet/footers/components/Footer1";
 import Footer from "layouts/marketing/footers/Footer";
+import NavbarDefault from "layouts/marketing/navbars/NavbarDefault";
 
 const Contact = () => {
   return (
     <Fragment>
       <NavbarDefault />
-
       <main>
         <section className="bg-white container-fluid">
           <Row className="align-items-center min-vh-100">
@@ -125,7 +117,6 @@ const Contact = () => {
         </section>
       </main>
       {/* Footer section */}
-
       <Footer1 bgColor="bg-light" />
       <Footer bgColor="bg-light" />
     </Fragment>

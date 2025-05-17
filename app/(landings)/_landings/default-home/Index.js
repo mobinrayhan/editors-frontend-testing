@@ -1,11 +1,10 @@
 // import node module libraries
-import { Col, Row, Container } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 
+import getFetch from "helper/getFetch";
+import CourseSlider from "widgets/courses/CourseSlider";
 import HeroHeader from "widgets/hero-sections/HeroHeader";
 import FeaturesList from "widgets/home/FeaturesList";
-import CourseSlider from "widgets/courses/CourseSlider";
-import ErrorPage from "components/ErrorPage";
-import getFetch from "helper/getFetch";
 
 const DefaultHome = async () => {
   const courses = await getFetch("https://api.editors.academy/courses");
@@ -40,11 +39,13 @@ const DefaultHome = async () => {
             </Col>
           </Row>
           <div className="position-relative">
-            <CourseSlider
-              courses={courses}
-              instructors={instructors}
-              recommended={true}
-            />
+            <div suppressHydrationWarning>
+              <CourseSlider
+                courses={courses}
+                instructors={instructors}
+                recommended={true}
+              />
+            </div>
           </div>
         </Container>
       </section>

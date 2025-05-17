@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { addItemToCart } from "store/cartSlice";
@@ -43,12 +42,13 @@ function handelAddToCart(course, instructorData, disPatch) {
 }
 export default function AddToCartIcon({ instructor, courses, children }) {
   const disPatch = useDispatch();
+
   return (
     <div onClick={() => handelAddToCart(courses, instructor, disPatch)}>
       <GKTippy content="Add to Cart">
-        {/* <Link href="#"> */}
-        <i style={{ cursor: "pointer" }} className="fe fe-shopping-cart"></i>
-        {/* </Link> */}
+        <span style={{ cursor: "pointer" }}>
+          <i className="fe fe-shopping-cart"></i>
+        </span>
       </GKTippy>
       {children}
     </div>

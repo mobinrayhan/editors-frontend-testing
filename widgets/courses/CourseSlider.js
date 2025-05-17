@@ -1,17 +1,14 @@
 "use client";
 // import node module libraries
-import React, { Fragment } from "react";
 import PropTypes from "prop-types";
-import Slider from "react-slick";
+import { Fragment } from "react";
 
 // import widget/custom components
 
 // import data files
-import { AllCoursesData } from "data/slider/AllCoursesData";
-import Link from "next/link";
-import CourseCard from "shared/card/CourseCard";
-import { Col, Row } from "react-bootstrap";
 import ErrorPage from "components/ErrorPage";
+import { Col, Row } from "react-bootstrap";
+import CourseCard from "shared/card/CourseCard";
 
 const CourseSlider = ({
   instructors,

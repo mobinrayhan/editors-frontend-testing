@@ -1,9 +1,7 @@
 "use client";
 // import node module libraries
-import Link from "next/link";
-import React, { Fragment } from "react";
-import { Col, Row, Container, Card, Dropdown } from "react-bootstrap";
-import { MoreVertical } from "react-feather";
+import { Fragment } from "react";
+import { Col, Container, Dropdown, Row } from "react-bootstrap";
 import "simplebar/dist/simplebar.min.css";
 
 // import MDI icons
@@ -18,7 +16,6 @@ import "simplebar/dist/simplebar.min.css";
 // import { CourseIndex } from "data/courses/CourseIndexData";
 
 // import your layout to override default layout
-import NavbarDefault from "layouts/marketing/navbars/NavbarDefault";
 import SidebarCard from "./components/SidebarCard";
 
 export const CourseResume = ({ sections, slug, params }) => {

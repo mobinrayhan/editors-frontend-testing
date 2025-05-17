@@ -1,15 +1,6 @@
 // import node module libraries
-import React, { Fragment } from "react";
-import {
-  Col,
-  Row,
-  Container,
-  Nav,
-  Card,
-  Tab,
-  ListGroup,
-} from "react-bootstrap";
-import Link from "next/link";
+import { Fragment } from "react";
+import { Col, Container, Row } from "react-bootstrap";
 
 // import popup youtube video
 // import ModalVideo from "react-modal-video";
@@ -24,25 +15,14 @@ import Link from "next/link";
 // } from "widgets";
 
 // import sub components
-import DescriptionTab from "./components/DescriptionTab";
-import ReviewsTab from "./components/ReviewsTab";
-import TranscriptTab from "./components/TranscriptTab";
-import FAQTab from "./components/FAQTab";
 
 // import data files
-import { CourseIndex } from "data/courses/CourseIndexData";
-import { AllCoursesData } from "data/slider/AllCoursesData";
-import GKAccordionDefault from "widgets/accordions/GKAccordionDefault";
-import InstructorProfileSummaryCard from "widgets/cards/InstructorProfileSummaryCard";
-import GKTippy from "widgets/tooltips/GKTippy";
-import CourseCard from "shared/card/CourseCard";
-import Ratings from "widgets/ratings/Ratings";
-import AddToCart from "./components/AddToCart";
-import CourseList from "./components/CourseList";
-import CardsComponents from "./components/CardsComponents";
+import AddToCartIcon from "components/AddToCartIcon";
 import ErrorPage from "components/ErrorPage";
 import getFetch from "helper/getFetch";
-import AddToCartIcon from "components/AddToCartIcon";
+import Ratings from "widgets/ratings/Ratings";
+import CardsComponents from "./components/CardsComponents";
+import CourseList from "./components/CourseList";
 
 const CourseSingle = async ({ params }) => {
   const slug = params["course-single"];

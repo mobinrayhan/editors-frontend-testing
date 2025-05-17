@@ -1,15 +1,7 @@
 "use client";
-import React, { Fragment, useState } from "react";
-import {
-  Col,
-  Row,
-  Container,
-  Nav,
-  Card,
-  Tab,
-  ListGroup,
-} from "react-bootstrap";
 import Link from "next/link";
+import { useState } from "react";
+import { Card, ListGroup } from "react-bootstrap";
 
 // import popup youtube video
 // import ModalVideo from "react-modal-video";
@@ -37,10 +29,8 @@ import InstructorProfileSummaryCard from "widgets/cards/InstructorProfileSummary
 // import GKTippy from "widgets/tooltips/GKTippy";
 // import CourseCard from "shared/card/CourseCard";
 // import Ratings from "widgets/ratings/Ratings";
-import AddToCart from "./AddToCart";
-import secondsToHoursMinutes from "helper/secondsToHoursMinutes";
 import ModalVideo from "react-modal-video";
-import getTotalDuration from "helper/getTotalDuration";
+import AddToCart from "./AddToCart";
 // import CourseList from "./CourseList";
 const CardsComponents = ({ course, instructorData, sections }) => {
   const [isOpen, setOpen] = useState(false);
@@ -120,7 +110,7 @@ const CardsComponents = ({ course, instructorData, sections }) => {
           <ListGroup variant="flush">
             <ListGroup.Item>
               <i className="fe fe-play-circle align-middle me-2 text-primary"></i>
-              {course?.totalDuration} hour video duration
+              {course?.totalDuration}
             </ListGroup.Item>
             <ListGroup.Item>
               <i className="fe fe-award me-2 align-middle text-success"></i>
@@ -129,6 +119,10 @@ const CardsComponents = ({ course, instructorData, sections }) => {
             <ListGroup.Item>
               <i className="fe fe-calendar align-middle me-2 text-info"></i>
               {course?.totalResources} Resources
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <i className="fas fa-tasks text-success"></i>{" "}
+              {course?.totalAssignments} Assignments
             </ListGroup.Item>
             {/* <ListGroup.Item>
               <i className="fe fe-video align-middle me-2 text-secondary"></i>

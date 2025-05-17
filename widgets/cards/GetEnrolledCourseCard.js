@@ -1,6 +1,6 @@
 // import node module libraries
 import Link from "next/link";
-import { Image, Card, Badge } from "react-bootstrap";
+import { Badge, Card, Image } from "react-bootstrap";
 
 // import widget/custom components
 // import { Ratings } from 'widgets';

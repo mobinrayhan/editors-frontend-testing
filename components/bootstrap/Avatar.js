@@ -9,7 +9,7 @@ type        : Required, possible options are image , initial
 src         : Image source is required if type = image
 alt         : Optional, it's used for alt tag of image avtar, which is helpful for invalid url or broken link.
 name        : Name is required if type = initial
-className   : Optional class list e.g. circle, rounded, rounded-circle, bg-info etc...
+className   : Optional className list e.g. circle, rounded, rounded-circle, bg-info etc...
 status      : Optional, possible options are online, away, offline, busy
 soft        : Optional, if it's set it will show soft background color which is only usefule for type = initial
 showExact	: Optional, specify this parameter with name para, if you want to show exactly name value rather acronym format.
@@ -19,8 +19,8 @@ imgtooltip		: Optional - Boolean - Default=false, if you specify this parameter,
 */
 
 // import node module libraries
-import { Image } from "react-bootstrap";
 import PropTypes from "prop-types";
+import { Image } from "react-bootstrap";
 import GKTippy from "widgets/tooltips/GKTippy";
 
 // import widget/custom components

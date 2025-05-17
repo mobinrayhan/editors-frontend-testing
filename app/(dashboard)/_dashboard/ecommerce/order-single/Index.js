@@ -1,9 +1,18 @@
-'use client';
+"use client";
 
 // import node module libraries
-import React, { Fragment } from 'react'
-import { Badge, Breadcrumb, Card, Col, Image, ListGroup, Row, Table } from 'react-bootstrap'
-import Link from 'next/link';
+import Link from "next/link";
+import { Fragment } from "react";
+import {
+  Badge,
+  Breadcrumb,
+  Card,
+  Col,
+  Image,
+  ListGroup,
+  Row,
+  Table,
+} from "react-bootstrap";
 
 const OrderSingle = () => {
   return (
@@ -29,11 +38,17 @@ const OrderSingle = () => {
               <div className="d-flex justify-content-between align-items-center">
                 <div>
                   <h4 className="mb-1">Order ID: GK00017</h4>
-                  <span>Order Date: a October 03,2022 t 6:31 pm <Badge bg='success-soft' className="ms-2">Paid</Badge>
+                  <span>
+                    Order Date: a October 03,2022 t 6:31 pm{" "}
+                    <Badge bg="success-soft" className="ms-2">
+                      Paid
+                    </Badge>
                   </span>
                 </div>
                 <div>
-                  <Link href="#" className="btn btn-primary btn-sm">Invoice</Link>
+                  <Link href="#" className="btn btn-primary btn-sm">
+                    Invoice
+                  </Link>
                 </div>
               </div>
             </Card.Header>
@@ -51,13 +66,19 @@ const OrderSingle = () => {
                     <Link href="#" className="text-inherit">
                       <div className="d-lg-flex">
                         <div>
-                          <Image src='/images/ecommerce/ecommerce-img-1.jpg' alt="" className="img-4by3-md rounded" />
+                          <Image
+                            src="/images/ecommerce/ecommerce-img-1.jpg"
+                            alt=""
+                            className="img-4by3-md rounded"
+                          />
                         </div>
                         <div className="ms-lg-4 mt-2 mt-lg-0">
                           <h5 className="mb-0">
                             White &amp; Red Nike Athletic Shoe
                           </h5>
-                          <span className="text-body">SKU: <span>Shoe01</span></span>
+                          <span className="text-body">
+                            SKU: <span>Shoe01</span>
+                          </span>
                         </div>
                       </div>
                     </Link>
@@ -70,24 +91,30 @@ const OrderSingle = () => {
                     <Link href="#" className="text-inherit">
                       <div className="d-lg-flex">
                         <div>
-                          <Image src='/images/ecommerce/ecommerce-img-2.jpg' alt="" className="img-4by3-md rounded" />
+                          <Image
+                            src="/images/ecommerce/ecommerce-img-2.jpg"
+                            alt=""
+                            className="img-4by3-md rounded"
+                          />
                         </div>
                         <div className="ms-lg-4 mt-2 mt-lg-0">
-                          <h5 className="mb-0">
-                            Wayfarer Styled Sunglasses
-                          </h5>
-                          <span className="text-body">SKU: <span>Glasses01</span> </span>
+                          <h5 className="mb-0">Wayfarer Styled Sunglasses</h5>
+                          <span className="text-body">
+                            SKU: <span>Glasses01</span>{" "}
+                          </span>
                         </div>
                       </div>
                     </Link>
                   </td>
                   <td>1</td>
-                  <td>$220.00
-                  </td>
+                  <td>$220.00</td>
                 </tr>
                 <tr>
                   <td className="border-bottom-0 pb-0"></td>
-                  <td colSpan="1" className="fw-medium text-dark border-bottom-0 pb-0">
+                  <td
+                    colSpan="1"
+                    className="fw-medium text-dark border-bottom-0 pb-0"
+                  >
                     Sub Total :
                   </td>
                   <td className="fw-medium text-dark border-bottom-0 pb-0 text-end">
@@ -96,7 +123,10 @@ const OrderSingle = () => {
                 </tr>
                 <tr>
                   <td className="border-bottom-0 pb-0"></td>
-                  <td colSpan="1" className="fw-medium text-dark border-bottom-0 pb-0">
+                  <td
+                    colSpan="1"
+                    className="fw-medium text-dark border-bottom-0 pb-0"
+                  >
                     Discount (GKDIS15%) :
                   </td>
                   <td className="fw-medium text-dark border-bottom-0 pb-0 text-end">
@@ -105,7 +135,10 @@ const OrderSingle = () => {
                 </tr>
                 <tr>
                   <td className="border-bottom-0 pb-0"></td>
-                  <td colSpan="1" className="fw-medium text-dark border-bottom-0 pb-0">
+                  <td
+                    colSpan="1"
+                    className="fw-medium text-dark border-bottom-0 pb-0"
+                  >
                     Shipping Charge :
                   </td>
                   <td className="fw-medium text-dark border-bottom-0 pb-0 text-end">
@@ -117,18 +150,14 @@ const OrderSingle = () => {
                   <td colSpan="1" className="fw-semibold text-dark ">
                     Tax Vat 19% (included) :
                   </td>
-                  <td className="fw-semibold text-dark text-end">
-                    $64.00
-                  </td>
+                  <td className="fw-semibold text-dark text-end">$64.00</td>
                 </tr>
                 <tr>
                   <td></td>
                   <td colSpan="1" className="fw-semibold text-dark ">
                     Paid by Customer
                   </td>
-                  <td className="fw-semibold text-dark text-end">
-                    $368.00
-                  </td>
+                  <td className="fw-semibold text-dark text-end">$368.00</td>
                 </tr>
               </tbody>
             </Table>
@@ -140,13 +169,25 @@ const OrderSingle = () => {
                   <h4 className="mb-3 mb-md-0">Order Status</h4>
                 </div>
                 <div>
-                  <Link href="#" className="btn btn-light-primary btn-sm text-primary">Change Address</Link>
-                  <Link href="#" className="btn btn-light-danger btn-sm text-danger ms-2">Cancel Order
+                  <Link
+                    href="#"
+                    className="btn btn-light-primary btn-sm text-primary"
+                  >
+                    Change Address
+                  </Link>
+                  <Link
+                    href="#"
+                    className="btn btn-light-danger btn-sm text-danger ms-2"
+                  >
+                    Cancel Order
                   </Link>
                 </div>
               </div>
               <div>
-                <ListGroup as="ul" className="list-group-flush list-timeline-activity">
+                <ListGroup
+                  as="ul"
+                  className="list-group-flush list-timeline-activity"
+                >
                   <ListGroup.Item as="li" className="px-0 pt-0 border-0 mb-4">
                     <Row>
                       <Col xs={"auto"}>
@@ -157,7 +198,9 @@ const OrderSingle = () => {
                       <Col className="ms-n2 mt-1">
                         <h4 className="mb-3">Order Placed </h4>
                         <h5 className="mb-0">An order has been placed.</h5>
-                        <span className="fs-6 text-muted">Wed, 15 April 2022 at 4:30 pm</span>
+                        <span className="fs-6 text-muted">
+                          Wed, 15 April 2022 at 4:30 pm
+                        </span>
                       </Col>
                     </Row>
                   </ListGroup.Item>
@@ -170,8 +213,12 @@ const OrderSingle = () => {
                       </Col>
                       <Col className="ms-n2 mt-1">
                         <h4 className="mb-3">Packed Thu, 16 April 2022 </h4>
-                        <h5 className="mb-0">Your Item has been picked up by courier patner</h5>
-                        <span className="fs-6 text-muted">Wed, 15 April 2022 at 4:30 pm</span>
+                        <h5 className="mb-0">
+                          Your Item has been picked up by courier patner
+                        </h5>
+                        <span className="fs-6 text-muted">
+                          Wed, 15 April 2022 at 4:30 pm
+                        </span>
                       </Col>
                     </Row>
                   </ListGroup.Item>
@@ -184,9 +231,13 @@ const OrderSingle = () => {
                       </Col>
                       <Col className="ms-n2 mt-1">
                         <h4 className="mb-3">Shipping Thu, 16 April 2022 </h4>
-                        <h5 className="mb-1">BlueDart Logistics GEEK3214566 </h5>
+                        <h5 className="mb-1">
+                          BlueDart Logistics GEEK3214566{" "}
+                        </h5>
                         <h5 className="mb-1"> Your item has been shipped.</h5>
-                        <span className="fs-6 text-muted">Thu, 16 April 2022 at 5:00 pm</span>
+                        <span className="fs-6 text-muted">
+                          Thu, 16 April 2022 at 5:00 pm
+                        </span>
                       </Col>
                     </Row>
                   </ListGroup.Item>
@@ -199,13 +250,16 @@ const OrderSingle = () => {
                       </Col>
                       <Col className="ms-n2 mt-1">
                         <h4 className="mb-0">Delivered </h4>
-                        <h5 className="mb-1">Order has been successfully delivered </h5>
-                        <span className="fs-6 text-muted">Thu, 17 April 2022 at 9:50am</span>
+                        <h5 className="mb-1">
+                          Order has been successfully delivered{" "}
+                        </h5>
+                        <span className="fs-6 text-muted">
+                          Thu, 17 April 2022 at 9:50am
+                        </span>
                       </Col>
                     </Row>
                   </ListGroup.Item>
                 </ListGroup>
-
               </div>
             </Card.Body>
           </Card>
@@ -218,7 +272,11 @@ const OrderSingle = () => {
                 <Link href="#">View Profile</Link>
               </div>
               <div className="d-flex align-items-center">
-                <Image src='/images/avatar/avatar-12.jpg' className="avatar-lg rounded-circle" alt="" />
+                <Image
+                  src="/images/avatar/avatar-12.jpg"
+                  className="avatar-lg rounded-circle"
+                  alt=""
+                />
                 <div className="ms-3">
                   <h4 className="mb-0">Harold Gonzalez</h4>
                   <div>
@@ -233,8 +291,16 @@ const OrderSingle = () => {
                 <Link href="#">Edit</Link>
               </div>
               <div>
-                <div className="d-flex align-items-center mb-2"><i className="fe fe-mail text-muted fs-4"></i><Link href="#" className="ms-2">haroldonzalez@gmail.com</Link></div>
-                <div className="d-flex align-items-center"><i className="fe fe-phone text-muted fs-4"></i><span className="ms-2">+(000) 123465 987</span></div>
+                <div className="d-flex align-items-center mb-2">
+                  <i className="fe fe-mail text-muted fs-4"></i>
+                  <Link href="#" className="ms-2">
+                    haroldonzalez@gmail.com
+                  </Link>
+                </div>
+                <div className="d-flex align-items-center">
+                  <i className="fe fe-phone text-muted fs-4"></i>
+                  <span className="ms-2">+(000) 123465 987</span>
+                </div>
               </div>
             </Card.Body>
             <Card.Body className="border-top">
@@ -243,11 +309,16 @@ const OrderSingle = () => {
                 <Link href="#">Edit</Link>
               </div>
               <div>
-                <p className="mb-0">3812 Orchard Street <br />
-                  Bloomington,<br />
-                  Minnesota 55431,<br />
-                  United States<br />
-                  +(000) 123465 987</p>
+                <p className="mb-0">
+                  3812 Orchard Street <br />
+                  Bloomington,
+                  <br />
+                  Minnesota 55431,
+                  <br />
+                  United States
+                  <br />
+                  +(000) 123465 987
+                </p>
               </div>
             </Card.Body>
             <Card.Body className="border-top">
@@ -255,11 +326,16 @@ const OrderSingle = () => {
                 <h4 className="mb-0">Billing Address</h4>
               </div>
               <div>
-                <p className="mb-0">3812 Orchard Street <br />
-                  Bloomington,<br />
-                  Minnesota 55431,<br />
-                  United States<br />
-                  +(000) 123465 987</p>
+                <p className="mb-0">
+                  3812 Orchard Street <br />
+                  Bloomington,
+                  <br />
+                  Minnesota 55431,
+                  <br />
+                  United States
+                  <br />
+                  +(000) 123465 987
+                </p>
               </div>
             </Card.Body>
           </Card>
@@ -273,23 +349,19 @@ const OrderSingle = () => {
                 <span className="text-dark">#GK444TO10000</span>
               </div>
               <div className="d-flex align-items-center justify-content-between mb-2">
-                <span>Payment Method:
-                </span>
+                <span>Payment Method:</span>
                 <span className="text-dark">Credit Card</span>
               </div>
               <div className="d-flex align-items-center justify-content-between mb-2">
-                <span>Card Holder Name:
-                </span>
+                <span>Card Holder Name:</span>
                 <span className="text-dark">Harold Gonzalez</span>
               </div>
               <div className="d-flex align-items-center justify-content-between mb-2">
-                <span>Card Number:
-                </span>
+                <span>Card Number:</span>
                 <span className="text-dark">xxxx xxxx xxxx 6779</span>
               </div>
               <div className="d-flex align-items-center justify-content-between">
-                <span>Total Amount:
-                </span>
+                <span>Total Amount:</span>
                 <span className="text-dark fw-bold">$368.00</span>
               </div>
             </Card.Body>
@@ -297,7 +369,7 @@ const OrderSingle = () => {
         </Col>
       </Row>
     </Fragment>
-  )
-}
+  );
+};
 
-export default OrderSingle
+export default OrderSingle;

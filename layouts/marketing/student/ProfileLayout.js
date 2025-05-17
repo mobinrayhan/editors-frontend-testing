@@ -1,18 +1,18 @@
 "use client";
 
 // import node module libraries
-import React, { useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Container, Row, Col, Nav, Navbar } from "react-bootstrap";
+import { useEffect } from "react";
+import { Col, Container, Nav, Navbar, Row } from "react-bootstrap";
 
 // import widget/custom components
 // import { ProfileCover } from "widgets";
 
 // import routes file
 import {
-  DashboardMenu,
   AccountSettingsMenu,
+  DashboardMenu,
 } from "routes/marketing/StudentDashboardMenu";
 import ProfileCover from "widgets/headers/ProfileCover";
 

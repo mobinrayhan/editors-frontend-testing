@@ -1,7 +1,7 @@
 // import node module libraries
-import React, { useContext, Fragment } from "react";
 import Link from "next/link";
-import { Accordion, Card, AccordionContext } from "react-bootstrap";
+import { Fragment, useContext } from "react";
+import { Accordion, AccordionContext, Card } from "react-bootstrap";
 import { useAccordionButton } from "react-bootstrap/AccordionButton";
 import GKTippy from "widgets/tooltips/GKTippy";
 

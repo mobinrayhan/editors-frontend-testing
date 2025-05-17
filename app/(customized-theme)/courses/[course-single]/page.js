@@ -18,8 +18,9 @@ export const metadata = {
 //   };
 // }
 
-const Page = ({ params }) => {
-  return <CourseSingle params={params} />;
+const Page = async ({ params }) => {
+  const awaitedParams = await params;
+  return <CourseSingle params={awaitedParams} />;
 };
 
 export default Page;

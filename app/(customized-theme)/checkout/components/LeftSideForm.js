@@ -1,5 +1,6 @@
 "use client";
-import React, { useState } from "react";
+import Image from "next/image";
+import { useState } from "react";
 
 export default function LeftSideForm() {
   const [paymentMethod, setPaymentMethod] = useState("");
@@ -57,16 +58,17 @@ export default function LeftSideForm() {
               img: "https://download.logo.wine/logo/Nagad/Nagad-Logo.wine.png",
             },
           ].map((option) => (
-            <img
+            <Image
               key={option.name}
               src={option.img}
               alt={option.name}
+              width={70}
+              height={45}
               className="img-thumbnail"
               role="button"
               style={{
                 cursor: "pointer",
-                width: "70px",
-                height: "45px",
+
                 backgroundColor:
                   paymentMethod === option.name ? "#754FFE" : "transparent",
               }}

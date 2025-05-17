@@ -1,8 +1,7 @@
 "use client";
 // import node module libraries
 import Link from "next/link";
-import { Row, Col, Container, ListGroup } from "react-bootstrap";
-import { Facebook, Instagram, Youtube } from "react-bootstrap-icons";
+import { Col, Container, ListGroup, Row } from "react-bootstrap";
 
 // import required routes
 import MentorFooterRoutes from "routes/marketing/MentorFooterRoutes";
@@ -11,8 +10,6 @@ import MentorFooterRoutes from "routes/marketing/MentorFooterRoutes";
 import { settings } from "app.config";
 
 import Image from "next/image";
-import useMounted from "hooks/useMounted";
-import { useEffect, useState } from "react";
 
 const FooterDark = () => {
   // const currentYear = new Date().getFullYear();

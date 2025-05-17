@@ -37,15 +37,15 @@
     </style>
   </defs>
   <g>
-    <polygon class="st4" points="26.6 1 26.6 1.1 26.6 1 26.6 1"/>
-    <rect class="st3" x="3.6" y="9.6" width="11" height="4" rx="1.1" ry="1.1"/>
-    <rect class="st0" x="3.6" y="22.3" width="11" height="4" rx="1" ry="1"/>
-    <rect class="st3" x="6.6" y="16" width="8" height="4" rx="1" ry="1"/>
-    <path class="st3" d="M17.5,9.6h1.4c.2,0,.4.1.6.4l1.2,2.4c.3.5,0,1.2-.6,1.2h-2.6c-.4,0-.8-.4-.8-1v-2c0-.5.3-1,.8-1Z"/>
-    <path class="st0" d="M17.5,22.3h7.7c.2,0,.4.1.6.4l1.2,2.4c.3.5,0,1.2-.6,1.2h-8.9c-.4,0-.8-.4-.8-1v-2c0-.5.3-1,.8-1Z"/>
-    <path class="st3" d="M17.5,16h4.6c.2,0,.4.1.6.4l1.2,2.4c.3.5,0,1.2-.6,1.2h-5.8c-.4,0-.8-.4-.8-1v-2c0-.5.3-1,.8-1Z"/>
-    <path class="st5" d="M13.3.6h4.8c.2,0,.5.2.5.4v5.6s0,0,0,.1c0,0,0,0-.1,0-.3.1-.9.4-1.5,1-.8.8-.9,1.8-.9,2.1v18.7c0,0,0,.1-.2.1h-.4c0,0-.2,0-.2-.1V9.9c0-.3-.1-1.3-.9-2.1-.5-.6-1.1-.8-1.5-1,0,0,0,0-.1,0,0,0,0,0,0-.1V1c0-.2.2-.4.5-.4Z"/>
+    <polygon className="st4" points="26.6 1 26.6 1.1 26.6 1 26.6 1"/>
+    <rect className="st3" x="3.6" y="9.6" width="11" height="4" rx="1.1" ry="1.1"/>
+    <rect className="st0" x="3.6" y="22.3" width="11" height="4" rx="1" ry="1"/>
+    <rect className="st3" x="6.6" y="16" width="8" height="4" rx="1" ry="1"/>
+    <path className="st3" d="M17.5,9.6h1.4c.2,0,.4.1.6.4l1.2,2.4c.3.5,0,1.2-.6,1.2h-2.6c-.4,0-.8-.4-.8-1v-2c0-.5.3-1,.8-1Z"/>
+    <path className="st0" d="M17.5,22.3h7.7c.2,0,.4.1.6.4l1.2,2.4c.3.5,0,1.2-.6,1.2h-8.9c-.4,0-.8-.4-.8-1v-2c0-.5.3-1,.8-1Z"/>
+    <path className="st3" d="M17.5,16h4.6c.2,0,.4.1.6.4l1.2,2.4c.3.5,0,1.2-.6,1.2h-5.8c-.4,0-.8-.4-.8-1v-2c0-.5.3-1,.8-1Z"/>
+    <path className="st5" d="M13.3.6h4.8c.2,0,.5.2.5.4v5.6s0,0,0,.1c0,0,0,0-.1,0-.3.1-.9.4-1.5,1-.8.8-.9,1.8-.9,2.1v18.7c0,0,0,.1-.2.1h-.4c0,0-.2,0-.2-.1V9.9c0-.3-.1-1.3-.9-2.1-.5-.6-1.1-.8-1.5-1,0,0,0,0-.1,0,0,0,0,0,0-.1V1c0-.2.2-.4.5-.4Z"/>
   </g>
-  <text class="st2" transform="translate(36 16)"><tspan x="0" y="0">Editors</tspan></text>
-  <text class="st1" transform="translate(37 26)"><tspan x="0" y="0">Academy</tspan></text>
+  <text className="st2" transform="translate(36 16)"><tspan x="0" y="0">Editors</tspan></text>
+  <text className="st1" transform="translate(37 26)"><tspan x="0" y="0">Academy</tspan></text>
 </svg>
