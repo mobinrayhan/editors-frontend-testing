@@ -4,7 +4,7 @@ import SimpleBar from "simplebar-react";
 // import GKAccordionDefault from "widgets/accordions/GKAccordionDefault";
 import GKAccordionDefaultDashboard from "widgets/accordions/GKAccordionDefaultDashboard";
 
-const SidebarCard = async ({ sections, slug, params }) => {
+const SidebarCard = ({ sections, slug, params }) => {
   const videoIdParams = params["videoId"];
   const videoId = videoIdParams?.split("-").slice(-1)[0];
 
