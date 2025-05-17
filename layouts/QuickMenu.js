@@ -1,8 +1,8 @@
 // import node module libraries
 import Link from "next/link";
-import { Fragment, useEffect, useState } from "react";
+import { Fragment } from "react";
+import { Col, Dropdown, ListGroup, Row } from "react-bootstrap";
 import { useMediaQuery } from "react-responsive";
-import { Row, Col, Dropdown, ListGroup } from "react-bootstrap";
 
 // simple bar scrolling used for notification item scrolling
 import SimpleBar from "simplebar-react";
@@ -22,8 +22,8 @@ import NotificationList from "data/Notification";
 import useMounted from "hooks/useMounted";
 // import Carts from "data/Cart";
 import Image from "next/image";
-import GKTippy from "widgets/tooltips/GKTippy";
 import { useSelector } from "react-redux";
+import GKTippy from "widgets/tooltips/GKTippy";
 
 const QuickMenu = () => {
   const hasMounted = useMounted();

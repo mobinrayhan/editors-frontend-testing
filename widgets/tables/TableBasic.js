@@ -1,12 +1,12 @@
 "use client";
 // import node module libraries
-import React from "react";
 import Link from "next/link";
-import { MoreVertical } from "react-feather";
+import React from "react";
 import { Badge, Card, Dropdown, Image, Table } from "react-bootstrap";
+import { MoreVertical } from "react-feather";
 
 // import required sub component
-import { AvatarGroup, Avatar } from "components/bootstrap/Avatar";
+import { Avatar, AvatarGroup } from "components/bootstrap/Avatar";
 
 const TableBasic = ({ TableData }) => {
   const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
@@ -45,7 +45,7 @@ const TableBasic = ({ TableData }) => {
       <Card.Header>
         <h4 className="mb-1">Table Basic</h4>
         <p className="mb-0">
-          Just add the base class{" "}
+          Just add the base className{" "}
           <code className="highlighter-rouge">.table</code> to any{" "}
           <code className="highlighter-rouge">&lt;table&gt;</code>, then extend
           with custom styles.

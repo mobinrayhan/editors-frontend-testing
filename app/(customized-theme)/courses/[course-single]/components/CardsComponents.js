@@ -121,7 +121,7 @@ const CardsComponents = ({ course, instructorData, sections }) => {
               {course?.totalResources} Resources
             </ListGroup.Item>
             <ListGroup.Item>
-              <i class="fas fa-tasks text-success"></i>{" "}
+              <i className="fas fa-tasks text-success"></i>{" "}
               {course?.totalAssignments} Assignments
             </ListGroup.Item>
             {/* <ListGroup.Item>

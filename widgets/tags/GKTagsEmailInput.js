@@ -21,7 +21,7 @@ const GKTagsEmailInput = ({  defaulttags=[], placeholder = 'Type and press enter
 
 	return (
         <Fragment>
-			<ReactTagInput
+            <ReactTagInput
 				tags={tags}
 				placeholder={placeholder}
 				maxTags={10}
@@ -41,8 +41,8 @@ const GKTagsEmailInput = ({  defaulttags=[], placeholder = 'Type and press enter
 					return isEmail;
 				}}
 			/>
-			<ToastContainer />
-		</Fragment>
+            <ToastContainer />
+        </Fragment>
     );
 };
 

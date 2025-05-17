@@ -1,6 +1,5 @@
 "use client";
 import Link from "next/link";
-import React from "react";
 import { Card, Col, Form } from "react-bootstrap";
 
 const CardList = ({ cartData }) => {

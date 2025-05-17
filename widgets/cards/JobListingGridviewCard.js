@@ -1,6 +1,6 @@
 // import node module libraries
-import { Card, Image } from "react-bootstrap";
 import Link from "next/link";
+import { Card, Image } from "react-bootstrap";
 import GKTippy from "widgets/tooltips/GKTippy";
 
 // import widget/custom components

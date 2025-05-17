@@ -1,21 +1,21 @@
 "use client";
 
 // import node module libraries
-import React, { Fragment } from "react";
-import { MoreVertical } from "react-feather";
 import Link from "next/link";
+import React, { Fragment } from "react";
 import {
   Card,
-  ListGroup,
-  Row,
   Col,
   Container,
   Dropdown,
+  ListGroup,
+  Row,
 } from "react-bootstrap";
+import { MoreVertical } from "react-feather";
 
 // import MDI icons
+import { mdiContentCopy, mdiFacebook, mdiLinkedin, mdiTwitter } from "@mdi/js";
 import Icon from "@mdi/react";
-import { mdiFacebook, mdiTwitter, mdiLinkedin, mdiContentCopy } from "@mdi/js";
 
 // import widget/custom components
 // import { ProfileCoverFull } from "widgets";
@@ -88,7 +88,6 @@ const ViewProfile = ({ instructor }) => {
     <Fragment>
       {/* Full width header */}
       <ProfileCoverFull instructor={instructor} dashboardData={dashboardData} />
-
       {/* Content */}
       <section className="py-5 py-md-5">
         <Container>

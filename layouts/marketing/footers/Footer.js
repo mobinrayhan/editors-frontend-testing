@@ -1,15 +1,8 @@
 // import node module libraries
-import React from "react";
 import Link from "next/link";
 import PropTypes from "prop-types";
-import { Row, Col, Container } from "react-bootstrap";
-import {
-  Facebook,
-  Instagram,
-  Tiktok,
-  Whatsapp,
-  Youtube,
-} from "react-bootstrap-icons";
+import { Col, Container, Row } from "react-bootstrap";
+import { Facebook, Tiktok, Whatsapp, Youtube } from "react-bootstrap-icons";
 
 const Footer = ({ bgColor = "bg-light" }) => {
   const currentYear = new Date().getFullYear();

@@ -1,10 +1,10 @@
 "use client";
 
 // import node module libraries
-import React, { Fragment } from "react";
-import { Col, Row, Card, ListGroup, CloseButton, Image } from "react-bootstrap";
-import { ThumbsUp, Award, MessageSquare } from "react-feather";
 import Link from "next/link";
+import { Fragment } from "react";
+import { Card, CloseButton, Col, Image, ListGroup, Row } from "react-bootstrap";
+import { Award, MessageSquare, ThumbsUp } from "react-feather";
 
 // import widget/custom components
 // import { GKTippy } from "widgets";

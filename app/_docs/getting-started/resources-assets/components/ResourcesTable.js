@@ -1,6 +1,6 @@
 // import node module libraries
-import { Card, Table } from "react-bootstrap";
 import Link from "next/link";
+import { Card, Table } from "react-bootstrap";
 
 const ResourcesTable = ({ data }) => {
   return (

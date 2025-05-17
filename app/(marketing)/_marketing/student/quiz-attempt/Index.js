@@ -1,24 +1,31 @@
 // import node module libraries
-import Link from 'next/link';
-import { Table, Badge, Card, CardHeader } from 'react-bootstrap';
+import Link from "next/link";
+import { Badge, Card, CardHeader, Table } from "react-bootstrap";
 
 // import profile layout wrapper
-import ProfileLayout from 'layouts/marketing/student/ProfileLayout';
+import ProfileLayout from "layouts/marketing/student/ProfileLayout";
 
 // import data files
-import QuizAttemptsData from 'data/marketing/quiz/QuizAttemptsData';
+import QuizAttemptsData from "data/marketing/quiz/QuizAttemptsData";
 
 const QuizAttempt = () => {
   const ResultBadge = ({ result }) => {
-    let bgValue = '';
+    let bgValue = "";
     switch (result) {
-      case 'Fail': bgValue = 'danger-soft'; break;
-      case 'Pending': bgValue = 'warning-soft'; break;
-      case 'Pass': bgValue = 'success-soft'; break;
-      default: break;
+      case "Fail":
+        bgValue = "danger-soft";
+        break;
+      case "Pending":
+        bgValue = "warning-soft";
+        break;
+      case "Pass":
+        bgValue = "success-soft";
+        break;
+      default:
+        break;
     }
-    return (<Badge bg={bgValue}>{result}</Badge>)
-  }
+    return <Badge bg={bgValue}>{result}</Badge>;
+  };
   return (
     <ProfileLayout>
       <Card>
@@ -28,7 +35,11 @@ const QuizAttempt = () => {
             <p className="mb-0">You can find all of your order Invoices.</p>
           </div>
         </CardHeader>
-        <Table responsive hover className="text-nowrap text-lg-wrap table-centered">
+        <Table
+          responsive
+          hover
+          className="text-nowrap text-lg-wrap table-centered"
+        >
           <thead className="table-light">
             <tr>
               <th>Quiz Info</th>
@@ -55,15 +66,17 @@ const QuizAttempt = () => {
                   <td>{item.correct}</td>
                   <td>{item.incorrect}</td>
                   <td>{item.marks}</td>
-                  <td><ResultBadge result={item.result} /></td>
+                  <td>
+                    <ResultBadge result={item.result} />
+                  </td>
                 </tr>
-              )
+              );
             })}
           </tbody>
         </Table>
       </Card>
     </ProfileLayout>
-  )
-}
+  );
+};
 
 export default QuizAttempt;

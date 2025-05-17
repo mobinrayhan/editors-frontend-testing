@@ -7,7 +7,7 @@ export const metadata = {
 };
 
 const Page = async ({ params }) => {
-  const slug = params["courses"];
+  const slug = (await params)["courses"];
   // const [isOpen, setOpen] = useState(false);
   // const [YouTubeURL] = useState("JRzWRZahOVU");
 

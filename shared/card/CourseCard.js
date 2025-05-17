@@ -1,30 +1,29 @@
 // import node module libraries
-import { Fragment } from "react";
-import PropTypes from "prop-types";
 import Link from "next/link";
+import PropTypes from "prop-types";
+import { Fragment } from "react";
 import {
-  Image,
-  Card,
-  Row,
-  Col,
-  ProgressBar,
-  ListGroup,
   Badge,
+  Card,
+  Col,
+  Image,
+  ListGroup,
+  ProgressBar,
+  Row,
 } from "react-bootstrap";
 
 // import widget/custom components
 // import { GKTippy } from "widgets";
 
 // import custom components
-import Ratings from "widgets/ratings/Ratings";
 import LevelIcon from "widgets/miscellaneous/LevelIcon";
+import Ratings from "widgets/ratings/Ratings";
 
 // import utility file
 import { numberWithCommas } from "helper/utils";
-import GKTippy from "widgets/tooltips/GKTippy";
 
-import AddToCartIcon from "components/AddToCartIcon";
 import CartDeleteIcon from "app/(customized-theme)/cart/components/CartDeleteIcon";
+import AddToCartIcon from "components/AddToCartIcon";
 
 const CourseCard = ({
   isCart,
@@ -41,12 +40,11 @@ const CourseCard = ({
       <Card className={`mb-4 card-hover ${extraclass}`}>
         <Link href={`/courses/${item?.slug}`}>
           <Image
-            src={item?.thumbnail}
-            alt=""
+            src={item?.thumbnail || null}
+            alt="Thumbnail"
             className="card-img-top rounded-top-md"
           />
         </Link>
-
         {/* Card body  */}
         <Link href={`/courses/${item?.slug}`}>
           <Card.Body>

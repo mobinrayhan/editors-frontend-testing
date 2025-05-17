@@ -4,7 +4,7 @@ import Image from "next/image";
 // import node module libraries
 import Link from "next/link";
 import { useRef, useState } from "react";
-import { Col, Row, Card, Form, Button } from "react-bootstrap";
+import { Button, Card, Col, Form, Row } from "react-bootstrap";
 
 const Verify = () => {
   const inputRefs = useRef([]);

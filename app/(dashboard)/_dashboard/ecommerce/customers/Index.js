@@ -1,30 +1,24 @@
-'use client';
+"use client";
 
 // import node module libraries
-import React, { Fragment, useMemo } from 'react';
-import Link from 'next/link';
-import {
-  Col,
-  Row,
-  Card,
-  Breadcrumb,
-  Image
-} from 'react-bootstrap';
+import Link from "next/link";
+import { Fragment, useMemo } from "react";
+import { Breadcrumb, Card, Col, Image, Row } from "react-bootstrap";
 
 // import custom components
-import TanstackTable from 'components/TanstackTable';
+import TanstackTable from "components/TanstackTable";
 
 // import widget/custom components
-import { Checkbox, GKTippy } from 'widgets';
+import { Checkbox, GKTippy } from "widgets";
 
 // import data files
-import CustomersData from 'data/dashboard/customers/CustomersData';
+import CustomersData from "data/dashboard/customers/CustomersData";
 
 const CustomersList = () => {
   const columns = useMemo(
     () => [
       {
-        id: 'select',
+        id: "select",
         header: ({ table }) => (
           <Checkbox
             {...{
@@ -46,69 +40,83 @@ const CustomersList = () => {
         ),
       },
       {
-        accessorKey: 'name',
-        header: 'Name',
+        accessorKey: "name",
+        header: "Name",
         cell: ({ getValue, row }) => {
           return (
-            <Link href={`/dashboard/ecommerce/customer/${row.original.id}`} className="text-body">
+            <Link
+              href={`/dashboard/ecommerce/customer/${row.original.id}`}
+              className="text-body"
+            >
               <span className="me-1">
-                <Image src={row.original.avatar} className="avatar avatar-xs rounded-circle" alt="" />
+                <Image
+                  src={row.original.avatar}
+                  className="avatar avatar-xs rounded-circle"
+                  alt=""
+                />
               </span>
               {getValue()}
             </Link>
           );
-        }
+        },
       },
       {
-        accessorKey: 'location', header: 'Location',
+        accessorKey: "location",
+        header: "Location",
         cell: ({ getValue }) => {
           return (
             <Fragment>
               <i className="fe fe-map-pin text-muted me-1"></i> {getValue()}
             </Fragment>
           );
-        }
+        },
       },
       {
-        accessorKey: 'totalOrders', header: 'Order',
+        accessorKey: "totalOrders",
+        header: "Order",
         cell: ({ getValue }) => {
           return (
             <Fragment>
               {getValue()} {getValue() > 1 ? "Orders" : "Order"}
             </Fragment>
           );
-        }
+        },
       },
       {
-        accessorKey: 'totalSpent', header: 'Total Spent',
+        accessorKey: "totalSpent",
+        header: "Total Spent",
         cell: ({ getValue }) => {
-          return (
-            <Fragment>
-              ${getValue().toFixed(2)}
-            </Fragment>
-          );
-        }
+          return <Fragment>${getValue().toFixed(2)}</Fragment>;
+        },
       },
       {
-        accessorKey: 'action',
-        header: 'Action',
+        accessorKey: "action",
+        header: "Action",
         cell: () => {
           return (
             <Fragment>
               <GKTippy content="Edit">
-                <Link href="#" className="text-muted text-primary-hover texttooltip me-4" data-template="one">
+                <Link
+                  href="#"
+                  className="text-muted text-primary-hover texttooltip me-4"
+                  data-template="one"
+                >
                   <i className="fe fe-edit fs-5"></i>
                 </Link>
               </GKTippy>
               <GKTippy content="Delete">
-                <Link href="#" className="text-muted text-primary-hover texttooltip" data-template="one">
+                <Link
+                  href="#"
+                  className="text-muted text-primary-hover texttooltip"
+                  data-template="one"
+                >
                   <i className="fe fe-trash-2 fs-5"></i>
                 </Link>
               </GKTippy>
             </Fragment>
           );
-        }
-      }
+        },
+      },
     ],
     []
   );
@@ -129,9 +137,18 @@ const CustomersList = () => {
               </Breadcrumb>
             </div>
             <div className="d-flex align-items-center">
-              <Link href="#" className="me-5 text-body"><i className="fe fe-upload me-2"></i>Export</Link>
-              <Link href="#" className="me-5 text-body"><i className="fe fe-download me-2"></i>Import</Link>
-              <Link href="/dashboard/ecommerce/add-customer" className="btn btn-primary me-2">Add Customer</Link>
+              <Link href="#" className="me-5 text-body">
+                <i className="fe fe-upload me-2"></i>Export
+              </Link>
+              <Link href="#" className="me-5 text-body">
+                <i className="fe fe-download me-2"></i>Import
+              </Link>
+              <Link
+                href="/dashboard/ecommerce/add-customer"
+                className="btn btn-primary me-2"
+              >
+                Add Customer
+              </Link>
             </div>
           </div>
         </Col>
@@ -145,13 +162,14 @@ const CustomersList = () => {
                 columns={columns}
                 filter={true}
                 filterPlaceholder="Search for order ID, customer name, order status ..."
-                pagination={true} />
+                pagination={true}
+              />
             </Card.Body>
           </Card>
         </Col>
       </Row>
     </Fragment>
   );
-}
+};
 
-export default CustomersList
+export default CustomersList;

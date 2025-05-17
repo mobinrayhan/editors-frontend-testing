@@ -1,17 +1,11 @@
 // import node module libraries
-import { Fragment } from "react";
 import Link from "next/link";
-import { Row, Col, Image, Container, Badge } from "react-bootstrap";
+import { Fragment } from "react";
+import { Badge, Col, Container, Image, Row } from "react-bootstrap";
 
 // import MDI icons
+import { mdiTwitter } from "@mdi/js";
 import Icon from "@mdi/react";
-import {
-  mdiFacebook,
-  mdiTwitter,
-  mdiYoutube,
-  mdiLinkVariant,
-  mdiInstagram,
-} from "@mdi/js";
 
 const ProfileCoverFull = ({ dashboardData, instructor }) => {
   return (

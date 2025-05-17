@@ -1,6 +1,6 @@
 // import node module libraries
-import { Row, Col, Image, Card } from "react-bootstrap";
 import Link from "next/link";
+import { Card, Col, Image, Row } from "react-bootstrap";
 
 // import custom components
 import LevelIconWithTooltip from "widgets/miscellaneous/LevelIconWithTooltip";

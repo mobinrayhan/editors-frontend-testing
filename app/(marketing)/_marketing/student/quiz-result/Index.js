@@ -1,27 +1,27 @@
-'use client'
+"use client";
 
 // import node module libraries
-import { Card } from 'react-bootstrap';
-import Link from 'next/link';
+import Link from "next/link";
+import { Card } from "react-bootstrap";
 
 // import widget/custom components
-import { ApexCharts } from 'widgets';
+import { ApexCharts } from "widgets";
 
 // import profile layout wrapper
-import ProfileLayout from 'layouts/marketing/student/ProfileLayout';
+import ProfileLayout from "layouts/marketing/student/ProfileLayout";
 
 const QuizResult = () => {
   let score = 85.83;
   const QuizResultChartSeries = [score];
   const QuizResultChartOptions = {
-    colors: ['#38a169'],
+    colors: ["#38a169"],
     plotOptions: {
       radialBar: {
-        hollow: { margin: -2, size: '50%', background: '#d1f5ea' },
+        hollow: { margin: -2, size: "50%", background: "#d1f5ea" },
         dataLabels: {
-          name: { show: true, fontSize: '18px', fontWeight: 600, offsetY: 7 },
-          value: { show: false }
-        }
+          name: { show: true, fontSize: "18px", fontWeight: 600, offsetY: 7 },
+          value: { show: false },
+        },
       },
     },
     labels: [score + "%"],
@@ -33,8 +33,10 @@ const QuizResult = () => {
         <Card.Body className="p-10 text-center">
           <div className="mb-4 ">
             <h2>🎉 Congratulations. You passed!</h2>
-            <p className="mb-0 px-lg-14">You are successfully completed the quiz. Now you click on
-              finish and back to your quiz page.</p>
+            <p className="mb-0 px-lg-14">
+              You are successfully completed the quiz. Now you click on finish
+              and back to your quiz page.
+            </p>
           </div>
           <div className="d-flex justify-content-center">
             <div className="resultChart">
@@ -47,17 +49,27 @@ const QuizResult = () => {
             </div>
           </div>
           <div className="mt-3">
-            <span>Your Score: <span className="text-dark">85.83% (85.83 points)</span></span><br />
-            <span className="mt-2 d-block">Passing Score: <span className="text-dark">80%</span></span>
+            <span>
+              Your Score:{" "}
+              <span className="text-dark">85.83% (85.83 points)</span>
+            </span>
+            <br />
+            <span className="mt-2 d-block">
+              Passing Score: <span className="text-dark">80%</span>
+            </span>
           </div>
           <div className="mt-5">
-            <Link href="#" className="btn btn-primary">Finish</Link>
-            <Link href="#" className="btn btn-outline-secondary ms-2">Share <i className="fe fe-external-link"></i></Link>
+            <Link href="#" className="btn btn-primary">
+              Finish
+            </Link>
+            <Link href="#" className="btn btn-outline-secondary ms-2">
+              Share <i className="fe fe-external-link"></i>
+            </Link>
           </div>
         </Card.Body>
       </Card>
     </ProfileLayout>
-  )
-}
+  );
+};
 
 export default QuizResult;

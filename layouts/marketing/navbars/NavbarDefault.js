@@ -3,7 +3,7 @@
 // import node module libraries
 import Link from "next/link";
 import PropTypes from "prop-types";
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useState } from "react";
 import { Container, Form, Nav, Navbar } from "react-bootstrap";
 import { useMediaQuery } from "react-responsive";
 
@@ -15,7 +15,6 @@ import QuickMenu from "layouts/QuickMenu";
 import NavbarDefaultRoutes from "routes/marketing/NavbarDefault";
 
 // import layouts
-import DocumentMenu from "layouts/marketing/navbars/DocumentMenu";
 import NavDropdownMain from "layouts/marketing/navbars/NavDropdownMain";
 
 // import hooks
@@ -51,7 +50,7 @@ const NavbarDefault = ({ headerstyle = "navbar-default", login = false }) => {
               // login ? "w-lg-100" : "nav-w-80"
             }  align-items-center`}
           >
-            <Link href="/" passHref legacyBehavior>
+            <Link href="/">
               <Image
                 style={{ cursor: "pointer" }}
                 src={settings.theme.logo}
@@ -93,14 +92,13 @@ const NavbarDefault = ({ headerstyle = "navbar-default", login = false }) => {
               {NavbarDefaultRoutes.map((item, index) => {
                 if (item?.children?.length === 0) {
                   return (
-                    <Nav.Link
+                    <Link
                       key={index}
-                      as={Link}
                       href={item.link}
                       style={{ paddingTop: "5px" }}
                     >
                       {item.menuitem}
-                    </Nav.Link>
+                    </Link>
                   );
                 } else if (hasMounted) {
                   return (
@@ -155,20 +153,18 @@ const NavbarDefault = ({ headerstyle = "navbar-default", login = false }) => {
                       : "ms-auto mt-3 mt-lg-0 d-flex"
                   }
                 >
-                  <Nav.Link
+                  <Link
                     href="/authentication/sign-in"
-                    bsPrefix="btn"
                     className="btn btn-white  shadow-sm me-2"
                   >
                     Sign In
-                  </Nav.Link>
-                  <Nav.Link
+                  </Link>
+                  <Link
                     href="/authentication/sign-up"
-                    bsPrefix="btn"
                     className="btn btn-primary  shadow-sm"
                   >
                     Sign Up
-                  </Nav.Link>
+                  </Link>
                 </span>
                 {hasMounted ? (
                   <span
@@ -199,14 +195,13 @@ const NavbarDefault = ({ headerstyle = "navbar-default", login = false }) => {
                       {NavbarDefaultRoutes.map((item, index) => {
                         if (item?.children?.length === 0) {
                           return (
-                            <Nav.Link
+                            <Link
                               key={index}
-                              as={Link}
                               href={item.link}
                               style={{ paddingTop: "5px" }}
                             >
                               {item.menuitem}
-                            </Nav.Link>
+                            </Link>
                           );
                         } else if (hasMounted) {
                           return (

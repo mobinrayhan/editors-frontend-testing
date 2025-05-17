@@ -1,16 +1,13 @@
-
 // import node module libraries
-import React from 'react'
-import { Col, Row, ProgressBar, Image } from 'react-bootstrap'
-import Link from 'next/link';
+import Link from "next/link";
+import { Col, Image, ProgressBar, Row } from "react-bootstrap";
 
 // import MDI icons
-import Icon from '@mdi/react';
-import { mdiStar } from '@mdi/js';
-
+import { mdiStar } from "@mdi/js";
+import Icon from "@mdi/react";
 
 // import widget/custom components
-import { RatingsBiIcon } from 'widgets';
+import { RatingsBiIcon } from "widgets";
 
 const RatingsReviews = () => {
   return (
@@ -26,49 +23,98 @@ const RatingsReviews = () => {
         <Col lg={{ span: 7, offset: 1 }} md={8}>
           {/* progress */}
           <div className="d-flex align-items-center mb-2">
-            <div className="text-nowrap me-3 text-muted"><span className="d-inline-block align-middle text-muted">5</span>
-              <Icon path={mdiStar} size={0.6} className="ms-1 fs-6 text-muted" />
+            <div className="text-nowrap me-3 text-muted">
+              <span className="d-inline-block align-middle text-muted">5</span>
+              <Icon
+                path={mdiStar}
+                size={0.6}
+                className="ms-1 fs-6 text-muted"
+              />
             </div>
             <div className="w-100">
-              <ProgressBar variant="success" now={60} style={{ height: '6px' }} />
+              <ProgressBar
+                variant="success"
+                now={60}
+                style={{ height: "6px" }}
+              />
             </div>
             <span className="text-muted ms-3">420</span>
           </div>
           {/* progress */}
           <div className="d-flex align-items-center mb-2">
-            <div className="text-nowrap me-3 text-muted"><span className="d-inline-block align-middle text-muted">4</span>
-              <Icon path={mdiStar} size={0.6} className="ms-1 fs-6 text-muted" />
+            <div className="text-nowrap me-3 text-muted">
+              <span className="d-inline-block align-middle text-muted">4</span>
+              <Icon
+                path={mdiStar}
+                size={0.6}
+                className="ms-1 fs-6 text-muted"
+              />
             </div>
             <div className="w-100">
-              <ProgressBar variant="success" now={50} style={{ height: '6px' }} />
-            </div><span className="text-muted ms-3">90</span>
+              <ProgressBar
+                variant="success"
+                now={50}
+                style={{ height: "6px" }}
+              />
+            </div>
+            <span className="text-muted ms-3">90</span>
           </div>
           {/* progress */}
           <div className="d-flex align-items-center mb-2">
-            <div className="text-nowrap me-3 text-muted"><span className="d-inline-block align-middle text-muted">3</span>
-              <Icon path={mdiStar} size={0.6} className="ms-1 fs-6 text-muted" />
+            <div className="text-nowrap me-3 text-muted">
+              <span className="d-inline-block align-middle text-muted">3</span>
+              <Icon
+                path={mdiStar}
+                size={0.6}
+                className="ms-1 fs-6 text-muted"
+              />
             </div>
             <div className="w-100">
-              <ProgressBar variant="success" now={35} style={{ height: '6px' }} />
-            </div><span className="text-muted ms-3">33</span>
+              <ProgressBar
+                variant="success"
+                now={35}
+                style={{ height: "6px" }}
+              />
+            </div>
+            <span className="text-muted ms-3">33</span>
           </div>
           {/* progress */}
           <div className="d-flex align-items-center mb-2">
-            <div className="text-nowrap me-3 text-muted"><span className="d-inline-block align-middle text-muted">2</span>
-              <Icon path={mdiStar} size={0.6} className="ms-1 fs-6 text-muted" />
+            <div className="text-nowrap me-3 text-muted">
+              <span className="d-inline-block align-middle text-muted">2</span>
+              <Icon
+                path={mdiStar}
+                size={0.6}
+                className="ms-1 fs-6 text-muted"
+              />
             </div>
             <div className="w-100">
-              <ProgressBar variant="warning" now={22} style={{ height: '6px' }} />
-            </div><span className="text-muted ms-3">12</span>
+              <ProgressBar
+                variant="warning"
+                now={22}
+                style={{ height: "6px" }}
+              />
+            </div>
+            <span className="text-muted ms-3">12</span>
           </div>
           {/* progress */}
           <div className="d-flex align-items-center mb-2">
-            <div className="text-nowrap me-3 text-muted"><span className="d-inline-block align-middle text-muted">1</span>
-              <Icon path={mdiStar} size={0.6} className="ms-1 fs-6 text-muted" />
+            <div className="text-nowrap me-3 text-muted">
+              <span className="d-inline-block align-middle text-muted">1</span>
+              <Icon
+                path={mdiStar}
+                size={0.6}
+                className="ms-1 fs-6 text-muted"
+              />
             </div>
             <div className="w-100">
-              <ProgressBar variant="danger" now={14} style={{ height: '6px' }} />
-            </div><span className="text-muted ms-3">40</span>
+              <ProgressBar
+                variant="danger"
+                now={14}
+                style={{ height: "6px" }}
+              />
+            </div>
+            <span className="text-muted ms-3">40</span>
           </div>
         </Col>
       </Row>
@@ -76,9 +122,19 @@ const RatingsReviews = () => {
         {/* review 1 */}
         <div className="border-top py-4 mt-4">
           <div className="border d-inline-block px-2 py-1 rounded-pill mb-3">
-            <span className="text-dark fw-semibold ">4.4 <Icon path={mdiStar} size={0.6} className="ms-1 fs-6 text-success" /></span>
+            <span className="text-dark fw-semibold ">
+              4.4{" "}
+              <Icon
+                path={mdiStar}
+                size={0.6}
+                className="ms-1 fs-6 text-success"
+              />
+            </span>
           </div>
-          <p>It's awesome , I never thought about geeks that awesome shoes.very pretty.</p>
+          <p>
+            It&lsquo;s awesome , I never thought about geeks that awesome
+            shoes.very pretty.
+          </p>
           <div>
             <span>James Ennis</span>
             <span className="ms-4">28 Nov 2022</span>
@@ -87,28 +143,57 @@ const RatingsReviews = () => {
         {/* review 2 */}
         <div className="border-top py-4">
           <div className="border d-inline-block px-2 py-1 rounded-pill mb-3">
-            <span className="text-dark fw-semibold ">5.0 <Icon path={mdiStar} size={0.6} className="ms-1 fs-6 text-success" /></span>
+            <span className="text-dark fw-semibold ">
+              5.0{" "}
+              <Icon
+                path={mdiStar}
+                size={0.6}
+                className="ms-1 fs-6 text-success"
+              />
+            </span>
           </div>
-          <p>Quality is more than good that I was expected for buying. I first time
-            purchase Geeks shoes &amp; this brand is good. Thanks to Geeks UI delivery
-            was faster than fast ...Love Geeks UI</p>
+          <p>
+            Quality is more than good that I was expected for buying. I first
+            time purchase Geeks shoes &amp; this brand is good. Thanks to Geeks
+            UI delivery was faster than fast ...Love Geeks UI
+          </p>
           <div>
             <span>Bradley Mouton</span>
-            <span className="ms-4">21 Apr 2022
-            </span>
+            <span className="ms-4">21 Apr 2022</span>
           </div>
         </div>
         {/* review 3 */}
         <div className="border-top py-4 border-bottom">
           <div className="border d-inline-block px-2 py-1 rounded-pill mb-3">
-            <span className="text-dark fw-semibold ">4.4 <Icon path={mdiStar} size={0.6} className="ms-1 fs-6 text-success" /></span>
+            <span className="text-dark fw-semibold ">
+              4.4{" "}
+              <Icon
+                path={mdiStar}
+                size={0.6}
+                className="ms-1 fs-6 text-success"
+              />
+            </span>
           </div>
-          <p>Excellent shoes with original logo , Thanks Geeks UI , Buy these shoes
-            without any tension</p>
+          <p>
+            Excellent shoes with original logo , Thanks Geeks UI , Buy these
+            shoes without any tension
+          </p>
           <div className="mb-5">
-            <Image src='/images/ecommerce/ecommerce-img-1.jpg' alt="" className="avatar-md rounded-2 me-1" />
-            <Image src='/images/ecommerce/ecommerce-img-2.jpg' alt="" className="avatar-md rounded-2 me-1" />
-            <Image src='/images/ecommerce/ecommerce-img-3.jpg' alt="" className="avatar-md rounded-2 me-1" />
+            <Image
+              src="/images/ecommerce/ecommerce-img-1.jpg"
+              alt=""
+              className="avatar-md rounded-2 me-1"
+            />
+            <Image
+              src="/images/ecommerce/ecommerce-img-2.jpg"
+              alt=""
+              className="avatar-md rounded-2 me-1"
+            />
+            <Image
+              src="/images/ecommerce/ecommerce-img-3.jpg"
+              alt=""
+              className="avatar-md rounded-2 me-1"
+            />
           </div>
           <div>
             {/* text */}
@@ -118,11 +203,13 @@ const RatingsReviews = () => {
         </div>
         <div className="my-3">
           {/* btn link */}
-          <Link href="#" className="fw-semibold">View all 89 reviews</Link>
+          <Link href="#" className="fw-semibold">
+            View all 89 reviews
+          </Link>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default RatingsReviews
+export default RatingsReviews;

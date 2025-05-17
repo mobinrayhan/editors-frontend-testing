@@ -1,21 +1,12 @@
 // import node module libraries
-import React, { useContext, Fragment } from "react";
 import Link from "next/link";
+import { Fragment, useContext } from "react";
 import { Accordion, AccordionContext, ListGroup } from "react-bootstrap";
 import { useAccordionButton } from "react-bootstrap/AccordionButton";
 
+import { mdiAssistant, mdiPagePreviousOutline, mdiPlay } from "@mdi/js";
 import Icon from "@mdi/react";
-import {
-  mdiAssistant,
-  mdiAsterisk,
-  mdiHomeAssistant,
-  mdiPagePreviousOutline,
-  mdiPaperclipPlus,
-  mdiPaperCutVertical,
-  mdiPlay,
-} from "@mdi/js";
 import ErrorPage from "components/ErrorPage";
-import secondsToHoursMinutes from "helper/secondsToHoursMinutes";
 
 const GKAccordionDefault = ({ accordionItems, itemClass, sections, slug }) => {
   // function secondsToHoursMinutes(seconds) {

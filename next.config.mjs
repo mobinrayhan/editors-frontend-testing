@@ -12,6 +12,18 @@ const nextConfig = {
         protocol: "https",
         hostname: "dummyimage.com",
       },
+      {
+        protocol: "https",
+        hostname: "sslcommerz.com",
+      },
+      {
+        protocol: "https",
+        hostname: "www.tbsnews.net",
+      },
+      {
+        protocol: "https",
+        hostname: "download.logo.wine",
+      },
     ],
   },
 };
