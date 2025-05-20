@@ -2,24 +2,25 @@
 import { Col, Container, Row } from "react-bootstrap";
 
 import getFetch from "helper/getFetch";
+import { API_ENDPOINT } from "helper/global";
 import CourseSlider from "widgets/courses/CourseSlider";
 import HeroHeader from "widgets/hero-sections/HeroHeader";
 import FeaturesList from "widgets/home/FeaturesList";
 
 const DefaultHome = async () => {
-  const courses = await getFetch("https://api.editors.academy/courses");
+  const courses = await getFetch(`${API_ENDPOINT}/courses`);
 
   const instructors = await Promise.all(
     courses?.success === false
       ? []
       : courses?.courses?.map(async (course) => {
           const instructorData = await getFetch(
-            `https://api.editors.academy/courses/${course.id}/instructors`
+            `${API_ENDPOINT}/courses/${course.id}/instructors`
           );
           return instructorData;
         })
   );
-  console.log(courses, instructors);
+
   return (
     <main>
       <HeroHeader
