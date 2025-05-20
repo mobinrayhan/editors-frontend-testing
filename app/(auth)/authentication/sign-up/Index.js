@@ -17,17 +17,15 @@ const SignUp = () => {
   const router = useRouter();
   const [state, formAction, pending] = useActionState(createUser, initialState);
 
-  console.log(state);
+  if (state?.otpToken && !state?.isVerified) {
+    router.push(`/authentication/verify?otpToken=${state.otpToken}`);
+  }
 
-  // const handelSubmit = (e) => {
-  //   e.preventDefault();
-  //   const formData = new FormData(e.target);
-  //   const phoneNumber = formData.get("number");
-  //   const isValid = isValidNumber(phoneNumber);
-  //   // console.log(phoneNumber, isValid);
-  //   e.target.reset();
-  //   router.push("/authentication/sign-up/verify");
-  // };
+  if (state?.otpToken && state?.isVerified) {
+    router.push(
+      `/authentication/complete-registration?otpToken=${state.otpToken}&userNumber${state.userNumber}`
+    );
+  }
 
   return (
     <Row className="align-items-center justify-content-center g-0 min-vh-100">

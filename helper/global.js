@@ -1,1 +1,1 @@
-export const API_ENDPOINT = `https://api.editors.academy`;
+export const API_ENDPOINT = process.env.API_LINK;
