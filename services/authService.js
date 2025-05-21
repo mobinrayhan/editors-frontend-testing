@@ -20,3 +20,16 @@ export const validateOTP = async ({ otpToken, otpCode }) => {
     throw new Error(error.message);
   }
 };
+
+export const completeRegistrationReq = async (bodyData) => {
+  try {
+    const data = await apiClient(
+      "/auth/complete-registration?mode=registration",
+      "POST",
+      bodyData
+    );
+    return data;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};

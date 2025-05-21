@@ -1,48 +1,32 @@
 "use client";
 
-import { verifyAccount } from "actions/userAction";
+import { completeRegistration } from "actions/userAction";
 import Image from "next/image";
-// import node module libraries
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
-import { useActionState, useRef, useState } from "react";
-import { Button, Card, Col, Form, Row } from "react-bootstrap";
+import { useRouter, useSearchParams } from "next/navigation";
+import { Suspense, useActionState } from "react";
+import { Button, Card, Col, Form, Row, Spinner } from "react-bootstrap";
 
 const initialState = {
   message: "",
   success: null,
 };
 
-const Verify = () => {
+const CompleteRegistrationMain = () => {
+  const searchParams = useSearchParams();
+  const mobileNumber = searchParams.get("mobileNumber");
+  const router = useRouter();
   const [state, formAction, pending] = useActionState(
-    verifyAccount,
+    completeRegistration,
     initialState
   );
+  if (!state?.isValid && state?.success) {
+    router.push(`/authentication/sign-up`);
+  }
 
-  const inputRefs = useRef([]);
-  const cellArray = new Array(6).fill("");
-  const [otp, setOtp] = useState(cellArray);
-  const searchParams = useSearchParams();
-  const otpToken = searchParams.get("otpToken");
-
-  const handleChange = (e, index) => {
-    const value = e.target.value;
-    const newOtp = [...otp];
-    newOtp[index] = value;
-    setOtp(newOtp);
-
-    if (value.length === 1 && index < inputRefs.current.length - 1) {
-      inputRefs.current[index + 1].focus();
-    }
-  };
-  const handleKeyDown = (e, index) => {
-    if (e.key === "Backspace" && !e.target.value && index > 0) {
-      const newOtp = [...otp];
-      newOtp[index] = ""; // Clear the current input value
-      setOtp(newOtp);
-      inputRefs.current[index - 1].focus();
-    }
-  };
+  if (state?.success && typeof state?.userId === "number") {
+    router.push(`/`);
+  }
 
   return (
     <Row className="align-items-center justify-content-center g-0 min-vh-100">
@@ -60,46 +44,61 @@ const Verify = () => {
                 />
               </Link>
               <h1 className="mb-1 fw-bold">Complete Registration</h1>
-              <span>
-                Already have an account?{" "}
-                <Link href="/authentication/sign-in" className="ms-1">
-                  Sign in
-                </Link>
-              </span>
             </div>
             {/* Form */}
             <Form action={formAction}>
-              <Row className="justify-content-center">
-                {/* otp */}
-                {otp.map((_, index) => (
-                  <Col key={index}>
-                    <Form.Control
-                      value={otp[index] || ""}
-                      type="number"
-                      required
-                      maxLength={1}
-                      className="mb-5 text-center"
-                      ref={(el) => (inputRefs.current[index] = el)}
-                      onChange={(e) => handleChange(e, index)}
-                      onKeyDown={(e) => handleKeyDown(e, index)}
-                    />
-                  </Col>
-                ))}
-
-                <input
-                  type="hidden"
-                  name="otpCode"
-                  value={+otp.join(",").replace(/,/g, "")}
-                />
-                <input type="hidden" name="otpToken" value={otpToken} />
+              <Row className="d-grid">
+                <Col>
+                  Name :
+                  <Form.Control
+                    disabled={pending}
+                    type="text"
+                    name="name"
+                    required
+                    className="mb-3 mt-1"
+                    placeholder="Enter Your Name"
+                  />
+                </Col>
+                <Col>
+                  E-mail :
+                  <Form.Control
+                    disabled={pending}
+                    type="email"
+                    name="email"
+                    required
+                    className="mb-3 mt-1"
+                    placeholder="Enter Your Email"
+                  />
+                </Col>
+                <Col>
+                  Password :
+                  <Form.Control
+                    disabled={pending}
+                    type="text"
+                    name="password"
+                    required
+                    className="mb-3 mt-1"
+                    placeholder="Enter Your Password"
+                  />
+                </Col>
+                <input type="hidden" name="mobileNumber" value={mobileNumber} />
 
                 <Col lg={12} md={12} className="mb-0 d-grid gap-2">
                   {/* Button */}
-                  <Button variant="primary" type="submit">
-                    Verify
+                  <Button variant="primary" type="submit" disabled={pending}>
+                    {pending ? (
+                      <Spinner animation="border" size="sm" />
+                    ) : (
+                      "Complete Registration"
+                    )}
                   </Button>
                 </Col>
               </Row>
+              {state?.success === false ? (
+                <p className="text-center pt-1 text-danger">{state?.message}</p>
+              ) : (
+                ""
+              )}
             </Form>
           </Card.Body>
         </Card>
@@ -108,4 +107,10 @@ const Verify = () => {
   );
 };
 
-export default Verify;
+export default function CompleteRegistration() {
+  return (
+    <Suspense fallback={<p>Loading..</p>}>
+      <CompleteRegistrationMain />
+    </Suspense>
+  );
+}

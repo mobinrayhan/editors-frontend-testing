@@ -1,6 +1,13 @@
 "use server";
 
-import { requestOTP, validateOTP } from "services/authService";
+import { generateSessionToken } from "helper/utils";
+import { cookies, headers } from "next/headers";
+import {
+  completeRegistrationReq,
+  requestOTP,
+  validateOTP,
+} from "services/authService";
+import { UAParser } from "ua-parser-js";
 
 const isValidNumber = (phone) => {
   const regex = /^01\d{9}$/;
@@ -8,12 +15,12 @@ const isValidNumber = (phone) => {
 };
 
 export const createUser = async (_, formData) => {
-  const phoneNumber = formData.get("number");
-  const isValid = isValidNumber(phoneNumber);
+  const mobileNumber = formData.get("number");
+  const isValid = isValidNumber(mobileNumber);
 
   try {
     if (isValid) {
-      const data = await requestOTP(phoneNumber);
+      const data = await requestOTP(mobileNumber);
       return {
         ...data,
         success: true,
@@ -26,7 +33,7 @@ export const createUser = async (_, formData) => {
     }
   } catch (error) {
     return {
-      message: "Something went wrong!",
+      message: error.message || "Something went wrong!",
       success: false,
     };
   }
@@ -45,6 +52,63 @@ export const verifyAccount = async (_, formData) => {
   } catch (error) {
     return {
       message: error.message,
+      success: false,
+    };
+  }
+};
+
+export const completeRegistration = async (_, formData) => {
+  const name = formData.get("name");
+  const email = formData.get("email");
+  const password = formData.get("password");
+  const mobileNumber = formData.get("mobileNumber");
+
+  const headersList = await headers();
+  const cookie = await cookies();
+  const userAgent = headersList?.get("user-agent") || "";
+
+  const parser = new UAParser(userAgent);
+  const device = parser.getDevice();
+
+  const activeDevice = `${device.vendor || "Unknown"} ${
+    device.model || ""
+  }`.trim();
+
+  const sessionToken = generateSessionToken();
+
+  const bodyData = {
+    name,
+    email,
+    password,
+    mobileNumber,
+    activeDevice,
+    role: "user",
+    sessionToken,
+  };
+
+  try {
+    const data = await completeRegistrationReq(bodyData);
+
+    if (!data?.isValid && !data?.userId) {
+      throw new Error(data?.message || "Something Went Wrong!");
+    }
+
+    cookie.set("sessionToken", sessionToken, {
+      httpOnly: process.env.NODE_ENV === "development" ? false : true,
+      secure: true,
+      sameSite: "lax",
+      path: "/",
+      maxAge: 60 * 60 * 24 * 7,
+    });
+
+    return {
+      message: "Complete Registration Successfully!",
+      success: true,
+      ...data,
+    };
+  } catch (error) {
+    return {
+      message: error.message || "Something went wrong!",
       success: false,
     };
   }

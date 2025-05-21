@@ -91,27 +91,12 @@ const SignIn = () => {
                   </Button>
                 </Col>
               </Row>
+              {/* {state?.success === false ? (
+                <p className="text-center pt-1 text-danger">{state?.message}</p>
+              ) : (
+                ""
+              )} */}
             </Form>
-            {/* <hr className="my-4" /> */}
-            {/* social links */}
-            {/* <div className="mt-4 text-center">
-							
-							<Link href="#" className="btn-social btn-social-outline btn-facebook">
-								<i className="fab fa-facebook"></i>
-							</Link>{' '}
-						
-							<Link href="#" className="btn-social btn-social-outline btn-twitter">
-								<i className="fab fa-twitter"></i>
-							</Link>{' '}
-							
-							<Link href="#" className="btn-social btn-social-outline btn-linkedin">
-								<i className="fab fa-linkedin"></i>
-							</Link>{' '}
-							
-							<Link href="#" className="btn-social btn-social-outline btn-github">
-								<i className="fab fa-github"></i>
-							</Link>
-						</div> */}
           </Card.Body>
         </Card>
       </Col>

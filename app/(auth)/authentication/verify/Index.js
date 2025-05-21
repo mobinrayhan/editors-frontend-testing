@@ -5,7 +5,7 @@ import Image from "next/image";
 // import node module libraries
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useActionState, useRef, useState } from "react";
+import { Suspense, useActionState, useRef, useState } from "react";
 import { Button, Card, Col, Form, Row, Spinner } from "react-bootstrap";
 
 const initialState = {
@@ -13,7 +13,7 @@ const initialState = {
   success: null,
 };
 
-const Verify = () => {
+const VerifyMainComponent = () => {
   const [state, formAction, pending] = useActionState(
     verifyAccount,
     initialState
@@ -47,7 +47,7 @@ const Verify = () => {
 
   if (state?.userNumber && state?.isValid && state?.otpToken) {
     router.push(
-      `/authentication/complete-registration?otpCode=${state.otpToken}&phoneNumber=${state.userNumber}`
+      `/authentication/complete-registration?otpCode=${state.otpToken}&mobileNumber=${state.userNumber}`
     );
   }
 
@@ -124,4 +124,10 @@ const Verify = () => {
   );
 };
 
-export default Verify;
+export default function Verify() {
+  return (
+    <Suspense fallback={<p>Loading...</p>}>
+      <VerifyMainComponent />
+    </Suspense>
+  );
+}

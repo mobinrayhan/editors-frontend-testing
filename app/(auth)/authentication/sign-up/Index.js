@@ -44,7 +44,7 @@ const SignUp = () => {
               </Link>
               <h1 className="mb-1 fw-bold">Sign up</h1>
               <span>
-                Already 0have an account?{" "}
+                Already have an account?{" "}
                 <Link href="/authentication/sign-in" className="ms-1">
                   Sign in
                 </Link>
@@ -90,6 +90,13 @@ const SignUp = () => {
                     )}
                   </Button>
                 </Col>
+                {state?.success === false ? (
+                  <p className="text-center pt-1 text-danger">
+                    {state?.message}
+                  </p>
+                ) : (
+                  ""
+                )}
               </Row>
             </Form>
           </Card.Body>

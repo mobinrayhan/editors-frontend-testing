@@ -11,6 +11,9 @@ module.exports = (phase) => {
   const API_LINK = isDev
     ? "http://localhost:5006"
     : "https://api.editors.academy";
+  // const API_LINK = isDev
+  //   ? "https://api.editors.academy"
+  //   : "http://localhost:5006";
 
   return {
     reactStrictMode: true,
