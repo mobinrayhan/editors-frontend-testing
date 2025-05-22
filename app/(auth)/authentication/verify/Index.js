@@ -39,7 +39,7 @@ const VerifyMainComponent = () => {
   const handleKeyDown = (e, index) => {
     if (e.key === "Backspace" && !e.target.value && index > 0) {
       const newOtp = [...otp];
-      newOtp[index] = ""; // Clear the current input value
+      newOtp[index] = "";
       setOtp(newOtp);
       inputRefs.current[index - 1].focus();
     }
