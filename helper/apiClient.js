@@ -28,7 +28,6 @@ export const apiClient = async (endPoint, method = "GET", body) => {
 
     if (!res.ok) {
       const errorData = await res.json();
-
       const error = new Error(
         errorData?.message || `Request failed (${res.status})`
       );

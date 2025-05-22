@@ -5,6 +5,7 @@ import { generateSessionToken } from "helper/utils";
 import { cookies, headers } from "next/headers";
 import {
   completeRegistrationReq,
+  loginUserReq,
   requestOTP,
   validateOTP,
 } from "services/authService";
@@ -104,6 +105,35 @@ export const completeRegistration = async (_, formData) => {
   } catch (error) {
     return {
       message: error.message || "Something went wrong!",
+      success: false,
+    };
+  }
+};
+
+export const loginUser = async (_, formData) => {
+  const mobileNumber = formData.get("mobileNumber");
+  const password = formData.get("password");
+  const cookie = await cookies();
+
+  const isValid = isValidNumber(mobileNumber);
+  if (!isValid) {
+    return {
+      message: "Number is not valid",
+      success: false,
+    };
+  }
+
+  try {
+    const data = await loginUserReq({ mobileNumber, password });
+    cookie.set("sessionToken", data?.user?.sessionToken, cookieConfig);
+
+    return {
+      ...data,
+      message: "Successfully Logged In",
+    };
+  } catch (error) {
+    return {
+      message: error?.message || "Something Went Wrong!",
       success: false,
     };
   }

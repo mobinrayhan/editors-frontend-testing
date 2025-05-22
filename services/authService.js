@@ -33,3 +33,13 @@ export const completeRegistrationReq = async (bodyData) => {
     throw new Error(error.message);
   }
 };
+
+export const loginUserReq = async (bodyData) => {
+  try {
+    const data = await apiClient("/auth/login", "POST", bodyData);
+
+    return data;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
