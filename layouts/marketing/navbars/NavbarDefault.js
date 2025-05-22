@@ -37,8 +37,6 @@ const NavbarDefault = ({ headerstyle = "navbar-default", login = false }) => {
     query: "(min-width: 1024px)",
   });
 
-  console.log(pathName);
-
   return (
     <Fragment>
       <Navbar

@@ -1,4 +1,7 @@
 export default async function getFetch(URL) {
+  console.log("====================================");
+  console.log(URL);
+  console.log("====================================");
   return await (
     await fetch(URL, {
       method: "GET",

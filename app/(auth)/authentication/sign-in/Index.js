@@ -5,6 +5,7 @@ import { settings } from "app.config";
 import Image from "next/image";
 // import node module libraries
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useActionState } from "react";
 import { Button, Card, Col, Form, Row, Spinner } from "react-bootstrap";
 
@@ -14,7 +15,12 @@ const initialState = {
 };
 
 const SignIn = () => {
+  const router = useRouter();
   const [state, formAction, pending] = useActionState(loginUser, initialState);
+
+  if (state?.success && state?.user) {
+    router.push("/");
+  }
 
   return (
     <Row className="align-items-center justify-content-center g-0 min-vh-100">

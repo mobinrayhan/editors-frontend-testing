@@ -130,6 +130,7 @@ export const loginUser = async (_, formData) => {
     return {
       ...data,
       message: "Successfully Logged In",
+      success: true,
     };
   } catch (error) {
     return {

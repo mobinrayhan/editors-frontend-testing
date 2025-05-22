@@ -24,7 +24,10 @@ export const apiClient = async (endPoint, method = "GET", body) => {
       options.body = JSON.stringify(body);
     }
 
-    const res = await fetch(`${process.env.API_LINK}${endPoint}`, options);
+    const res = await fetch(`${process.env.API_LINK}${endPoint}`, {
+      ...options,
+      credentials: "include",
+    });
 
     if (!res.ok) {
       const errorData = await res.json();
