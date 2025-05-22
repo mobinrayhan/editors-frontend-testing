@@ -1,5 +1,6 @@
 "use server";
 
+import { cookieConfig } from "helper/global";
 import { generateSessionToken } from "helper/utils";
 import { cookies, headers } from "next/headers";
 import {
@@ -93,13 +94,7 @@ export const completeRegistration = async (_, formData) => {
       throw new Error(data?.message || "Something Went Wrong!");
     }
 
-    cookie.set("sessionToken", sessionToken, {
-      httpOnly: process.env.NODE_ENV === "development" ? false : true,
-      secure: true,
-      sameSite: "lax",
-      path: "/",
-      maxAge: 60 * 60 * 24 * 7,
-    });
+    cookie.set("sessionToken", sessionToken, cookieConfig);
 
     return {
       message: "Complete Registration Successfully!",

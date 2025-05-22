@@ -1,6 +1,7 @@
 "use client";
 
 import { verifyAccount } from "actions/userAction";
+import { setClientCookie } from "helper/utils";
 import Image from "next/image";
 // import node module libraries
 import Link from "next/link";
@@ -44,6 +45,11 @@ const VerifyMainComponent = () => {
       inputRefs.current[index - 1].focus();
     }
   };
+
+  if (state?.existingUser) {
+    setClientCookie("sessionToken", state?.existingUser?.sessionToken);
+    router.push("/");
+  }
 
   if (state?.userNumber && state?.isValid && state?.otpToken) {
     router.push(

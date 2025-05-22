@@ -1,4 +1,5 @@
 import crypto from "crypto";
+import Cookies from "js-cookie";
 /**
  * Functions in utils
  */
@@ -148,6 +149,17 @@ export function generateSessionToken(length = 64) {
     .slice(0, safeLength);
 }
 
+export function setClientCookie(name, value) {
+  const cookieConfig = {
+    secure: true,
+    sameSite: "lax",
+    path: "/",
+    expires: 604800 / 86400,
+  };
+
+  Cookies.set(name, value, cookieConfig);
+}
+
 const utils = [
   numberWithCommas,
   getFileExtension,
@@ -160,6 +172,7 @@ const utils = [
   convertToCurrency,
   toTitleCase,
   generateSessionToken,
+  setClientCookie,
 ];
 
 export default utils;
