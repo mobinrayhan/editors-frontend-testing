@@ -6,9 +6,6 @@ export const metadata = {
 };
 
 const Page = () => {
-  console.log("====================================");
-  console.log("HELLO LOG SOME TESTING");
-  console.log("====================================");
   return <Verify />;
 };
 
