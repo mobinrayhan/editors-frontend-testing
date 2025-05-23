@@ -46,6 +46,7 @@ const CourseSingle = async ({ params }) => {
           const sectionAssignmentData = await getFetch(
             `${API_ENDPOINT}/courses/${course.id}/${section.id}/assignments`
           );
+
           const sectionResourcesData = await getFetch(
             `${API_ENDPOINT}/courses/${course.id}/${section.id}/resources`
           );

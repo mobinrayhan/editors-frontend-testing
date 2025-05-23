@@ -89,6 +89,7 @@ const GKAccordionDefault = ({ accordionItems, itemClass, sections, slug }) => {
                           </ListGroup.Item>
                         ))}
                         {/* resources */}
+
                         {item?.resources?.map((subitem, subindex) => {
                           console.log("====================================");
                           console.log(subitem);
