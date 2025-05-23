@@ -1,5 +1,6 @@
 // import sub components
 import getFetch from "helper/getFetch";
+import { API_ENDPOINT } from "helper/global";
 import CourseResume from "./Index";
 
 export const metadata = {
@@ -7,22 +8,16 @@ export const metadata = {
 };
 
 const Page = async ({ params }) => {
-  const slug = (await params)["courses"];
-  // const [isOpen, setOpen] = useState(false);
-  // const [YouTubeURL] = useState("JRzWRZahOVU");
+  const paramsAwaited = await params;
+  const slug = paramsAwaited["courses"];
 
-  const { course } = await getFetch(
-    `https://api.editors.academy/courses/${slug}`
-  );
+  const { course } = await getFetch(`${API_ENDPOINT}/courses/${slug}`);
 
   const sections =
-    course &&
-    (await getFetch(
-      `https://api.editors.academy/courses/${course.id}/sections`
-    ));
+    course && (await getFetch(`${API_ENDPOINT}/courses/${course.id}/sections`));
 
   const instructorData = await getFetch(
-    `https://api.editors.academy/courses/${course.id}/instructors`
+    `${API_ENDPOINT}/courses/${course.id}/instructors`
   );
   // const instructorData = await resInstructor.json();
   const responseAllSectionWithVideo = await Promise.all(
@@ -30,13 +25,13 @@ const Page = async ({ params }) => {
       ? []
       : sections?.courseSections?.map(async (section) => {
           const sectionVideoData = await getFetch(
-            `https://api.editors.academy/courses/${course.id}/${section.id}/videos`
+            `${API_ENDPOINT}/courses/${course.id}/${section.id}/videos`
           );
           const sectionAssignmentData = await getFetch(
-            `https://api.editors.academy/courses/${course.id}/${section.id}/assignments`
+            `${API_ENDPOINT}/courses/${course.id}/${section.id}/assignments`
           );
           const sectionResourcesData = await getFetch(
-            `https://api.editors.academy/courses/${course.id}/${section.id}/resources`
+            `${API_ENDPOINT}/courses/${course.id}/${section.id}/resources`
           );
 
           return {
@@ -51,7 +46,7 @@ const Page = async ({ params }) => {
   return (
     <CourseResume
       slug={slug}
-      params={params}
+      params={paramsAwaited}
       sections={responseAllSectionWithVideo}
     />
   );

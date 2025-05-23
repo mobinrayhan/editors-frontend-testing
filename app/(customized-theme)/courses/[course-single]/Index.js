@@ -20,41 +20,35 @@ import { Col, Container, Row } from "react-bootstrap";
 import AddToCartIcon from "components/AddToCartIcon";
 import ErrorPage from "components/ErrorPage";
 import getFetch from "helper/getFetch";
+import { API_ENDPOINT } from "helper/global";
 import Ratings from "widgets/ratings/Ratings";
 import CardsComponents from "./components/CardsComponents";
 import CourseList from "./components/CourseList";
 
 const CourseSingle = async ({ params }) => {
   const slug = params["course-single"];
-  // const [isOpen, setOpen] = useState(false);
-  // const [YouTubeURL] = useState("JRzWRZahOVU");
-
-  const { course } = await getFetch(
-    `https://api.editors.academy/courses/${slug}`
-  );
+  const { course } = await getFetch(`${API_ENDPOINT}/courses/${slug}`);
 
   const sections =
-    course &&
-    (await getFetch(
-      `https://api.editors.academy/courses/${course.id}/sections`
-    ));
+    course && (await getFetch(`${API_ENDPOINT}/courses/${course.id}/sections`));
 
   const instructorData = await getFetch(
-    `https://api.editors.academy/courses/${course.id}/instructors`
+    `${API_ENDPOINT}/courses/${course.id}/instructors`
   );
-  // const instructorData = await resInstructor.json();
+
   const responseAllSectionWithVideo = await Promise.all(
     sections?.success === false || course === undefined
       ? []
       : sections?.courseSections?.map(async (section) => {
           const sectionVideoData = await getFetch(
-            `https://api.editors.academy/courses/${course.id}/${section.id}/videos`
+            `${API_ENDPOINT}/courses/${course.id}/${section.id}/videos`
           );
           const sectionAssignmentData = await getFetch(
-            `https://api.editors.academy/courses/${course.id}/${section.id}/assignments`
+            `${API_ENDPOINT}/courses/${course.id}/${section.id}/assignments`
           );
+
           const sectionResourcesData = await getFetch(
-            `https://api.editors.academy/courses/${course.id}/${section.id}/resources`
+            `${API_ENDPOINT}/courses/${course.id}/${section.id}/resources`
           );
 
           return {
@@ -65,21 +59,6 @@ const CourseSingle = async ({ params }) => {
           };
         })
   );
-
-  // const profileData = {
-  //   id: 1,
-  //   name: "Jenny Wilson",
-  //   image: "/images/avatar/avatar-1.jpg",
-  //   designation: "Front-end Developer, Designer",
-  //   rating: 4.5,
-  //   reviews: 12230,
-  //   students: 11604,
-  //   courses: 32,
-  //   verified: true,
-  //   link: "/marketing/instructor/profile",
-  //   about:
-  //     "I am an Innovation designer focussing on UX/UI based in Berlin. As a creative resident at Figma explored the city of the future and how new technologies.",
-  // };
 
   return (
     <Fragment>
@@ -93,15 +72,9 @@ const CourseSingle = async ({ params }) => {
               <Col xl={7} lg={7} md={12} sm={12}>
                 <div>
                   <h1 className="text-white display-4 fw-semi-bold">
-                    {/* Getting Started with JavaScript */}
                     {course?.title}
                   </h1>
-                  <p className="text-white mb-6 lead">
-                    {/* JavaScript is the popular programming language which powers
-                  web pages and web applications. This course will get you
-                  started coding in JavaScript. */}
-                    {course?.description}
-                  </p>
+                  <p className="text-white mb-6 lead">{course?.description}</p>
                   <div className="d-flex align-items-center bookmark text-white text-decoration-none">
                     <AddToCartIcon
                       courses={course}
@@ -111,15 +84,7 @@ const CourseSingle = async ({ params }) => {
                         Add to Cart
                       </span>
                     </AddToCartIcon>
-                    {/* <GKTippy content="Add to Bookmarks">
-                      <Link
-                        href="#"
-                        className="bookmark text-white text-decoration-none"
-                      >
-                        <i className="fe fe-bookmark text-white-50 me-2"></i>{" "}
-                        Bookmark
-                      </Link>
-                    </GKTippy> */}
+
                     <span className="text-white ms-3">
                       <i className="fe fe-user text-white-50"></i>{" "}
                       {course?.totalEnrollments} Enrolled
@@ -191,26 +156,6 @@ const CourseSingle = async ({ params }) => {
                 />
               </Col>
             </Row>
-
-            {/* Card */}
-            {/* <div className="pt-12 pb-3">
-            <Row className="d-md-flex align-items-center mb-4">
-              <Col lg={12} md={12} sm={12}>
-                <h2 className="mb-0">Related Courses</h2>
-              </Col>
-            </Row>
-            <Row>
-              {AllCoursesData.filter(function (datasource) {
-                return datasource.category === "javascript";
-              })
-                .slice(0, 4)
-                .map((item, index) => (
-                  <Col lg={3} md={6} sm={12} key={index}>
-                    <CourseCard item={item} free />
-                  </Col>
-                ))}
-            </Row>
-          </div> */}
           </Container>
         </section>
       )}

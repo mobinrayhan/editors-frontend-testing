@@ -1,12 +1,11 @@
-// import sub components
-import Verify from "./Index";
+import CompleteRegistration from "./Index";
 
 export const metadata = {
   title: "Verify | Geeks Nextjs Template",
 };
 
 const Page = () => {
-  return <Verify />;
+  return <CompleteRegistration />;
 };
 
 export default Page;

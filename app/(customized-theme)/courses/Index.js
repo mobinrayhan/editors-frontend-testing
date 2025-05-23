@@ -1,27 +1,18 @@
-// import node module libraries
-import React, { Fragment } from "react";
-import { Col, Row, Container, Tab } from "react-bootstrap";
+import { Fragment } from "react";
+import { Container } from "react-bootstrap";
 
-// import widget/custom components
-// import { GridListViewButton, PageHeading } from "shared";
-
-// import sub components
-// import FilterOptions from "./components/FilterOptions";
-// import CourseGridView from "./components/CourseGridView";
-// import CourseListView from "./components/CourseListView";
-// import FormSelect from "shared/form-select/FormSelect";
-// import GridListViewButton from "shared/grid-list-view-button/GridListViewButton";
+import getFetch from "helper/getFetch";
+import { API_ENDPOINT } from "helper/global";
 import PageHeading from "shared/page-headings/PageHeading";
 import TabContainer from "./components/TabContainer";
-import getFetch from "helper/getFetch";
 
 const CourseFilterPage = async () => {
-  const courses = await getFetch("https://api.editors.academy/courses");
+  const courses = await getFetch(`${API_ENDPOINT}/courses`);
 
   const instructors = await Promise.all(
     courses.courses.map(async (course) => {
       const instructorData = await getFetch(
-        `https://api.editors.academy/courses/${course.id}/instructors`
+        `${API_ENDPOINT}/courses/${course.id}/instructors`
       );
       return instructorData;
     })

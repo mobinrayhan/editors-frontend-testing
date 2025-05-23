@@ -1,28 +1,27 @@
 "use client";
 
+import { loginUser } from "actions/userAction";
 import { settings } from "app.config";
 import Image from "next/image";
 // import node module libraries
 import Link from "next/link";
-import { Button, Card, Col, Form, Row } from "react-bootstrap";
+import { useRouter } from "next/navigation";
+import { useActionState } from "react";
+import { Button, Card, Col, Form, Row, Spinner } from "react-bootstrap";
+
+const initialState = {
+  message: "",
+  success: null,
+};
 
 const SignIn = () => {
-  const isValidEmailOrPhone = (input) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const phoneRegex = /^01\d{9}$/;
+  const router = useRouter();
+  const [state, formAction, pending] = useActionState(loginUser, initialState);
 
-    return emailRegex.test(input) || phoneRegex.test(input);
-  };
-  const handelSignIn = (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.target);
+  if (state?.success && state?.user) {
+    router.push("/");
+  }
 
-    const emailOrPhone = formData.get("emailOrPhone");
-    const password = formData.get("password");
-
-    const isVerify = isValidEmailOrPhone(emailOrPhone);
-    console.log(isVerify);
-  };
   return (
     <Row className="align-items-center justify-content-center g-0 min-vh-100">
       <Col lg={5} md={5} className="py-8 py-xl-0">
@@ -47,31 +46,33 @@ const SignIn = () => {
               </span>
             </div>
             {/* Form */}
-            <Form onSubmit={handelSignIn}>
+            <Form action={formAction}>
               <Row>
                 <Col lg={12} md={12} className="mb-3">
                   {/* Username or email */}
                   <Form.Label>Phone number </Form.Label>
                   <Form.Control
+                    disabled={pending}
                     type="text"
-                    id="email"
+                    id="phone"
                     placeholder="Phone number "
                     required
-                    name="emailOrPhone"
+                    name="mobileNumber"
                   />
                 </Col>
                 <Col lg={12} md={12} className="mb-3">
                   {/* Password */}
                   <Form.Label>Password </Form.Label>
                   <Form.Control
+                    disabled={pending}
                     type="password"
+                    name="password"
                     id="password"
                     placeholder="**************"
                     required
                   />
                 </Col>
                 <Col lg={12} md={12} className="mb-3">
-                  {/* Checkbox */}
                   <div className="d-md-flex justify-content-between align-items-center">
                     <Form.Group
                       className="mb-3 mb-md-0"
@@ -85,33 +86,21 @@ const SignIn = () => {
                   </div>
                 </Col>
                 <Col lg={12} md={12} className="mb-0 d-grid gap-2">
-                  {/* Button */}
-                  <Button variant="primary" type="submit">
-                    Sign in
+                  <Button variant="primary" type="submit" disabled={pending}>
+                    {pending ? (
+                      <Spinner animation="border" size="sm" />
+                    ) : (
+                      "Sign in"
+                    )}
                   </Button>
                 </Col>
               </Row>
+              {state?.success === false ? (
+                <p className="text-center pt-1 text-danger">{state?.message}</p>
+              ) : (
+                ""
+              )}
             </Form>
-            {/* <hr className="my-4" /> */}
-            {/* social links */}
-            {/* <div className="mt-4 text-center">
-							
-							<Link href="#" className="btn-social btn-social-outline btn-facebook">
-								<i className="fab fa-facebook"></i>
-							</Link>{' '}
-						
-							<Link href="#" className="btn-social btn-social-outline btn-twitter">
-								<i className="fab fa-twitter"></i>
-							</Link>{' '}
-							
-							<Link href="#" className="btn-social btn-social-outline btn-linkedin">
-								<i className="fab fa-linkedin"></i>
-							</Link>{' '}
-							
-							<Link href="#" className="btn-social btn-social-outline btn-github">
-								<i className="fab fa-github"></i>
-							</Link>
-						</div> */}
           </Card.Body>
         </Card>
       </Col>

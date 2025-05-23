@@ -23,9 +23,14 @@ import useMounted from "hooks/useMounted";
 // import app config file
 import { settings } from "app.config";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
-const NavbarDefault = ({ headerstyle = "navbar-default", login = false }) => {
+const NavbarDefault = ({
+  headerstyle = "navbar-default",
+  sessionUser = false,
+}) => {
   const [expandedMenu, setExpandedMenu] = useState(false);
+  const pathName = usePathname();
   const hasMounted = useMounted();
 
   const isDesktop = useMediaQuery({
@@ -47,7 +52,7 @@ const NavbarDefault = ({ headerstyle = "navbar-default", login = false }) => {
           <Navbar.Brand
             className={`d-flex  ${
               ""
-              // login ? "w-lg-100" : "nav-w-80"
+              // sessionUser ? "w-lg-100" : "nav-w-80"
             }  align-items-center`}
           >
             <Link href="/">
@@ -59,27 +64,18 @@ const NavbarDefault = ({ headerstyle = "navbar-default", login = false }) => {
                 height={45}
               />
             </Link>
-            {/* Search Form */}
-            {/* <Form className="mt-3 flex-grow-1 mt-lg-0 ms-lg-3 d-none d-lg-flex align-items-center">
-              <span className="position-absolute ps-3 search-icon">
-                <i className="fe fe-search"></i>
-              </span>
-              <Form.Control
-                type="Search"
-                id="formSearch"
-                className="ps-6"
-                placeholder="Search Courses"
-              />
-            </Form> */}
           </Navbar.Brand>
           {hasMounted ? (
             <div
               className={`navbar-nav navbar-right-wrap ms-auto d-lg-none nav-top-wrap ${
-                login ? (isDesktop || isLaptop ? "d-none" : "d-flex") : "d-none"
+                sessionUser
+                  ? isDesktop || isLaptop
+                    ? "d-none"
+                    : "d-flex"
+                  : "d-none"
               }`}
             >
-              {/* small device */}
-              <QuickMenu />
+              <QuickMenu sessionUser={sessionUser} />
             </div>
           ) : null}
           <Navbar.Toggle aria-controls="basic-navbar-nav">
@@ -129,7 +125,7 @@ const NavbarDefault = ({ headerstyle = "navbar-default", login = false }) => {
 
             <div className="ms-auto d-flex w-100">
               <Nav className="flex-shrink-0 w-100 navbar-nav navbar-right-wrap ms-auto d-flex align-items-center nav-top-wrap">
-                {!login && (
+                {!sessionUser && (
                   <Form
                     style={{ paddingRight: "20px" }}
                     className="mt-3 flex-grow-1 mt-lg-0 d-none d-lg-flex align-items-center"
@@ -145,10 +141,10 @@ const NavbarDefault = ({ headerstyle = "navbar-default", login = false }) => {
                     />
                   </Form>
                 )}
-                {login ? null : <DarkLightMode className="me-2" />}
+                {sessionUser ? null : <DarkLightMode className="me-2" />}
                 <span
                   className={
-                    login
+                    sessionUser
                       ? "ms-auto mt-3 mt-lg-0 d-none"
                       : "ms-auto mt-3 mt-lg-0 d-flex"
                   }
@@ -169,7 +165,7 @@ const NavbarDefault = ({ headerstyle = "navbar-default", login = false }) => {
                 {hasMounted ? (
                   <span
                     className={`${
-                      login
+                      sessionUser
                         ? isDesktop || isLaptop
                           ? "d-flex flex-grow-1"
                           : "d-none"
@@ -198,7 +194,12 @@ const NavbarDefault = ({ headerstyle = "navbar-default", login = false }) => {
                             <Link
                               key={index}
                               href={item.link}
-                              style={{ paddingTop: "5px" }}
+                              style={{ paddingTop: "5px", marginRight: "10px" }}
+                              className={`${
+                                item.link === pathName
+                                  ? "text-blue "
+                                  : "text-black "
+                              }`}
                             >
                               {item.menuitem}
                             </Link>
@@ -216,7 +217,7 @@ const NavbarDefault = ({ headerstyle = "navbar-default", login = false }) => {
                         }
                       })}
                     </Nav>
-                    <QuickMenu />
+                    <QuickMenu sessionUser={sessionUser} />
                   </span>
                 ) : null}
               </Nav>
@@ -232,7 +233,7 @@ const NavbarDefault = ({ headerstyle = "navbar-default", login = false }) => {
 // Typechecking With PropTypes
 NavbarDefault.propTypes = {
   headerstyle: PropTypes.string,
-  login: PropTypes.bool,
+  sessionUser: PropTypes.bool,
 };
 
 export default NavbarDefault;

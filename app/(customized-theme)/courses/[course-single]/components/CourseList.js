@@ -1,16 +1,6 @@
 "use client";
 // import node module libraries
-import React, { Fragment } from "react";
-import {
-  Col,
-  Row,
-  Container,
-  Nav,
-  Card,
-  Tab,
-  ListGroup,
-} from "react-bootstrap";
-import Link from "next/link";
+import { Card, Nav, Tab } from "react-bootstrap";
 
 // import popup youtube video
 // import ModalVideo from "react-modal-video";
@@ -26,19 +16,13 @@ import Link from "next/link";
 
 // import sub components
 import DescriptionTab from "./DescriptionTab";
+import FAQTab from "./FAQTab";
 import ReviewsTab from "./ReviewsTab";
 import TranscriptTab from "./TranscriptTab";
-import FAQTab from "./FAQTab";
 
 // import data files
 import { CourseIndex } from "data/courses/CourseIndexData";
-import { AllCoursesData } from "data/slider/AllCoursesData";
 import GKAccordionDefault from "widgets/accordions/GKAccordionDefault";
-import InstructorProfileSummaryCard from "widgets/cards/InstructorProfileSummaryCard";
-import GKTippy from "widgets/tooltips/GKTippy";
-import CourseCard from "shared/card/CourseCard";
-import Ratings from "widgets/ratings/Ratings";
-import AddToCart from "./AddToCart";
 const CourseList = ({ sections, slug }) => {
   return (
     <Tab.Container defaultActiveKey="contents">

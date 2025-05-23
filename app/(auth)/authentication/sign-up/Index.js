@@ -1,28 +1,32 @@
 "use client";
 
+import { createUser } from "actions/userAction";
 import Image from "next/image";
 // import node module libraries
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Button, Card, Col, Form, Row } from "react-bootstrap";
+import { useActionState } from "react";
+import { Button, Card, Col, Form, Row, Spinner } from "react-bootstrap";
+
+const initialState = {
+  message: "",
+  success: null,
+};
 
 const SignUp = () => {
   const router = useRouter();
-  const isValidNumber = (phone) => {
-    const regex = /^01\d{9}$/;
-    return regex.test(phone);
-  };
-  const handelSubmit = (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    const phoneNumber = formData.get("number");
-    const isValid = isValidNumber(phoneNumber);
-    // console.log(phoneNumber, isValid);
+  const [state, formAction, pending] = useActionState(createUser, initialState);
 
-    e.target.reset();
+  if (state?.otpToken && !state?.isVerified) {
+    router.push(`/authentication/verify?otpToken=${state.otpToken}`);
+  }
 
-    router.push("/authentication/sign-up/verify");
-  };
+  if (state?.otpToken && state?.isVerified) {
+    router.push(
+      `/authentication/complete-registration?otpToken=${state.otpToken}&userNumber${state.userNumber}`
+    );
+  }
+
   return (
     <Row className="align-items-center justify-content-center g-0 min-vh-100">
       <Col lg={5} md={5} className="py-8 py-xl-0">
@@ -47,12 +51,13 @@ const SignUp = () => {
               </span>
             </div>
             {/* Form */}
-            <Form onSubmit={handelSubmit}>
+            <Form action={formAction}>
               <Row>
                 {/* phone number */}
                 <Col lg={12} md={12} className="mb-3">
                   <Form.Label>Phone Number</Form.Label>
                   <Form.Control
+                    disabled={pending}
                     type="number"
                     id="username"
                     placeholder="Your Number"
@@ -60,40 +65,15 @@ const SignUp = () => {
                     name="number"
                   />
                 </Col>
-                {/* User Name */}
-                {/* <Col lg={12} md={12} className="mb-3">
-                  <Form.Label>User Name</Form.Label>
-                  <Form.Control
-                    type="text"
-                    id="username"
-                    placeholder="User Name"
-                    required
-                  />
-                </Col> */}
-                {/* email */}
-                {/* <Col lg={12} md={12} className="mb-3">
-                  <Form.Label>Email </Form.Label>
-                  <Form.Control
-                    type="email"
-                    id="email"
-                    placeholder="Email address here"
-                    required
-                  />
-                </Col> */}
-                {/* Password */}
-                {/* <Col lg={12} md={12} className="mb-3">
-                  <Form.Label>Password </Form.Label>
-                  <Form.Control
-                    type="password"
-                    id="password"
-                    placeholder="**************"
-                    required
-                  />
-                </Col> */}
+
                 <Col lg={12} md={12} className="mb-3">
                   {/* Checkbox */}
-                  <Form.Check type="checkbox" id="check-api-checkbox">
-                    <Form.Check.Input type="checkbox" />
+                  <Form.Check required type="checkbox" id="check-api-checkbox">
+                    <Form.Check.Input
+                      type="checkbox"
+                      disabled={pending}
+                      defaultChecked
+                    />
                     <Form.Check.Label>
                       I agree to the{" "}
                       <Link href="/terms-and-conditions">Terms of Service</Link>{" "}
@@ -102,32 +82,23 @@ const SignUp = () => {
                   </Form.Check>
                 </Col>
                 <Col lg={12} md={12} className="mb-0 d-grid gap-2">
-                  {/* Button */}
-                  <Button variant="primary" type="submit">
-                    Submit
+                  <Button variant="primary" type="submit" disabled={pending}>
+                    {pending ? (
+                      <Spinner animation="border" size="sm" />
+                    ) : (
+                      "Submit"
+                    )}
                   </Button>
                 </Col>
+                {state?.success === false ? (
+                  <p className="text-center pt-1 text-danger">
+                    {state?.message}
+                  </p>
+                ) : (
+                  ""
+                )}
               </Row>
             </Form>
-            {/* <hr className="my-4" /> */}
-            {/* <div className="mt-4 text-center">
-						
-							<Link href="#" className="btn-social btn-social-outline btn-facebook">
-								<i className="fab fa-facebook"></i>
-							</Link>{' '}
-					
-							<Link href="#" className="btn-social btn-social-outline btn-twitter">
-								<i className="fab fa-twitter"></i>
-							</Link>{' '}
-						
-							<Link href="#" className="btn-social btn-social-outline btn-linkedin">
-								<i className="fab fa-linkedin"></i>
-							</Link>{' '}
-						
-							<Link href="#" className="btn-social btn-social-outline btn-github">
-								<i className="fab fa-github"></i>
-							</Link>
-						</div> */}
           </Card.Body>
         </Card>
       </Col>

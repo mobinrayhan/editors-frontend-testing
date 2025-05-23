@@ -4,66 +4,9 @@ import { Fragment } from "react";
 import { Col, Container, Dropdown, Row } from "react-bootstrap";
 import "simplebar/dist/simplebar.min.css";
 
-// import MDI icons
-// import Icon from "@mdi/react";
-// import { mdiFacebook, mdiTwitter, mdiLinkedin, mdiContentCopy } from "@mdi/js";
-
-// import widget/custom components
-// import GKYouTube from "widgets/video/GKYouTube";
-// import { GKAccordionDefault } from "widgets";
-
-// import data
-// import { CourseIndex } from "data/courses/CourseIndexData";
-
-// import your layout to override default layout
 import SidebarCard from "./components/SidebarCard";
 
 export const CourseResume = ({ sections, slug, params }) => {
-  // const [YouTubeURL] = useState("PkZNo7MFNFg");
-
-  // const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
-  //   <Link
-  //     href="#"
-  //     ref={ref}
-  //     onClick={(e) => {
-  //       e.preventDefault();
-  //       onClick(e);
-  //     }}
-  //   >
-  //     {children}
-  //   </Link>
-  // ));
-  // CustomToggle.displayName = "CustomToggle";
-
-  // const ActionMenu = () => {
-  //   return (
-  //     <Dropdown>
-  //       <Dropdown.Toggle as={CustomToggle}>
-  //         <MoreVertical size="15px" className="text-secondary" />
-  //       </Dropdown.Toggle>
-  //       <Dropdown.Menu align="end">
-  //         <Dropdown.Header>SHARE</Dropdown.Header>
-  //         <Dropdown.Item eventKey="1">
-  //           <Icon path={mdiFacebook} size={0.8} className="text-secondary" />{" "}
-  //           Facebook
-  //         </Dropdown.Item>
-  //         <Dropdown.Item eventKey="2">
-  //           <Icon path={mdiTwitter} size={0.8} className="text-secondary" />{" "}
-  //           Twitter
-  //         </Dropdown.Item>
-  //         <Dropdown.Item eventKey="3">
-  //           <Icon path={mdiLinkedin} size={0.8} className="text-secondary" />{" "}
-  //           Linked In
-  //         </Dropdown.Item>
-  //         <Dropdown.Item eventKey="4">
-  //           <Icon path={mdiContentCopy} size={0.8} className="text-secondary" />
-  //           Copy Link
-  //         </Dropdown.Item>
-  //       </Dropdown.Menu>
-  //     </Dropdown>
-  //   );
-  // };
-
   return (
     <Fragment>
       <main className="main-courses">

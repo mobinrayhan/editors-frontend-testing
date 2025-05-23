@@ -12,7 +12,7 @@ const ForgetPassword = () => {
   const handelForgetPassword = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    const phoneNumber = formData.get("phoneNumber");
+    const mobileNumber = formData.get("mobileNumber");
 
     router.push("/authentication/forget-password/verify");
   };
@@ -45,7 +45,7 @@ const ForgetPassword = () => {
                     id="email"
                     placeholder="Enter your phone number"
                     required
-                    name="phoneNumber"
+                    name="mobileNumber"
                   />
                 </Col>
                 <Col lg={12} md={12} className="mb-3 d-grid gap-2">

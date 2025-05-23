@@ -8,6 +8,7 @@ import DefaultHome from "./(landings)/_landings/default-home/Index";
 import Footer from "layouts/marketing/footers/Footer";
 import NavbarDefault from "layouts/marketing/navbars/NavbarDefault";
 
+import { getUserFromServerCookie } from "helper/authServer";
 import { Footer1 } from "./_docs/snippet/footers/components/Footer1";
 
 export const metadata = {
@@ -16,15 +17,15 @@ export const metadata = {
     "Learn everything about video editing — from fundamental techniques to advanced skills. Whether you're a beginner or a seasoned editor, explore tips, tricks, and in-depth tutorials on cutting, color grading, transitions, effects, and more. Unlock your creativity and become a pro editor with practical insights and hands-on guidance.",
 };
 
-const Page = () => {
+const Page = async () => {
+  const sessionUser = await getUserFromServerCookie();
+
   return (
     <Fragment>
-      {/* Default Navbar */}
-      <NavbarDefault login />
+      <NavbarDefault sessionUser={sessionUser} />
       <main>
         <DefaultHome />
       </main>
-      {/* Footer section */}
       <Footer1 bgColor="bg-light" />
       <Footer bgColor="bg-light" />
     </Fragment>
