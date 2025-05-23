@@ -10,7 +10,7 @@ export async function middleware(req) {
   const session = sessionToken && (await verifySessionToken(sessionToken));
 
   console.log("====================================");
-  console.log(session);
+  console.log(session, pathname);
   console.log("====================================");
 
   if (session && pathname.startsWith("/authentication")) {
