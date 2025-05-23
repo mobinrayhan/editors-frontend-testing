@@ -1,16 +1,17 @@
-import React from "react";
-
+import { Footer1 } from "app/_docs/snippet/footers/components/Footer1";
+import { getUserFromServerCookie } from "helper/authServer";
+import Footer from "layouts/marketing/footers/Footer";
 import NavbarDefault from "layouts/marketing/navbars/NavbarDefault";
 import Checkout from "./Index";
-import { Footer1 } from "app/_docs/snippet/footers/components/Footer1";
-import Footer from "layouts/marketing/footers/Footer";
 // import { Footer1 } from "./_docs/snippet/footers/components/Footer1";
 // import Footer from "layouts/marketing/footers/Footer";
 
-const page = () => {
+const page = async () => {
+  const sessionUser = await getUserFromServerCookie();
+
   return (
     <>
-      <NavbarDefault login />
+      <NavbarDefault sessionUser={sessionUser} />
       <main>
         <Checkout />
       </main>

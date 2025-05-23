@@ -2,11 +2,11 @@
 import StudentDashboard from "./Index";
 
 export const metadata = {
-	title: "Student Dashboard | Geeks Nextjs Template",
-}
+  title: "Student Dashboard | Geeks Nextjs Template",
+};
 
 const Page = () => {
-	return (<StudentDashboard />);
+  return <StudentDashboard />;
 };
 
 export default Page;

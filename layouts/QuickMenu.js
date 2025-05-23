@@ -320,6 +320,7 @@ const Avatar = ({ name }) => {
           height: 40,
           fontWeight: "bold",
           fontSize: "1.2rem",
+          cursor: "pointer",
         }}
       >
         {firstChar}
