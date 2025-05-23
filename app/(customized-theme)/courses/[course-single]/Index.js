@@ -71,15 +71,9 @@ const CourseSingle = async ({ params }) => {
               <Col xl={7} lg={7} md={12} sm={12}>
                 <div>
                   <h1 className="text-white display-4 fw-semi-bold">
-                    {/* Getting Started with JavaScript */}
                     {course?.title}
                   </h1>
-                  <p className="text-white mb-6 lead">
-                    {/* JavaScript is the popular programming language which powers
-                  web pages and web applications. This course will get you
-                  started coding in JavaScript. */}
-                    {course?.description}
-                  </p>
+                  <p className="text-white mb-6 lead">{course?.description}</p>
                   <div className="d-flex align-items-center bookmark text-white text-decoration-none">
                     <AddToCartIcon
                       courses={course}
@@ -89,15 +83,7 @@ const CourseSingle = async ({ params }) => {
                         Add to Cart
                       </span>
                     </AddToCartIcon>
-                    {/* <GKTippy content="Add to Bookmarks">
-                      <Link
-                        href="#"
-                        className="bookmark text-white text-decoration-none"
-                      >
-                        <i className="fe fe-bookmark text-white-50 me-2"></i>{" "}
-                        Bookmark
-                      </Link>
-                    </GKTippy> */}
+
                     <span className="text-white ms-3">
                       <i className="fe fe-user text-white-50"></i>{" "}
                       {course?.totalEnrollments} Enrolled
@@ -169,26 +155,6 @@ const CourseSingle = async ({ params }) => {
                 />
               </Col>
             </Row>
-
-            {/* Card */}
-            {/* <div className="pt-12 pb-3">
-            <Row className="d-md-flex align-items-center mb-4">
-              <Col lg={12} md={12} sm={12}>
-                <h2 className="mb-0">Related Courses</h2>
-              </Col>
-            </Row>
-            <Row>
-              {AllCoursesData.filter(function (datasource) {
-                return datasource.category === "javascript";
-              })
-                .slice(0, 4)
-                .map((item, index) => (
-                  <Col lg={3} md={6} sm={12} key={index}>
-                    <CourseCard item={item} free />
-                  </Col>
-                ))}
-            </Row>
-          </div> */}
           </Container>
         </section>
       )}

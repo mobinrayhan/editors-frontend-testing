@@ -15,17 +15,6 @@ const GKAccordionDefaultDashboard = ({
   sections,
   slug,
 }) => {
-  // function secondsToHoursMinutes(seconds) {
-  //   const totalMinutes = Math.floor(Number(seconds) / 60);
-  //   const hours = Math.floor(totalMinutes / 60);
-  //   const minutes = totalMinutes % 60;
-
-  //   return `${hours}:${minutes.toString().padStart(2, "0")} ${
-  //     hours > 0 ? "h" : "m"
-  //   }`;
-  // }
-
-  // const activeID = params["course-id"].split("-")[3];
   const ContextAwareToggle = ({ children, eventKey, callback }) => {
     const { activeEventKey } = useContext(AccordionContext);
 
@@ -78,7 +67,6 @@ const GKAccordionDefaultDashboard = ({
                     </ContextAwareToggle>
                     <Accordion.Collapse eventKey={item.id} className="test">
                       <ListGroup className="py-4" as="ul">
-                        {/* video */}
                         {item?.videos?.map((subitem, subindex) => (
                           <ListGroup.Item
                             key={subindex}
@@ -92,6 +80,11 @@ const GKAccordionDefaultDashboard = ({
                                   ? ""
                                   : `/student/dashboard/${slug}/section-${item?.id}-video-${subitem?.id}`
                               }
+                              style={{
+                                pointerEvents: !subitem.isPreview
+                                  ? "none"
+                                  : "all",
+                              }}
                               className={`${
                                 subitem?.id == videoId ? "text-primary" : ""
                               } d-flex justify-content-between align-items-center text-inherit text-decoration-none`}
@@ -139,13 +132,18 @@ const GKAccordionDefaultDashboard = ({
                             <Link
                               target="_blank"
                               href={
-                                subitem?.isPreview ? "" : subitem?.resourceLink
+                                subitem?.isPreview ? subitem?.resourceLink : "/"
                               }
+                              style={{
+                                pointerEvents: subitem?.isPreview
+                                  ? "all"
+                                  : "none",
+                              }}
                               className={`d-flex justify-content-between align-items-center text-inherit text-decoration-none`}
                             >
                               <div className="d-flex align-items-center text-truncate ">
                                 <span className="icon-shape bg-light icon-sm rounded-circle me-2">
-                                  {subitem?.isPreview ? (
+                                  {!subitem?.isPreview ? (
                                     <i className="fe fe-lock fs-4"></i>
                                   ) : (
                                     <Icon
@@ -172,67 +170,70 @@ const GKAccordionDefaultDashboard = ({
                                   </span>
                                 </span>
                               </div>
-                              {/* <div className="text-truncate">
-                              <span>
-                                {millisToHoursMinutes(
-                                  subitem.duration + 12314444
-                                )}
-                              </span>
-                            </div> */}
                             </Link>
                           </ListGroup.Item>
                         ))}
                         {/* assignments */}
-                        {item?.assignment?.map((subitem, subindex) => (
-                          <ListGroup.Item
-                            key={subindex}
-                            as="li"
-                            disabled={subitem.locked}
-                            className="px-0 py-1 border-0"
-                          >
-                            <Link
-                              target="_blank"
-                              href={
-                                subitem.locked ? "" : subitem?.assignmentLink
-                              }
-                              className={`d-flex justify-content-between align-items-center text-inherit text-decoration-none`}
+
+                        {item?.assignment?.map((subitem, subindex) => {
+                          return (
+                            <ListGroup.Item
+                              key={subindex}
+                              as="li"
+                              disabled={!subitem.isPreview}
+                              className="px-0 py-1 border-0"
                             >
-                              <div className="d-flex align-items-center text-truncate ">
-                                <span className="icon-shape bg-light icon-sm rounded-circle me-2">
-                                  {subitem.locked ? (
-                                    <i className="fe fe-lock fs-4"></i>
-                                  ) : (
-                                    <Icon path={mdiAssistant} size={0.6} />
-                                  )}{" "}
-                                </span>
-                                <span className="fs-5">
-                                  {subitem.title?.split("").slice(0, 35)}
-                                  ...
-                                  <br />
-                                  <span
-                                    style={{
-                                      overflow: "hidden",
-                                      color: "#00000080",
-                                      textOverflow: "ellipsis",
-                                    }}
-                                  >
-                                    {subitem.description
-                                      ?.split("")
-                                      .slice(0, 35)}
-                                    ...
+                              <Link
+                                target="_blank"
+                                href={
+                                  subitem.isPreview
+                                    ? subitem?.assignmentLink
+                                    : "/"
+                                }
+                                style={{
+                                  pointerEvents: subitem.isPreview
+                                    ? "all"
+                                    : "none",
+                                }}
+                                className={`d-flex justify-content-between align-items-center text-inherit text-decoration-none`}
+                              >
+                                <div className="d-flex align-items-center text-truncate ">
+                                  <span className="icon-shape bg-light icon-sm rounded-circle me-2">
+                                    {!subitem.isPreview ? (
+                                      <i className="fe fe-lock fs-4"></i>
+                                    ) : (
+                                      <Icon path={mdiAssistant} size={0.6} />
+                                    )}{" "}
                                   </span>
-                                </span>
-                              </div>
-                              {/* <div className="text-truncate">
+                                  <span className="fs-5">
+                                    {subitem.title?.split("").slice(0, 35)}
+                                    ...
+                                    <br />
+                                    <span
+                                      style={{
+                                        overflow: "hidden",
+                                        color: "#00000080",
+                                        textOverflow: "ellipsis",
+                                      }}
+                                    >
+                                      {subitem.description
+                                        ?.split("")
+                                        .slice(0, 35)}
+                                      ...
+                                    </span>
+                                  </span>
+                                </div>
+                                {/* <div className="text-truncate">
                               <span>
                                 {millisToHoursMinutes(
                                   subitem.duration + 12314444
                                 )}
                               </span>
                             </div> */}
-                            </Link>
-                          </ListGroup.Item>
-                        ))}
+                              </Link>
+                            </ListGroup.Item>
+                          );
+                        })}
                       </ListGroup>
                     </Accordion.Collapse>
                   </ListGroup.Item>

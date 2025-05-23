@@ -15,10 +15,6 @@ export async function middleware(req) {
 
   const session = sessionToken && (await verifySessionToken(sessionToken));
 
-  console.log("====================================");
-  console.log(session);
-  console.log("====================================");
-
   // if (!session) {
   //   const loginUrl = new URL("/login", req.url);
   //   loginUrl.searchParams.set("redirect", pathname);

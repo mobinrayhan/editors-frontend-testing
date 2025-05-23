@@ -1,9 +1,9 @@
 import { cookies } from "next/headers";
+import { verifySessionToken } from "./auth";
 
 export async function getUserFromServerCookie() {
   const cookieStore = await cookies();
   const token = cookieStore.get("sessionToken")?.value;
-
   if (!token) return null;
 
   try {

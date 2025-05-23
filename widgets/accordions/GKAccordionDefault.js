@@ -9,16 +9,6 @@ import Icon from "@mdi/react";
 import ErrorPage from "components/ErrorPage";
 
 const GKAccordionDefault = ({ accordionItems, itemClass, sections, slug }) => {
-  // function secondsToHoursMinutes(seconds) {
-  //   const totalMinutes = Math.floor(Number(seconds) / 60);
-  //   const hours = Math.floor(totalMinutes / 60);
-  //   const minutes = totalMinutes % 60;
-
-  //   return `${hours}:${minutes.toString().padStart(2, "0")} ${
-  //     hours > 0 ? "h" : "m"
-  //   }`;
-  // }
-
   const ContextAwareToggle = ({ children, eventKey, callback }) => {
     const { activeEventKey } = useContext(AccordionContext);
 
@@ -57,26 +47,7 @@ const GKAccordionDefault = ({ accordionItems, itemClass, sections, slug }) => {
         ) : (
           <ListGroup as="ul" variant="flush">
             {sections?.map((item, index) => {
-              // if (item.topics.length === 0) {
               if (false) {
-                return (
-                  <ListGroup.Item
-                    key={index}
-                    as="li"
-                    className={`${itemClass ? itemClass : ""}`}
-                  >
-                    <ContextAwareToggle eventKey={item.id}>
-                      {item}
-                    </ContextAwareToggle>
-                    <Accordion.Collapse eventKey={item.id}>
-                      <ListGroup variant="flush">
-                        <ListGroup.Item className="border-0 fs-5 px-0 py-4">
-                          {item.description}
-                        </ListGroup.Item>
-                      </ListGroup>
-                    </Accordion.Collapse>
-                  </ListGroup.Item>
-                );
               } else {
                 return (
                   <ListGroup.Item
@@ -97,96 +68,82 @@ const GKAccordionDefault = ({ accordionItems, itemClass, sections, slug }) => {
                             disabled={!subitem?.isPreview}
                             className="px-0 py-1 border-0"
                           >
-                            <Link
-                              href={
-                                !subitem.isPreview
-                                  ? ""
-                                  : `/student/dashboard/${slug}/section-${item?.id}-video-${subitem?.id}`
-                              }
-                              className={`d-flex justify-content-between align-items-center text-inherit text-decoration-none`}
-                            >
-                              <div className="d-flex align-items-center text-truncate ">
-                                <span className="icon-shape bg-light icon-sm rounded-circle me-2">
-                                  {!subitem.isPreview ? (
-                                    <i className="fe fe-lock fs-4"></i>
-                                  ) : (
-                                    <Icon path={mdiPlay} size={0.8} />
-                                  )}{" "}
-                                </span>
-                                <span className="fs-5">
-                                  {subitem.title}
-                                  <br />
-                                  <span
-                                    style={{
-                                      overflow: "hidden",
-                                      color: "#00000080",
-                                      textOverflow: "ellipsis",
-                                    }}
-                                  >
-                                    {subitem?.description}
-                                  </span>
-                                </span>
-                              </div>
-                              <div
-                                className="text-truncate "
-                                style={{ minWidth: "25px" }}
+                            {subitem?.isPreview ? (
+                              <Link
+                                href={`/student/dashboard/${slug}/section-${item?.id}-video-${subitem?.id}`}
+                                className={`d-flex justify-content-between align-items-center text-inherit text-decoration-none`}
                               >
-                                <span>{subitem?.duration}</span>
-                              </div>
-                            </Link>
+                                <VideoDetail subitem={subitem} />
+                              </Link>
+                            ) : (
+                              <Link
+                                href={"/"}
+                                className={`d-flex justify-content-between align-items-center text-inherit text-decoration-none`}
+                                style={{
+                                  pointerEvents: "none",
+                                }}
+                              >
+                                <VideoDetail subitem={subitem} />
+                              </Link>
+                            )}
                           </ListGroup.Item>
                         ))}
                         {/* resources */}
-                        {item?.resources?.map((subitem, subindex) => (
-                          <ListGroup.Item
-                            key={subindex}
-                            as="li"
-                            disabled={!subitem?.isPreview}
-                            className="px-0 py-1 border-0"
-                          >
-                            <Link
-                              target="_blank"
-                              href={
-                                !subitem?.isPreview ? subitem?.resourceLink : ""
-                              }
-                              className={`d-flex justify-content-between align-items-center text-inherit text-decoration-none`}
+                        {item?.resources?.map((subitem, subindex) => {
+                          console.log("====================================");
+                          console.log(subitem);
+                          console.log("====================================");
+                          return (
+                            <ListGroup.Item
+                              key={subindex}
+                              as="li"
+                              disabled={!subitem?.isPreview}
+                              className="px-0 py-1 border-0"
                             >
-                              <div className="d-flex text-truncate ">
-                                <span className="icon-shape bg-light icon-sm rounded-circle me-2">
-                                  {!subitem?.isPreview ? (
-                                    <i className="fe fe-lock fs-4"></i>
-                                  ) : (
-                                    <Icon
-                                      path={mdiPagePreviousOutline}
-                                      size={0.6}
-                                    />
-                                  )}{" "}
-                                </span>
-                                <span className="fs-5">
-                                  {subitem?.title}
-
-                                  <br />
-                                  <span
-                                    style={{
-                                      overflow: "hidden",
-                                      color: "inherit",
-                                      textOverflow: "ellipsis",
-                                    }}
-                                  >
-                                    {subitem.description}
+                              <Link
+                                target="_blank"
+                                href={
+                                  subitem?.isPreview
+                                    ? subitem?.resourceLink
+                                    : ""
+                                }
+                                style={{
+                                  pointerEvents: subitem?.isPreview
+                                    ? "all"
+                                    : "none",
+                                }}
+                                className={`d-flex justify-content-between align-items-center text-inherit text-decoration-none`}
+                              >
+                                <div className="d-flex text-truncate ">
+                                  <span className="icon-shape bg-light icon-sm rounded-circle me-2">
+                                    {!subitem?.isPreview ? (
+                                      <i className="fe fe-lock fs-4"></i>
+                                    ) : (
+                                      <Icon
+                                        path={mdiPagePreviousOutline}
+                                        size={0.6}
+                                      />
+                                    )}{" "}
                                   </span>
-                                </span>
-                              </div>
-                              {/* <div className="text-truncate">
-                              <span>
-                                {millisToHoursMinutes(
-                                  subitem.duration + 12314444
-                                )}
-                              </span>
-                            </div> */}
-                            </Link>
-                          </ListGroup.Item>
-                        ))}
+                                  <span className="fs-5">
+                                    {subitem?.title}
+
+                                    <br />
+                                    <span
+                                      style={{
+                                        overflow: "hidden",
+                                        color: "inherit",
+                                        textOverflow: "ellipsis",
+                                      }}
+                                    >
+                                      {subitem.description}
+                                    </span>
+                                  </span>
+                                </div>
+                              </Link>
+                            </ListGroup.Item>
+                          );
+                        })}
                         {/* assignments */}
                         {item?.assignment?.map((subitem, subindex) => (
                           <ListGroup.Item
@@ -202,6 +159,11 @@ const GKAccordionDefault = ({ accordionItems, itemClass, sections, slug }) => {
                                   ? ""
                                   : subitem?.assignmentLink
                               }
+                              style={{
+                                pointerEvents: !subitem?.isPreview
+                                  ? "none"
+                                  : "all",
+                              }}
                               className={`d-flex justify-content-between align-items-center text-inherit text-decoration-none`}
                             >
                               <div className="d-flex text-truncate ">
@@ -250,3 +212,35 @@ const GKAccordionDefault = ({ accordionItems, itemClass, sections, slug }) => {
 };
 
 export default GKAccordionDefault;
+
+function VideoDetail({ subitem }) {
+  return (
+    <>
+      <div className="d-flex align-items-center text-truncate ">
+        <span className="icon-shape bg-light icon-sm rounded-circle me-2">
+          {!subitem.isPreview ? (
+            <i className="fe fe-lock fs-4"></i>
+          ) : (
+            <Icon path={mdiPlay} size={0.8} />
+          )}{" "}
+        </span>
+        <span className="fs-5">
+          {subitem.title}
+          <br />
+          <span
+            style={{
+              overflow: "hidden",
+              color: "#00000080",
+              textOverflow: "ellipsis",
+            }}
+          >
+            {subitem?.description}
+          </span>
+        </span>
+      </div>
+      <div className="text-truncate " style={{ minWidth: "25px" }}>
+        <span>{subitem?.duration}</span>
+      </div>
+    </>
+  );
+}

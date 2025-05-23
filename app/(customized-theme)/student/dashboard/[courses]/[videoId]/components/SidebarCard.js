@@ -1,7 +1,6 @@
 "use client";
 import { Card } from "react-bootstrap";
 import SimpleBar from "simplebar-react";
-// import GKAccordionDefault from "widgets/accordions/GKAccordionDefault";
 import GKAccordionDefaultDashboard from "widgets/accordions/GKAccordionDefaultDashboard";
 
 const SidebarCard = ({ sections, slug, params }) => {
