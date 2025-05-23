@@ -17,7 +17,6 @@ const GKAccordionDefaultDashboard = ({
 }) => {
   const ContextAwareToggle = ({ children, eventKey, callback }) => {
     const { activeEventKey } = useContext(AccordionContext);
-
     const decoratedOnClick = useAccordionButton(
       eventKey,
       () => callback && callback(eventKey)
@@ -44,6 +43,10 @@ const GKAccordionDefaultDashboard = ({
       </Fragment>
     );
   };
+
+  console.log("====================================");
+  console.log(videoId);
+  console.log("====================================");
 
   return (
     <Fragment>
@@ -77,7 +80,7 @@ const GKAccordionDefaultDashboard = ({
                             <Link
                               href={
                                 !subitem.isPreview
-                                  ? ""
+                                  ? "/"
                                   : `/student/dashboard/${slug}/section-${item?.id}-video-${subitem?.id}`
                               }
                               style={{
@@ -126,7 +129,7 @@ const GKAccordionDefaultDashboard = ({
                           <ListGroup.Item
                             key={subindex}
                             as="li"
-                            disabled={subitem?.isPreview}
+                            disabled={!subitem?.isPreview}
                             className="px-0 py-1 border-0"
                           >
                             <Link

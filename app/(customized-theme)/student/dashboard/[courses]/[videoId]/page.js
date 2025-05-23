@@ -8,7 +8,8 @@ export const metadata = {
 };
 
 const Page = async ({ params }) => {
-  const slug = (await params)["courses"];
+  const paramsAwaited = await params;
+  const slug = paramsAwaited["courses"];
 
   const { course } = await getFetch(`${API_ENDPOINT}/courses/${slug}`);
 
@@ -45,7 +46,7 @@ const Page = async ({ params }) => {
   return (
     <CourseResume
       slug={slug}
-      params={params}
+      params={paramsAwaited}
       sections={responseAllSectionWithVideo}
     />
   );
