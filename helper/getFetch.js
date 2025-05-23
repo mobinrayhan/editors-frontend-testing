@@ -10,6 +10,7 @@ export default async function getFetch(URL) {
         "x-api-key": process.env.API_KEY,
         Cookie: `sessionToken=${sessionUser?.user?.sessionToken || ""}`,
       },
+      cache: "no-store",
     })
   ).json();
 }
