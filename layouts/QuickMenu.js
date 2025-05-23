@@ -12,76 +12,76 @@ import "simplebar/dist/simplebar.min.css";
 // import { GKTippy } from "widgets";
 
 // import custom components
-import DotBadge from "components/bootstrap/DotBadge";
 import DarkLightMode from "layouts/DarkLightMode";
 
 // import data files
-import NotificationList from "data/Notification";
 
 // import hooks
 import useMounted from "hooks/useMounted";
 // import Carts from "data/Cart";
+import { signOutUserFromClient } from "helper/auth";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
-import GKTippy from "widgets/tooltips/GKTippy";
 
 const QuickMenu = ({ sessionUser }) => {
   const hasMounted = useMounted();
   const Carts = useSelector((state) => state.cart.cartItems);
   const user = sessionUser?.user;
+  const router = useRouter();
   const isDesktop = useMediaQuery({ query: "(min-width: 1224px)" });
 
-  const Notifications = () => {
-    return (
-      <SimpleBar style={{ maxHeight: "300px", maxWidth: "400px" }}>
-        <ListGroup variant="flush">
-          {NotificationList.map(function (item, index) {
-            return (
-              <ListGroup.Item
-                key={index}
-                className={index === 0 ? "bg-light" : ""}
-              >
-                <Row>
-                  <Col>
-                    <Link
-                      href="/student/notification-history"
-                      className="text-body"
-                    >
-                      <div className="d-flex">
-                        <Image
-                          width={50}
-                          height={50}
-                          src={item.image}
-                          alt=""
-                          className="avatar-md rounded-circle"
-                        />
-                        <div className="ms-3">
-                          <h5 className="fw-bold mb-1">{item.sender}</h5>
-                          <p className="mb-3">{item.message}</p>
-                          <span className="fs-6 text-muted">
-                            <span>
-                              <span className="fe fe-thumbs-up text-success me-1"></span>
-                              {item.date}
-                            </span>
-                            <span className="ms-1">{item.time}</span>
-                          </span>
-                        </div>
-                      </div>
-                    </Link>
-                  </Col>
-                  <Col className="col-auto text-center me-2">
-                    <GKTippy content="Mark as unread">
-                      <DotBadge bg="secondary"></DotBadge>
-                    </GKTippy>
-                  </Col>
-                </Row>
-              </ListGroup.Item>
-            );
-          })}
-        </ListGroup>
-      </SimpleBar>
-    );
-  };
+  // const Notifications = () => {
+  //   return (
+  //     <SimpleBar style={{ maxHeight: "300px", maxWidth: "400px" }}>
+  //       <ListGroup variant="flush">
+  //         {NotificationList.map(function (item, index) {
+  //           return (
+  //             <ListGroup.Item
+  //               key={index}
+  //               className={index === 0 ? "bg-light" : ""}
+  //             >
+  //               <Row>
+  //                 <Col>
+  //                   <Link
+  //                     href="/student/notification-history"
+  //                     className="text-body"
+  //                   >
+  //                     <div className="d-flex">
+  //                       <Image
+  //                         width={50}
+  //                         height={50}
+  //                         src={item.image}
+  //                         alt=""
+  //                         className="avatar-md rounded-circle"
+  //                       />
+  //                       <div className="ms-3">
+  //                         <h5 className="fw-bold mb-1">{item.sender}</h5>
+  //                         <p className="mb-3">{item.message}</p>
+  //                         <span className="fs-6 text-muted">
+  //                           <span>
+  //                             <span className="fe fe-thumbs-up text-success me-1"></span>
+  //                             {item.date}
+  //                           </span>
+  //                           <span className="ms-1">{item.time}</span>
+  //                         </span>
+  //                       </div>
+  //                     </div>
+  //                   </Link>
+  //                 </Col>
+  //                 <Col className="col-auto text-center me-2">
+  //                   <GKTippy content="Mark as unread">
+  //                     <DotBadge bg="secondary"></DotBadge>
+  //                   </GKTippy>
+  //                 </Col>
+  //               </Row>
+  //             </ListGroup.Item>
+  //           );
+  //         })}
+  //       </ListGroup>
+  //     </SimpleBar>
+  //   );
+  // };
   const Cart = () => {
     return (
       <SimpleBar style={{ maxHeight: "300px", maxWidth: "500px" }}>
@@ -266,7 +266,13 @@ const QuickMenu = ({ sessionUser }) => {
               <i className="fe fe-settings me-2"></i> Settings
             </Dropdown.Item> */}
             <Dropdown.Divider />
-            <Dropdown.Item className="mb-3">
+            <Dropdown.Item
+              className="mb-3"
+              onClick={() => {
+                signOutUserFromClient();
+                router.push("/");
+              }}
+            >
               <i className="fe fe-power me-2"></i> Sign Out
             </Dropdown.Item>
           </Dropdown.Menu>

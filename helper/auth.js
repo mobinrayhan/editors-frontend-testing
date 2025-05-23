@@ -40,3 +40,7 @@ export async function getUserFromClientCookie() {
     return null;
   }
 }
+
+export function signOutUserFromClient() {
+  Cookies.remove("sessionToken");
+}

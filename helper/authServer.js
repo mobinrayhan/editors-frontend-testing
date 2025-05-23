@@ -14,3 +14,8 @@ export async function getUserFromServerCookie() {
     return null;
   }
 }
+
+export async function signOutUserFromServer() {
+  const cookieStore = await cookies();
+  cookieStore.delete("sessionToken");
+}
