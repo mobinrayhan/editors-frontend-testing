@@ -25,7 +25,10 @@ import { settings } from "app.config";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 
-const NavbarDefault = ({ headerstyle = "navbar-default", login = false }) => {
+const NavbarDefault = ({
+  headerstyle = "navbar-default",
+  sessionUser = false,
+}) => {
   const [expandedMenu, setExpandedMenu] = useState(false);
   const pathName = usePathname();
   const hasMounted = useMounted();
@@ -49,7 +52,7 @@ const NavbarDefault = ({ headerstyle = "navbar-default", login = false }) => {
           <Navbar.Brand
             className={`d-flex  ${
               ""
-              // login ? "w-lg-100" : "nav-w-80"
+              // sessionUser ? "w-lg-100" : "nav-w-80"
             }  align-items-center`}
           >
             <Link href="/">
@@ -65,7 +68,11 @@ const NavbarDefault = ({ headerstyle = "navbar-default", login = false }) => {
           {hasMounted ? (
             <div
               className={`navbar-nav navbar-right-wrap ms-auto d-lg-none nav-top-wrap ${
-                login ? (isDesktop || isLaptop ? "d-none" : "d-flex") : "d-none"
+                sessionUser
+                  ? isDesktop || isLaptop
+                    ? "d-none"
+                    : "d-flex"
+                  : "d-none"
               }`}
             >
               <QuickMenu />
@@ -118,7 +125,7 @@ const NavbarDefault = ({ headerstyle = "navbar-default", login = false }) => {
 
             <div className="ms-auto d-flex w-100">
               <Nav className="flex-shrink-0 w-100 navbar-nav navbar-right-wrap ms-auto d-flex align-items-center nav-top-wrap">
-                {!login && (
+                {!sessionUser && (
                   <Form
                     style={{ paddingRight: "20px" }}
                     className="mt-3 flex-grow-1 mt-lg-0 d-none d-lg-flex align-items-center"
@@ -134,10 +141,10 @@ const NavbarDefault = ({ headerstyle = "navbar-default", login = false }) => {
                     />
                   </Form>
                 )}
-                {login ? null : <DarkLightMode className="me-2" />}
+                {sessionUser ? null : <DarkLightMode className="me-2" />}
                 <span
                   className={
-                    login
+                    sessionUser
                       ? "ms-auto mt-3 mt-lg-0 d-none"
                       : "ms-auto mt-3 mt-lg-0 d-flex"
                   }
@@ -158,7 +165,7 @@ const NavbarDefault = ({ headerstyle = "navbar-default", login = false }) => {
                 {hasMounted ? (
                   <span
                     className={`${
-                      login
+                      sessionUser
                         ? isDesktop || isLaptop
                           ? "d-flex flex-grow-1"
                           : "d-none"
@@ -210,7 +217,7 @@ const NavbarDefault = ({ headerstyle = "navbar-default", login = false }) => {
                         }
                       })}
                     </Nav>
-                    <QuickMenu />
+                    <QuickMenu sessionUser={sessionUser} />
                   </span>
                 ) : null}
               </Nav>
@@ -226,7 +233,7 @@ const NavbarDefault = ({ headerstyle = "navbar-default", login = false }) => {
 // Typechecking With PropTypes
 NavbarDefault.propTypes = {
   headerstyle: PropTypes.string,
-  login: PropTypes.bool,
+  sessionUser: PropTypes.bool,
 };
 
 export default NavbarDefault;
