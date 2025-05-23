@@ -13,6 +13,7 @@ export async function verifySessionToken(token) {
         "x-api-key": API_KEY,
         "Content-Type": "application/json",
       },
+      cache: "no-store",
     });
 
     if (!res.ok) {

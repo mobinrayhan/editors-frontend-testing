@@ -75,7 +75,7 @@ const NavbarDefault = ({
                   : "d-none"
               }`}
             >
-              <QuickMenu />
+              <QuickMenu sessionUser={sessionUser} />
             </div>
           ) : null}
           <Navbar.Toggle aria-controls="basic-navbar-nav">

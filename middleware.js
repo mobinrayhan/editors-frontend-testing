@@ -9,6 +9,10 @@ export async function middleware(req) {
   const sessionToken = req.cookies.get("sessionToken")?.value;
   const session = sessionToken && (await verifySessionToken(sessionToken));
 
+  console.log("====================================");
+  console.log(session);
+  console.log("====================================");
+
   if (session && pathname.startsWith("/authentication")) {
     const loginUrl = new URL("/", req.url);
     return NextResponse.redirect(loginUrl);
