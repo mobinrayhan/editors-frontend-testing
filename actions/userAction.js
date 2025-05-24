@@ -1,7 +1,7 @@
 "use server";
 
 import { cookieConfig } from "helper/global";
-import { generateSessionToken } from "helper/utils";
+import { generateSessionToken, isValidNumber } from "helper/utils";
 import { cookies, headers } from "next/headers";
 import {
   completeRegistrationReq,
@@ -10,11 +10,6 @@ import {
   validateOTP,
 } from "services/authService";
 import { UAParser } from "ua-parser-js";
-
-const isValidNumber = (phone) => {
-  const regex = /^01\d{9}$/;
-  return regex.test(phone);
-};
 
 export const createUser = async (_, formData) => {
   const mobileNumber = formData.get("number");

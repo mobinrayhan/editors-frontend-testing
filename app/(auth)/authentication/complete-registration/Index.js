@@ -1,9 +1,10 @@
 "use client";
 
 import { completeRegistration } from "actions/userAction";
+import { isValidHashToken, isValidNumber } from "helper/utils";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+import { notFound, useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useActionState, useState } from "react";
 import {
   Button,
@@ -24,6 +25,7 @@ const initialState = {
 const CompleteRegistrationMain = () => {
   const searchParams = useSearchParams();
   const mobileNumber = searchParams.get("mobileNumber");
+  const otpCode = searchParams.get("otpCode");
   const [showPassword, setShowPassword] = useState(false);
 
   const router = useRouter();
@@ -31,6 +33,11 @@ const CompleteRegistrationMain = () => {
     completeRegistration,
     initialState
   );
+
+  if (!isValidHashToken(otpCode) || !isValidNumber(mobileNumber)) {
+    return notFound();
+  }
+
   if (!state?.isValid && state?.success) {
     router.push(`/authentication/sign-up`);
   }

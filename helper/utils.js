@@ -160,6 +160,22 @@ export function setClientCookie(name, value) {
   Cookies.set(name, value, cookieConfig);
 }
 
+export function isValidHashToken(token) {
+  if (!token) return false;
+
+  if (token.length !== 64) return false;
+
+  const hexRegex = /^[a-f0-9]{64}$/i;
+  if (!hexRegex.test(token)) return false;
+
+  return true;
+}
+
+export const isValidNumber = (phone) => {
+  const regex = /^01\d{9}$/;
+  return regex.test(phone);
+};
+
 const utils = [
   numberWithCommas,
   getFileExtension,
@@ -173,6 +189,7 @@ const utils = [
   toTitleCase,
   generateSessionToken,
   setClientCookie,
+  isValidNumber,
 ];
 
 export default utils;
