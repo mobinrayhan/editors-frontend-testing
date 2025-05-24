@@ -160,6 +160,19 @@ export function setClientCookie(name, value) {
   Cookies.set(name, value, cookieConfig);
 }
 
+export const sessionFetcher = async (url, token) => {
+  const res = await fetch(url, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "x-api-key": process.env.API_KEY,
+      "Content-Type": "application/json",
+    },
+    cache: "no-store",
+  });
+  return res;
+};
+
 export function isValidHashToken(token) {
   if (!token) return false;
 

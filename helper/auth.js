@@ -1,4 +1,5 @@
 import Cookies from "js-cookie";
+import { sessionFetcher } from "./utils";
 
 const API_KEY = process.env.API_KEY || "";
 
@@ -6,15 +7,10 @@ export async function verifySessionToken(token) {
   if (!token) return null;
 
   try {
-    const res = await fetch(`${process.env.API_LINK}/auth/validate-session`, {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "x-api-key": API_KEY,
-        "Content-Type": "application/json",
-      },
-      cache: "no-store",
-    });
+    const res = await sessionFetcher(
+      `${process.env.API_LINK}/auth/validate-session`,
+      token
+    );
 
     if (!res.ok) {
       return null;
