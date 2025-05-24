@@ -39,8 +39,10 @@ export const verifyAccount = async (_, formData) => {
   const otpCode = +formData.get("otpCode");
   const otpToken = formData.get("otpToken");
 
+  const activeDevice = (await headers()).get("user-agent") || "unknown";
+
   try {
-    const data = await validateOTP({ otpCode, otpToken });
+    const data = await validateOTP({ otpCode, otpToken, activeDevice });
     return {
       ...data,
       success: true,
