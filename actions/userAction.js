@@ -59,6 +59,7 @@ export const completeRegistration = async (_, formData) => {
   const email = formData.get("email");
   const password = formData.get("password");
   const mobileNumber = formData.get("mobileNumber");
+  const otpToken = formData.get("otpToken");
 
   const headersList = await headers();
   const cookie = await cookies();
@@ -81,6 +82,7 @@ export const completeRegistration = async (_, formData) => {
     activeDevice,
     role: "user",
     sessionToken,
+    otpToken,
   };
 
   try {

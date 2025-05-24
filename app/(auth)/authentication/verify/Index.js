@@ -57,7 +57,7 @@ const VerifyMainComponent = () => {
 
   if (state?.userNumber && state?.isValid && state?.otpToken) {
     router.push(
-      `/authentication/complete-registration?otpCode=${state.otpToken}&mobileNumber=${state.userNumber}`
+      `/authentication/complete-registration?otpToken=${state.otpToken}&mobileNumber=${state.userNumber}`
     );
   }
 

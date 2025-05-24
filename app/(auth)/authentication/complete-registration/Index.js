@@ -25,7 +25,7 @@ const initialState = {
 const CompleteRegistrationMain = () => {
   const searchParams = useSearchParams();
   const mobileNumber = searchParams.get("mobileNumber");
-  const otpCode = searchParams.get("otpCode");
+  const otpToken = searchParams.get("otpToken");
   const [showPassword, setShowPassword] = useState(false);
 
   const router = useRouter();
@@ -34,7 +34,7 @@ const CompleteRegistrationMain = () => {
     initialState
   );
 
-  if (!isValidHashToken(otpCode) || !isValidNumber(mobileNumber)) {
+  if (!isValidHashToken(otpToken) || !isValidNumber(mobileNumber)) {
     return notFound();
   }
 
@@ -114,6 +114,7 @@ const CompleteRegistrationMain = () => {
                   </InputGroup>
                 </Col>
                 <input type="hidden" name="mobileNumber" value={mobileNumber} />
+                <input type="hidden" name="otpToken" value={otpToken} />
 
                 <Col lg={12} md={12} className="mb-0 d-grid gap-2">
                   {/* Button */}
