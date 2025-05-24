@@ -9,7 +9,6 @@ import {
   requestOTP,
   validateOTP,
 } from "services/authService";
-import { UAParser } from "ua-parser-js";
 
 export const createUser = async (_, formData) => {
   const mobileNumber = formData.get("number");
@@ -63,14 +62,7 @@ export const completeRegistration = async (_, formData) => {
 
   const headersList = await headers();
   const cookie = await cookies();
-  const userAgent = headersList?.get("user-agent") || "";
-
-  const parser = new UAParser(userAgent);
-  const device = parser.getDevice();
-
-  const activeDevice = `${device.vendor || "Unknown"} ${
-    device.model || ""
-  }`.trim();
+  const activeDevice = headersList?.get("user-agent") || "";
 
   const sessionToken = generateSessionToken();
 
@@ -111,6 +103,8 @@ export const loginUser = async (_, formData) => {
   const mobileNumber = formData.get("mobileNumber");
   const password = formData.get("password");
   const cookie = await cookies();
+  const headersList = await headers();
+  const activeDevice = headersList?.get("user-agent") || "";
 
   const isValid = isValidNumber(mobileNumber);
   if (!isValid) {
@@ -121,7 +115,7 @@ export const loginUser = async (_, formData) => {
   }
 
   try {
-    const data = await loginUserReq({ mobileNumber, password });
+    const data = await loginUserReq({ mobileNumber, password, activeDevice });
     cookie.set("sessionToken", data?.user?.sessionToken, cookieConfig);
 
     return {
