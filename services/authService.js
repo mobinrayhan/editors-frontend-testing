@@ -8,11 +8,10 @@ export const requestOTP = async (mobileNumber) => {
   return data;
 };
 
-export const validateOTP = async ({ otpToken, otpCode }) => {
+export const validateOTP = async (bodyData) => {
   try {
     const data = await apiClient("/auth/verify-otp?mode=registration", "POST", {
-      otpToken,
-      otpCode,
+      ...bodyData,
       createAt: new Date(),
     });
     return data;
