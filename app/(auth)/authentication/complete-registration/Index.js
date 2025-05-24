@@ -1,11 +1,21 @@
 "use client";
 
 import { completeRegistration } from "actions/userAction";
+import { isValidHashToken, isValidNumber } from "helper/utils";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
-import { Suspense, useActionState } from "react";
-import { Button, Card, Col, Form, Row, Spinner } from "react-bootstrap";
+import { notFound, useRouter, useSearchParams } from "next/navigation";
+import { Suspense, useActionState, useState } from "react";
+import {
+  Button,
+  Card,
+  Col,
+  Form,
+  InputGroup,
+  Row,
+  Spinner,
+} from "react-bootstrap";
+import { Eye, EyeSlash } from "react-bootstrap-icons";
 
 const initialState = {
   message: "",
@@ -15,11 +25,19 @@ const initialState = {
 const CompleteRegistrationMain = () => {
   const searchParams = useSearchParams();
   const mobileNumber = searchParams.get("mobileNumber");
+  const otpToken = searchParams.get("otpToken");
+  const [showPassword, setShowPassword] = useState(false);
+
   const router = useRouter();
   const [state, formAction, pending] = useActionState(
     completeRegistration,
     initialState
   );
+
+  if (!isValidHashToken(otpToken) || !isValidNumber(mobileNumber)) {
+    return notFound();
+  }
+
   if (!state?.isValid && state?.success) {
     router.push(`/authentication/sign-up`);
   }
@@ -72,16 +90,31 @@ const CompleteRegistrationMain = () => {
                 </Col>
                 <Col>
                   Password :
-                  <Form.Control
-                    disabled={pending}
-                    type="text"
-                    name="password"
-                    required
-                    className="mb-3 mt-1"
-                    placeholder="Enter Your Password"
-                  />
+                  <InputGroup className="mb-3 mt-1">
+                    <Form.Control
+                      disabled={pending}
+                      type={showPassword ? "text" : "password"}
+                      name="password"
+                      id="password"
+                      placeholder="Enter Your Password"
+                      required
+                    />
+                    <Button
+                      variant="outline-secondary"
+                      onClick={() => setShowPassword((prev) => !prev)}
+                      disabled={pending}
+                      tabIndex={-1}
+                    >
+                      {showPassword ? (
+                        <EyeSlash size={20} />
+                      ) : (
+                        <Eye size={20} />
+                      )}
+                    </Button>
+                  </InputGroup>
                 </Col>
                 <input type="hidden" name="mobileNumber" value={mobileNumber} />
+                <input type="hidden" name="otpToken" value={otpToken} />
 
                 <Col lg={12} md={12} className="mb-0 d-grid gap-2">
                   {/* Button */}

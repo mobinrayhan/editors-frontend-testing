@@ -1,11 +1,11 @@
 "use client";
 
 import { verifyAccount } from "actions/userAction";
-import { setClientCookie } from "helper/utils";
+import { isValidHashToken, setClientCookie } from "helper/utils";
 import Image from "next/image";
 // import node module libraries
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+import { notFound, useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useActionState, useRef, useState } from "react";
 import { Button, Card, Col, Form, Row, Spinner } from "react-bootstrap";
 
@@ -26,6 +26,10 @@ const VerifyMainComponent = () => {
   const searchParams = useSearchParams();
   const otpToken = searchParams.get("otpToken");
   const router = useRouter();
+
+  if (!isValidHashToken(otpToken)) {
+    return notFound();
+  }
 
   const handleChange = (e, index) => {
     const value = e.target.value;
@@ -53,7 +57,7 @@ const VerifyMainComponent = () => {
 
   if (state?.userNumber && state?.isValid && state?.otpToken) {
     router.push(
-      `/authentication/complete-registration?otpCode=${state.otpToken}&mobileNumber=${state.userNumber}`
+      `/authentication/complete-registration?otpToken=${state.otpToken}&mobileNumber=${state.userNumber}`
     );
   }
 

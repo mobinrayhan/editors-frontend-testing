@@ -6,8 +6,17 @@ import Image from "next/image";
 // import node module libraries
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useActionState } from "react";
-import { Button, Card, Col, Form, Row, Spinner } from "react-bootstrap";
+import { useActionState, useState } from "react";
+import {
+  Button,
+  Card,
+  Col,
+  Form,
+  InputGroup,
+  Row,
+  Spinner,
+} from "react-bootstrap";
+import { Eye, EyeSlash } from "react-bootstrap-icons";
 
 const initialState = {
   message: "",
@@ -17,6 +26,7 @@ const initialState = {
 const SignIn = () => {
   const router = useRouter();
   const [state, formAction, pending] = useActionState(loginUser, initialState);
+  const [showPassword, setShowPassword] = useState(false);
 
   if (state?.success && state?.user) {
     router.push("/");
@@ -63,14 +73,28 @@ const SignIn = () => {
                 <Col lg={12} md={12} className="mb-3">
                   {/* Password */}
                   <Form.Label>Password </Form.Label>
-                  <Form.Control
-                    disabled={pending}
-                    type="password"
-                    name="password"
-                    id="password"
-                    placeholder="**************"
-                    required
-                  />
+                  <InputGroup>
+                    <Form.Control
+                      disabled={pending}
+                      type={showPassword ? "text" : "password"}
+                      name="password"
+                      id="password"
+                      placeholder="**************"
+                      required
+                    />
+                    <Button
+                      variant="outline-secondary"
+                      onClick={() => setShowPassword((prev) => !prev)}
+                      disabled={pending}
+                      tabIndex={-1}
+                    >
+                      {showPassword ? (
+                        <EyeSlash size={20} />
+                      ) : (
+                        <Eye size={20} />
+                      )}
+                    </Button>
+                  </InputGroup>
                 </Col>
                 <Col lg={12} md={12} className="mb-3">
                   <div className="d-md-flex justify-content-between align-items-center">
