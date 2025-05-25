@@ -42,7 +42,10 @@ export const verifyAccount = async (_, formData) => {
   const activeDevice = (await headers()).get("user-agent") || "unknown";
 
   try {
-    const data = await validateOTP({ otpCode, otpToken, activeDevice });
+    const data = await validateOTP(
+      { otpCode, otpToken, activeDevice },
+      "registration"
+    );
     return {
       ...data,
       success: true,

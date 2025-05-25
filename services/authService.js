@@ -8,9 +8,9 @@ export const requestOTP = async (mobileNumber) => {
   return data;
 };
 
-export const validateOTP = async (bodyData) => {
+export const validateOTP = async (bodyData, mode) => {
   try {
-    const data = await apiClient("/auth/verify-otp?mode=registration", "POST", {
+    const data = await apiClient(`/auth/verify-otp?mode=${mode}`, "POST", {
       ...bodyData,
       createAt: new Date(),
     });
