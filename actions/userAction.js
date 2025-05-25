@@ -7,6 +7,7 @@ import {
   completeRegistrationReq,
   loginUserReq,
   requestOTP,
+  resetPasswordReq,
   validateOTP,
 } from "services/authService";
 
@@ -16,7 +17,7 @@ export const createUser = async (_, formData) => {
 
   try {
     if (isValid) {
-      const data = await requestOTP(mobileNumber);
+      const data = await requestOTP(mobileNumber, "registration");
       return {
         ...data,
         success: true,
@@ -38,11 +39,12 @@ export const createUser = async (_, formData) => {
 export const verifyAccount = async (_, formData) => {
   const otpCode = +formData.get("otpCode");
   const otpToken = formData.get("otpToken");
+  const mode = formData.get("mode");
 
   const activeDevice = (await headers()).get("user-agent") || "unknown";
 
   try {
-    const data = await validateOTP({ otpCode, otpToken, activeDevice });
+    const data = await validateOTP({ otpCode, otpToken, activeDevice }, mode);
     return {
       ...data,
       success: true,
@@ -123,6 +125,75 @@ export const loginUser = async (_, formData) => {
     return {
       ...data,
       message: "Successfully Logged In",
+      success: true,
+    };
+  } catch (error) {
+    return {
+      message: error?.message || "Something Went Wrong!",
+      success: false,
+    };
+  }
+};
+
+export const forgetPassword = async (_, formData) => {
+  const mobileNumber = formData.get("mobileNumber");
+
+  const isValid = isValidNumber(mobileNumber);
+  if (!isValid) {
+    return {
+      message: "Number is not valid",
+      success: false,
+    };
+  }
+
+  try {
+    const data = await requestOTP(mobileNumber, "password-reset");
+
+    return {
+      ...data,
+      message: "Request OTP successfully!",
+      success: true,
+    };
+  } catch (error) {
+    return {
+      message: error?.message || "Something Went Wrong!",
+      success: false,
+    };
+  }
+};
+export const resetPassword = async (_, formData) => {
+  const mobileNumber = formData.get("mobileNumber");
+  const password = formData.get("password");
+  const confirmPassword = formData.get("confirmPassword");
+
+  const isValid = isValidNumber(mobileNumber);
+  if (!isValid) {
+    return {
+      message: "Number is not valid",
+      success: false,
+    };
+  }
+
+  if (password !== confirmPassword) {
+    return {
+      message: "Confirm Password did not match!",
+      success: false,
+    };
+  }
+
+  try {
+    const data = await resetPasswordReq({ mobileNumber, password });
+
+    if (!data?.isValid) {
+      return {
+        ...data,
+        success: false,
+      };
+    }
+
+    return {
+      ...data,
+      message: "Password Retested Successfully !",
       success: true,
     };
   } catch (error) {

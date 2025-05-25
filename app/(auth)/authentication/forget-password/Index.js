@@ -1,21 +1,31 @@
 "use client";
 
+import { forgetPassword } from "actions/userAction";
 import { settings } from "app.config";
 import Image from "next/image";
 // import node module libraries
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Button, Card, Col, Form, Row } from "react-bootstrap";
+import { useActionState } from "react";
+import { Button, Card, Col, Form, Row, Spinner } from "react-bootstrap";
 
+const initialState = {
+  message: "",
+  success: null,
+};
 const ForgetPassword = () => {
   const router = useRouter();
-  const handelForgetPassword = (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    const mobileNumber = formData.get("mobileNumber");
+  const [state, formAction, pending] = useActionState(
+    forgetPassword,
+    initialState
+  );
 
-    router.push("/authentication/forget-password/verify");
-  };
+  if (state?.otpToken && state?.success) {
+    router.push(
+      `/authentication/verify?otpToken=${state.otpToken}&mode=${state?.mode}`
+    );
+  }
+
   return (
     <Row className="align-items-center justify-content-center g-0 min-vh-100">
       <Col lg={5} md={5} className="py-8 py-xl-0">
@@ -35,12 +45,13 @@ const ForgetPassword = () => {
               <span>Fill the form to reset your password.</span>
             </div>
             {/* Form */}
-            <Form onSubmit={handelForgetPassword}>
+            <Form action={formAction}>
               <Row>
                 <Col lg={12} md={12} className="mb-3">
                   {/*  email */}
                   <Form.Label>Phone Number</Form.Label>
                   <Form.Control
+                    disabled={pending}
                     type="number"
                     id="email"
                     placeholder="Enter your phone number"
@@ -50,14 +61,32 @@ const ForgetPassword = () => {
                 </Col>
                 <Col lg={12} md={12} className="mb-3 d-grid gap-2">
                   {/* Button */}
-                  <Button variant="primary" type="submit">
-                    Send Reset Code
+                  <Button variant="primary" type="submit" disabled={pending}>
+                    {pending ? (
+                      <Spinner animation="border" size="sm" />
+                    ) : (
+                      "Send Reset Code"
+                    )}
                   </Button>
                 </Col>
               </Row>
               <span>
-                Return to <Link href="/authentication/sign-in">Sign in</Link>
+                Return to{" "}
+                <Link
+                  href="/authentication/sign-in"
+                  style={{
+                    pointerEvents: pending ? "none" : "all",
+                  }}
+                >
+                  Sign in
+                </Link>
               </span>
+
+              {state?.success === false ? (
+                <p className="text-center pt-1 text-danger">{state?.message}</p>
+              ) : (
+                ""
+              )}
             </Form>
           </Card.Body>
         </Card>

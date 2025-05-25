@@ -18,7 +18,9 @@ const SignUp = () => {
   const [state, formAction, pending] = useActionState(createUser, initialState);
 
   if (state?.otpToken && !state?.isVerified) {
-    router.push(`/authentication/verify?otpToken=${state.otpToken}`);
+    router.push(
+      `/authentication/verify?otpToken=${state.otpToken}&mode=${state.mode}`
+    );
   }
 
   if (state?.otpToken && state?.isVerified) {
