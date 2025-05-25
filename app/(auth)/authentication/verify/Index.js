@@ -15,6 +15,10 @@ const initialState = {
 };
 
 const VerifyMainComponent = () => {
+  const searchParams = useSearchParams();
+  const otpToken = searchParams.get("otpToken");
+  const mode = searchParams.get("mode");
+
   const [state, formAction, pending] = useActionState(
     verifyAccount,
     initialState
@@ -23,11 +27,12 @@ const VerifyMainComponent = () => {
   const inputRefs = useRef([]);
   const cellArray = new Array(6).fill("");
   const [otp, setOtp] = useState(cellArray);
-  const searchParams = useSearchParams();
-  const otpToken = searchParams.get("otpToken");
   const router = useRouter();
 
-  if (!isValidHashToken(otpToken)) {
+  if (
+    !isValidHashToken(otpToken) &&
+    (mode !== "registration" || mode !== "password-reset")
+  ) {
     return notFound();
   }
 
@@ -55,9 +60,25 @@ const VerifyMainComponent = () => {
     router.push("/");
   }
 
-  if (state?.userNumber && state?.isValid && state?.otpToken) {
+  if (
+    state?.userNumber &&
+    state?.isValid &&
+    state?.otpToken &&
+    state?.mode === "registration"
+  ) {
     router.push(
       `/authentication/complete-registration?otpToken=${state.otpToken}&mobileNumber=${state.userNumber}`
+    );
+  }
+
+  if (
+    state?.userNumber &&
+    state?.isValid &&
+    state?.otpToken &&
+    state?.mode === "password-reset"
+  ) {
+    router.push(
+      `/authentication/reset-password?otpToken=${state.otpToken}&mobileNumber=${state.userNumber}`
     );
   }
 
@@ -107,6 +128,7 @@ const VerifyMainComponent = () => {
                   name="otpCode"
                   value={+otp.join(",").replace(/,/g, "")}
                 />
+                <input type="hidden" name="mode" value={mode} />
                 <input type="hidden" name="otpToken" value={otpToken} />
                 <Col lg={12} md={12} className="mb-0 d-grid gap-2">
                   {/* Button */}
