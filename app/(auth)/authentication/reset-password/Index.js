@@ -7,7 +7,7 @@ import Image from "next/image";
 // import node module libraries
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useActionState, useState } from "react";
+import { Suspense, useActionState, useState } from "react";
 import {
   Button,
   Card,
@@ -151,4 +151,10 @@ const ResetPassword = () => {
   );
 };
 
-export default ResetPassword;
+export default function ResetPasswordComponent() {
+  return (
+    <Suspense fallback={<p>Loading..</p>}>
+      <ResetPassword />
+    </Suspense>
+  );
+}
