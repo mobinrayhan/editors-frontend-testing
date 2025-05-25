@@ -26,17 +26,6 @@ const ForgetPassword = () => {
     );
   }
 
-  console.log(state);
-  console.log("====================================");
-
-  // const handelForgetPassword = (e) => {
-  //   e.preventDefault();
-  //   const formData = new FormData(e.target);
-  //   const mobileNumber = formData.get("mobileNumber");
-
-  //   router.push("/authentication/forget-password/verify");
-  // };
-
   return (
     <Row className="align-items-center justify-content-center g-0 min-vh-100">
       <Col lg={5} md={5} className="py-8 py-xl-0">
@@ -73,7 +62,11 @@ const ForgetPassword = () => {
                 <Col lg={12} md={12} className="mb-3 d-grid gap-2">
                   {/* Button */}
                   <Button variant="primary" type="submit" disabled={pending}>
-                    Send Reset Code
+                    {pending ? (
+                      <Spinner animation="border" size="sm" />
+                    ) : (
+                      "Send Reset Code"
+                    )}
                   </Button>
                 </Col>
               </Row>
