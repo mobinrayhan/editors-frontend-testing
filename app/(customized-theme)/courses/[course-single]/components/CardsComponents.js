@@ -34,13 +34,7 @@ import AddToCart from "./AddToCart";
 // import CourseList from "./CourseList";
 const CardsComponents = ({ course, instructorData, sections }) => {
   const [isOpen, setOpen] = useState(false);
-  const [YouTubeURL] = useState("JRzWRZahOVU");
-  // const totalDuration = getTotalDuration(sections);
 
-  // const totalResourses = sections.reduce(
-  //   (count, section) => count + section.resources.length,
-  //   0
-  // );
   return (
     <>
       {/* modal */}
@@ -48,7 +42,7 @@ const CardsComponents = ({ course, instructorData, sections }) => {
         channel="youtube"
         youtube={{ mute: 0, autoplay: 1 }}
         isOpen={isOpen}
-        videoId="wAOoB0LKPe0"
+        videoId={course?.previewVideo || ""}
         onClose={() => setOpen(false)}
       />
       {/* Card */}
@@ -72,15 +66,6 @@ const CardsComponents = ({ course, instructorData, sections }) => {
             </Link>
           </div>
         </div>
-        {/* video popup */}
-        {/* <ModalVideo
-                  channel="youtube"
-                  autoplay
-                  isOpen={isOpen}
-                  videoId={YouTubeURL}
-                  onClose={() => setOpen(false)}
-                /> */}
-        {/* end of video popup */}
 
         {/* Card body */}
         <Card.Body>
