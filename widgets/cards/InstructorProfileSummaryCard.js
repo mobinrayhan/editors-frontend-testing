@@ -54,7 +54,9 @@ const InstructorProfileSummaryCard = ({ data }) => {
           <Col>
             <div className="pe-1 ps-2 py-3">
               <h5 className="mb-0">
-                {numberWithCommas(data?.instructor[0]?.totalStudents)}
+                {data?.instructor[0]
+                  ? numberWithCommas(data?.instructor[0]?.totalStudents)
+                  : null}
               </h5>
               <span>Students</span>
             </div>
