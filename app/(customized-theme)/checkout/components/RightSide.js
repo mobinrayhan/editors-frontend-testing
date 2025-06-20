@@ -2,7 +2,6 @@
 
 import getLocalCartData from "helper/getLocalCartData";
 import useMounted from "hooks/useMounted";
-import React, { useEffect, useState } from "react";
 import { Image } from "react-bootstrap";
 
 // import { useDispatch, useSelector } from "react-redux";

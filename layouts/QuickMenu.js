@@ -31,57 +31,6 @@ const QuickMenu = ({ sessionUser }) => {
   const router = useRouter();
   const isDesktop = useMediaQuery({ query: "(min-width: 1224px)" });
 
-  // const Notifications = () => {
-  //   return (
-  //     <SimpleBar style={{ maxHeight: "300px", maxWidth: "400px" }}>
-  //       <ListGroup variant="flush">
-  //         {NotificationList.map(function (item, index) {
-  //           return (
-  //             <ListGroup.Item
-  //               key={index}
-  //               className={index === 0 ? "bg-light" : ""}
-  //             >
-  //               <Row>
-  //                 <Col>
-  //                   <Link
-  //                     href="/student/notification-history"
-  //                     className="text-body"
-  //                   >
-  //                     <div className="d-flex">
-  //                       <Image
-  //                         width={50}
-  //                         height={50}
-  //                         src={item.image}
-  //                         alt=""
-  //                         className="avatar-md rounded-circle"
-  //                       />
-  //                       <div className="ms-3">
-  //                         <h5 className="fw-bold mb-1">{item.sender}</h5>
-  //                         <p className="mb-3">{item.message}</p>
-  //                         <span className="fs-6 text-muted">
-  //                           <span>
-  //                             <span className="fe fe-thumbs-up text-success me-1"></span>
-  //                             {item.date}
-  //                           </span>
-  //                           <span className="ms-1">{item.time}</span>
-  //                         </span>
-  //                       </div>
-  //                     </div>
-  //                   </Link>
-  //                 </Col>
-  //                 <Col className="col-auto text-center me-2">
-  //                   <GKTippy content="Mark as unread">
-  //                     <DotBadge bg="secondary"></DotBadge>
-  //                   </GKTippy>
-  //                 </Col>
-  //               </Row>
-  //             </ListGroup.Item>
-  //           );
-  //         })}
-  //       </ListGroup>
-  //     </SimpleBar>
-  //   );
-  // };
   const Cart = () => {
     return (
       <SimpleBar style={{ maxHeight: "300px", maxWidth: "500px" }}>
@@ -135,39 +84,6 @@ const QuickMenu = ({ sessionUser }) => {
       >
         {/* notification */}
 
-        {/* <Dropdown as="li">
-          <Dropdown.Toggle
-            as="a"
-            bsPrefix=" "
-            id="dropdownNotification"
-            className="text-dark icon-notifications me-lg-1  btn btn-light btn-icon rounded-circle indicator indicator-primary text-muted"
-          >
-            <i className="fe fe-bell"></i>
-          </Dropdown.Toggle>
-          <Dropdown.Menu
-            className="dashboard-dropdown notifications-dropdown dropdown-menu-lg dropdown-menu-end mt-4 py-0"
-            aria-labelledby="dropdownNotification"
-            align="end"
-            show={hasMounted && isDesktop ? true : false}
-          >
-            <Dropdown.Item className="mt-3" bsPrefix=" " as="div">
-              <div className="border-bottom px-3 pt-0 pb-3 d-flex justify-content-between align-items-end">
-                <span className="h4 mb-0">Notifications</span>
-
-              </div>
-              <Notifications />
-              <div className="border-top px-3 pt-3 pb-3">
-                <Link
-                  href="/student/notification-history"
-                  className="text-link fw-semi-bold"
-                >
-                  See all Notifications
-                </Link>
-              </div>
-            </Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown> */}
-        {/* cart */}
         <Dropdown as="li">
           <Dropdown.Toggle
             as="a"

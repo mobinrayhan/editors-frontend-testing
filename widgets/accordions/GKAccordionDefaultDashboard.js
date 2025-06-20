@@ -44,10 +44,6 @@ const GKAccordionDefaultDashboard = ({
     );
   };
 
-  console.log("====================================");
-  console.log(videoId);
-  console.log("====================================");
-
   return (
     <Fragment>
       <Accordion defaultActiveKey={accordionItems[0].id}>

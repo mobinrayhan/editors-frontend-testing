@@ -141,7 +141,6 @@ const CourseCard = ({
   /** Used in Course Filter Page  */
   const ListView = () => {
     const pathname = usePathname();
-    console.log(pathname);
     return (
       <Card className="mb-4 card-hover">
         <Row className="g-0">

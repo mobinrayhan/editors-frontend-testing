@@ -16,9 +16,16 @@ const Page = async ({ params }) => {
   const sections =
     course && (await getFetch(`${API_ENDPOINT}/courses/${course.id}/sections`));
 
-  const instructorData = await getFetch(
-    `${API_ENDPOINT}/courses/${course.id}/instructors`
+  const splitData = paramsAwaited?.videoId?.split("-");
+
+  console.log(
+    `${API_ENDPOINT}/videos/video-otp/${slug}/${splitData[1]}/${splitData[3]}`
   );
+
+  const videoPlayerInfo = await getFetch(
+    `${API_ENDPOINT}/videos/video-otp/${slug}/${splitData[1]}/${splitData[3]}`
+  );
+
   // const instructorData = await resInstructor.json();
   const responseAllSectionWithVideo = await Promise.all(
     sections?.success === false || course === undefined
@@ -45,6 +52,7 @@ const Page = async ({ params }) => {
 
   return (
     <CourseResume
+      videoInfo={videoPlayerInfo?.videoInfo}
       slug={slug}
       params={paramsAwaited}
       sections={responseAllSectionWithVideo}

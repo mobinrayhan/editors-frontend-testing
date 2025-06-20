@@ -1,20 +1,5 @@
-// import node module libraries
 import { Fragment } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-
-// import popup youtube video
-// import ModalVideo from "react-modal-video";
-
-// import widget/custom components
-// import {
-//   GKAccordionDefault,
-//   Ratings,
-//   CourseCard,
-//   GKTippy,
-//   InstructorProfileSummaryCard,
-// } from "widgets";
-
-// import sub components
 
 // import data files
 import AddToCartIcon from "components/AddToCartIcon";
@@ -25,7 +10,7 @@ import Ratings from "widgets/ratings/Ratings";
 import CardsComponents from "./components/CardsComponents";
 import CourseList from "./components/CourseList";
 
-const CourseSingle = async ({ params }) => {
+const CourseSingle = async ({ params, searchParams }) => {
   const slug = params["course-single"];
   const { course } = await getFetch(`${API_ENDPOINT}/courses/${slug}`);
 
@@ -87,7 +72,7 @@ const CourseSingle = async ({ params }) => {
 
                     <span className="text-white ms-3">
                       <i className="fe fe-user text-white-50"></i>{" "}
-                      {course?.totalEnrollments} Enrolled
+                      {course?.totalEnrollments + 9} Enrolled
                     </span>
                     <span className="ms-4">
                       <span className="text-warning">

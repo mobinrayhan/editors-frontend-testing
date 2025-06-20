@@ -2,23 +2,15 @@
 // import node module libraries
 import { Fragment, useState } from "react";
 import { Col, Row } from "react-bootstrap";
-import ReactPaginate from "react-paginate";
-import { ChevronLeft, ChevronRight } from "react-feather";
 
 // import widget/custom components
 // import { CourseCard } from "widgets";
 import CourseCard from "shared/card/CourseCard";
 // import data files
 import { AllCoursesData } from "data/slider/AllCoursesData";
-import Link from "next/link";
 
 const CourseListView = ({ courses, instructors, cartData, isCart = false }) => {
   const [Records] = useState(AllCoursesData.slice(0, 500));
-  // if (typeof window !== "undefined") {
-  //   // const cartData = localStorage.getItem("cartItem");
-  //   // console.log(cartData);
-  // }
-  // paging start
   const [pageNumber, setPageNumber] = useState(0);
   const RecordsPerPage = 6;
   const pagesVisited = pageNumber * RecordsPerPage;
