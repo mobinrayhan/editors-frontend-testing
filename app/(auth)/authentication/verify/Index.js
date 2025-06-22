@@ -56,7 +56,7 @@ const VerifyMainComponent = () => {
   };
 
   if (state?.existingUser) {
-    setClientCookie("sessionToken", state?.existingUser?.sessionToken);
+    setClientCookie("userSessionToken", state?.existingUser?.userSessionToken);
     router.push("/");
   }
 

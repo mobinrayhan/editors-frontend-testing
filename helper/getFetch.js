@@ -8,9 +8,10 @@ export default async function getFetch(URL) {
       method: "GET",
       headers: {
         "x-api-key": process.env.API_KEY,
-        Cookie: `sessionToken=${sessionUser?.user?.sessionToken || ""}`,
+        Cookie: `userSessionToken=${sessionUser?.user?.sessionToken || ""}`,
       },
       cache: "no-store",
+      credentials: "include",
     })
   ).json();
 }

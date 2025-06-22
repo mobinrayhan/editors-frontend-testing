@@ -68,7 +68,7 @@ export const completeRegistration = async (_, formData) => {
   const cookie = await cookies();
   const activeDevice = headersList?.get("user-agent") || "";
 
-  const sessionToken = generateSessionToken();
+  const userSessionToken = generateSessionToken();
 
   const bodyData = {
     name,
@@ -77,7 +77,7 @@ export const completeRegistration = async (_, formData) => {
     mobileNumber,
     activeDevice,
     role: "user",
-    sessionToken,
+    userSessionToken,
     otpToken,
   };
 
@@ -88,7 +88,7 @@ export const completeRegistration = async (_, formData) => {
       throw new Error(data?.message || "Something Went Wrong!");
     }
 
-    cookie.set("sessionToken", sessionToken, cookieConfig);
+    cookie.set("userSessionToken", userSessionToken, cookieConfig);
 
     return {
       message: "Complete Registration Successfully!",
@@ -120,7 +120,7 @@ export const loginUser = async (_, formData) => {
 
   try {
     const data = await loginUserReq({ mobileNumber, password, activeDevice });
-    cookie.set("sessionToken", data?.user?.sessionToken, cookieConfig);
+    cookie.set("userSessionToken", data?.user?.sessionToken, cookieConfig);
 
     return {
       ...data,
