@@ -1,8 +1,6 @@
 import Cookies from "js-cookie";
 import { sessionFetcher } from "./utils";
 
-const API_KEY = process.env.API_KEY || "";
-
 export async function verifySessionToken(token) {
   if (!token) return null;
 
@@ -25,7 +23,7 @@ export async function verifySessionToken(token) {
 }
 
 export async function getUserFromClientCookie() {
-  const token = Cookies.get("sessionToken");
+  const token = Cookies.get("userSessionToken");
 
   if (!token) return null;
 
@@ -39,5 +37,5 @@ export async function getUserFromClientCookie() {
 }
 
 export function signOutUserFromClient() {
-  Cookies.remove("sessionToken");
+  Cookies.remove("userSessionToken");
 }

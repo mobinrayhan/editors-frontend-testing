@@ -6,9 +6,10 @@ import { NextResponse } from "next/server";
 
 export async function middleware(req) {
   const pathname = req.nextUrl.pathname;
-  const sessionToken = req.cookies.get("sessionToken")?.value;
+  const userSessionToken = req.cookies.get("userSessionToken")?.value;
 
-  const session = sessionToken && (await verifySessionToken(sessionToken));
+  const session =
+    userSessionToken && (await verifySessionToken(userSessionToken));
   const user = session?.user;
 
   const currentDevice = req.headers.get("user-agent") || "unknown";
@@ -17,7 +18,7 @@ export async function middleware(req) {
   if (user && user.activeDevice !== currentDevice) {
     const loginUrl = new URL("/authentication/sign-up", req.url);
     const res = NextResponse.redirect(loginUrl);
-    res.cookies.delete("sessionToken");
+    res.cookies.delete("userSessionToken");
     return res;
   }
 
@@ -28,20 +29,20 @@ export async function middleware(req) {
   if (tokenAge > 15 * 60 * 1000) {
     const res = await sessionFetcher(
       `${process.env.API_LINK}/auth/refresh-token`,
-      sessionToken
+      userSessionToken
     );
 
     if (!res.ok) {
       const loginUrl = new URL("/authentication/sign-up", req.url);
       const res = NextResponse.redirect(loginUrl);
-      res.cookies.delete("sessionToken");
+      res.cookies.delete("userSessionToken");
       return res;
     }
 
     const refreshData = await res.json();
     (await cookies()).set(
-      "sessionToken",
-      refreshData?.user?.sessionToken,
+      "userSessionToken",
+      refreshData?.user?.userSessionToken,
       cookieConfig
     );
   }

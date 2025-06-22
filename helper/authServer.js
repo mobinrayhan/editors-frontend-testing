@@ -3,7 +3,7 @@ import { verifySessionToken } from "./auth";
 
 export async function getUserFromServerCookie() {
   const cookieStore = await cookies();
-  const token = cookieStore.get("sessionToken")?.value;
+  const token = cookieStore.get("userSessionToken")?.value;
   if (!token) return null;
 
   try {
@@ -17,5 +17,5 @@ export async function getUserFromServerCookie() {
 
 export async function signOutUserFromServer() {
   const cookieStore = await cookies();
-  cookieStore.delete("sessionToken");
+  cookieStore.delete("userSessionToken");
 }
