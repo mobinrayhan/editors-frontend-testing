@@ -10,15 +10,16 @@ import Ratings from "widgets/ratings/Ratings";
 import CardsComponents from "./components/CardsComponents";
 import CourseList from "./components/CourseList";
 
-const CourseSingle = async ({ params, searchParams }) => {
+const CourseSingle = async ({ params }) => {
   const slug = params["course-single"];
   const { course } = await getFetch(`${API_ENDPOINT}/courses/${slug}`);
 
   const sections =
-    course && (await getFetch(`${API_ENDPOINT}/courses/${course.id}/sections`));
+    course &&
+    (await getFetch(`${API_ENDPOINT}/courses/${course?.id}/sections`));
 
   const instructorData = await getFetch(
-    `${API_ENDPOINT}/courses/${course.id}/instructors`
+    `${API_ENDPOINT}/courses/${course?.id}/instructors`
   );
 
   const responseAllSectionWithVideo = await Promise.all(
@@ -26,14 +27,14 @@ const CourseSingle = async ({ params, searchParams }) => {
       ? []
       : sections?.courseSections?.map(async (section) => {
           const sectionVideoData = await getFetch(
-            `${API_ENDPOINT}/courses/${course.id}/${section.id}/videos`
+            `${API_ENDPOINT}/courses/${course?.id}/${section.id}/videos`
           );
           const sectionAssignmentData = await getFetch(
-            `${API_ENDPOINT}/courses/${course.id}/${section.id}/assignments`
+            `${API_ENDPOINT}/courses/${course?.id}/${section.id}/assignments`
           );
 
           const sectionResourcesData = await getFetch(
-            `${API_ENDPOINT}/courses/${course.id}/${section.id}/resources`
+            `${API_ENDPOINT}/courses/${course?.id}/${section.id}/resources`
           );
 
           return {

@@ -1,12 +1,13 @@
 // import sub components
-import DefaultHome from './Index';
+import DefaultHome from "./Index";
 
 export const metadata = {
-	title: "Welcome to Geeks UI Learning Application | Geeks Nextjs Template",
-}
+  title:
+    "Unlock Your Creative Potential with Editors Academy | Geeks Nextjs Template",
+};
 
 const Page = () => {
-	return (<DefaultHome />);
+  return <DefaultHome />;
 };
 
 export default Page;

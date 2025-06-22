@@ -24,8 +24,8 @@ const DefaultHome = async () => {
   return (
     <main>
       <HeroHeader
-        title="Welcome to Geeks UI Learning Application"
-        description="Hand-picked Instructor and expertly crafted courses, designed for the modern students and entrepreneur."
+        title="Unlock Your Creative Potential with Editors Academy"
+        description="Join a dynamic learning hub where industry experts guide you through hands-on courses in editing, filmmaking, and digital content creation — built for modern learners, entrepreneurs, and creatives."
         buttonText1="Browse Courses"
         buttonLink1="/courses"
         buttonText2="Are You Instructor?"
