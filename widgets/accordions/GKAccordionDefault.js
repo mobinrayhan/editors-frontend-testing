@@ -91,9 +91,6 @@ const GKAccordionDefault = ({ accordionItems, itemClass, sections, slug }) => {
                         {/* resources */}
 
                         {item?.resources?.map((subitem, subindex) => {
-                          console.log("====================================");
-                          console.log(subitem);
-                          console.log("====================================");
                           return (
                             <ListGroup.Item
                               key={subindex}

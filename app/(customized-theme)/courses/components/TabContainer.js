@@ -1,18 +1,17 @@
 "use client";
 // import node module libraries
 
-import React, { Fragment } from "react";
-import { Col, Row, Container, Tab } from "react-bootstrap";
+import { Col, Row, Tab } from "react-bootstrap";
 
 // import widget/custom components
 // import { GridListViewButton, PageHeading } from "shared";
 
 // import sub components
-import FilterOptions from "./FilterOptions";
-import CourseGridView from "./CourseGridView";
-import CourseListView from "./CourseListView";
 import FormSelect from "shared/form-select/FormSelect";
 import GridListViewButton from "shared/grid-list-view-button/GridListViewButton";
+import CourseGridView from "./CourseGridView";
+import CourseListView from "./CourseListView";
+import FilterOptions from "./FilterOptions";
 // import { useEffect } from "react";
 // import { useDispatch } from "react-redux";
 // import { setCourses } from "store/coursesSlice";
@@ -36,7 +35,10 @@ const TabContainer = ({ courses, instructors }) => {
         <Col lg={12} md={12} sm={12} className="mb-4">
           <Row className="d-lg-flex justify-content-between align-items-center">
             <Col md={6} lg={8} xl={9}>
-              <h4 className="mb-3 mb-lg-0">Displaying 9 out of 68 courses</h4>
+              {/* <h4 className="mb-3 mb-lg-0">Displaying 9 out of 68 courses</h4> */}
+              <h4 className="mb-3 mb-lg-0">
+                Start learning with our hand-picked courses.
+              </h4>
             </Col>
             <Col md={6} lg={4} xl={3} className="d-inline-flex">
               <div className="me-2">

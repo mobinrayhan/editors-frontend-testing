@@ -1,50 +1,53 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-import { Card, ListGroup } from "react-bootstrap";
+import { Button, Card, ListGroup, Modal } from "react-bootstrap";
+import { X } from "react-bootstrap-icons";
 
-// import popup youtube video
-// import ModalVideo from "react-modal-video";
-
-// import widget/custom components
-// import {
-//   GKAccordionDefault,
-//   Ratings,
-//   CourseCard,
-//   GKTippy,
-//   InstructorProfileSummaryCard,
-// } from "widgets";
-
-// import sub components
-// import DescriptionTab from "./DescriptionTab";
-// import ReviewsTab from "./ReviewsTab";
-// import TranscriptTab from "./TranscriptTab";
-// import FAQTab from "./FAQTab";
-
-// import data files
-// import { CourseIndex } from "data/courses/CourseIndexData";
-// import { AllCoursesData } from "data/slider/AllCoursesData";
-// import GKAccordionDefault from "widgets/accordions/GKAccordionDefault";
 import InstructorProfileSummaryCard from "widgets/cards/InstructorProfileSummaryCard";
-// import GKTippy from "widgets/tooltips/GKTippy";
-// import CourseCard from "shared/card/CourseCard";
-// import Ratings from "widgets/ratings/Ratings";
-import ModalVideo from "react-modal-video";
 import AddToCart from "./AddToCart";
-// import CourseList from "./CourseList";
+
 const CardsComponents = ({ course, instructorData, sections }) => {
   const [isOpen, setOpen] = useState(false);
 
+  const vdocipherIframe = `<iframe
+    src="https://player.vdocipher.com/v2/?otp=${course?.videoInfo?.otp}&playbackInfo=${course?.videoInfo?.playbackInfo}"
+    width="100%"
+    height="460"
+    allowfullscreen
+    allow="encrypted-media"
+    frameborder="0"
+  ></iframe>`;
+
   return (
     <>
-      {/* modal */}
-      <ModalVideo
-        channel="youtube"
-        youtube={{ mute: 0, autoplay: 1 }}
-        isOpen={isOpen}
-        videoId={course?.previewVideo || ""}
-        onClose={() => setOpen(false)}
-      />
+      <Modal
+        show={isOpen}
+        onHide={() => setOpen(false)}
+        centered
+        size="lg"
+        backdrop="static"
+        keyboard={false}
+        contentClassName="bg-black p-0 border-0"
+      >
+        <div
+          className="position-absolute top-0 end-0 p-2"
+          style={{ zIndex: 1051 }}
+        >
+          <Button
+            variant="link"
+            onClick={() => setOpen(false)}
+            className="text-white fs-4"
+            style={{ textDecoration: "none" }}
+          >
+            <X />
+          </Button>
+        </div>
+
+        <Modal.Body className="p-0">
+          <div dangerouslySetInnerHTML={{ __html: vdocipherIframe }} />
+        </Modal.Body>
+      </Modal>
       {/* Card */}
       <Card className="mb-3 mb-4">
         <div className="p-1">
