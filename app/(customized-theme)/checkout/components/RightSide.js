@@ -2,17 +2,44 @@
 
 import getLocalCartData from "helper/getLocalCartData";
 import useMounted from "hooks/useMounted";
+import { useRouter } from "next/navigation";
 import { Image } from "react-bootstrap";
 
 // import { useDispatch, useSelector } from "react-redux";
 
 export default function RightSide() {
   const hasMounted = useMounted();
+  const router = useRouter();
   const cartData = hasMounted ? getLocalCartData() : [];
   const totalPrice = cartData?.reduce((acc, item) => {
     return acc + Number(item?.price);
   }, 0);
   // const cartData = [];
+  async function handlePayClick() {
+    const response = await fetch(
+      `${process.env.API_LINK}/jp-ssl/create-session`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": "594dfbc9-e86e-45a5-9e99-8f39073a65f2",
+        },
+        body: JSON.stringify({
+          amount: 1499,
+          order_id: "hi12",
+          name: "John Doe",
+          ship_add1: "1234 Elm Street",
+          ship_city: "New York",
+          ship_state: "NY",
+          phone: "123-456-7890",
+        }),
+      }
+    );
+    const data = await response.json();
+    // console.log(data);
+
+    router.push(data.GatewayPageURL);
+  }
   return (
     <section className="col-md-6">
       {/* Order Summary */}
@@ -38,7 +65,10 @@ export default function RightSide() {
           </a>
           .
         </p>
-        <button className="btn btn-primary w-100 py-2 fw-bold">
+        <button
+          className="btn btn-primary w-100 py-2 fw-bold"
+          onClick={handlePayClick}
+        >
           <i className="bi bi-lock-fill me-2"></i> Pay BDT {totalPrice}
         </button>
         <div className="text-center mt-4">

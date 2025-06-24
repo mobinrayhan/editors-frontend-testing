@@ -9,7 +9,7 @@ module.exports = (phase) => {
   const isDev = phase === PHASE_DEVELOPMENT_SERVER;
 
   const API_LINK = isDev
-    ? "http://localhost:5006"
+    ? "http://192.168.10.8:5006"
     : "https://api.editors.academy";
 
   // const API_LINK = isDev
@@ -32,6 +32,7 @@ module.exports = (phase) => {
         { protocol: "https", hostname: "sslcommerz.com" },
         { protocol: "https", hostname: "www.tbsnews.net" },
         { protocol: "https", hostname: "download.logo.wine" },
+        { protocol: "https", hostname: "res.cloudinary.com" },
       ],
     },
   };
