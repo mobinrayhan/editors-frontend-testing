@@ -3,6 +3,10 @@ import Link from "next/link";
 import { Card, Col, Form } from "react-bootstrap";
 
 const CardList = ({ cartData }) => {
+  const totalPrice = cartData?.reduce((acc, item) => {
+    return acc + Number(item?.price);
+  }, 0);
+
   return (
     <Col className="">
       <Card className="">
@@ -16,10 +20,8 @@ const CardList = ({ cartData }) => {
         {/* Price single page */}
         <Card.Body>
           <div className="mb-3">
-            <span className="text-dark fw-bold h2 me-2">
-              ${cartData[0]?.price}
-            </span>
-            <del className="fs-4 text-muted">$750</del>
+            <span className="text-dark fw-bold h2 me-2">BDT {totalPrice}</span>
+            {/* <del className="fs-4 text-muted">$750</del> */}
           </div>
           <div className="d-grid">
             <Link href="/checkout" className="btn btn-primary mb-2  ">
