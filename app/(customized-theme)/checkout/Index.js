@@ -1,8 +1,10 @@
 "use client";
 import { apiClient } from "helper/apiClient";
+import { getUserFromClientCookie } from "helper/auth";
 import getLocalCartData from "helper/getLocalCartData";
 import useMounted from "hooks/useMounted";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import PageHeading from "shared/page-headings/PageHeading";
 import LeftSideForm from "./components/LeftSideForm";
@@ -11,12 +13,34 @@ import RightSide from "./components/RightSide";
 const Checkout = () => {
   const hasMounted = useMounted();
   const router = useRouter();
+
   const {
     register,
     handleSubmit,
-
+    reset,
     formState: { errors, isValid },
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      fullName: "",
+      email: "",
+      phone: "",
+    },
+  });
+
+  useEffect(() => {
+    getUserFromClientCookie().then(({ user }) => {
+      if (user) {
+        console.log("====================================");
+        console.log(user);
+        console.log("====================================");
+        reset({
+          fullName: user.name || "",
+          email: user.email || "",
+          phone: user.mobileNumber || "",
+        });
+      }
+    });
+  }, []);
 
   const cartData = hasMounted ? getLocalCartData() : [];
   const totalPrice = cartData?.reduce((acc, item) => {
