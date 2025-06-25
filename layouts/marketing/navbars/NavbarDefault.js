@@ -8,7 +8,6 @@ import { Container, Form, Nav, Navbar } from "react-bootstrap";
 import { useMediaQuery } from "react-responsive";
 
 // import sub components
-import DarkLightMode from "layouts/DarkLightMode";
 import QuickMenu from "layouts/QuickMenu";
 
 // import data files
@@ -25,10 +24,7 @@ import { settings } from "app.config";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 
-const NavbarDefault = ({
-  headerstyle = "navbar-default",
-  sessionUser = false,
-}) => {
+const NavbarDefault = ({ sessionUser = false }) => {
   const [expandedMenu, setExpandedMenu] = useState(false);
   const pathName = usePathname();
   const hasMounted = useMounted();
@@ -141,7 +137,7 @@ const NavbarDefault = ({
                     />
                   </Form>
                 )}
-                {sessionUser ? null : <DarkLightMode className="me-2" />}
+                <QuickMenu />
                 <span
                   className={
                     sessionUser

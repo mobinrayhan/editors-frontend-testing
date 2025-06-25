@@ -8,7 +8,9 @@ function handelAddToCart(course, instructorData, disPatch) {
   if (previousCartItem) {
     const parsedCartItem = JSON.parse(previousCartItem);
     if (parsedCartItem.find((item) => item.id === course.id)) {
-      toast("Already in Cart");
+      toast("Already in Cart", {
+        icon: "✌️",
+      });
     } else {
       const newCartItem = [
         ...parsedCartItem,
