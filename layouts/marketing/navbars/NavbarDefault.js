@@ -137,7 +137,7 @@ const NavbarDefault = ({ sessionUser = false }) => {
                     />
                   </Form>
                 )}
-                <QuickMenu />
+                {!sessionUser && <QuickMenu />}
                 <span
                   className={
                     sessionUser
