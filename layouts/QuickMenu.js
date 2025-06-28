@@ -26,10 +26,10 @@ import { useSelector } from "react-redux";
 
 const QuickMenu = ({ sessionUser }) => {
   const hasMounted = useMounted();
-  const Carts = useSelector((state) => state.cart.cartItems);
   const user = sessionUser?.user;
   const router = useRouter();
   const isDesktop = useMediaQuery({ query: "(min-width: 1224px)" });
+  const Carts = useSelector((state) => state.cart.cartItems);
 
   const Cart = () => {
     return (
@@ -100,99 +100,107 @@ const QuickMenu = ({ sessionUser }) => {
             show={hasMounted && isDesktop ? true : false}
           >
             <Dropdown.Item className="mt-3" bsPrefix=" " as="div">
-              <div className="border-bottom px-3 pt-0 pb-3 d-flex justify-content-between align-items-end">
-                <span className="h4 mb-0">Cart</span>
-                {/* <Link href="/" className="text-muted">
+              {Carts.length === 0 ? (
+                <p className="h4  text-center">NO Course Added To Cart!</p>
+              ) : (
+                <>
+                  <div className="border-bottom px-3 pt-0 pb-3 d-flex justify-content-between align-items-end">
+                    <span className="h4 mb-0">Cart</span>
+                    {/* <Link href="/" className="text-muted">
                   <span className="align-middle">
                     <i className="fe fe-settings me-1"></i>
                   </span>
                 </Link> */}
-              </div>
-              <Cart />
-              <div className="border-top px-3 pt-3 pb-3 d-flex justify-content-between align-items-center">
-                <Link href="/cart" className="text-link fw-semi-bold">
-                  See all Cart
-                </Link>
-                <Link href="/checkout" className=" text-link fw-semi-bold">
-                  <button
-                    className="btn btn-primary"
-                    style={{ marginBlock: 0 }}
-                  >
-                    Checkout
-                  </button>
-                </Link>
-              </div>
+                  </div>
+                  <Cart />
+                  <div className="border-top px-3 pt-3 pb-3 d-flex justify-content-between align-items-center">
+                    <Link href="/cart" className="text-link fw-semi-bold">
+                      See all Cart
+                    </Link>
+                    <Link href="/checkout" className=" text-link fw-semi-bold">
+                      <button
+                        className="btn btn-primary"
+                        style={{ marginBlock: 0 }}
+                      >
+                        Checkout
+                      </button>
+                    </Link>
+                  </div>
+                </>
+              )}
             </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
-        <Dropdown as="li" className="ms-2">
-          <Dropdown.Toggle
-            as="a"
-            bsPrefix=" "
-            className="rounded-circle"
-            id="dropdownUser"
-          >
-            <div className="avatar avatar-md avatar-indicators avatar-online">
-              {/* <Image
+        {user && (
+          <Dropdown as="li" className="ms-2">
+            <Dropdown.Toggle
+              as="a"
+              bsPrefix=" "
+              className="rounded-circle"
+              id="dropdownUser"
+            >
+              <div className="avatar avatar-md avatar-indicators avatar-online">
+                {/* <Image
                 width={50}
                 height={50}
                 alt="avatar"
                 src="/images/avatar/avatar-1.jpg"
                 className="rounded-circle"
               /> */}
-              <Avatar name={user?.name} />
-            </div>
-          </Dropdown.Toggle>
-          <Dropdown.Menu
-            className="dashboard-dropdown dropdown-menu-end mt-4 py-0"
-            align="end"
-            aria-labelledby="dropdownUser"
-            show={hasMounted && isDesktop ? true : false}
-          >
-            <Dropdown.Item className="mt-3">
-              <Link href="/student/dashboard" style={{ width: "100%" }}>
-                <div className="d-flex">
-                  <div className="avatar avatar-md avatar-indicators avatar-online">
-                    {/* <Image
+                <Avatar name={user?.name} />
+              </div>
+            </Dropdown.Toggle>
+            <Dropdown.Menu
+              className="dashboard-dropdown dropdown-menu-end mt-4 py-0"
+              align="end"
+              aria-labelledby="dropdownUser"
+              show={hasMounted && isDesktop ? true : false}
+            >
+              <Dropdown.Item className="mt-3">
+                <Link href="/student/dashboard" style={{ width: "100%" }}>
+                  <div className="d-flex">
+                    <div className="avatar avatar-md avatar-indicators avatar-online">
+                      {/* <Image
                       width={50}
                       height={50}
                       alt="avatar"
                       src="/images/avatar/avatar-1.jpg"
                       className="rounded-circle"
                     /> */}
-                    <Avatar name={user?.name} />
+                      <Avatar name={user?.name} />
+                    </div>
+                    <div className="ms-3 lh-1">
+                      <h5 className="mb-1">{user?.name}</h5>
+                      <p className="mb-0 text-muted">{user?.email}</p>
+                    </div>
                   </div>
-                  <div className="ms-3 lh-1">
-                    <h5 className="mb-1">{user?.name}</h5>
-                    <p className="mb-0 text-muted">{user?.email}</p>
-                  </div>
-                </div>
-              </Link>
-            </Dropdown.Item>
-            <Dropdown.Divider />
-            <Dropdown.Item eventKey="2">
-              <Link style={{ width: "100%" }} href="/student/profile">
-                <i className="fe fe-user me-2"></i> Profile
-              </Link>
-            </Dropdown.Item>
-            {/* <Dropdown.Item eventKey="3">
+                </Link>
+              </Dropdown.Item>
+              <Dropdown.Divider />
+              <Dropdown.Item eventKey="2">
+                <Link style={{ width: "100%" }} href="/student/profile">
+                  <i className="fe fe-user me-2"></i> Profile
+                </Link>
+              </Dropdown.Item>
+              {/* <Dropdown.Item eventKey="3">
               <i className="fe fe-star me-2"></i> Subscription
             </Dropdown.Item> */}
-            {/* <Dropdown.Item>
+              {/* <Dropdown.Item>
               <i className="fe fe-settings me-2"></i> Settings
             </Dropdown.Item> */}
-            <Dropdown.Divider />
-            <Dropdown.Item
-              className="mb-3"
-              onClick={() => {
-                signOutUserFromClient();
-                router.push("/");
-              }}
-            >
-              <i className="fe fe-power me-2"></i> Sign Out
-            </Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
+              <Dropdown.Divider />
+              <Dropdown.Item
+                className="mb-3"
+                onClick={() => {
+                  signOutUserFromClient();
+                  router.push("/");
+                }}
+              >
+                <i className="fe fe-power me-2"></i> Sign Out
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+        )}
       </ListGroup>
     </Fragment>
   );

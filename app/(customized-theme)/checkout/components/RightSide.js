@@ -6,13 +6,15 @@ import { Image } from "react-bootstrap";
 
 // import { useDispatch, useSelector } from "react-redux";
 
-export default function RightSide() {
+export default function RightSide({ handlePayClick }) {
   const hasMounted = useMounted();
   const cartData = hasMounted ? getLocalCartData() : [];
   const totalPrice = cartData?.reduce((acc, item) => {
     return acc + Number(item?.price);
   }, 0);
+
   // const cartData = [];
+
   return (
     <section className="col-md-6">
       {/* Order Summary */}
@@ -38,7 +40,10 @@ export default function RightSide() {
           </a>
           .
         </p>
-        <button className="btn btn-primary w-100 py-2 fw-bold">
+        <button
+          className="btn btn-primary w-100 py-2 fw-bold"
+          onClick={handlePayClick}
+        >
           <i className="bi bi-lock-fill me-2"></i> Pay BDT {totalPrice}
         </button>
         <div className="text-center mt-4">

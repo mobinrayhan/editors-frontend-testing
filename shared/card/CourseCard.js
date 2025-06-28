@@ -83,7 +83,8 @@ const CourseCard = ({
               </span>
               <span className="fs-6 text-muted">
                 {" "}
-                {/* item.ratingby */}({numberWithCommas(1200)})
+                {/* item.ratingby */}
+                {/* ({numberWithCommas(1200)}) */}
               </span>
             </div>
             <div
@@ -95,7 +96,7 @@ const CourseCard = ({
               }`}
             >
               <span className="text-dark fw-bold">
-                {/* ${item.price - item?.discount} */}${item?.price}
+                {/* ${item.price - item?.discount} */}BDT {item?.price}
               </span>{" "}
               <del className="fs-6 text-muted">${item?.price}</del>
             </div>

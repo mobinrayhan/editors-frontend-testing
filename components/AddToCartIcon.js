@@ -3,12 +3,15 @@ import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { addItemToCart } from "store/cartSlice";
 import GKTippy from "widgets/tooltips/GKTippy";
+
 function handelAddToCart(course, instructorData, disPatch) {
   const previousCartItem = localStorage.getItem("cartItem");
   if (previousCartItem) {
     const parsedCartItem = JSON.parse(previousCartItem);
     if (parsedCartItem.find((item) => item.id === course.id)) {
-      toast("Already in Cart");
+      toast("Already in Cart", {
+        icon: "✌️",
+      });
     } else {
       const newCartItem = [
         ...parsedCartItem,

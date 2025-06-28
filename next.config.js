@@ -32,6 +32,7 @@ module.exports = (phase) => {
         { protocol: "https", hostname: "sslcommerz.com" },
         { protocol: "https", hostname: "www.tbsnews.net" },
         { protocol: "https", hostname: "download.logo.wine" },
+        { protocol: "https", hostname: "res.cloudinary.com" },
       ],
     },
   };

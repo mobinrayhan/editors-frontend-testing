@@ -106,8 +106,6 @@ $theme-soft-colors: map-merge(
   $theme-soft-colors
 );
 
-
-
 // The contrast ratio to reach against white, to determine if color changes from "light" to "dark". Acceptable values for WCAG 2.0 are 3, 4.5 and 7.
 // See https://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast
 $min-contrast-ratio: 2 !default;
@@ -122,7 +120,7 @@ $text-muted: $gray-500 !default;
 // Typography
 // Font, line-height, and color for body text, headings, and more.
 // stylelint-disable value-keyword-case
-$font-family-sans-serif: "Inter", "sans-serif" !default;
+$font-family-sans-serif: "Hind Siliguri", "sans-serif" !default;
 $font-family-base: $font-family-sans-serif !default;
 $font-family-heading: $font-family-sans-serif;
 $font-size-base: 0.875rem !default;
@@ -252,7 +250,6 @@ $input-btn-padding-y-xs: 0.22rem !default;
 $input-btn-padding-x-xs: 0.75rem !default;
 $input-btn-font-size-xs: 0.75rem !default;
 
-
 $form-text-color: var(--#{$prefix}form-text-color) !default;
 $form-select-color: $gray-400 !default;
 $form-select-indicator-color: $gray-400 !default;
@@ -264,7 +261,7 @@ $form-label-color: var(--#{$prefix}form-label-color);
 $form-check-input-width: 1.2em;
 $form-check-input-bg: $input-bg;
 $form-check-input-border: 1px solid var(--#{$prefix}input-check-border);
-$form-file-button-hover-bg:        $input-bg;
+$form-file-button-hover-bg: $input-bg;
 
 // Button
 $btn-font-weight: 600 !default;
@@ -364,7 +361,6 @@ $card-cap-bg: var(--#{$prefix}card-background) !default;
 $card-border-color: var(--#{$prefix}border-color) !default;
 $card-bg: var(--#{$prefix}card-background) !default;
 
-
 // List group
 
 // scss-docs-start list-group-variables
@@ -382,15 +378,19 @@ $list-group-action-active-bg: var(--#{$prefix}gray-100);
 // Box Shadow
 $box-shadow-sm: 0px 1px 3px rgba(17, 24, 39, 0.09) !default;
 $box-shadow: 0px 3px 6px rgba(17, 24, 39, 0.1) !default;
-$box-shadow-lg: 0 6px 8px 0 rgba(17, 24, 39, 0.08), 0 0 0 1px rgba(17, 24, 39, 0.04) !default;
+$box-shadow-lg: 0 6px 8px 0 rgba(17, 24, 39, 0.08),
+  0 0 0 1px rgba(17, 24, 39, 0.04) !default;
 
 // Smooth Box Shadow
-$box-shadow-smooth-sm: 0px 2px 4px rgba(0, 0, 20, 0.08), 0px 1px 2px rgba(0, 0, 20, 0.08) !default;
-$box-shadow-smooth-md: 0 1px 2px rgba(21, 30, 40, 0.07), 0 2px 4px rgba(21, 30, 40, 0.07),
-  0 4px 8px rgba(21, 30, 40, 0.07), 0 8px 16px rgba(21, 30, 40, 0.07), 0 16px 32px rgba(21, 30, 40, 0.07),
+$box-shadow-smooth-sm: 0px 2px 4px rgba(0, 0, 20, 0.08),
+  0px 1px 2px rgba(0, 0, 20, 0.08) !default;
+$box-shadow-smooth-md: 0 1px 2px rgba(21, 30, 40, 0.07),
+  0 2px 4px rgba(21, 30, 40, 0.07), 0 4px 8px rgba(21, 30, 40, 0.07),
+  0 8px 16px rgba(21, 30, 40, 0.07), 0 16px 32px rgba(21, 30, 40, 0.07),
   0 32px 64px rgba(21, 30, 40, 0.07) !default;
-$box-shadow-smooth-lg: 0 1px 1px rgba(21, 30, 40, 0.11), 0 2px 2px rgba(21, 30, 40, 0.11),
-  0 4px 4px rgba(21, 30, 40, 0.11), 0 8px 8px rgba(21, 30, 40, 0.11), 0 16px 16px rgba(21, 30, 40, 0.11),
+$box-shadow-smooth-lg: 0 1px 1px rgba(21, 30, 40, 0.11),
+  0 2px 2px rgba(21, 30, 40, 0.11), 0 4px 4px rgba(21, 30, 40, 0.11),
+  0 8px 8px rgba(21, 30, 40, 0.11), 0 16px 16px rgba(21, 30, 40, 0.11),
   0 32px 32px rgba(21, 30, 40, 0.11) !default;
 
 // Hr
@@ -458,7 +458,8 @@ $img-4by3-sm: 4rem;
 $img-4by3-xs: 2.75rem;
 
 // Social buttons
-$social-btn-transition: border-color 0.25s ease-in-out, background-color 0.25s ease-in-out, color 0.25s ease-in-out !default;
+$social-btn-transition: border-color 0.25s ease-in-out,
+  background-color 0.25s ease-in-out, color 0.25s ease-in-out !default;
 $social-btn-size: 2.25rem !default;
 $social-btn-size-sm: 1.75rem !default;
 $social-btn-size-lg: 2.75rem !default;
@@ -532,8 +533,9 @@ $modal-content-border-color: transparent !default;
 $accordion-bg: $card-bg !default;
 $accordion-border-color: var(--#{$prefix}border-color) !default;
 $accordion-button-active-bg: var(--#{$prefix}border-color);
-$accordion-button-active-color: var(--#{$prefix}accordion-button-active-color) !default;
-
+$accordion-button-active-color: var(
+  --#{$prefix}accordion-button-active-color
+) !default;
 
 // tooltip
 $tooltip-color: var(--#{$prefix}gray-400);
@@ -556,16 +558,13 @@ $navbar-light-disabled-color: var(--#{$prefix}gray-400);
 $alert-bg-scale: -50% !default;
 $alert-border-scale: -50% !default;
 
-
 // popover
 $popover-body-color: var(--#{$prefix}gray-500);
 $popover-arrow-color: var(--#{$prefix}gray-300) !default;
 $popover-arrow-outer-color: var(--#{$prefix}gray-300) !default;
 
-
 // blockquote
 $blockquote-font-size: 1.25rem;
-
 
 // Dropdown
 $dropdown-color: var(--#{$prefix}body-color);
@@ -578,13 +577,9 @@ $dropdown-link-active-color: var(--#{$prefix}dropdown-link-hover-color);
 $dropdown-link-active-bg: var(--#{$prefix}dropdown-link-hover-bg);
 $dropdown-box-shadow: var(--#{$prefix}dropdown-shadow);
 
-
-
 // scss-docs-start progress-variables
 $progress-bg: var(--#{$prefix}progress-background) !default;
 // scss-docs-end progress-variables
-
-
 
 // toast
 $toast-background-color: var(--#{$prefix}white);
@@ -592,5 +587,3 @@ $toast-header-color: var(--#{$prefix}gray-600);
 $toast-header-background-color: $toast-background-color;
 $toast-header-border-color: var(--#{$prefix}gray-300);
 $toast-border-color: var(--#{$prefix}gray-300) !default;
-
-

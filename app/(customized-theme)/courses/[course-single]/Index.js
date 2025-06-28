@@ -6,6 +6,7 @@ import AddToCartIcon from "components/AddToCartIcon";
 import ErrorPage from "components/ErrorPage";
 import getFetch from "helper/getFetch";
 import { API_ENDPOINT } from "helper/global";
+import Link from "next/link";
 import Ratings from "widgets/ratings/Ratings";
 import CardsComponents from "./components/CardsComponents";
 import CourseList from "./components/CourseList";
@@ -62,14 +63,31 @@ const CourseSingle = async ({ params }) => {
                   </h1>
                   <p className="text-white mb-6 lead">{course?.description}</p>
                   <div className="d-flex align-items-center bookmark text-white text-decoration-none">
-                    <AddToCartIcon
-                      courses={course}
-                      instructor={instructorData.instructor[0]}
-                    >
-                      <span style={{ marginLeft: "5px", cursor: "pointer" }}>
-                        Add to Cart
-                      </span>
-                    </AddToCartIcon>
+                    {course?.isPurchasedByUser ? (
+                      <Link
+                        style={{
+                          pointerEvents:
+                            !responseAllSectionWithVideo?.[0]?.id ||
+                            !responseAllSectionWithVideo?.[0]?.videos?.[0]?.id
+                              ? "none"
+                              : "auto",
+                        }}
+                        className="text-white d-flex align-items-baseline gap-1"
+                        href={`/student/dashboard/${course?.slug}/section-${responseAllSectionWithVideo?.[0]?.id}-video-${responseAllSectionWithVideo?.[0]?.videos?.[0]?.id}`}
+                      >
+                        <i className="fe fe-video"></i>
+                        Watch Course
+                      </Link>
+                    ) : (
+                      <AddToCartIcon
+                        courses={course}
+                        instructor={instructorData.instructor[0]}
+                      >
+                        <span style={{ marginLeft: "5px", cursor: "pointer" }}>
+                          Add to Cart
+                        </span>
+                      </AddToCartIcon>
+                    )}
 
                     <span className="text-white ms-3">
                       <i className="fe fe-user text-white-50"></i>{" "}

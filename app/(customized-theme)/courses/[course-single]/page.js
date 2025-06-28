@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import CourseSingle from "./Index";
 
 export async function generateMetadata({ params }) {
-  const slug = params["course-single"];
+  const slug = (await params)["course-single"];
   const { course } = await getFetch(`${API_ENDPOINT}/courses/${slug}`);
 
   if (!course) {
