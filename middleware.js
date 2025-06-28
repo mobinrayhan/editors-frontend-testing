@@ -42,7 +42,7 @@ export async function middleware(req) {
     const refreshData = await res.json();
     (await cookies()).set(
       "userSessionToken",
-      refreshData?.user?.userSessionToken,
+      refreshData?.user?.sessionToken,
       cookieConfig
     );
   }
