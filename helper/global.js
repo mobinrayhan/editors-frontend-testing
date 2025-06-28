@@ -6,5 +6,6 @@ export const cookieConfig = {
   sameSite: "lax",
   path: "/",
   maxAge: 60 * 60 * 24 * 7,
-  domain: ".editors.academy",
+  domain:
+    process.env.NODE_ENV === "development" ? "localhost" : ".editors.academy",
 };

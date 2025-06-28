@@ -37,5 +37,11 @@ export async function getUserFromClientCookie() {
 }
 
 export function signOutUserFromClient() {
-  Cookies.remove("userSessionToken");
+  Cookies.remove("userSessionToken", {
+    path: "/",
+    domain:
+      process.env.NODE_ENV === "development" ? "localhost" : ".editors.academy",
+    secure: true,
+    sameSite: "lax",
+  });
 }

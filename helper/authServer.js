@@ -17,5 +17,10 @@ export async function getUserFromServerCookie() {
 
 export async function signOutUserFromServer() {
   const cookieStore = await cookies();
-  cookieStore.delete("userSessionToken");
+  cookieStore.set("userSessionToken", "", {
+    path: "/",
+    maxAge: 0,
+    domain:
+      process.env.NODE_ENV === "development" ? "localhost" : ".editors.academy",
+  });
 }
