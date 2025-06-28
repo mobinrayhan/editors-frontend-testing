@@ -6,4 +6,5 @@ export const cookieConfig = {
   sameSite: "lax",
   path: "/",
   maxAge: 60 * 60 * 24 * 7,
+  domaine: ".editors.academy",
 };
