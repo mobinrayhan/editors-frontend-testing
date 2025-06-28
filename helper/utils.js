@@ -155,6 +155,7 @@ export function setClientCookie(name, value) {
     sameSite: "lax",
     path: "/",
     expires: 604800 / 86400,
+    domain: ".editors.academy",
   };
 
   Cookies.set(name, value, cookieConfig);
