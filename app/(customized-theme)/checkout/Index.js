@@ -6,6 +6,7 @@ import useMounted from "hooks/useMounted";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import PageHeading from "shared/page-headings/PageHeading";
 import LeftSideForm from "./components/LeftSideForm";
 import RightSide from "./components/RightSide";
@@ -18,21 +19,14 @@ const Checkout = () => {
     register,
     handleSubmit,
     reset,
-    formState: { errors, isValid },
+    formState: { errors },
   } = useForm({
-    defaultValues: {
-      fullName: "",
-      email: "",
-      phone: "",
-    },
+    mode: "onChange",
   });
 
   useEffect(() => {
     getUserFromClientCookie().then(({ user }) => {
       if (user) {
-        console.log("====================================");
-        console.log(user);
-        console.log("====================================");
         reset({
           fullName: user.name || "",
           email: user.email || "",
@@ -40,32 +34,36 @@ const Checkout = () => {
         });
       }
     });
-  }, []);
+  }, [reset]);
 
   const cartData = hasMounted ? getLocalCartData() : [];
-  const totalPrice = cartData?.reduce((acc, item) => {
-    return acc + Number(item?.price);
-  }, 0);
-
+  const totalPrice = cartData?.reduce(
+    (acc, item) => acc + Number(item?.price),
+    0
+  );
   const courseData = cartData;
-  console.log("====================================");
-  console.log(courseData);
-  console.log("====================================");
 
   const onSubmit = async (data) => {
-    if (isValid) {
-      const session = await apiClient(`/courses/ssl-create-session`, "POST", {
+    try {
+      const session = await apiClient(`/payment/ssl-create-session`, "POST", {
         amount: totalPrice,
-        order_id: "hi12",
+        order_id: crypto.randomUUID(),
         name: data?.fullName,
         email: data?.email,
         ship_add1: "1234 Elm Street",
         ship_city: "New York",
         ship_state: "NY",
         phone: data?.phone,
+        enrolled_at: new Date(),
+        paymentMethod: data?.paymentMethod || "ssl_commerz",
+        courseInfo: courseData?.map((course) => ({
+          id: course?.id,
+          amount: Math.round(course?.price),
+        })),
       });
-      console.log(data);
       router.push(session.GatewayPageURL);
+    } catch (error) {
+      toast.error(error?.message || "Something Went Wrong!");
     }
   };
 
@@ -76,7 +74,7 @@ const Checkout = () => {
       <section className="container my-5">
         <form onSubmit={handleSubmit(onSubmit)} className="row">
           <LeftSideForm register={register} errors={errors} />
-          <RightSide handlePayClick={onSubmit} />
+          <RightSide />
         </form>
       </section>
     </>

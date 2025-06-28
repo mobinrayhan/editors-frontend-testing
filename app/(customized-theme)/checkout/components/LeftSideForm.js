@@ -72,7 +72,6 @@ export default function LeftSideForm({ register, errors }) {
           {...register("paymentMethod", {
             pattern: {
               value: paymentMethod,
-              // message: "Phone number must be 11 digits starting with 01",
             },
           })}
         />
