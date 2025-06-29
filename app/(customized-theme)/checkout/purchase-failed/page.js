@@ -1,9 +1,10 @@
 "use client";
 
 import { notFound, useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
 
-export default function PurchaseFailed() {
+function PurchaseFailed() {
   const searchParams = useSearchParams();
   const sslCancelId = searchParams.get("ssl_failed_id");
 
@@ -35,5 +36,13 @@ export default function PurchaseFailed() {
         </Col>
       </Row>
     </Container>
+  );
+}
+
+export default function PurchaseFailedMain() {
+  return (
+    <Suspense fallback={<p>Loading...</p>}>
+      <PurchaseFailed />
+    </Suspense>
   );
 }

@@ -1,9 +1,9 @@
 "use client";
 import { notFound, useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
 
-export default function ThankYouHome() {
+function ThankYouHomeMain() {
   const searchParams = useSearchParams();
   const success = searchParams.get("success");
   const validId = searchParams.get("valid_id");
@@ -28,7 +28,7 @@ export default function ThankYouHome() {
               <h1 className="mb-4 text-success">🎉 Thank You!</h1>
               <Card.Text className="fs-5">
                 Your purchase was successful. <br />
-                We're thrilled to have you on board!
+                We&apos;re thrilled to have you on board!
               </Card.Text>
               <Card.Text className="mt-3">
                 Get ready to dive into your course and start learning right
@@ -42,5 +42,13 @@ export default function ThankYouHome() {
         </Col>
       </Row>
     </Container>
+  );
+}
+
+export default function ThankYouHome() {
+  return (
+    <Suspense fallback={<p>Loading...</p>}>
+      <ThankYouHomeMain />
+    </Suspense>
   );
 }
