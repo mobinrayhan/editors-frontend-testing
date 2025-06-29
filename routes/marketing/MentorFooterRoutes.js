@@ -69,6 +69,11 @@ const MentorFooterRoutes = [
       },
       {
         id: uuid(),
+        menuitem: "Refund Policy",
+        link: "/refund-policy",
+      },
+      {
+        id: uuid(),
         menuitem: "Terms and Conditions",
         link: "/terms-and-conditions",
       },
@@ -77,11 +82,6 @@ const MentorFooterRoutes = [
         menuitem: "Privacy Policy",
         link: "privacy-policy",
       },
-      // {
-      //   id: uuid(),
-      //   menuitem: "Meet the Team",
-      //   link: "/meet-the-team",
-      // },
     ],
   },
   {
