@@ -19,6 +19,8 @@ const CardsComponents = ({ course, instructorData, sections }) => {
     frameborder="0"
   ></iframe>`;
 
+  console.log(course, sections);
+
   return (
     <>
       <Modal
@@ -80,10 +82,21 @@ const CardsComponents = ({ course, instructorData, sections }) => {
             {/* <del className="fs-4 text-muted">750</del> */}
           </div>
           <div className="d-grid">
-            <AddToCart course={course} instructorData={instructorData} />
-            <Link href="/checkout" className="btn btn-outline-primary">
-              Buy now
-            </Link>
+            {!course?.isPurchasedByUser && (
+              <AddToCart course={course} instructorData={instructorData} />
+            )}
+            {!course?.isPurchasedByUser ? (
+              <Link href="/checkout" className="btn btn-outline-primary">
+                Buy now
+              </Link>
+            ) : (
+              <Link
+                href={`/student/dashboard/${course?.slug}/section-${sections?.[0]?.id}-video-${sections?.[0]?.id?.videos?.[0]?.id}`}
+                className="btn btn-outline-primary"
+              >
+                Start Watching
+              </Link>
+            )}
           </div>
         </Card.Body>
       </Card>

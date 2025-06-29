@@ -3,7 +3,7 @@ import { apiClient } from "helper/apiClient";
 import { getUserFromClientCookie } from "helper/auth";
 import getLocalCartData from "helper/getLocalCartData";
 import useMounted from "hooks/useMounted";
-import { useRouter } from "next/navigation";
+import { notFound, useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
@@ -43,6 +43,10 @@ const Checkout = () => {
   );
   const courseData = cartData;
 
+  if (hasMounted && !courseData.length) {
+    notFound();
+  }
+
   const onSubmit = async (data) => {
     try {
       const session = await apiClient(`/payment/ssl-create-session`, "POST", {
@@ -69,14 +73,19 @@ const Checkout = () => {
 
   return (
     <>
-      <PageHeading pagetitle="Checkout" />
-
-      <section className="container my-5">
-        <form onSubmit={handleSubmit(onSubmit)} className="row">
-          <LeftSideForm register={register} errors={errors} />
-          <RightSide />
-        </form>
-      </section>
+      {hasMounted ? (
+        <>
+          <PageHeading pagetitle="Checkout" />
+          <section className="container my-5">
+            <form onSubmit={handleSubmit(onSubmit)} className="row">
+              <LeftSideForm register={register} errors={errors} />
+              <RightSide />
+            </form>
+          </section>{" "}
+        </>
+      ) : (
+        <p>Loading...</p>
+      )}
     </>
   );
 };
