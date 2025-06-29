@@ -1,7 +1,7 @@
 "use client";
 // import node module libraries
-import { Col, Row, Form, Button } from "react-bootstrap";
-import { useForm, Controller } from "react-hook-form";
+import { Button, Col, Form, Row } from "react-bootstrap";
+import { Controller, useForm } from "react-hook-form";
 
 // import widget/custom components
 import { FormSelect } from "widgets";

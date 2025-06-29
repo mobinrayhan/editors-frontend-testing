@@ -10,8 +10,6 @@ import FeaturesList from "widgets/home/FeaturesList";
 const DefaultHome = async () => {
   const courses = await getFetch(`${API_ENDPOINT}/courses`);
 
-  console.log(courses);
-
   const instructors = await Promise.all(
     courses?.success === false
       ? []
