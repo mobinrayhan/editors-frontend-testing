@@ -109,17 +109,19 @@ const CourseCard = ({
               <Link href={"/instructor/profile"}>
                 <Image
                   src={
-                    instructor?.profile_image ||
-                    "https://gratisography.com/wp-content/uploads/2024/11/gratisography-augmented-reality-800x525.jpg"
+                    // instructor?.profile_image ||
+                    // "https://gratisography.com/wp-content/uploads/2024/11/gratisography-augmented-reality-800x525.jpg"
+                    "https://i.ibb.co.com/KzfWFxGn/187910563-10220662170840378-3981185376255859365-n.jpg"
                   }
-                  className="rounded-circle avatar-xs"
+                  className="rounded-circle avatar-xs object-fit-cover"
                   alt=""
                 />
               </Link>
             </Col>
             <Col className="col ms-2">
               <Link href={"/instructor/profile"}>
-                <span>{instructor?.name}</span>
+                {/* <span>{instructor?.name}</span> */}
+                <span>James Prince Barai</span>
               </Link>
             </Col>
             <Col style={{ cursor: "pointer" }} className="col-auto">
@@ -129,7 +131,13 @@ const CourseCard = ({
                 </Link>
               </GKTippy> */}
 
-              <AddToCartIcon courses={item} instructor={instructor} />
+              {item?.isPurchasedByUser ? (
+                <Link href={`/courses/${item.slug}`}>
+                  <i class="fe fe-video"></i>
+                </Link>
+              ) : (
+                <AddToCartIcon courses={item} instructor={instructor} />
+              )}
             </Col>
           </Row>
           <span className={`${showprogressbar ? "" : "d-none"}`}>
