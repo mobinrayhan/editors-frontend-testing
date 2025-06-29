@@ -19,8 +19,6 @@ const CardsComponents = ({ course, instructorData, sections }) => {
     frameborder="0"
   ></iframe>`;
 
-  console.log(course, sections);
-
   return (
     <>
       <Modal
