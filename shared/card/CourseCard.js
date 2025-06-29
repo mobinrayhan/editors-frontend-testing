@@ -125,12 +125,6 @@ const CourseCard = ({
               </Link>
             </Col>
             <Col style={{ cursor: "pointer" }} className="col-auto">
-              {/* <GKTippy content="Add to Cart">
-                <Link href="#">
-                <i className="fe fe-bookmark"></i>
-                </Link>
-              </GKTippy> */}
-
               {item?.isPurchasedByUser ? (
                 <Link href={`/courses/${item.slug}`}>
                   <i class="fe fe-video"></i>
@@ -210,9 +204,9 @@ const CourseCard = ({
                   <Image
                     src={
                       instructor?.profile_image ||
-                      "https://media.istockphoto.com/id/1682296067/photo/happy-studio-portrait-or-professional-man-real-estate-agent-or-asian-businessman-smile-for.jpg?s=612x612&w=0&k=20&c=9zbG2-9fl741fbTWw5fNgcEEe4ll-JegrGlQQ6m54rg="
+                      "https://i.ibb.co.com/KzfWFxGn/187910563-10220662170840378-3981185376255859365-n.jpg"
                     }
-                    className="rounded-circle avatar-xs"
+                    className="rounded-circle avatar-xs object-fit-cover"
                     alt=""
                   />
                 </Col>

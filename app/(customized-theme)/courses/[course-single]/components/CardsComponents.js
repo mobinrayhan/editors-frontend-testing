@@ -91,6 +91,12 @@ const CardsComponents = ({ course, instructorData, sections }) => {
               </Link>
             ) : (
               <Link
+                style={{
+                  pointerEvents:
+                    !sections?.[0]?.id || !sections?.[0]?.id?.videos?.[0]?.id
+                      ? "none"
+                      : "auto",
+                }}
                 href={`/student/dashboard/${course?.slug}/section-${sections?.[0]?.id}-video-${sections?.[0]?.id?.videos?.[0]?.id}`}
                 className="btn btn-outline-primary"
               >
