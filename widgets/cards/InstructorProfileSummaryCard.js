@@ -44,7 +44,9 @@ const InstructorProfileSummaryCard = ({ data }) => {
             {/* <h4 className="mb-0">{data?.instructor[0]?.name}</h4> */}
             <h4 className="mb-0">James Prince Barai</h4>
             {/* <p className="mb-1 fs-6">{data?.instructor[0]?.expertise}</p> */}
-            <p className="mb-1 fs-6">Premiere Pro, After Effects</p>
+            <p className="mb-1 fs-6">
+              Premiere Pro, After Effects, CapCut, DaVinci Resolve
+            </p>
             <span className="fs-6">
               <span className="text-warning">{4.8}</span>
               <span className="mdi mdi-star text-warning me-2"></span>
