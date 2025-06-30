@@ -2,7 +2,7 @@ export const DashboardMenu = [
   {
     id: 1,
     title: "Account",
-    link: "/marketing/student/account",
+    link: "/student/profile",
     icon: "user",
   },
   // {
@@ -14,7 +14,7 @@ export const DashboardMenu = [
   {
     id: 2,
     title: "My Courses",
-    link: "/marketing/student/my-courses",
+    link: "/student/my-courses",
     icon: "book",
   },
   // {
@@ -26,7 +26,7 @@ export const DashboardMenu = [
   {
     id: 3,
     title: "Support",
-    link: "/marketing/student/support",
+    link: "/student/support",
     icon: "star",
   },
   // {
