@@ -190,11 +190,14 @@ const NavbarDefault = ({ sessionUser = false }) => {
                             <Link
                               key={index}
                               href={item.link}
-                              style={{ paddingTop: "5px", marginRight: "10px" }}
+                              style={{
+                                paddingTop: "5px",
+                                marginRight: "10px",
+                              }}
                               className={`${
                                 item.link === pathName
                                   ? "text-blue "
-                                  : "text-black "
+                                  : "text-dark"
                               }`}
                             >
                               {item.menuitem}

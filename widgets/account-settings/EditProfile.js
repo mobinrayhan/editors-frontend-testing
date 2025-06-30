@@ -1,8 +1,8 @@
 "use client";
 
 // import node module libraries
-import { Card, Form, Row, Col, Button, Image } from "react-bootstrap";
 import { usePathname } from "next/navigation";
+import { Button, Card, Col, Form, Image, Row } from "react-bootstrap";
 
 // import widget/custom components
 import { FlatPickr, FormSelect } from "widgets";

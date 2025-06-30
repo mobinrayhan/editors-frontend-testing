@@ -1,11 +1,21 @@
 // import node module libraries
+import { getUserFromClientCookie } from "helper/auth";
+import { Avatar } from "layouts/QuickMenu";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { Card, Col, Image, Row } from "react-bootstrap";
 
 // import custom components
-import LevelIconWithTooltip from "widgets/miscellaneous/LevelIconWithTooltip";
 
-const ProfileCover = ({ dashboardData }) => {
+const ProfileCover = () => {
+  const [user, setUser] = useState();
+
+  useEffect(() => {
+    getUserFromClientCookie().then(({ user }) => setUser(user));
+  }, []);
+
+  console.log(user);
+
   return (
     <Row className="align-items-center">
       <Col xl={12} lg={12} md={12} sm={12}>
@@ -21,12 +31,22 @@ const ProfileCover = ({ dashboardData }) => {
           <div className="d-flex align-items-end justify-content-between  ">
             <div className="d-flex align-items-center">
               <div className="me-2 position-relative d-flex justify-content-end align-items-end mt-n5">
-                <Image
-                  src={dashboardData.avatar}
+                {/* <Image
+                  src="/images/svg/checked-mark.svg"
                   className="avatar-xl rounded-circle border border-4 border-white position-relative"
                   alt=""
-                />
-                {dashboardData.verified ? (
+                /> */}
+
+                <div className="avatar-xl rounded-circle border border-4 border-white position-relative">
+                  <Avatar
+                    name={user?.name}
+                    width={73}
+                    height={73}
+                    isActiveAvatar={false}
+                  />
+                </div>
+
+                {false ? (
                   <Link
                     href="#"
                     className="position-absolute top-0 end-0"
@@ -48,18 +68,17 @@ const ProfileCover = ({ dashboardData }) => {
               </div>
               <div className="lh-1">
                 <h2 className="mb-0">
-                  {dashboardData.name}{" "}
-                  <LevelIconWithTooltip level={dashboardData.level} />{" "}
+                  {user?.name}{" "}
+                  {/* <LevelIconWithTooltip level={dashboardData.level} />{" "} */}
                 </h2>
-                <p className="mb-0 d-block">{dashboardData.username}</p>
+                <p className="mb-0 d-block">
+                  {user?.mobileNumber || user?.email}
+                </p>
               </div>
             </div>
             <div>
-              <Link
-                href="/courses"
-                className="btn btn-primary d-none d-md-block"
-              >
-                {dashboardData.buttonText}
+              <Link href="/" className="btn btn-primary d-none d-md-block">
+                Go Back To Home
               </Link>
             </div>
           </div>
