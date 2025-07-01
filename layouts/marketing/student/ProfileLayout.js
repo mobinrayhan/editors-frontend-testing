@@ -72,21 +72,6 @@ const ProfileLayout = (props) => {
                       </Link>
                     </Nav.Item>
                   ))}
-                  {/* <Nav.Item className="navbar-header mt-4" as="li">
-                    ACCOUNT SETTINGS
-                  </Nav.Item>
-                  {AccountSettingsMenu.map((item, index) => (
-                    <Nav.Item
-                      as="li"
-                      key={index}
-                      className={`${item.link === location ? "active" : ""}`}
-                    >
-                      <Link href={item.link} className="nav-link">
-                        <i className={`fe fe-${item.icon} nav-icon`}></i>
-                        {item.title}
-                      </Link>
-                    </Nav.Item>
-                  ))} */}
                 </Nav>
               </Navbar.Collapse>
             </Navbar>

@@ -14,8 +14,6 @@ const ProfileCover = () => {
     getUserFromClientCookie().then(({ user }) => setUser(user));
   }, []);
 
-  console.log(user);
-
   return (
     <Row className="align-items-center">
       <Col xl={12} lg={12} md={12} sm={12}>
@@ -31,20 +29,22 @@ const ProfileCover = () => {
           <div className="d-flex align-items-end justify-content-between  ">
             <div className="d-flex align-items-center">
               <div className="me-2 position-relative d-flex justify-content-end align-items-end mt-n5">
-                {/* <Image
-                  src="/images/svg/checked-mark.svg"
-                  className="avatar-xl rounded-circle border border-4 border-white position-relative"
-                  alt=""
-                /> */}
-
-                <div className="avatar-xl rounded-circle border border-4 border-white position-relative">
-                  <Avatar
-                    name={user?.name}
-                    width={73}
-                    height={73}
-                    isActiveAvatar={false}
+                {user?.profileImage ? (
+                  <Image
+                    src={user?.profileImage}
+                    className="avatar-xl rounded-circle border border-4 border-white position-relative"
+                    alt=""
                   />
-                </div>
+                ) : (
+                  <div className="avatar-xl rounded-circle border border-4 border-white position-relative">
+                    <Avatar
+                      name={user?.name}
+                      width={73}
+                      height={73}
+                      isActiveAvatar={false}
+                    />
+                  </div>
+                )}
 
                 {false ? (
                   <Link

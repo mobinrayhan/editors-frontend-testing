@@ -1,5 +1,6 @@
 "use client";
 import { getUserFromClientCookie } from "helper/auth";
+import { Avatar } from "layouts/QuickMenu";
 import { useEffect, useRef, useState } from "react";
 import { Button, Card, Col, Form, Image, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
@@ -41,7 +42,7 @@ const EditProfile = () => {
           confirmPassword: "",
           profileImage: null,
         });
-        setImagePreview(user?.profileImage || "/images/avatar/avatar-1.jpg");
+        setImagePreview(user?.profileImage);
       }
     });
   }, [reset]);
@@ -77,12 +78,25 @@ const EditProfile = () => {
       <Card.Body>
         <div className="d-lg-flex align-items-center justify-content-between">
           <div className="d-flex align-items-center mb-4 mb-lg-0">
-            <Image
-              src={imagePreview}
-              className="avatar-xl rounded-circle"
-              alt="User Avatar"
-              style={{ width: "80px", height: "80px", objectFit: "cover" }}
-            />
+            {!user?.profileImage ? (
+              <div
+                style={{ width: "80px", height: "80px", objectFit: "cover" }}
+              >
+                <Avatar
+                  name={user?.name}
+                  width={73}
+                  height={73}
+                  isActiveAvatar={false}
+                />
+              </div>
+            ) : (
+              <Image
+                src={imagePreview}
+                className="avatar-xl rounded-circle"
+                alt="User Avatar"
+                style={{ width: "80px", height: "80px", objectFit: "cover" }}
+              />
+            )}
             <div className="ms-3">
               <h4 className="mb-0">{user?.name}</h4>
               <Form.Control

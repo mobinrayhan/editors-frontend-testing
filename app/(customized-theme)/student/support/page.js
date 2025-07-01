@@ -28,7 +28,12 @@ export default function SupportPage() {
             gap: "10px",
           }}
         >
-          <Image src={"/whatsapp.png"} height={50} width={50} />
+          <Image
+            alt="Image Of Whatsapp Icon"
+            src={"/whatsapp.png"}
+            height={50}
+            width={50}
+          />
           <div>
             <h3 className="pb-0 mb-0">Whatsapp Support</h3>
             <Link
