@@ -35,6 +35,7 @@ const CourseCard = ({
   extraclass = "",
 }) => {
   /** Used in Course Index, Course Category, Course Filter Page, Student Dashboard etc...  */
+
   const GridView = () => {
     return (
       <Card className={`mb-4 card-hover ${extraclass}`}>
@@ -154,7 +155,7 @@ const CourseCard = ({
       <Card className="mb-4 card-hover">
         <Row className="g-0">
           <Link
-            href="#"
+            href={`/courses/${item?.slug}`}
             className="bg-cover img-left-rounded col-12 col-md-12 col-xl-3 col-lg-3 "
             style={{
               background: `url(${item?.thumbnail})`,
@@ -173,7 +174,7 @@ const CourseCard = ({
             {/*   Card body   */}
             <Card.Body>
               <h3 className="mb-2 text-truncate-line-2 ">
-                <Link href="#" className="text-inherit">
+                <Link href={`/courses/${item?.slug}`} className="text-inherit">
                   {item?.title}
                 </Link>
               </h3>
@@ -211,13 +212,20 @@ const CourseCard = ({
                   />
                 </Col>
                 <Col className="col ms-2">
-                  <span>{instructor?.name}</span>
+                  {/* <span>{instructor?.name}</span> */}
+                  <span>James Prince Barai</span>
                 </Col>
                 {isCart ? (
                   <CartDeleteIcon data={item} />
                 ) : (
                   <Col style={{ cursor: "pointer" }} className="col-auto">
-                    <AddToCartIcon courses={item} instructor={instructor} />
+                    {item?.isPurchasedByUser ? (
+                      <Link href={`/courses/${item.slug}`}>
+                        <i class="fe fe-video"></i>
+                      </Link>
+                    ) : (
+                      <AddToCartIcon courses={item} instructor={instructor} />
+                    )}
                   </Col>
                   // <Col className="col-auto">
                   //   <GKTippy content="Add to Bookmarks">

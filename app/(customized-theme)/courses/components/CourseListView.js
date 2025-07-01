@@ -9,15 +9,23 @@ import CourseCard from "shared/card/CourseCard";
 // import data files
 import { AllCoursesData } from "data/slider/AllCoursesData";
 
-const CourseListView = ({ courses, instructors, cartData, isCart = false }) => {
+const CourseListView = ({
+  courses,
+  instructors,
+  cartData,
+  isCart = false,
+  watchUrl,
+}) => {
   const [Records] = useState(AllCoursesData.slice(0, 500));
   const [pageNumber, setPageNumber] = useState(0);
   const RecordsPerPage = 6;
   const pagesVisited = pageNumber * RecordsPerPage;
   const pageCount = Math.ceil(Records.length / RecordsPerPage);
+
   const changePage = ({ selected }) => {
     setPageNumber(selected);
   };
+
   const displayRecords =
     courses && !isCart
       ? courses?.courses
@@ -26,7 +34,7 @@ const CourseListView = ({ courses, instructors, cartData, isCart = false }) => {
             return (
               <Col sm={12} md={12} lg={12} key={index}>
                 <CourseCard
-                  instructor={instructors[index].instructor[0]}
+                  instructor={instructors?.[index]?.instructor[0]}
                   item={Records}
                   viewby="list"
                 />

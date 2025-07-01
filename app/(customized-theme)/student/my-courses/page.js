@@ -1,14 +1,17 @@
-"use client";
+import { API_ENDPOINT } from "helper/global";
+import { cookies } from "next/headers";
+import MyCourses from ".";
 
-import ProfileLayoutWrap from "layouts/marketing/ProfileLayoutWrap";
-import { usePathname } from "next/navigation";
+export default async function MyCourseMain() {
+  const sessionCookie = (await cookies()).get("userSessionToken");
+  const res = await fetch(API_ENDPOINT + "/courses/user", {
+    headers: {
+      "x-api-key": process.env.API_KEY,
+      Cookie: `userSessionToken=${sessionCookie?.value}`,
+    },
+  });
 
-export default function MyuCourses() {
-  const location = usePathname();
+  const courses = await res.json();
 
-  return (
-    <ProfileLayoutWrap pathpara={location}>
-      <div>MyuCourses</div>
-    </ProfileLayoutWrap>
-  );
+  return <MyCourses courses={courses ?? []} />;
 }

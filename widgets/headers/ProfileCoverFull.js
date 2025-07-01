@@ -30,7 +30,7 @@ const ProfileCoverFull = ({ dashboardData, instructor }) => {
                   <Image
                     style={{ objectFit: "cover" }}
                     src={
-                      instructor[0]?.profileImage ||
+                      // instructor[0]?.profileImage ||
                       "https://i.ibb.co.com/KzfWFxGn/187910563-10220662170840378-3981185376255859365-n.jpg"
                     }
                     alt=""
@@ -57,7 +57,7 @@ const ProfileCoverFull = ({ dashboardData, instructor }) => {
                 </div>
                 <div className="ms-3">
                   <div className="d-flex align-items-center">
-                    <h3 className="mb-0 fw-bold me-2">{instructor[0].name}</h3>
+                    <h3 className="mb-0 fw-bold me-2">{instructor[0]?.name}</h3>
                     <Badge
                       bg="secondary"
                       className="bg-light-primary text-primary"

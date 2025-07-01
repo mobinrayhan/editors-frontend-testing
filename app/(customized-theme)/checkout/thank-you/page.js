@@ -34,7 +34,11 @@ function ThankYouHomeMain() {
                 Get ready to dive into your course and start learning right
                 away. We hope you enjoy every step of the journey.
               </Card.Text>
-              <Button variant="primary" className="mt-4" href="/courses">
+              <Button
+                variant="primary"
+                className="mt-4"
+                href="/student/my-courses"
+              >
                 Go to My Courses
               </Button>
             </Card.Body>
