@@ -1,34 +1,46 @@
 export const DashboardMenu = [
   {
     id: 1,
-    title: "My Subscriptions",
-    link: "/marketing/student/subscriptions",
-    icon: "home",
+    title: "Account",
+    link: "/student/profile",
+    icon: "user",
   },
+  // {
+  //   id: 1,
+  //   title: "My Subscriptions",
+  //   link: "/marketing/student/subscriptions",
+  //   icon: "home",
+  // },
   {
     id: 2,
-    title: "Billing Info",
-    link: "/marketing/student/billing-info",
+    title: "My Courses",
+    link: "/student/my-courses",
     icon: "book",
   },
+  // {
+  //   id: 2,
+  //   title: "Billing Info",
+  //   link: "/marketing/student/billing-info",
+  //   icon: "book",
+  // },
   {
     id: 3,
-    title: "Payment",
-    link: "/marketing/student/payment",
+    title: "Support",
+    link: "/student/support",
     icon: "star",
   },
-  {
-    id: 4,
-    title: "Invoice",
-    link: "/marketing/student/invoice",
-    icon: "pie-chart",
-  },
-  {
-    id: 5,
-    title: "My Quiz Attempt",
-    link: "/marketing/student/quiz",
-    icon: "help-circle",
-  },
+  // {
+  //   id: 4,
+  //   title: "Invoice",
+  //   link: "/marketing/student/invoice",
+  //   icon: "pie-chart",
+  // },
+  // {
+  //   id: 5,
+  //   title: "My Quiz Attempt",
+  //   link: "/marketing/student/quiz",
+  //   icon: "help-circle",
+  // },
 ];
 
 export const AccountSettingsMenu = [

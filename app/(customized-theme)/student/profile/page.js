@@ -2,11 +2,11 @@
 import EditProfile from "./Index";
 
 export const metadata = {
-	title: "Profile Edit | Geeks Nextjs Template",
-}
+  title: "Profile Edit | Editors.Academy",
+};
 
 const Page = () => {
-	return (<EditProfile />);
+  return <EditProfile />;
 };
 
 export default Page;

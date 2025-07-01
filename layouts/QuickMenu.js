@@ -140,14 +140,17 @@ const QuickMenu = ({ sessionUser }) => {
               id="dropdownUser"
             >
               <div className="avatar avatar-md avatar-indicators avatar-online">
-                {/* <Image
-                width={50}
-                height={50}
-                alt="avatar"
-                src="/images/avatar/avatar-1.jpg"
-                className="rounded-circle"
-              /> */}
-                <Avatar name={user?.name} />
+                {user?.profileImage ? (
+                  <Image
+                    width={50}
+                    height={50}
+                    alt="avatar"
+                    src={user?.profileImage}
+                    className="rounded-circle"
+                  />
+                ) : (
+                  <Avatar name={user?.name} />
+                )}
               </div>
             </Dropdown.Toggle>
             <Dropdown.Menu
@@ -160,14 +163,17 @@ const QuickMenu = ({ sessionUser }) => {
                 <Link href="/student/dashboard" style={{ width: "100%" }}>
                   <div className="d-flex">
                     <div className="avatar avatar-md avatar-indicators avatar-online">
-                      {/* <Image
-                      width={50}
-                      height={50}
-                      alt="avatar"
-                      src="/images/avatar/avatar-1.jpg"
-                      className="rounded-circle"
-                    /> */}
-                      <Avatar name={user?.name} />
+                      {user?.profileImage ? (
+                        <Image
+                          width={50}
+                          height={50}
+                          alt="avatar"
+                          src={user?.profileImage}
+                          className="rounded-circle"
+                        />
+                      ) : (
+                        <Avatar name={user?.name} />
+                      )}
                     </div>
                     <div className="ms-3 lh-1">
                       <h5 className="mb-1">{user?.name}</h5>
@@ -235,20 +241,30 @@ const LETTER_COLORS = {
   Z: "bg-black text-white",
 };
 
-const Avatar = ({ name }) => {
+export const Avatar = ({
+  name,
+  width = 40,
+  height = 40,
+  isActiveAvatar = true,
+}) => {
   if (!name) return null;
 
   const firstChar = name.trim().charAt(0).toUpperCase();
   const colorClass = LETTER_COLORS[firstChar] || "bg-muted text-dark";
 
   return (
-    <div className="avatar avatar-md avatar-indicators avatar-online">
+    <div
+      className={`avatar avatar-md ${
+        isActiveAvatar ? " avatar-indicators avatar-online" : ""
+      }`}
+    >
       <div
         className={`d-flex justify-content-center align-items-center rounded-circle ${colorClass}`}
         style={{
-          width: 40,
-          height: 40,
+          width: width,
+          height: height,
           fontWeight: "bold",
+
           fontSize: "1.2rem",
           cursor: "pointer",
         }}

@@ -10,10 +10,7 @@ import { Col, Container, Nav, Navbar, Row } from "react-bootstrap";
 // import { ProfileCover } from "widgets";
 
 // import routes file
-import {
-  AccountSettingsMenu,
-  DashboardMenu,
-} from "routes/marketing/StudentDashboardMenu";
+import { DashboardMenu } from "routes/marketing/StudentDashboardMenu";
 import ProfileCover from "widgets/headers/ProfileCover";
 
 const ProfileLayout = (props) => {
@@ -23,23 +20,10 @@ const ProfileLayout = (props) => {
     document.body.className = "bg-light";
   });
 
-  const dashboardData = {
-    avatar: "/images/avatar/avatar-3.jpg",
-    name: "Stella Flores",
-    username: "@stellaflores",
-    linkname: "Go to Dashboard ",
-    link: "/marketing/student/dashboard/",
-    verified: true,
-    outlinebutton: true,
-    level: "Beginner",
-    buttonText: "Dashboard",
-  };
-
   return (
     <section className="pt-5 pb-5">
       <Container>
-        {/* User info */}
-        <ProfileCover dashboardData={dashboardData} />
+        <ProfileCover />
 
         {/* Content */}
         <Row className="mt-0 mt-md-4">
@@ -77,21 +61,6 @@ const ProfileLayout = (props) => {
                     SUBSCRIPTION
                   </Nav.Item>
                   {DashboardMenu.map((item, index) => (
-                    <Nav.Item
-                      as="li"
-                      key={index}
-                      className={`${item.link === location ? "active" : ""}`}
-                    >
-                      <Link href={item.link} className="nav-link">
-                        <i className={`fe fe-${item.icon} nav-icon`}></i>
-                        {item.title}
-                      </Link>
-                    </Nav.Item>
-                  ))}
-                  <Nav.Item className="navbar-header mt-4" as="li">
-                    ACCOUNT SETTINGS
-                  </Nav.Item>
-                  {AccountSettingsMenu.map((item, index) => (
                     <Nav.Item
                       as="li"
                       key={index}

@@ -1,24 +1,104 @@
 "use client";
-
-// import node module libraries
-import { Card, Form, Row, Col, Button, Image } from "react-bootstrap";
-import { usePathname } from "next/navigation";
-
-// import widget/custom components
-import { FlatPickr, FormSelect } from "widgets";
+import { getUserFromClientCookie } from "helper/auth";
+import { Avatar } from "layouts/QuickMenu";
+import { useEffect, useRef, useState } from "react";
+import { Button, Card, Col, Form, Image, Row, Spinner } from "react-bootstrap";
+import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 
 const EditProfile = () => {
-  const location = usePathname();
-  const statelist = [
-    { value: "1", label: "Gujarat" },
-    { value: "2", label: "Rajasthan" },
-    { value: "3", label: "Maharashtra" },
-  ];
-  const countrylist = [
-    { value: "1", label: "India" },
-    { value: "2", label: "UK" },
-    { value: "3", label: "USA" },
-  ];
+  const [user, setUser] = useState(null);
+  const [imagePreview, setImagePreview] = useState();
+  const [loading, setLoading] = useState(false);
+  const [successMsg, setSuccessMsg] = useState(null);
+  const [errorMsg, setErrorMsg] = useState(null);
+  const imageRef = useRef();
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    watch,
+    setValue,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      name: "",
+      email: "",
+      mobileNumber: "",
+      password: "",
+      confirmPassword: "",
+      profileImage: null,
+    },
+  });
+
+  useEffect(() => {
+    getUserFromClientCookie().then(({ user }) => {
+      setUser(user);
+      if (user) {
+        reset({
+          name: user?.name || "",
+          email: user?.email || "",
+          mobileNumber: user?.mobileNumber || "",
+          password: "",
+          confirmPassword: "",
+          profileImage: null,
+        });
+        setImagePreview(user?.profileImage || "");
+      }
+    });
+  }, [reset]);
+
+  const onSubmit = async (data) => {
+    setSuccessMsg(null);
+    setErrorMsg(null);
+
+    if (data.password && data.password !== data.confirmPassword) {
+      setErrorMsg("Passwords do not match.");
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const formData = new FormData();
+      formData.append("name", data.name);
+      formData.append("email", data.email);
+      formData.append("mobileNumber", data.mobileNumber);
+      if (data.confirmPassword)
+        formData.append("confirmPassword", data.confirmPassword);
+      if (data.password) formData.append("password", data.password);
+      if (data.profileImage) formData.append("profileImage", data.profileImage);
+
+      const res = await fetch("/api/update-profile", {
+        method: "POST",
+        body: formData,
+      });
+
+      const result = await res.json();
+
+      if (!res.ok) throw new Error(result.message || "Update failed");
+
+      setSuccessMsg("Profile updated successfully.");
+      toast.success("Profile updated successfully.");
+    } catch (error) {
+      toast.error(error.message || "Something went wrong.");
+      setErrorMsg(error.message || "Something went wrong.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setValue("profileImage", file);
+      setImagePreview(URL.createObjectURL(file));
+    }
+  };
+
+  const password = watch("password");
+  const confirmPassword = watch("confirmPassword");
+
   return (
     <Card className="border-0">
       <Card.Header>
@@ -30,127 +110,162 @@ const EditProfile = () => {
         </div>
       </Card.Header>
       <Card.Body>
-        <div className="d-lg-flex align-items-center justify-content-between">
-          <div className="d-flex align-items-center mb-4 mb-lg-0">
-            <Image
-              src={
-                location.includes("student")
-                  ? "/images/avatar/avatar-3.jpg"
-                  : "/images/avatar/avatar-1.jpg"
-              }
-              id="img-uploaded"
-              className="avatar-xl rounded-circle"
-              alt=""
-            />
+        <div className="d-lg-flex align-items-center justify-content-between mb-4">
+          <div className="d-flex align-items-center">
+            {!imagePreview ? (
+              <div style={{ width: "80px", height: "80px" }}>
+                <Avatar
+                  name={user?.name}
+                  width={73}
+                  height={73}
+                  isActiveAvatar={false}
+                />
+              </div>
+            ) : (
+              <Image
+                src={imagePreview}
+                className="avatar-xl rounded-circle"
+                alt="User Avatar"
+                style={{ width: "80px", height: "80px", objectFit: "cover" }}
+              />
+            )}
             <div className="ms-3">
-              <h4 className="mb-0">Your avatar</h4>
-              <p className="mb-0">
-                PNG or JPG no bigger than 800px wide and tall.
-              </p>
+              <h4 className="mb-0">{user?.name}</h4>
+              <Form.Control
+                type="file"
+                accept="image/*"
+                onChange={handleImageChange}
+                ref={imageRef}
+                disabled={loading}
+              />
+              <small className="text-muted">
+                PNG or JPG, no bigger than 800px wide and tall.
+              </small>
             </div>
           </div>
-          <div>
-            <Button variant="outline-secondary" size="sm">
-              Update
-            </Button>{" "}
-            <Button variant="outline-danger" size="sm">
-              Delete
-            </Button>
-          </div>
         </div>
-        <hr className="my-5" />
-        <div>
-          <h4 className="mb-0">Personal Details</h4>
-          <p className="mb-4">Edit your personal information and address.</p>
-          {/* Form */}
-          <Form>
-            <Row>
-              {/* First name */}
-              <Col md={6} sm={12} className="mb-3">
-                <Form.Group className="mb-3" controlId="formFirstName">
-                  <Form.Label>First Name</Form.Label>
-                  <Form.Control type="text" placeholder="First Name" required />
-                </Form.Group>
-              </Col>
 
-              {/* Last name */}
-              <Col md={6} sm={12} className="mb-3">
-                <Form.Group className="mb-3" controlId="formLastName">
-                  <Form.Label>Last Name</Form.Label>
-                  <Form.Control type="text" placeholder="Last Name" required />
-                </Form.Group>
-              </Col>
+        <hr className="my-4" />
 
-              {/* Phone */}
-              <Col md={6} sm={12} className="mb-3">
-                <Form.Group className="mb-3" controlId="formPhone">
-                  <Form.Label>Phone</Form.Label>
-                  <Form.Control type="text" placeholder="Phone" required />
-                </Form.Group>
-              </Col>
+        <Form onSubmit={handleSubmit(onSubmit)}>
+          <Row>
+            {/* Name */}
+            <Col md={6} sm={12} className="mb-3">
+              <Form.Group controlId="formName">
+                <Form.Label>Full Name</Form.Label>
+                <Form.Control
+                  type="text"
+                  disabled={loading}
+                  {...register("name", { required: "Name is required" })}
+                />
+                {errors.name && (
+                  <small className="text-danger">{errors.name.message}</small>
+                )}
+              </Form.Group>
+            </Col>
 
-              {/* Birthday */}
-              <Col md={6} sm={12} className="mb-3">
-                <Form.Group className="mb-3" controlId="formBirthday">
-                  <Form.Label>Birthday</Form.Label>
-                  <Form.Control
-                    as={FlatPickr}
-                    value={""}
-                    placeholder="Date of Birth"
-                    required
-                  />
-                </Form.Group>
-              </Col>
+            {/* Email */}
+            <Col md={6} sm={12} className="mb-3">
+              <Form.Group controlId="formEmail">
+                <Form.Label>Email</Form.Label>
+                <Form.Control
+                  type="email"
+                  disabled={loading}
+                  {...register("email", {
+                    required: "Email is required",
+                    pattern: {
+                      value: /^\S+@\S+$/i,
+                      message: "Invalid email format",
+                    },
+                  })}
+                />
+                {errors.email && (
+                  <small className="text-danger">{errors.email.message}</small>
+                )}
+              </Form.Group>
+            </Col>
 
-              {/* Address Line 1 */}
-              <Col md={6} sm={12} className="mb-3">
-                <Form.Group className="mb-3" controlId="formBirthday">
-                  <Form.Label>Address Line 1</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Address Line 1"
-                    required
-                  />
-                </Form.Group>
-              </Col>
+            {/* Phone Number */}
+            <Col md={6} sm={12} className="mb-3">
+              <Form.Group controlId="formPhone">
+                <Form.Label>Mobile Number</Form.Label>
+                <Form.Control
+                  type="text"
+                  disabled={loading}
+                  {...register("mobileNumber", {
+                    required: "Mobile number is required",
+                    pattern: {
+                      value: /^(?:\+?88)?01[3-9]\d{8}$/,
+                      message: "বাংলাদেশি মোবাইল নাম্বার সঠিক নয়",
+                    },
+                  })}
+                />
+                {errors.mobileNumber && (
+                  <small className="text-danger">
+                    {errors.mobileNumber.message}
+                  </small>
+                )}
+              </Form.Group>
+            </Col>
 
-              {/* Address Line 2 */}
-              <Col md={6} sm={12} className="mb-3">
-                <Form.Group className="mb-3" controlId="formBirthday">
-                  <Form.Label>Address Line 2</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Address Line 2"
-                    required
-                  />
-                </Form.Group>
-              </Col>
+            {/* Password */}
+            <Col md={6} sm={12} className="mb-3">
+              <Form.Group controlId="formPassword">
+                <Form.Label>New Password</Form.Label>
+                <Form.Control
+                  type="password"
+                  autoComplete="new-password"
+                  disabled={loading}
+                  {...register("password", {
+                    minLength: {
+                      value: 6,
+                      message: "Password must be at least 6 characters",
+                    },
+                  })}
+                />
+                {errors.password && (
+                  <small className="text-danger">
+                    {errors.password.message}
+                  </small>
+                )}
+              </Form.Group>
+            </Col>
 
-              {/* State */}
-              <Col md={6} sm={12} className="mb-3">
-                <Form.Group className="mb-3" controlId="formState">
-                  <Form.Label>State</Form.Label>
-                  <FormSelect options={statelist} />
-                </Form.Group>
-              </Col>
+            {/* Confirm Password */}
+            <Col md={6} sm={12} className="mb-3">
+              <Form.Group controlId="formConfirmPassword">
+                <Form.Label>Confirm Password</Form.Label>
+                <Form.Control
+                  type="password"
+                  autoComplete="new-password"
+                  disabled={loading}
+                  {...register("confirmPassword")}
+                />
+                {password &&
+                  confirmPassword &&
+                  password !== confirmPassword && (
+                    <small className="text-danger">
+                      Passwords do not match
+                    </small>
+                  )}
+              </Form.Group>
+            </Col>
 
-              {/* Country */}
-              <Col md={6} sm={12} className="mb-3">
-                <Form.Group className="mb-3" controlId="formState">
-                  <Form.Label>Country</Form.Label>
-                  <FormSelect options={countrylist} />
-                </Form.Group>
-              </Col>
-
-              {/* Button */}
-              <Col sm={12} md={12}>
-                <Button variant="primary" type="submit">
-                  Update Profile
-                </Button>
-              </Col>
-            </Row>
-          </Form>
-        </div>
+            {/* Submit */}
+            <Col sm={12}>
+              <Button type="submit" variant="primary" disabled={loading}>
+                {loading ? (
+                  <>
+                    <Spinner animation="border" size="sm" className="me-2" />
+                    Updating...
+                  </>
+                ) : (
+                  "Update Profile"
+                )}
+              </Button>
+            </Col>
+          </Row>
+        </Form>
       </Card.Body>
     </Card>
   );
