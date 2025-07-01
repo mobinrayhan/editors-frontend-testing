@@ -2,14 +2,16 @@
 import { getUserFromClientCookie } from "helper/auth";
 import { Avatar } from "layouts/QuickMenu";
 import { useEffect, useRef, useState } from "react";
-import { Button, Card, Col, Form, Image, Row } from "react-bootstrap";
+import { Button, Card, Col, Form, Image, Row, Spinner } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 
 const EditProfile = () => {
   const [user, setUser] = useState(null);
-  const [imagePreview, setImagePreview] = useState(
-    "/images/avatar/avatar-1.jpg"
-  );
+  const [imagePreview, setImagePreview] = useState();
+  const [loading, setLoading] = useState(false);
+  const [successMsg, setSuccessMsg] = useState(null);
+  const [errorMsg, setErrorMsg] = useState(null);
   const imageRef = useRef();
 
   const {
@@ -42,16 +44,48 @@ const EditProfile = () => {
           confirmPassword: "",
           profileImage: null,
         });
-        setImagePreview(user?.profileImage);
+        setImagePreview(user?.profileImage || "");
       }
     });
   }, [reset]);
 
-  const onSubmit = (data) => {
-    if (data.password && data.password !== data.confirmPassword) return;
+  const onSubmit = async (data) => {
+    setSuccessMsg(null);
+    setErrorMsg(null);
 
-    console.log("Submitted Data:", data);
-    // TODO: Submit to backend
+    if (data.password && data.password !== data.confirmPassword) {
+      setErrorMsg("Passwords do not match.");
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const formData = new FormData();
+      formData.append("name", data.name);
+      formData.append("email", data.email);
+      formData.append("mobileNumber", data.mobileNumber);
+      if (data.confirmPassword)
+        formData.append("confirmPassword", data.confirmPassword);
+      if (data.password) formData.append("password", data.password);
+      if (data.profileImage) formData.append("profileImage", data.profileImage);
+
+      const res = await fetch("/api/update-profile", {
+        method: "POST",
+        body: formData,
+      });
+
+      const result = await res.json();
+
+      if (!res.ok) throw new Error(result.message || "Update failed");
+
+      setSuccessMsg("Profile updated successfully.");
+      toast.success("Profile updated successfully.");
+    } catch (error) {
+      toast.error(error.message || "Something went wrong.");
+      setErrorMsg(error.message || "Something went wrong.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleImageChange = (e) => {
@@ -76,12 +110,10 @@ const EditProfile = () => {
         </div>
       </Card.Header>
       <Card.Body>
-        <div className="d-lg-flex align-items-center justify-content-between">
-          <div className="d-flex align-items-center mb-4 mb-lg-0">
-            {!user?.profileImage ? (
-              <div
-                style={{ width: "80px", height: "80px", objectFit: "cover" }}
-              >
+        <div className="d-lg-flex align-items-center justify-content-between mb-4">
+          <div className="d-flex align-items-center">
+            {!imagePreview ? (
+              <div style={{ width: "80px", height: "80px" }}>
                 <Avatar
                   name={user?.name}
                   width={73}
@@ -104,6 +136,7 @@ const EditProfile = () => {
                 accept="image/*"
                 onChange={handleImageChange}
                 ref={imageRef}
+                disabled={loading}
               />
               <small className="text-muted">
                 PNG or JPG, no bigger than 800px wide and tall.
@@ -112,7 +145,7 @@ const EditProfile = () => {
           </div>
         </div>
 
-        <hr className="my-5" />
+        <hr className="my-4" />
 
         <Form onSubmit={handleSubmit(onSubmit)}>
           <Row>
@@ -122,6 +155,7 @@ const EditProfile = () => {
                 <Form.Label>Full Name</Form.Label>
                 <Form.Control
                   type="text"
+                  disabled={loading}
                   {...register("name", { required: "Name is required" })}
                 />
                 {errors.name && (
@@ -136,6 +170,7 @@ const EditProfile = () => {
                 <Form.Label>Email</Form.Label>
                 <Form.Control
                   type="email"
+                  disabled={loading}
                   {...register("email", {
                     required: "Email is required",
                     pattern: {
@@ -150,12 +185,13 @@ const EditProfile = () => {
               </Form.Group>
             </Col>
 
-            {/* Phone Number (Bangladesh validation) */}
+            {/* Phone Number */}
             <Col md={6} sm={12} className="mb-3">
               <Form.Group controlId="formPhone">
                 <Form.Label>Mobile Number</Form.Label>
                 <Form.Control
                   type="text"
+                  disabled={loading}
                   {...register("mobileNumber", {
                     required: "Mobile number is required",
                     pattern: {
@@ -179,6 +215,7 @@ const EditProfile = () => {
                 <Form.Control
                   type="password"
                   autoComplete="new-password"
+                  disabled={loading}
                   {...register("password", {
                     minLength: {
                       value: 6,
@@ -201,6 +238,7 @@ const EditProfile = () => {
                 <Form.Control
                   type="password"
                   autoComplete="new-password"
+                  disabled={loading}
                   {...register("confirmPassword")}
                 />
                 {password &&
@@ -215,8 +253,15 @@ const EditProfile = () => {
 
             {/* Submit */}
             <Col sm={12}>
-              <Button type="submit" variant="primary">
-                Update Profile
+              <Button type="submit" variant="primary" disabled={loading}>
+                {loading ? (
+                  <>
+                    <Spinner animation="border" size="sm" className="me-2" />
+                    Updating...
+                  </>
+                ) : (
+                  "Update Profile"
+                )}
               </Button>
             </Col>
           </Row>
