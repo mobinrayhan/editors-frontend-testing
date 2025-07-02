@@ -7,6 +7,7 @@ import CourseSlider from "widgets/courses/CourseSlider";
 import FirstFreeClass from "widgets/courses/FirstFreeClass";
 import HeroHeader from "widgets/hero-sections/HeroHeader";
 import StudentsReview from "widgets/home/StudentsReview";
+import SubscribeUs from "widgets/home/SubscribeUs";
 import WhyChooseUs from "widgets/home/WhyChooseUs";
 
 const DefaultHome = async () => {
@@ -59,6 +60,7 @@ const DefaultHome = async () => {
       <WhyChooseUs />
       <StudentsReview />
       <FirstFreeClass />
+      <SubscribeUs />
     </main>
   );
 };
