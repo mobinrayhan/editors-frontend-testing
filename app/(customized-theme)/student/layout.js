@@ -17,8 +17,8 @@ export default async function RootLayout({ children }) {
     <Fragment>
       <NavbarDefault sessionUser={sessionUser} />
       <main>{children}</main>
-      <Footer1 bgColor="bg-light" />
-      <Footer bgColor="bg-light" />
+      <Footer1 bgColor="bg-white" />
+      <Footer bgColor="bg-white" />
     </Fragment>
   );
 }
