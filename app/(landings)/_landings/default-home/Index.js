@@ -5,6 +5,7 @@ import getFetch from "helper/getFetch";
 import { API_ENDPOINT } from "helper/global";
 import CourseSlider from "widgets/courses/CourseSlider";
 import HeroHeader from "widgets/hero-sections/HeroHeader";
+import StudentsReview from "widgets/home/StudentsReview";
 import WhyChooseUs from "widgets/home/WhyChooseUs";
 
 const DefaultHome = async () => {
@@ -55,6 +56,7 @@ const DefaultHome = async () => {
         </Container>
       </section>
       <WhyChooseUs />
+      <StudentsReview />
     </main>
   );
 };
