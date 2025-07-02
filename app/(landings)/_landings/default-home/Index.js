@@ -5,7 +5,7 @@ import getFetch from "helper/getFetch";
 import { API_ENDPOINT } from "helper/global";
 import CourseSlider from "widgets/courses/CourseSlider";
 import HeroHeader from "widgets/hero-sections/HeroHeader";
-import FeaturesList from "widgets/home/FeaturesList";
+import WhyChooseUs from "widgets/home/WhyChooseUs";
 
 const DefaultHome = async () => {
   const courses = await getFetch(`${API_ENDPOINT}/courses`);
@@ -31,12 +31,16 @@ const DefaultHome = async () => {
         buttonText2="Are You Instructor?"
         buttonLink2="/authentication/sign-in/"
       />
-      <FeaturesList />
-      <section className="pt-lg-12 pb-lg-3 pt-8 pb-6">
+      {/* <FeaturesList /> */}
+      <section className="pt-10 pb-10 bg-light">
         <Container>
           <Row className="mb-4">
             <Col>
-              <h2 className="mb-0 mx-2">Recommended to you</h2>
+              <h1 className="mb-0 mx-2 text-center">আমাদের কোর্স সমূহ</h1>
+              <p className="text-center ">
+                আপনার দক্ষতার স্তর অনুযায়ী আমাদের সম্পূর্ণ ভিডিও এডিটিং
+                কোর্সগুলো থেকে পছন্দ করুন।
+              </p>
             </Col>
           </Row>
           <div className="position-relative">
@@ -50,30 +54,7 @@ const DefaultHome = async () => {
           </div>
         </Container>
       </section>
-      {/* <section className="pb-lg-3 pt-lg-3">
-        <Container>
-          <Row className="mb-4">
-            <Col>
-              <h2 className="mb-0 mx-2">Most Popular</h2>
-            </Col>
-          </Row>
-          <div className="position-relative">
-            <CourseSlider popular={true} />
-          </div>
-        </Container>
-      </section>
-      <section className="pb-lg-8 pt-lg-3 py-6">
-        <Container>
-          <Row className="mb-4">
-            <Col>
-              <h2 className="mb-0 mx-2">Trending</h2>
-            </Col>
-          </Row>
-          <div className="position-relative">
-            <CourseSlider trending={true} />
-          </div>
-        </Container>
-      </section> */}
+      <WhyChooseUs />
     </main>
   );
 };

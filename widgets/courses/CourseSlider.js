@@ -55,7 +55,7 @@ const CourseSlider = ({
           <ErrorPage />
         ) : (
           courses?.courses?.map((item, index) => (
-            <Col lg={4} md={6} sm={12} key={item.id}>
+            <Col lg={4} md={6} sm={12} xl={3} key={item.id}>
               <div className="item px-md-1">
                 <CourseCard
                   key={index}

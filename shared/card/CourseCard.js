@@ -51,7 +51,9 @@ const CourseCard = ({
           <Card.Body>
             <h3 className="h4 mb-2 text-truncate-line-2 ">
               {/* <Link href="#" className="text-inherit"> */}
-              {item?.title}
+              {item?.title?.length > 30
+                ? item?.title?.slice(0, 30) + " ..."
+                : item?.title}
               {/* </Link> */}
             </h3>
             <ListGroup as="ul" bsPrefix="list-inline" className="mb-3">
