@@ -1,30 +1,25 @@
-'use client'
+"use client";
 
 // import node module libraries
-import { Fragment, useEffect } from 'react';
+import { Fragment, useEffect } from "react";
 
 // import layouts
-import NavbarDefault from 'layouts/marketing/navbars/NavbarDefault';
-import Footer from 'layouts/marketing/footers/Footer';
+import Footer from "layouts/marketing/footers/Footer";
+import NavbarDefault from "layouts/marketing/navbars/NavbarDefault";
 
 export default function DefaultHomeLayout({ children }) {
-    useEffect(() => {
-        document.body.className = 'bg-light';
-    });
-    return (
-        <Fragment>
+  useEffect(() => {
+    document.body.className = "bg-light";
+  });
+  return (
+    <Fragment>
+      {/* Default Navbar */}
+      <NavbarDefault login />
 
-            {/* Default Navbar */}
-            <NavbarDefault login />
+      <main>{children}</main>
 
-            <main>
-                {children}
-            </main>
-
-            {/* Footer section */}
-            <Footer bgColor="bg-light" />
-
-        </Fragment>
-    )
+      {/* Footer section */}
+      <Footer bgColor="bg-light" />
+    </Fragment>
+  );
 }
-
