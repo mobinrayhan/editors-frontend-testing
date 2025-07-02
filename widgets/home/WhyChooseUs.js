@@ -1,26 +1,55 @@
 import { Col, Container, Row } from "react-bootstrap";
+import { Award, CalendarEvent, Person, Suitcase } from "react-bootstrap-icons";
 
 const ourPromises = [
   {
-    icon: "",
+    icon: (
+      <Person
+        size={28}
+        style={{
+          color: "var(--geeks-primary)",
+        }}
+      />
+    ),
     title: "অভিজ্ঞ প্রশিক্ষক",
     description:
       "৮ বছরের বেশি সময় ধরে শেখানোর অভিজ্ঞতা, সঙ্গে রয়েছে কন্টেন্ট ক্রিয়েশনে দক্ষতা ও রিয়েল লাইফ কাজের অভিজ্ঞতা। সরাসরি ৫,০০০+ মানুষকে প্রশিক্ষণদেয়ার অভিজ্ঞতার পাশাপাশি রয়েছে  ইউটিউবে ১ লক্ষ+দেশি-বিদেশি ছাত্রছাত্রী! ",
   },
   {
-    icon: "",
+    icon: (
+      <Suitcase
+        size={28}
+        style={{
+          color: "var(--geeks-primary)",
+        }}
+      />
+    ),
     title: "বাস্তব প্রজেক্ট ও রিসোর্স",
     description:
       "হাতে-কলমে কাজ শিখুন ডাউনলোডযোগ্য অ্যাসেট, টেমপ্লেট এবং বাস্তব ক্লায়েন্ট প্রজেক্টের উদাহরণের মাধ্যমে।",
   },
   {
-    icon: "",
+    icon: (
+      <CalendarEvent
+        size={28}
+        style={{
+          color: "var(--geeks-primary)",
+        }}
+      />
+    ),
     title: "আজীবন অ্যাক্সেস ও আপডেট",
     description:
       "একবার কোর্সে ভর্তি হলে আপনি আজীবন এই কোর্সগুলো ব্যবহার করতে পারবেন, সঙ্গে পাবেন নিয়মিত আপডেট ও নতুন কনটেন্ট।",
   },
   {
-    icon: "",
+    icon: (
+      <Award
+        size={28}
+        style={{
+          color: "var(--geeks-primary)",
+        }}
+      />
+    ),
     title: "সার্টিফিকেট ও চাকরির সহায়তা",
     description:
       "কোর্স শেষ করে অর্জন করুন সার্টিফিকেট এবং প্রথম ভিডিও এডিটিং চাকরি পাওয়ার জন্য পান ক্যারিয়ার গাইডলাইন ও সহায়তা।",
