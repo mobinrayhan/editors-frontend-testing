@@ -28,10 +28,10 @@ const DefaultHome = async () => {
     <main>
       <HeroHeader
         title="Unlock Your Creative Potential with Editors Academy"
-        description="Join a dynamic learning hub where industry experts guide you through hands-on courses in editing, filmmaking, and digital content creation — built for modern learners, entrepreneurs, and creatives."
-        buttonText1="Browse Courses"
+        description="এনরোল করুন জেমস প্রিন্সের Premiere Pro, After Effects, CapCut ও DaVinci Resolve কোর্সে"
+        buttonText1="সকল কোর্স"
         buttonLink1="/courses"
-        buttonText2="Are You Instructor?"
+        buttonText2="ইন্ট্রো দেখুন"
         buttonLink2="/authentication/sign-in/"
       />
       {/* <FeaturesList /> */}

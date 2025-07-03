@@ -35,10 +35,10 @@ const ForgetPassword = () => {
               <Link href="/">
                 <Image
                   src={settings.theme.footer}
-                  className="mb-4"
-                  alt=""
-                  width={50}
-                  height={50}
+                  alt={"Editors Academy Logo"}
+                  style={{ cursor: "pointer", objectFit: "contain" }}
+                  height={40}
+                  width={150}
                 />
               </Link>
               <h1 className="mb-1 fw-bold">Forgot Password</h1>

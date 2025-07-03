@@ -1,6 +1,7 @@
 "use client";
 
 import { createUser } from "actions/userAction";
+import { settings } from "app.config";
 import Image from "next/image";
 // import node module libraries
 import Link from "next/link";
@@ -37,11 +38,11 @@ const SignUp = () => {
             <div className="mb-4">
               <Link href="/">
                 <Image
-                  src="/images/brand/logo/logo-icon.svg"
-                  className="mb-4"
-                  alt=""
-                  width={50}
-                  height={50}
+                  alt={"Editors Academy Logo"}
+                  src={settings.theme.logo}
+                  style={{ cursor: "pointer", objectFit: "contain" }}
+                  height={40}
+                  width={150}
                 />
               </Link>
               <h1 className="mb-1 fw-bold">Sign up</h1>

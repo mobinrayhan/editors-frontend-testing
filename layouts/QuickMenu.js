@@ -89,7 +89,7 @@ const QuickMenu = ({ sessionUser }) => {
             as="a"
             bsPrefix=" "
             id="dropdownNotification"
-            className="text-dark icon-notifications me-lg-1  btn btn-light btn-icon rounded-circle indicator indicator-primary text-muted"
+            className="text-dark icon-notifications me-lg-1  btn btn-light btn-icon rounded-circle indicator indicator-primary text-muted bg-white"
           >
             <i className="fe fe-shopping-cart"></i>
           </Dropdown.Toggle>
@@ -106,11 +106,6 @@ const QuickMenu = ({ sessionUser }) => {
                 <>
                   <div className="border-bottom px-3 pt-0 pb-3 d-flex justify-content-between align-items-end">
                     <span className="h4 mb-0">Cart</span>
-                    {/* <Link href="/" className="text-muted">
-                  <span className="align-middle">
-                    <i className="fe fe-settings me-1"></i>
-                  </span>
-                </Link> */}
                   </div>
                   <Cart />
                   <div className="border-top px-3 pt-3 pb-3 d-flex justify-content-between align-items-center">

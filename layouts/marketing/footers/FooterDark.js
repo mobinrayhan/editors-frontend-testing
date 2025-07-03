@@ -23,10 +23,11 @@ const FooterDark = () => {
             <div className="d-flex flex-column gap-4">
               <div>
                 <Image
-                  width={50}
-                  height={50}
+                  alt={"Editors Academy Logo"}
+                  style={{ cursor: "pointer", objectFit: "contain" }}
+                  height={40}
+                  width={150}
                   src={settings.theme.footer}
-                  alt={settings.app.name}
                 />
               </div>
               <div>
@@ -67,7 +68,8 @@ const FooterDark = () => {
             </div>
           </Col>
           {MentorFooterRoutes.map((item, index) => {
-            return item?.menuitem === "COMPANY" ? null : (
+            return item?.menuitem === "COMPANY" ||
+              item?.menuitem === "Quick Links" ? null : (
               <Col key={index} lg={2} md={3} sm={6}>
                 <div className="d-flex flex-column gap-2">
                   <h5 className="fw-bold  text-uppercase mb-0">
