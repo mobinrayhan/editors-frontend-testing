@@ -42,7 +42,7 @@ const NavbarDefault = ({ sessionUser = false }) => {
         onToggle={(collapsed) => setExpandedMenu(collapsed)}
         expanded={expandedMenu}
         expand="lg"
-        className="navbar p-2 navbar-default py-2"
+        className="navbar p-2 navbar-default py-2 bg-light"
       >
         <Container fluid className="px-0 ps-2">
           <Navbar.Brand
