@@ -45,22 +45,26 @@ const NavbarDefault = ({ sessionUser = false }) => {
         className="navbar p-2 navbar-default py-2 bg-light"
       >
         <Container fluid className="px-0 ps-2">
-          <Navbar.Brand
+          <div
             className={`d-flex  ${
               ""
               // sessionUser ? "w-lg-100" : "nav-w-80"
             }  align-items-center`}
+            style={{
+              marginRight: "1rem",
+              paddingBottom: "1rem",
+            }}
           >
-            <Link href="/">
+            <Link href="/" className="position-relative d-block">
               <Image
-                style={{ cursor: "pointer" }}
                 src={settings.theme.logo}
-                alt={settings.app.name}
-                width={90}
-                height={45}
+                alt={"Editors Academy Logo"}
+                style={{ cursor: "pointer", objectFit: "contain" }}
+                height={40}
+                width={150}
               />
             </Link>
-          </Navbar.Brand>
+          </div>
           {hasMounted ? (
             <div
               className={`navbar-nav navbar-right-wrap ms-auto d-lg-none nav-top-wrap ${

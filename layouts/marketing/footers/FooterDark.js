@@ -23,10 +23,11 @@ const FooterDark = () => {
             <div className="d-flex flex-column gap-4">
               <div>
                 <Image
-                  width={50}
-                  height={50}
+                  alt={"Editors Academy Logo"}
+                  style={{ cursor: "pointer", objectFit: "contain" }}
+                  height={40}
+                  width={150}
                   src={settings.theme.footer}
-                  alt={settings.app.name}
                 />
               </div>
               <div>

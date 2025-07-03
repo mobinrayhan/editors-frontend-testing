@@ -40,11 +40,11 @@ const SignIn = () => {
             <div className="mb-4">
               <Link href="/">
                 <Image
-                  width={50}
-                  height={50}
                   src={settings.theme.footer}
-                  className="mb-4"
-                  alt=""
+                  alt={"Editors Academy Logo"}
+                  style={{ cursor: "pointer", objectFit: "contain" }}
+                  height={40}
+                  width={150}
                 />
               </Link>
               <h1 className="mb-1 fw-bold">Sign in</h1>
