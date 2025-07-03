@@ -145,40 +145,6 @@ const NavbarDefault = ({ sessionUser = false }) => {
                   </Form>
                 )}
 
-                <Nav className="align-items-center d-lg-flex d-none">
-                  {NavbarDefaultRoutes.map((item, index) => {
-                    if (item?.children?.length === 0) {
-                      console.log(NavbarDefaultRoutes, "FROM HERE");
-
-                      return (
-                        <Link
-                          key={index}
-                          href={item.link}
-                          style={{
-                            paddingTop: "5px",
-                            marginRight: "10px",
-                          }}
-                          className={`${
-                            item.link === pathName ? "text-blue " : "text-dark"
-                          }`}
-                        >
-                          {item.menuitem}
-                        </Link>
-                      );
-                    } else if (hasMounted) {
-                      return (
-                        <NavDropdownMain
-                          item={item}
-                          key={index}
-                          onClick={(value) => setExpandedMenu(value)}
-                        />
-                      );
-                    } else {
-                      return null;
-                    }
-                  })}
-                </Nav>
-
                 {!sessionUser && <QuickMenu />}
                 <span
                   className={
@@ -229,26 +195,22 @@ const NavbarDefault = ({ sessionUser = false }) => {
                     <Nav className="align-items-center d-flex">
                       {NavbarDefaultRoutes.map((item, index) => {
                         if (item?.children?.length === 0) {
-                          console.log(NavbarDefaultRoutes, "FROM HERE");
-
                           return (
-                            "Hello" || (
-                              <Link
-                                key={index}
-                                href={item.link}
-                                style={{
-                                  paddingTop: "5px",
-                                  marginRight: "10px",
-                                }}
-                                className={`${
-                                  item.link === pathName
-                                    ? "text-blue "
-                                    : "text-dark"
-                                }`}
-                              >
-                                {item.menuitem}
-                              </Link>
-                            )
+                            <Link
+                              key={index}
+                              href={item.link}
+                              style={{
+                                paddingTop: "5px",
+                                marginRight: "10px",
+                              }}
+                              className={`${
+                                item.link === pathName
+                                  ? "text-blue "
+                                  : "text-dark"
+                              }`}
+                            >
+                              {item.menuitem}
+                            </Link>
                           );
                         } else if (hasMounted) {
                           return (

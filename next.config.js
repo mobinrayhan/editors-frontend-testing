@@ -8,13 +8,13 @@ const { PHASE_DEVELOPMENT_SERVER } = require("next/constants");
 module.exports = (phase) => {
   const isDev = phase === PHASE_DEVELOPMENT_SERVER;
 
-  const API_LINK = isDev
-    ? "http://localhost:5006"
-    : "https://api.editors.academy";
-
   // const API_LINK = isDev
-  //   ? "https://api.editors.academy"
-  //   : "http://localhost:5006";
+  //   ? "http://localhost:5006"
+  //   : "https://api.editors.academy";
+
+  const API_LINK = isDev
+    ? "https://api.editors.academy"
+    : "http://localhost:5006";
 
   return {
     reactStrictMode: true,
