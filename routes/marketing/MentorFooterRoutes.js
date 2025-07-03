@@ -80,32 +80,33 @@ const MentorFooterRoutes = [
     ],
   },
 
-  // {
-  //   id: uuid(),
-  //   menuitem: "Quick Links",
-  //   children: [
-  //     {
-  //       id: uuid(),
-  //       menuitem: "Home",
-  //       link: "/",
-  //     },
-  //     {
-  //       id: uuid(),
-  //       menuitem: "Courses",
-  //       link: "/courses",
-  //     },
-  //     // {
-  //     //   id: uuid(),
-  //     //   menuitem: "Dashboard",
-  //     //   link: "/student/dashboard",
-  //     // },
-  //     {
-  //       id: uuid(),
-  //       menuitem: "Contact",
-  //       link: "/contact",
-  //     },
-  //   ],
-  // },
+  {
+    id: uuid(),
+    menuitem: "Quick Links",
+    children: [
+      {
+        id: uuid(),
+        menuitem: "Home",
+        link: "/",
+      },
+      {
+        id: uuid(),
+        menuitem: "Courses",
+        link: "/courses",
+      },
+      // {
+      //   id: uuid(),
+      //   menuitem: "Dashboard",
+      //   link: "/student/dashboard",
+      // },
+      {
+        id: uuid(),
+        menuitem: "Contact",
+        link: "/contact",
+      },
+    ],
+  },
+
   // {
   // 	id: uuid(),
   // 	menuitem: 'RESOURCES',

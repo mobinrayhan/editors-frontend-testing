@@ -67,7 +67,8 @@ const FooterDark = () => {
             </div>
           </Col>
           {MentorFooterRoutes.map((item, index) => {
-            return item?.menuitem === "COMPANY" ? null : (
+            return item?.menuitem === "COMPANY" ||
+              item?.menuitem === "Quick Links" ? null : (
               <Col key={index} lg={2} md={3} sm={6}>
                 <div className="d-flex flex-column gap-2">
                   <h5 className="fw-bold  text-uppercase mb-0">
