@@ -10,8 +10,6 @@ const EditProfile = () => {
   const [user, setUser] = useState(null);
   const [imagePreview, setImagePreview] = useState();
   const [loading, setLoading] = useState(false);
-  const [successMsg, setSuccessMsg] = useState(null);
-  const [errorMsg, setErrorMsg] = useState(null);
   const imageRef = useRef();
 
   const {
@@ -78,11 +76,9 @@ const EditProfile = () => {
 
       if (!res.ok) throw new Error(result.message || "Update failed");
 
-      setSuccessMsg("Profile updated successfully.");
       toast.success("Profile updated successfully.");
     } catch (error) {
       toast.error(error.message || "Something went wrong.");
-      setErrorMsg(error.message || "Something went wrong.");
     } finally {
       setLoading(false);
     }

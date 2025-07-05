@@ -9,12 +9,7 @@ export default function MyCourses({ courses }) {
 
   return (
     <ProfileLayoutWrap pathpara={location}>
-      <div
-        className="rounded-md p-4"
-        style={{
-          backgroundColor: "var(--geeks-gray-200)",
-        }}
-      >
+      <div className="rounded-md p-4 bg-white">
         <h1>My All Courses</h1>
         <CourseListView instructors={{}} courses={courses} />
       </div>
