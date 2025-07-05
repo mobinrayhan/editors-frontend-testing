@@ -42,7 +42,7 @@ const NavbarDefault = ({ sessionUser = false }) => {
         onToggle={(collapsed) => setExpandedMenu(collapsed)}
         expanded={expandedMenu}
         expand="lg"
-        className="navbar p-2 navbar-default py-2 bg-light"
+        className="navbar p-2 navbar-default py-2 bg-light container"
       >
         <Container fluid className="px-0 ps-2">
           <div
@@ -152,17 +152,17 @@ const NavbarDefault = ({ sessionUser = false }) => {
                       : "ms-auto mt-3 mt-lg-0 d-flex"
                   }
                 >
-                  <Link
+                  {/* <Link
                     href="/authentication/sign-in"
                     className="btn btn-white  shadow-sm me-2"
                   >
                     Sign In
-                  </Link>
+                  </Link> */}
                   <Link
-                    href="/authentication/sign-up"
+                    href="/authentication/sign-in"
                     className="btn btn-primary  shadow-sm"
                   >
-                    Sign Up
+                    Sign In
                   </Link>
                 </span>
                 {hasMounted ? (
