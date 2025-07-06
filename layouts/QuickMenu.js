@@ -74,10 +74,6 @@ const QuickMenu = ({ sessionUser }) => {
     );
   };
 
-  console.log("====================================");
-  console.log(isDesktop);
-  console.log("====================================");
-
   return (
     <Fragment>
       <DarkLightMode />

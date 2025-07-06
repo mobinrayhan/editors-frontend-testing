@@ -21,7 +21,7 @@ const HeroHeader = ({
       <Container>
         {/*  Hero Section  */}
         <div className="custom-hero-container">
-          <div className="py-5 py-lg-0 custom-left-container">
+          <div className="custom-left-container">
             <h1 className="text-dark fw-bold d-flex flex-column  header-font">
               <span> হয়ে উঠুন ভিডিও এডিটিং গুরু</span>{" "}
               <span className="text-primary">জিরো থেকে হিরো</span>

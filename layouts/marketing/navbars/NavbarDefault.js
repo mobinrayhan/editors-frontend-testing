@@ -4,7 +4,7 @@
 import Link from "next/link";
 import PropTypes from "prop-types";
 import { Fragment, useState } from "react";
-import { Container, Form, Nav, Navbar } from "react-bootstrap";
+import { Container, Dropdown, Form, Nav, Navbar } from "react-bootstrap";
 import { useMediaQuery } from "react-responsive";
 
 // import sub components
@@ -23,6 +23,7 @@ import useMounted from "hooks/useMounted";
 import { settings } from "app.config";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { List } from "react-bootstrap-icons";
 
 const NavbarDefault = ({ sessionUser = false }) => {
   const [expandedMenu, setExpandedMenu] = useState(false);
@@ -152,12 +153,48 @@ const NavbarDefault = ({ sessionUser = false }) => {
                       : "ms-auto mt-3 mt-lg-0 d-flex"
                   }
                 >
-                  {/* <Link
-                    href="/authentication/sign-in"
-                    className="btn btn-white  shadow-sm me-2"
-                  >
-                    Sign In
-                  </Link> */}
+                  <Dropdown>
+                    <Dropdown.Toggle
+                      as="a"
+                      bsPrefix=" "
+                      id="dropdownPages"
+                      className="text-dark me-lg-1  btn btn-light btn-icon rounded-circle  text-muted"
+                    >
+                      <List size={24} />
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu
+                      className="dashboard-dropdown notifications-dropdown dropdown-menu-sm dropdown-menu-end mt-4 py-0"
+                      aria-labelledby="dropdownPages"
+                      align="end"
+                      show={hasMounted && isDesktop ? true : false}
+                    >
+                      <Dropdown.Item
+                        className="m-3 d-flex flex-column"
+                        bsPrefix=" "
+                        as="div"
+                      >
+                        {NavbarDefaultRoutes.map((item, index) => (
+                          <Link
+                            key={index}
+                            href={item.link}
+                            style={{
+                              paddingTop: "5px",
+                              marginRight: "10px",
+                            }}
+                            className={`${
+                              item.link === pathName
+                                ? "text-blue "
+                                : "text-dark"
+                            }`}
+                          >
+                            {item.menuitem}
+                          </Link>
+                        ))}
+                      </Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+
                   <Link
                     href="/authentication/sign-in"
                     className="btn btn-primary  shadow-sm"
