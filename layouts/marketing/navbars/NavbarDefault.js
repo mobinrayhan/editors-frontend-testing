@@ -127,8 +127,8 @@ const NavbarDefault = ({ sessionUser = false }) => {
             </Form>
             {/* Right side quick / shortcut menu  */}
 
-            <div className="ms-auto d-flex w-100">
-              <Nav className="flex-shrink-0 w-100 navbar-nav navbar-right-wrap ms-auto d-flex align-items-center nav-top-wrap">
+            <div className="ms-auto d-flex w-100 mt-sm-3 pb-sm-2 mt-lg-0 pb-lg-0">
+              <Nav className="flex-shrink-0 w-100 navbar-nav navbar-right-wrap ms-auto d-flex align-items-center nav-top-wrap ">
                 {!sessionUser && (
                   <Form
                     style={{ paddingRight: "20px" }}
@@ -149,11 +149,11 @@ const NavbarDefault = ({ sessionUser = false }) => {
                 <span
                   className={
                     sessionUser
-                      ? "ms-auto mt-3 mt-lg-0 d-none"
-                      : "ms-auto mt-3 mt-lg-0 d-flex"
+                      ? "ms-auto  mt-lg-0 d-none"
+                      : "ms-auto  mt-lg-0 d-flex"
                   }
                 >
-                  <Dropdown>
+                  <Dropdown className="d-sm-none d-lg-block">
                     <Dropdown.Toggle
                       as="a"
                       bsPrefix=" "
