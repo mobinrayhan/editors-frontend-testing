@@ -46,11 +46,11 @@ const MentorFooterRoutes = [
         menuitem: "সাফল্যের গল্প",
         link: "/কোম্পানি/সাফল্যের-গল্প",
       },
-      {
-        id: uuid(),
-        menuitem: "ফ্রী রিসোর্স",
-        link: "/কোম্পানি/ফ্রী-রিসোর্স",
-      },
+      // {
+      //   id: uuid(),
+      //   menuitem: "ফ্রী রিসোর্স",
+      //   link: "/কোম্পানি/ফ্রী-রিসোর্স",
+      // },
     ],
   },
   {
@@ -72,11 +72,11 @@ const MentorFooterRoutes = [
         menuitem: "ডিস্কোর্ড কমিউনিটি",
         link: "/সাপোর্ট/ডিস্কোর্ড-কমিউনিটি",
       },
-      {
-        id: uuid(),
-        menuitem: "ফ্রী রিসোর্স",
-        link: "/সাপোর্ট/ফ্রী-রিসোর্স",
-      },
+      // {
+      //   id: uuid(),
+      //   menuitem: "ফ্রী রিসোর্স",
+      //   link: "/সাপোর্ট/ফ্রী-রিসোর্স",
+      // },
     ],
   },
 
@@ -142,11 +142,11 @@ const MentorFooterRoutes = [
     id: uuid(),
     menuitem: "COMPANY",
     children: [
-      {
-        id: uuid(),
-        menuitem: "About",
-        link: "/about",
-      },
+      // {
+      //   id: uuid(),
+      //   menuitem: "About",
+      //   link: "/about",
+      // },
       {
         id: uuid(),
         menuitem: "Refund Policy",
