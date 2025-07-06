@@ -29,28 +29,28 @@ const MentorFooterRoutes = [
   },
   {
     id: uuid(),
-    menuitem: "কোম্পানি",
+    menuitem: "company",
     children: [
       {
         id: uuid(),
         menuitem: "জেমস সম্পর্কে",
-        link: "/কোম্পানি/জেমস-সম্পর্কে",
+        link: "/company/about-james-prince",
       },
       {
         id: uuid(),
         menuitem: "অ্যাফিলিয়েট",
-        link: "/কোম্পানি/অ্যাফিলিয়েট",
+        link: "/company/অ্যাফিলিয়েট",
       },
       {
         id: uuid(),
         menuitem: "সাফল্যের গল্প",
-        link: "/কোম্পানি/সাফল্যের-গল্প",
+        link: "/company/সাফল্যের-গল্প",
       },
-      {
-        id: uuid(),
-        menuitem: "ফ্রী রিসোর্স",
-        link: "/কোম্পানি/ফ্রী-রিসোর্স",
-      },
+      // {
+      //   id: uuid(),
+      //   menuitem: "ফ্রী রিসোর্স",
+      //   link: "/company/ফ্রী-রিসোর্স",
+      // },
     ],
   },
   {
@@ -72,11 +72,11 @@ const MentorFooterRoutes = [
         menuitem: "ডিস্কোর্ড কমিউনিটি",
         link: "/সাপোর্ট/ডিস্কোর্ড-কমিউনিটি",
       },
-      {
-        id: uuid(),
-        menuitem: "ফ্রী রিসোর্স",
-        link: "/সাপোর্ট/ফ্রী-রিসোর্স",
-      },
+      // {
+      //   id: uuid(),
+      //   menuitem: "ফ্রী রিসোর্স",
+      //   link: "/সাপোর্ট/ফ্রী-রিসোর্স",
+      // },
     ],
   },
 
@@ -142,11 +142,11 @@ const MentorFooterRoutes = [
     id: uuid(),
     menuitem: "COMPANY",
     children: [
-      {
-        id: uuid(),
-        menuitem: "About",
-        link: "/about",
-      },
+      // {
+      //   id: uuid(),
+      //   menuitem: "About",
+      //   link: "/about",
+      // },
       {
         id: uuid(),
         menuitem: "Refund Policy",

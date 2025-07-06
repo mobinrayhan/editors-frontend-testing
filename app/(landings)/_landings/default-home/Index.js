@@ -35,7 +35,7 @@ const DefaultHome = async () => {
         buttonLink2="/authentication/sign-in/"
       />
       {/* <FeaturesList /> */}
-      <section className="pt-10 pb-10 bg-light">
+      <section className="pt-10 pb-10 bg-light position-relative">
         <Container>
           <Row className="mb-4">
             <Col>

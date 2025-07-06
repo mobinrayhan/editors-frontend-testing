@@ -85,14 +85,23 @@ const QuickMenu = ({ sessionUser }) => {
         {/* notification */}
 
         <Dropdown as="li">
-          <Dropdown.Toggle
-            as="a"
-            bsPrefix=" "
-            id="dropdownNotification"
-            className="text-dark icon-notifications me-lg-1  btn btn-light btn-icon rounded-circle indicator indicator-primary text-muted bg-white"
-          >
-            <i className="fe fe-shopping-cart"></i>
-          </Dropdown.Toggle>
+          {hasMounted && isDesktop ? (
+            <Dropdown.Toggle
+              as="a"
+              bsPrefix=" "
+              id="dropdownNotification"
+              className="text-dark icon-notifications me-lg-1  btn btn-light btn-icon rounded-circle indicator indicator-primary text-muted bg-white"
+            >
+              <i className="fe fe-shopping-cart"></i>
+            </Dropdown.Toggle>
+          ) : (
+            <Link
+              href={"/cart"}
+              className="text-dark icon-notifications me-lg-1  btn btn-light btn-icon rounded-circle indicator indicator-primary text-muted bg-white"
+            >
+              <i className="fe fe-shopping-cart"></i>
+            </Link>
+          )}
           <Dropdown.Menu
             className="dashboard-dropdown notifications-dropdown dropdown-menu-lg dropdown-menu-end mt-4 py-0"
             aria-labelledby="dropdownNotification"
@@ -183,12 +192,6 @@ const QuickMenu = ({ sessionUser }) => {
                   <i className="fe fe-user me-2"></i> Profile
                 </Link>
               </Dropdown.Item>
-              {/* <Dropdown.Item eventKey="3">
-              <i className="fe fe-star me-2"></i> Subscription
-            </Dropdown.Item> */}
-              {/* <Dropdown.Item>
-              <i className="fe fe-settings me-2"></i> Settings
-            </Dropdown.Item> */}
               <Dropdown.Divider />
               <Dropdown.Item
                 className="mb-3"
