@@ -58,18 +58,11 @@
 // };
 
 // export default Error404;
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
 
 export default function Error404() {
   return (
-    <main
-      style={{
-        minHeight: "100vh",
-        display: "grid",
-        placeItems: "center",
-        backgroundColor: "#fff",
-      }}
-    >
+    <main className="bg-light vh-100 d-flex align-items-center justify-content-center">
       <Container className="text-center">
         <p className="text-primary fw-semibold" style={{ fontSize: "32px" }}>
           404
