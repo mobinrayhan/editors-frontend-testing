@@ -35,11 +35,11 @@ const Contact = async () => {
                 <div className="d-flex justify-content-between mb-2 align-items-center">
                   <Link href="/">
                     <Image
-                      width={50}
-                      height={50}
-                      src={settings.theme.inverseLogoIcon}
-                      alt={settings.app.name}
-                      className="logo-inverse"
+                      src={settings.theme.logo}
+                      alt={"Editors Academy Logo"}
+                      style={{ cursor: "pointer", objectFit: "contain" }}
+                      height={40}
+                      width={150}
                     />
                   </Link>
                 </div>
