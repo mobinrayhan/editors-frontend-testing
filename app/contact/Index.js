@@ -66,8 +66,8 @@ const Contact = async () => {
                       contact@editors.academy
                     </p>
                     <p className="fs-4 ">
-                      <GeoAlt size={17} className="text-primary me-2" /> 2652
-                      Kooter Lane Charlotte, NC 28263
+                      <GeoAlt size={17} className="text-primary me-2" />
+                      ৪/১৩ , জনতা হাউজিং মিরপুর - ০১, ঢাকা ১২১৬
                     </p>
                   </div>
 

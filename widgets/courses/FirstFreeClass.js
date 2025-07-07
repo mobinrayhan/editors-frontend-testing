@@ -11,8 +11,9 @@ export default function FirstFreeClass() {
   const vdocipherIframe = `
             <iframe
               src="https://player.vdocipher.com/v2/?otp=${"course?.videoInfo?.otp"}&playbackInfo=${"course?.videoInfo?.playbackInfo"}"
-              width="90%"
-              height="310"
+              title="Editors Academy - First Free Class"
+              width="100%"
+              height="100%"
               allowfullscreen
               allow="encrypted-media"
               frameborder="0"
@@ -24,7 +25,10 @@ export default function FirstFreeClass() {
       <Container>
         <Row className="mb-4">
           <Col lg={6} sm={12}>
-            <div dangerouslySetInnerHTML={{ __html: vdocipherIframe }} />
+            <div
+              className="h-12rem h-sm-18rem h-lg-20rem h-xl-21rem mb-4"
+              dangerouslySetInnerHTML={{ __html: vdocipherIframe }}
+            />
           </Col>
           <Col lg={6} sm={12}>
             <h1>
