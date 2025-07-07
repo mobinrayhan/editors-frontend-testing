@@ -35,11 +35,11 @@ const Contact = async () => {
                 <div className="d-flex justify-content-between mb-2 align-items-center">
                   <Link href="/">
                     <Image
-                      width={50}
-                      height={50}
-                      src={settings.theme.inverseLogoIcon}
-                      alt={settings.app.name}
-                      className="logo-inverse"
+                      src={settings.theme.logo}
+                      alt={"Editors Academy Logo"}
+                      style={{ cursor: "pointer", objectFit: "contain" }}
+                      height={40}
+                      width={150}
                     />
                   </Link>
                 </div>
@@ -66,8 +66,8 @@ const Contact = async () => {
                       contact@editors.academy
                     </p>
                     <p className="fs-4 ">
-                      <GeoAlt size={17} className="text-primary me-2" /> 2652
-                      Kooter Lane Charlotte, NC 28263
+                      <GeoAlt size={17} className="text-primary me-2" />
+                      ৪/১৩ , জনতা হাউজিং মিরপুর - ০১, ঢাকা ১২১৬
                     </p>
                   </div>
 
