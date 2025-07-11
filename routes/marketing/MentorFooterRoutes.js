@@ -55,22 +55,22 @@ const MentorFooterRoutes = [
   },
   {
     id: uuid(),
-    menuitem: "সাপোর্ট",
+    menuitem: "support",
     children: [
       {
         id: uuid(),
         menuitem: "সাধারণ জিজ্ঞাসা",
-        link: "/সাপোর্ট/সাধারণ-জিজ্ঞাসা",
+        link: "/support/সাধারণ-জিজ্ঞাসা",
       },
       {
         id: uuid(),
         menuitem: "সাপোর্টে যোগাযোগ",
-        link: "/সাপোর্ট/সাপোর্টে-যোগাযোগ",
+        link: "/support/সাপোর্টে-যোগাযোগ",
       },
       {
         id: uuid(),
         menuitem: "ডিস্কোর্ড কমিউনিটি",
-        link: "/সাপোর্ট/ডিস্কোর্ড-কমিউনিটি",
+        link: "/support/ডিস্কোর্ড-কমিউনিটি",
       },
       // {
       //   id: uuid(),

@@ -156,9 +156,9 @@ const GKAccordionDefaultDashboard = ({
                                   ...
                                   <br />
                                   <span
+                                    className="text-sharp"
                                     style={{
                                       overflow: "hidden",
-                                      color: "#00000080",
                                       textOverflow: "ellipsis",
                                     }}
                                   >
@@ -209,9 +209,9 @@ const GKAccordionDefaultDashboard = ({
                                     ...
                                     <br />
                                     <span
+                                      className="text-sharp"
                                       style={{
                                         overflow: "hidden",
-                                        color: "#00000080",
                                         textOverflow: "ellipsis",
                                       }}
                                     >

@@ -80,7 +80,7 @@ const InstructorProfileSummaryCard = ({ data }) => {
         </Row>
         <p>{data?.instructor[0]?.bio}</p>
         <Link
-          href={"/instructor/profile"}
+          href={"/company/about-james-prince"}
           className="btn btn-outline-secondary btn-sm"
         >
           View Details
