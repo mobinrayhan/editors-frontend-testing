@@ -35,7 +35,7 @@ const ContactForm = () => {
         <Form onSubmit={handleSubmit(handelContactFormSubmit)}>
           <Row>
             {/* First Name */}
-            <Col md={6} sm={12}>
+            <Col sm={12}>
               <Form.Group className="mb-3" controlId="formFirstName">
                 <Form.Label>
                   First Name:<span className="text-danger">*</span>
@@ -62,7 +62,7 @@ const ContactForm = () => {
             </Col>
 
             {/* Last Name */}
-            <Col md={6} sm={12}>
+            <Col sm={12}>
               <Form.Group className="mb-3" controlId="formLastName">
                 <Form.Label>
                   Last Name:<span className="text-danger">*</span>
@@ -89,7 +89,7 @@ const ContactForm = () => {
             </Col>
 
             {/* Email */}
-            <Col md={6} sm={12}>
+            <Col sm={12}>
               <Form.Group className="mb-3" controlId="formEmail">
                 <Form.Label>
                   Email:<span className="text-danger">*</span>
@@ -122,7 +122,7 @@ const ContactForm = () => {
             </Col>
 
             {/* Phone Number */}
-            <Col md={6} sm={12}>
+            <Col sm={12}>
               <Form.Group className="mb-3" controlId="formPhone">
                 <Form.Label>
                   Phone Number:<span className="text-danger">*</span>
@@ -189,9 +189,12 @@ const ContactForm = () => {
                   render={({ field }) => (
                     <Form.Control
                       {...field}
+                      style={{
+                        resize: "none",
+                      }}
                       as="textarea"
                       placeholder="Message"
-                      rows={3}
+                      rows={4}
                     />
                   )}
                 />
@@ -206,79 +209,6 @@ const ContactForm = () => {
             </Col>
           </Row>
         </Form>
-        {/* <Form> */}
-        {/* <Row> */}
-        {/* First Name */}
-        {/* <Col md={6} sm={12}>
-              <Form.Group className="mb-3" controlId="formFirstName">
-                <Form.Label>
-                  First Name:<span className="text-danger">*</span>
-                </Form.Label>
-                <Form.Control type="text" placeholder="First Name" required />
-              </Form.Group>
-            </Col> */}
-
-        {/* Last Name */}
-        {/* <Col md={6} sm={12}>
-              <Form.Group className="mb-3" controlId="formLastName">
-                <Form.Label>
-                  Last Name:<span className="text-danger">*</span>
-                </Form.Label>
-                <Form.Control type="text" placeholder="Last Name" required />
-              </Form.Group>
-            </Col> */}
-
-        {/* Email */}
-        {/* <Col md={6} sm={12}>
-              <Form.Group className="mb-3" controlId="formEmail">
-                <Form.Label>
-                  Email:<span className="text-danger">*</span>
-                </Form.Label>
-                <Form.Control type="email" placeholder="Email" required />
-              </Form.Group>
-            </Col> */}
-
-        {/* Phone Number */}
-        {/* <Col md={6} sm={12}>
-              <Form.Group className="mb-3" controlId="formFirstName">
-                <Form.Label>
-                  Phone Number:<span className="text-danger">*</span>
-                </Form.Label>
-                <Form.Control type="number" placeholder="Phone" required />
-              </Form.Group>
-            </Col> */}
-
-        {/* Contact Reason */}
-        {/* <Col md={12} sm={12}>
-							<Form.Group className="mb-3" controlId="formContactReason">
-								<Form.Label>
-									Contact Reason:<span className="text-danger">*</span>
-								</Form.Label>
-								<Form.Control
-									as={FormSelect}
-									placeholder="Select"
-									options={contactReason}
-									required
-								/>
-							</Form.Group>
-						</Col> */}
-
-        {/* Messages */}
-        {/* <Col md={12} sm={12}>
-              <Form.Group className="mb-3" controlId="formMessages">
-                <Form.Label>Message:</Form.Label>
-                <Form.Control as="textarea" placeholder="Messages" rows={3} />
-              </Form.Group>
-            </Col> */}
-
-        {/* button */}
-        {/* <Col md={12} sm={12}>
-              <Button variant="primary" type="submit">
-                Submit
-              </Button>
-            </Col>
-          </Row>
-        </Form> */}
       </div>
     </div>
   );

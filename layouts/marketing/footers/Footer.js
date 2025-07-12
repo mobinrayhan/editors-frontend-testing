@@ -10,7 +10,7 @@ const Footer = ({ bgColor = "bg-light" }) => {
     (item) => item?.menuitem === "COMPANY"
   );
   return (
-    <footer className={`bg-light`}>
+    <footer className={`${bgColor}`}>
       <Container>
         <Row className="align-items-center g-0  py-2">
           {/* Desc */}

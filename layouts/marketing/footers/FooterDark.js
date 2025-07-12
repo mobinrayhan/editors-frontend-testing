@@ -12,10 +12,10 @@ import { settings } from "app.config";
 import Image from "next/image";
 import { Facebook, Instagram, Youtube } from "react-bootstrap-icons";
 
-const FooterDark = () => {
+const FooterDark = ({ bgColor = "bg-white" }) => {
   // const currentYear = new Date().getFullYear();
   return (
-    <footer className="py-lg-8 py-5 bg-white">
+    <footer className={`py-lg-8 py-5 ${bgColor}`}>
       <Container className="container">
         <Row className="gy-4 justify-content-between">
           <Col lg={4} sm={12}>
